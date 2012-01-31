@@ -14,7 +14,7 @@ require_once ('lib/OAuth.php');
 // For examaple, search for 'tacos' in 'sf'
 //$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
 
-$unsigned_url = "http://api.yelp.com/v2/search?term=french&location=08544";
+$unsigned_url = "http://api.yelp.com/v2/search?term=french&location=08544&limit=3";
 
 // Set your keys here
 $consumer_key = "T7h8nAcJA5KvfPiroKWooQ";
