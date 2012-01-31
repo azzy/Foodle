@@ -13,6 +13,7 @@
     ?>
 
 	A site that will let you vote on restaurants.
+	Cool!
 
     <?php
       require_once "footer.php";
