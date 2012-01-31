@@ -12,21 +12,41 @@ public class Choosine {
         Connection con = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
-        int experts = // SOMETHING ASSOCIATED WITH POLL
-        int size = // SOMETHING ASSOCIATED WITH POLL
-        int length = // SOMETHING ASSOCIATED WITH POLL
+
+	if (args.length < 1) {
+	    System.err.println("Usage: Choosine pollid");
+	    return;
+	}
+
+	int pollid;
+	try {
+	    pollid = Integer.parseInt(args[0]);
+	} catch {
+	    System.err.println("pollid must be an integer!");
+	    return;
+	}
+
+	// To be initialized from mysql data
+        int experts = 0;
+	int size = 0;
+	int length = 0;
+
         int[] choices = new int[length];
         double[] rank = new double[length];
         int[] id = new int[length];
 
-        String url = "jdbc:mysql://localhost:3306/testdb"; // WHATEVER YOU WOULD WANT HERE
-        String user = "testuser"; // OUR USER-ID
-        String password = "test623"; // OUR PASSWORD
+        String url = "jdbc:mysql://localhost:3306/foodle"; // WHATEVER YOU WOULD WANT HERE
+        String user = "foodle_user"; // OUR USER-ID
+        String password = "cobs1_flammables"; // USER PASSWORD
 
         try {
             
             con = DriverManager.getConnection(url, user, password);
-            pst = con.prepareStatement("SELECT * FROM Authors"); // WHATEVER TABLE NAME YOU WANT
+
+            pst = con.prepareStatement("SELECT COUNT(*) FROM votes WHERE pollid = " + pollid);	    
+            rs = pst.executeQuery();
+
+            pst = con.prepareStatement("SELECT COUNT(*) FROM choices WHERE pollid = ");
             rs = pst.executeQuery();
 
             while (rs.next()) {
