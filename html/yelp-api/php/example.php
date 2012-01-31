@@ -9,11 +9,12 @@
 require_once ('lib/OAuth.php');
 
 // For example, request business with id 'the-waterboy-sacramento'
-//$unsigned_url = "http://api.yelp.com/v2/business/the-waterboy-sacramento";
+//$unsigned_url = "http://api.yelp.com/v2/business/the-waterboy-sacramento/name";
 
 // For examaple, search for 'tacos' in 'sf'
-$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
+//$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
 
+$unsigned_url = "http://api.yelp.com/v2/search?term=french&location=08544";
 
 // Set your keys here
 $consumer_key = "T7h8nAcJA5KvfPiroKWooQ";
