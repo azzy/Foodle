@@ -1,0 +1,135 @@
+/*Overall
+  ------------------------------------------------------------*/
+html, body { margin: 0; padding: 0; }
+body {
+    background: url('../images/yellow.jpg') #FFFF00;
+}
+/*a:link,
+a:visited { 
+    text-decoration: none;
+    color: #F38921; 
+    border-bottom: 1px dotted #F38921;
+}
+a:hover,
+a:focus {
+    border-bottom: 1px dotted #F8bc74;
+    color: #F8bc74;
+}
+*/
+.floatleft { float: left; }
+.floatright { float: right; }
+.clear { clear: both; }
+
+/*
+input,
+textarea {
+    width: 160px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    padding: 5px;
+}*/
+
+/*Layout
+  --------------------------------------------------*/
+div#wrapper {
+    width: 950px;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background: url('../images/gold.jpg') #FCEE21;
+}
+#home div#content-area {
+    width: 900px;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+#content-area .text {
+    margin: 170px auto 100px auto;
+    width: 350px;
+    color: #fff;
+    font: 14pt 'Rokkitt', helvetica, arial, sans-serif;
+}
+#content-area ul {
+    list-style-image: none;
+}
+#content-area li {
+    clear: both;
+    padding: 0;
+}
+#content-area img.bullet {
+  //  background: url('../images/badge_small.png') no-repeat;
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin: 0 10px 3px 0;
+   // color: #39B54A;
+   // font: 16pt 'Rokkitt', helvetica, arial, sans-serif;
+   // text-shadow: 0px -1px 0.5px #04680E;
+   // text-align: center;
+   // padding-top: 10px;
+    position: relative;
+    top: -11px;
+}
+#banner {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    margin-left: -420px;
+    z-index: 100;
+}
+#footer {
+    z-index: 100;
+    position: fixed;
+    bottom: 0;
+    width: 880px;
+    height: 20px;
+    color: #fff;
+    background: url('../images/green.jpg');
+    font: 12pt 'Rokkitt', helvetica, arial, sans-serif;
+    text-align: center;
+    padding: 10px;
+}
+/*Navigation
+  ------------------------------------------------------------*/
+/* Code in some footer navigation in case people get lost? */
+
+/*Content Styles
+  ------------------------------------------------------------*/
+.bold { font-weight: 700; }
+.regular { font-weight: 400; }
+.italic { font-weight: 400; font-style: italic; }
+
+
+/*Page Styles
+  ------------------------------------------------------------*/
+/* Home Page -------------------------------------------------*/
+div#restaurants {
+    width: 450px;
+    min-height: 100%;
+    float: left;
+    margin: 0;
+    background: url('../images/bluer.jpg') #29ABE2;
+}
+
+div#cuisine {
+    width: 450px;
+    min-height: 100%;
+    float: right;
+    margin: 0;
+    background: url('../images/bluec.jpg') #0071BC;
+}
+.badge {
+    width: 220px;
+    height: 220px;
+    background: url('../images/badge_plain.png') no-repeat;
+    margin: auto;
+    position: relative;
+    top: 220px;
+    padding-top: 90px;
+    color: #39B54A;
+    text-align: center;
+    font: 20pt 'Coustard', 'Rokkitt', helvetica, arial, sans-serif;
+    text-shadow: 0px -1px 0.5px #04680E;
+}
+/* End Home Styles -------------------------------------------*/
