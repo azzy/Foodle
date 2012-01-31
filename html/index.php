@@ -15,6 +15,11 @@
 	A site that will let you vote on restaurants.
 	Cool!
 
+      <?php
+	echo "Calling java now...<br />";
+	require_once "calljava.php";
+      ?>
+
     <?php
       require_once "footer.php";
     ?>
