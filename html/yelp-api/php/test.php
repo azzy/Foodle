@@ -51,6 +51,17 @@ echo "<br>";
 function name() {
     print $response->businesses[0]->name;
 }
+function a($n){ 
+  b($n); 
+  return ($n * $n); 
+} 
+
+function b(&$n){ 
+  $n++; 
+} 
+
+echo a(5); //Outputs 36
+
 echo "here<br>";
 name();
 echo "<br>here";
