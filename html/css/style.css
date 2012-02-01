@@ -60,9 +60,9 @@ div#wrapper {
     top: -11px;
 }
 #content-area {
-    height: 220px;
-    padding: 50px;
-    width: 600px;
+    height: 300px;
+    padding: 30px;
+    width: 640px;
     margin: auto;
     position: relative;
     top: 200px;
@@ -118,10 +118,10 @@ div#cuisine {
     margin: 0;
     background: url('../images/bluec.jpg') #0071BC;
 }
-.badge {
+div.badge {
     width: 220px;
     height: 220px;
-    background: url('../images/badge_plain.png') no-repeat;
+    background: url('../images/badge.png') no-repeat;
     margin: auto;
     position: relative;
     top: 220px;
@@ -134,14 +134,20 @@ div#cuisine {
 div.badge:hover, div.badge:focus {
     background: url('../images/badge_hover.png') no-repeat;
 }
+a.badge {
+    color: inherit;
+}
 /* End Home Styles -------------------------------------------*/
 /* Begin Form Styles -----------------------------------------*/
 #content-area table {
     margin: auto;
 }
+#content-area .form {
+    margin: 38px 20px;
+}
 input,
 textarea {
-    width: 430px;
+    width: 410px;
     border: 1px solid #ddd;
     font-size: 14pt;
     padding: 5px;
@@ -171,13 +177,19 @@ body#cuisine input, body#cuisine textarea {
 /* Begin Rank Styles -----------------------------------------*/
 #list-1, #list-2 {
     width: 270px;
-    height: 370px;
+    min-height: 290px;
+    padding: 5px;
 }
 #list-1 {
     background: url('../images/forest.jpg') #6EAF22;
+    float: left;
 }
 #list-2 {
     background: url('../images/azure.jpg') #0090E0;
+    float: right;
+}
+ul.sort {
+    list-style-image: none;
 }
 .draggable {
     width: 230px;
@@ -185,4 +197,12 @@ body#cuisine input, body#cuisine textarea {
     background: url('../images/draggable.png') no-repeat;
     margin-bottom: 2px;
 }
+.draggable.ui-draggable-dragging { background: url('../images/draggableb.png') no-repeat; }
+.bin, .bin-hover {
+    width: 230px;
+    height: 39px;
+    margin-bottom: 2px;
+}
+.bin { background: url('../images/bin.png') no-repeat; }
+.bin-hover { background: url('../images/bin_hover.png') no-repeat; }
 /* End Form Styles -------------------------------------------*/
