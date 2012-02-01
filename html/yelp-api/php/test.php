@@ -44,6 +44,7 @@ $response = json_decode($data);
 print_r($response);
 echo "<br>";
 echo "<br>";
+print $response->businesses[0]->name;
 echo "<br>";
 echo "<br>";
 
