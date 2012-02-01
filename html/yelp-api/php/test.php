@@ -7,19 +7,29 @@
 
 <body>
 
+<form method="post" action="<?php echo $PHP_SELF;?>">
+   Search for: <input type="text" name="tag1" />
+   <input type="submit" value="Submit" /><br/>
+</form>
+
 <?php
+   $tag = $_POST["tag1"];
+echo "<p> You searched for " . $tag . "</p></br>";
+
 // --------------OAuth Stuff------------------------------------ 
 // From http://non-diligent.com/articles/yelp-apiv2-php-example/
 // Enter the path that the oauth library is in relation to the php file
 require_once ('lib/OAuth.php');
-//$unsigned_url = "http://api.yelp.com/v2/business/the-waterboy-sacramento/name";
-//$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
-$unsigned_url = "http://api.yelp.com/v2/search?term=food&location=08544&limit=1&sort=2";
-// Set your keys here
 $consumer_key = "T7h8nAcJA5KvfPiroKWooQ";
 $consumer_secret = "jLVWAmjRGAGQSKw9EJbpKS5GYzw";
 $token = "ZQO9F_0HeL7XcH54Z66F4NLZ7pAUraN1";
 $token_secret = "GZV-bIEVQKt0NkueKnh4tieKlY8";
+//cut paste = ctrl+space ctrl+w ctrl+y
+// copy = esc w 
+//$unsigned_url = "http://api.yelp.com/v2/business/the-waterboy-sacramento/name";
+//$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
+$unsigned_url = "http://api.yelp.com/v2/search?term=food&location=08544&limit=1&sort=2&category_filter=".$tag;
+// Set your keys here
 // Token object built using the OAuth library
 $token = new OAuthToken($token, $token_secret);
 // Consumer object built using the OAuth library
@@ -43,65 +53,65 @@ $response = json_decode($data);
 // ------------------------------------------------------------
 print_r($response);
 echo "<br>";
-echo "<br>";
-print $response->businesses[0]->name;
-echo "<br>";
-echo "<br>";
-print $data.total;
-
 
 function name($response, $ind) {
-    print $response->businesses[$ind]->name;
+    return "" . $response->businesses[$ind]->name;
 }
-name($response, 0);
-/*
-function a($n){ 
-  b($n); 
-  return ($n * $n); 
-} 
+function rating($response, $ind){
+  return "" .  $response->businesses[$ind]->rating;
+}
+function location($response, $ind){
+  return "" .  $response->businesses[$ind]->location->city;
+}
+function snippet($response, $ind){
+  return "" .  $response->businesses[$ind]->snippet_text;
+}
+function ratingimg($response, $ind) {
+    return "" . $response->businesses[$ind]->rating_img_url;
+}
+function snippetimg($response, $ind){
+  return "" .  $response->businesses[$ind]->snippet_image_url;
+}
+function tags($response, $ind){
+  return "" .  $response->businesses[$ind]->categories[0][0];
+}
+function ratingimgsm($response, $ind){
+  return "" .  $response->businesses[$ind]->rating_img_url_small;
+}
 
-function b(&$n){ 
-  $n++; 
-} 
 
-echo a(5); //Outputs 36
 
-echo "here<br>";
-//name();
-echo "<br>here";
+echo "<br>Functions Defined in first php section.";
 echo "<br>";
-echo "hmmmmmmm<br>";
-*/
-
-function a() {
-    echo $response->businesses[0]->name;
-    
-}
-echo a();
-
+echo "<br>";
 ?>
 
-    <h1>Yayyyyy</h1>
+    <h1>Heading1</h1>
+    <p> put more html stuff here yayyyyyy</p>
+
 <?php
 //print businesses(0)->name;
+echo "<br> Printing out various info here: <br> ";
+
+echo name($response, 0);
+echo "<br> Rating:  ";
+echo rating($response, 0);
+echo "<br> City:  ";
+echo location($response, 0);
+echo "<br> Snippet Review:  ";
+echo snippet($response, 0);
+echo "<br><img src='" . ratingimg($response, 0)  . "'>Rating Img normal</img><br>";
+echo "<img src='" . snippetimg($response, 0)  . "'>Snippet</img><br>";
+echo "<img src='" . ratingimgsm($response, 0)  . "'>Small Rating</img><br>";
+echo tags($response, 0);
 echo "<br>";
 echo "<br>";
-print "yayyy";
+echo "<br>";
+echo "<br>";
 print_r($response);
-/*
-function a($n){ 
-  b($n); 
-  return ($n * $n); 
-} 
-
-function b(&$n){ 
-  $n++; 
-} 
-
-echo a(5); //Outputs 36 
-*/
 ?>
-    
-    
+
+<p>and you can put more text hereeee yay?</p>
+
 </body>
 </html>
