@@ -48,9 +48,9 @@ function businesses($intOfBus) {
 print businesses(0)->name;
 echo "<br>";
 function name($intOfBus) {
-    return $response->businesses[$intOfBus]->name;
+    echo $response->businesses[$intOfBus]->name;
 }
-print name(0);
+name(0);
 echo "<br>";
 
 ?>
@@ -61,6 +61,18 @@ print businesses(0)->name;
 echo "<br>";
 echo "<br>";
 print "yayyy";
+
+function a($n){ 
+  b($n); 
+  return ($n * $n); 
+} 
+
+function b(&$n){ 
+  $n++; 
+} 
+
+echo a(5); //Outputs 36 
+
 ?>
     
     
