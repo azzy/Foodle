@@ -45,7 +45,7 @@ $response = json_decode($data);
 function name($n) {
     return $response->businesses[0]->name;
 }
-echo name(0);
+//echo name(0);
 echo "<br>";
 echo "hmmmmmmm<br>";
 
