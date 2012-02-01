@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 public class Choosine {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws java.lang.ClassNotFoundException {
         Connection con = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -21,7 +21,7 @@ public class Choosine {
 	int pollid;
 	try {
 	    pollid = Integer.parseInt(args[0]);
-	} catch {
+	} catch (Exception e) {
 	    System.err.println("pollid must be an integer!");
 	    return;
 	}
@@ -31,10 +31,12 @@ public class Choosine {
 	int size = 0;
 	int length = 0;
 
-        int[] choices = new int[length];
-        double[] rank = new double[length];
-        int[] id = new int[length];
+        int[] choices = new int[0];
+        double[] rank = new double[0];
+        int[] id = new int[0];
 
+       	Class.forName("com.mysql.jdbc.Driver");
+	
         String url = "jdbc:mysql://localhost:3306/foodle"; // WHATEVER YOU WOULD WANT HERE
         String user = "foodle_user"; // OUR USER-ID
         String password = "cobs1_flammables"; // USER PASSWORD
@@ -43,20 +45,37 @@ public class Choosine {
             
             con = DriverManager.getConnection(url, user, password);
 
-            pst = con.prepareStatement("SELECT COUNT(*) FROM votes WHERE pollid = " + pollid);	    
-            rs = pst.executeQuery();
 
-            pst = con.prepareStatement("SELECT COUNT(*) FROM choices WHERE pollid = ");
+            pst = con.prepareStatement("SELECT * FROM polls WHERE pollid = " + pollid);
             rs = pst.executeQuery();
+	    rs.first();
+	    size = rs.getInt(2);
+	    experts = rs.getInt(3);
+	    rs.close();
+
+            pst = con.prepareStatement("SELECT COUNT(*) FROM votes WHERE pollid = " + pollid);	    
+	    rs = pst.executeQuery();
+	    rs.first();
+            length = rs.getInt(1);
+	    rs.close();
+
+            pst = con.prepareStatement("SELECT * FROM votes WHERE pollid = " + pollid);	    
+	    rs = pst.executeQuery();
+
+	    int counter = 0;
+	    choices = new int[length];
+	    rank = new double[length];
+	    id = new int[length];
 
             while (rs.next()) {
-                choices[counter]=rs.getInt(1);
-                rank[counter] = rs.getDouble(2);
                 id[counter] = rs.getInt(3);
+                choices[counter]=rs.getInt(4);
+                rank[counter] = rs.getDouble(5);
+		counter++;
             }
 
         } catch (SQLException ex) {
-                Logger lgr = Logger.getLogger(Retrieve.class.getName());
+                Logger lgr = Logger.getLogger(Choosine.class.getName());
                 lgr.log(Level.SEVERE, ex.getMessage(), ex);
 
         } finally {
@@ -73,11 +92,12 @@ public class Choosine {
                 }
 
             } catch (SQLException ex) {
-                Logger lgr = Logger.getLogger(Retrieve.class.getName());
+                Logger lgr = Logger.getLogger(Choosine.class.getName());
                 lgr.log(Level.WARNING, ex.getMessage(), ex);
             }
         }
         
+	//	System.err.println("Read all the data! size="+size+", length="+length+", experts="+experts);
         
         double[][] freq = new double[size][size];
         for(int k=0;k<length;k++){
