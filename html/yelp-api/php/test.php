@@ -47,10 +47,11 @@ echo "<br>";
 print $response->businesses[0]->name;
 echo "<br>";
 echo "<br>";
-
+/*
 function name() {
     print $response->businesses[0]->name;
 }
+*/
 function a($n){ 
   b($n); 
   return ($n * $n); 
@@ -63,7 +64,7 @@ function b(&$n){
 echo a(5); //Outputs 36
 
 echo "here<br>";
-name();
+//name();
 echo "<br>here";
 echo "<br>";
 echo "hmmmmmmm<br>";
