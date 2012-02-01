@@ -51,7 +51,9 @@ echo "<br>";
 function name() {
     print $response->businesses[0]->name;
 }
+echo "here<br>";
 name();
+echo "<br>here";
 echo "<br>";
 echo "hmmmmmmm<br>";
 
