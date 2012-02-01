@@ -66,6 +66,8 @@ div#wrapper {
     margin: auto;
     position: relative;
     top: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 body#cuisine #content-area {
     background: url('../images/bluec.jpg') #0071BC;
@@ -165,3 +167,22 @@ body#cuisine input, body#cuisine textarea {
    // top: 50%;
     float: right;
 }
+/* End Form Styles -------------------------------------------*/
+/* Begin Rank Styles -----------------------------------------*/
+#list-1, #list-2 {
+    width: 270px;
+    height: 370px;
+}
+#list-1 {
+    background: url('../images/forest.jpg') #6EAF22;
+}
+#list-2 {
+    background: url('../images/azure.jpg') #0090E0;
+}
+.draggable {
+    width: 230px;
+    height: 39px;
+    background: url('../images/draggable.png') no-repeat;
+    margin-bottom: 2px;
+}
+/* End Form Styles -------------------------------------------*/
