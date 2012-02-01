@@ -45,12 +45,21 @@ $response = json_decode($data);
 function businesses($intOfBus) {
     return $response->businesses[$intOfBus];
 }
+print businesses(0)->name;
+echo "<br>";
+function name($intOfBus) {
+    return $response->businesses[$intOfBus]->name;
+}
+print name(0);
+echo "<br>";
 
 ?>
 
     <h1>Yayyyyy</h1>
 <?php
 print businesses(0)->name;
+echo "<br>";
+echo "<br>";
 print "yayyy";
 ?>
     
