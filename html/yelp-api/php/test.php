@@ -53,7 +53,7 @@ echo "hmmmmmmm<br>";
 
     <h1>Yayyyyy</h1>
 <?php
-print businesses(0)->name;
+//print businesses(0)->name;
 echo "<br>";
 echo "<br>";
 print "yayyy";
