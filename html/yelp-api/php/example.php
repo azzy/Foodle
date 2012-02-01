@@ -58,9 +58,8 @@ echo "<br>";
 //$start = strpos($response, "[name]", 0);
 print $response->businesses[0]->name;
 print $response->businesses[0]->rating;
-//print "<img src=\""
-print $response->businesses[0]->image_url;
-//print "\"/>";
+print "<img src='" + $response->businesses[0]->image_url + "'/>";
+
 // int strpos ( string $haystack , mixed $needle [, int $offset = 0 ] )
 // string substr ( string $string , int $start [, int $length ] )
 //print(substr($response, $start, 15); 
