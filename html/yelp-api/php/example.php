@@ -57,8 +57,13 @@ print "Search API";
 echo "<br>";
 //$start = strpos($response, "[name]", 0);
 print $response->businesses[0]->name;
+echo "<br>";
 print $response->businesses[0]->rating;
-print "<img src='" + $response->businesses[0]->image_url + "'/>";
+echo "<br>";
+$imageurl = $response->businesses[0]->image_url
+print $imageurl;
+echo "<br>";
+$htmlstr = "<img src='" + $imageurl + "'/>";
 
 // int strpos ( string $haystack , mixed $needle [, int $offset = 0 ] )
 // string substr ( string $string , int $start [, int $length ] )
