@@ -97,8 +97,6 @@ public class Choosine {
             }
         }
         
-	//	System.err.println("Read all the data! size="+size+", length="+length+", experts="+experts);
-        
         double[][] freq = new double[size][size];
         for(int k=0;k<length;k++){
             for(int l=k;l<length;l++){
@@ -161,17 +159,80 @@ public class Choosine {
         
         //StdOut.println(digraph);
         
-        // Getting an ordering
+        // Getting an ordering, and saving it to the MySQL database
         Topological topological = new Topological(digraph);
-        
-        for (int v : topological.order()) {
-            StdOut.println((v));
-        }
-        int[] ordering = new int[size];
-        counter = 0;
-        for(int v:topological.order()){
-            ordering[counter] = v;
-            counter++;
+         
+        try {
+            con = DriverManager.getConnection(url, user, password);
+	    
+	    // get the old table
+	    pst = con.prepareStatement("SELECT resultstable FROM polls WHERE pollid = ?");
+	    pst.setInt(1, pollid);
+	    rs = pst.executeQuery();
+	    rs.first();
+	    String oldtablename = rs.getString(1);
+
+	    /* get a name for the new table (of the form results0.23, where 0 is the pollid, 23 is the 
+	    update number */
+	    int tableindex;
+	    if (oldtablename == null) {
+		tableindex = 0;
+	    } else {
+		try {
+		    tableindex = Integer.parseInt(oldtablename.substring(oldtablename.indexOf("_") + 1));
+		} catch (Exception e) {
+		    System.err.println("ERROR! Bad table name (bad int parsing): " + oldtablename);
+		    tableindex = 0;
+		}
+	    }
+
+	    String tablename = "results" + pollid + "_" + tableindex;
+	    pst = con.prepareStatement("CREATE TABLE " + tablename + "(choiceid INT PRIMARY KEY, rank INT)");
+
+	    // construct the table
+	    int[] ordering = new int[size];
+	    counter = 0;
+	    for(int v:topological.order()) {
+
+		pst = con.prepareStatement("REPLACE INTO "+tablename+" VALUES (?, ?)");
+		pst.setInt(1, counter);
+		pst.setInt(2, v);
+		pst.executeUpdate();
+
+		ordering[counter] = v;
+		counter++;
+	    }
+	    // replace the reference to the table from the polls table
+	    pst = con.prepareStatement("UPDATE polls SET resultstable = ? WHERE pollid = ?");
+	    pst.setString(1, tablename);
+	    pst.setInt(2, pollid);
+	    pst.executeUpdate();
+
+	    // drop the old table
+	    pst = con.prepareStatement("DROP TABLE "+oldtablename);
+	    pst.executeUpdate();
+
+        } catch (SQLException ex) {
+                Logger lgr = Logger.getLogger(Choosine.class.getName());
+                lgr.log(Level.SEVERE, ex.getMessage(), ex);
+	}
+	finally {
+
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pst != null) {
+                    pst.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+
+            } catch (SQLException ex) {
+                Logger lgr = Logger.getLogger(Choosine.class.getName());
+                lgr.log(Level.WARNING, ex.getMessage(), ex);
+            }
         }
     }
 }
