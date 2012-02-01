@@ -52,11 +52,12 @@ $response = json_decode($data);
 
 // Print it for debugging
 print_r($response);
-print "\n\n";
-echo "<br>";
+echo "<br><br><br>";
 print "Hiiiiiiiiiiii";
+$start = strpos($response, "[name]");
 // int strpos ( string $haystack , mixed $needle [, int $offset = 0 ] )
 // string substr ( string $string , int $start [, int $length ] )
+print(substr($response, $start, 15); 
 
 
 
