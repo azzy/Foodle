@@ -42,16 +42,12 @@ curl_close($ch);
 $response = json_decode($data);
 // ------------------------------------------------------------
 
-function businesses($intOfBus) {
-    return $response->businesses[$intOfBus];
+function name($n) {
+    return $response->businesses[0]->name;
 }
-print businesses(0)->name;
+echo name(0);
 echo "<br>";
-function name($intOfBus) {
-    echo $response->businesses[$intOfBus]->name;
-}
-name(0);
-echo "<br>";
+echo "hmmmmmmm<br>";
 
 ?>
 
