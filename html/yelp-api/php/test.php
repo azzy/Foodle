@@ -69,6 +69,12 @@ echo "<br>here";
 echo "<br>";
 echo "hmmmmmmm<br>";
 */
+
+function a() {
+    echo "yoooo";
+}
+a();
+
 ?>
 
     <h1>Yayyyyy</h1>
