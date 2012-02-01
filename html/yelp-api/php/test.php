@@ -48,10 +48,10 @@ print $response->businesses[0]->name;
 echo "<br>";
 echo "<br>";
 
-function name($n) {
+function name() {
     print $response->businesses[0]->name;
 }
-name(0);
+name();
 echo "<br>";
 echo "hmmmmmmm<br>";
 
