@@ -55,7 +55,7 @@ print_r($response);
 echo "<br><br><br>";
 print "Hiiiiiiiiiiii";
 //$start = strpos($response, "[name]", 0);
-print $response->{'name'};
+print $response['total'];
 // int strpos ( string $haystack , mixed $needle [, int $offset = 0 ] )
 // string substr ( string $string , int $start [, int $length ] )
 //print(substr($response, $start, 15); 
