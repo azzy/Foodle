@@ -47,6 +47,7 @@ echo "<br>";
 print $response->businesses[0]->name;
 echo "<br>";
 echo "<br>";
+print $data;
 /*
 function name() {
     print $response->businesses[0]->name;
