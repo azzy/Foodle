@@ -10,36 +10,37 @@
 <link rel="stylesheet" href="./css/reset.css" type="text/css" />
 <link rel="stylesheet" href="./css/style.css" type="text/css" />
 </head>
-<body id="home">
+<body id="cuisine">
 <div id="wrapper">
   <div id="container">
     <a href="./index.html"><img src="./images/choosine.png" id="banner"/></a>
-  <div id="restaurants">
-    <a href="./initiate.html?=restaurants">
-  <div class="badge">Restaurants</div>
-    <div class="text">
-      <ul>
-	<li><img class="bullet" src="./images/bullet1.png" />Create a poll.</li>
-	<li><img class="bullet" src="./images/bullet2.png" />Nominate your favorite restaurants.</li>
-	<li><img class="bullet" src="./images/bullet3.png" />Invite your friends to vote.</li>
-      </ul>
-    </div>
-    </a>
-  </div>
-  
-  <div id="cuisine">
-    <a href="./initiate.html?=cuisine">
-   <div class="badge">Cuisine</div>
-   <div class="text">
-      <ul>
-	<li><img class="bullet" src="./images/bullet1.png" />Create a poll.</li>
-	<li><img class="bullet" src="./images/bullet2.png" />Rank cuisines by preference.</li>
-	<li><img class="bullet" src="./images/bullet3.png" />Invite your friends to vote.</li>
-      </ul>
-    </div>
-    </a>
-  </div>
 
+    <div id="content-area">
+       <form name="input" method="post">
+	  <div class="form">
+	  <table>
+	    <tr>
+	      <td><label for="dinner">Dinner Name:</label></td>
+	      <td><input id="dinner" name="dinner" /></td>
+	    </tr><tr>
+	      <td><label for="name">Your Name:</label></td>
+	      <td><input id="name" name="name" /></td>
+	    </tr><tr>
+	      <td><label for="email">Your Email:</label></td>
+	      <td><input id="email" name="email"
+		placeholder="" /></td>
+	      </tr><tr>
+		<td><label for="location">Your Location:</label></td>
+		<td><input id="location" name="location"
+       placeholder="City, State or ZIP"/></td>
+	      </tr>
+		</table>
+		</form>
+	 </div>
+    </div>
+    <a href="#"><img src="./images/left.png" id="nav-left" /></a>
+    <a href="#"><img src="./images/right.png" id="nav-right" /></a>
+    
   <div class="clear"></div>
   <div id="footer">We know you're really excited to use Choosine,
   but it doesn't exist yet! Sorry :(</div>
