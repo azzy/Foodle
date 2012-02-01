@@ -77,7 +77,7 @@ echo "hmmmmmmm<br>";
 echo "<br>";
 echo "<br>";
 print "yayyy";
-//print_r($response);
+print_r($response);
 /*
 function a($n){ 
   b($n); 
