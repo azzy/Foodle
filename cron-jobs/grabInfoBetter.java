@@ -1,9 +1,20 @@
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-/* Written by Angie, Dan, Amy, Tiantian */
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.Date;
+
+/* Originally written by Angie, Dan, Amy, Tiantian */
 
 public class grabInfoBetter
 {
@@ -35,7 +46,7 @@ public class grabInfoBetter
         {
             String x = convert(link.toString(),len);
             String loc = link.ownText();
-            System.out.println(loc);
+            // System.out.println(loc);
             In nexturl = new In(x);
             String file = nexturl.readAll();
             String pat = "<div id=\"menusampmeals\">";
@@ -161,13 +172,60 @@ public class grabInfoBetter
         return convertJSON(grab("http://facilities.princeton.edu/dining/_Foodpro/location.asp"));
     }*/
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws java.lang.ClassNotFoundException {
+
         Iterable<Food> data = grab("http://facilities.princeton.edu/dining/_Foodpro/location.asp");
-        Out output = new Out("readmeplease.txt");
-        for (Food x : data)
-        {
-            output.println(x);
+
+       	Class.forName("com.mysql.jdbc.Driver");
+
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        String url = "jdbc:mysql://localhost:3306/foodle"; // our database on the local server
+        String user = "foodle_user"; // OUR USER-ID
+        String password = "cobs1_flammables"; // USER PASSWORD
+
+	Timestamp updateTime = new Timestamp((new Date()).getTime());
+
+        try {
+	    con = DriverManager.getConnection(url, user, password);
+
+	    for (Food x : data) {
+		pst = con.prepareStatement("INSERT INTO princetonfood VALUES (?, ?, ?, ?, ?, ?)");
+		pst.setString(1, x.color);
+		pst.setString(2, x.name);
+		pst.setString(3, x.mealType);
+		pst.setString(4, x.location);
+		pst.setInt(5, x.hash);
+		pst.setTimestamp(6, updateTime);
+		pst.executeUpdate();
+	    }
+
+	    pst = con.prepareStatement("DELETE FROM princetonfood WHERE retrieved < ?");
+	    pst.setTimestamp(1, updateTime);
+	    pst.executeUpdate();
+
+        } catch (SQLException ex) {
+	    Logger lgr = Logger.getLogger(grabInfoBetter.class.getName());
+	    lgr.log(Level.SEVERE, ex.getMessage(), ex);
+        } finally {
+
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pst != null) {
+                    pst.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+
+            } catch (SQLException ex) {
+                Logger lgr = Logger.getLogger(grabInfoBetter.class.getName());
+                lgr.log(Level.WARNING, ex.getMessage(), ex);
+            }
         }
     }
 }
