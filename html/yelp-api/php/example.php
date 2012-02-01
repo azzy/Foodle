@@ -61,9 +61,9 @@ echo "<br>";
 print $response->businesses[0]->rating;
 echo "<br>";
 $imageurl = $response->businesses[0]->image_url
-print $imageurl;
+//print $imageurl;
 echo "<br>";
-$htmlstr = "<img src='" + $imageurl + "'/>";
+//$htmlstr = "<img src='" + $imageurl + "'/>";
 
 // int strpos ( string $haystack , mixed $needle [, int $offset = 0 ] )
 // string substr ( string $string , int $start [, int $length ] )
