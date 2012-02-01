@@ -71,7 +71,7 @@ echo "hmmmmmmm<br>";
 */
 
 function a() {
-    echo "yoooo";
+    echo "" . $response->businesses[0]->name;
 }
 a();
 
