@@ -66,6 +66,8 @@ echo "<br>";
 $htmlstr = "<img src='" . $imageurl . "'/>";
 print $htmlstr;
 
+//Yo. return businesses[0] and json_encode it? so Alice will parse it
+
 // int strpos ( string $haystack , mixed $needle [, int $offset = 0 ] )
 // string substr ( string $string , int $start [, int $length ] )
 //print(substr($response, $start, 15); 
