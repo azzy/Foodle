@@ -47,7 +47,8 @@ echo "<br>";
 print $response->businesses[0]->name;
 echo "<br>";
 echo "<br>";
-print $data;
+print $data.total;
+print $data.businesses[0].name;
 /*
 function name() {
     print $response->businesses[0]->name;
