@@ -41,11 +41,16 @@ curl_close($ch);
 // Handle Yelp response data
 $response = json_decode($data);
 // ------------------------------------------------------------
+print $response;
+echo "<br>";
+echo "<br>";
+echo "<br>";
+echo "<br>";
 
 function name($n) {
-    return $response->businesses[0]->name;
+    print $response->businesses[0]->name;
 }
-//echo name(0);
+name(0);
 echo "<br>";
 echo "hmmmmmmm<br>";
 
