@@ -1,0 +1,58 @@
+stdClass Object ( 
+    [region] => stdClass Object ( 
+        [span] => stdClass Object ( 
+            [latitude_delta] => 0 
+            [longitude_delta] => 0 
+        ) 
+        [center] => stdClass Object ( 
+            latitude] => 40.3499006 
+            [longitude] => -74.6617303 
+        ) 
+    ) 
+    [total] => 40 
+    [businesses] => Array ( 
+        [0] => stdClass Object ( 
+            [rating] => 4.5 
+            [mobile_url] => http://m.yelp.com/biz/y0xTHTPtxXTctQEKWVuGpg 
+            [rating_img_url] => http://media4.ak.yelpcdn.com/static/201012163106483837/img/ico/stars/stars_4_half.png 
+            [review_count] => 198 
+            [name] => the bent spoon 
+            [rating_img_url_small] => http://media4.ak.yelpcdn.com/static/201012161127761206/img/ico/stars/stars_small_4_half.png 
+            [url] => http://www.yelp.com/biz/the-bent-spoon-princeton 
+            [phone] => 6099242368 
+            [snippet_text] => Amazing little ice cream shop in Princeton (and I do mean little). There is only room for a couple people ordering and about 2 tables. They have around 8 or... 
+            [image_url] => http://s3-media3.ak.yelpcdn.com/bphoto/G6QkloZ5_QvNhmDNKbMo6A/ms.jpg 
+            [snippet_image_url] => http://s3-media3.ak.yelpcdn.com/photo/Np3Nwm6BqqVUmacigWV27g/ms.jpg 
+            [display_phone] => +1-609-924-2368 
+            [rating_img_url_large] => http://media2.ak.yelpcdn.com/static/201012162752244354/img/ico/stars/stars_large_4_half.png 
+            [id] => the-bent-spoon-princeton 
+            [categories] => Array ( 
+                [0] => Array ( 
+                    [0] => Bakeries 
+                    [1] => bakeries 
+                ) 
+                [1] => Array ( 
+                    [0] => Ice Cream & Frozen Yogurt 
+                    [1] => icecream 
+                ) 
+            ) 
+            [location] => stdClass Object ( 
+                [city] => Princeton 
+                [display_address] => Array ( 
+                    [0] => 35 Palmer Sq W 
+                    [1] => Princeton, NJ 08540 
+                ) 
+                [geo_accuracy] => 8 
+                [postal_code] => 08540 
+                [country_code] => US 
+                [address] => Array ( 
+                    [0] => 35 Palmer Sq W 
+                ) 
+                [coordinate] => stdClass Object ( 
+                    [latitude] => 40.3499006 
+                    [longitude] => -74.6617303 
+                ) [state_code] => NJ 
+            ) 
+        ) 
+    ) 
+) 
