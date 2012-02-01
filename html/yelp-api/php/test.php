@@ -41,7 +41,7 @@ curl_close($ch);
 // Handle Yelp response data
 $response = json_decode($data);
 // ------------------------------------------------------------
-print $response;
+print_r($response);
 echo "<br>";
 echo "<br>";
 echo "<br>";
