@@ -48,12 +48,13 @@ print $response->businesses[0]->name;
 echo "<br>";
 echo "<br>";
 print $data.total;
-print $data.businesses[0].name;
-/*
-function name() {
-    print $response->businesses[0]->name;
-}
 
+
+function name($response, $ind) {
+    print $response->businesses[$ind]->name;
+}
+name($response, 0);
+/*
 function a($n){ 
   b($n); 
   return ($n * $n); 
