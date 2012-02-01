@@ -71,9 +71,10 @@ echo "hmmmmmmm<br>";
 */
 
 function a() {
-    echo "" . $response->businesses[0]->name;
+    $s = "" . $response->businesses[0]->name;
+    return ($s);
 }
-a();
+echo a();
 
 ?>
 
