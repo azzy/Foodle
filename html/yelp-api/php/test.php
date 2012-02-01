@@ -51,6 +51,7 @@ function businesses($intOfBus) {
     <h1>Yayyyyy</h1>
 <?php
 print businesses(0)->name;
+print "yayyy";
 ?>
     
     
