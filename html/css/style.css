@@ -4,78 +4,75 @@ html, body { margin: 0; padding: 0; }
 body {
     background: url('../images/yellow.jpg') #FFFF00;
 }
-/*a:link,
+a:link,
 a:visited { 
     text-decoration: none;
-    color: #F38921; 
-    border-bottom: 1px dotted #F38921;
+   // color: #F38921; 
+   // border-bottom: 1px dotted #F38921;
 }
 a:hover,
 a:focus {
-    border-bottom: 1px dotted #F8bc74;
-    color: #F8bc74;
+  //  border-bottom: 1px dotted #F8bc74;
+  //  color: #F8bc74;
 }
-*/
+
 .floatleft { float: left; }
 .floatright { float: right; }
 .clear { clear: both; }
 
-/*
-input,
-textarea {
-    width: 160px;
-    border: 1px solid #ddd;
-    font-size: 14px;
-    padding: 5px;
-}*/
+
 
 /*Layout
   --------------------------------------------------*/
 div#wrapper {
-    width: 950px;
+    width: 90%;
+    min-width: 950px;
     min-height: 100%;
     margin: 0 auto;
     padding: 0;
     background: url('../images/gold.jpg') #FCEE21;
 }
-#home div#content-area {
+#container {
     width: 900px;
     min-height: 100%;
     margin: 0 auto;
     padding: 0;
 }
-#content-area .text {
+#container .text {
     margin: 170px auto 100px auto;
-    width: 350px;
+    width: 320px;
     color: #fff;
     font: 14pt 'Rokkitt', helvetica, arial, sans-serif;
 }
-#content-area ul {
+#container ul {
     list-style-image: none;
 }
-#content-area li {
+#container li {
     clear: both;
     padding: 0;
 }
-#content-area img.bullet {
-  //  background: url('../images/badge_small.png') no-repeat;
+#container img.bullet {
     width: 40px;
     height: 40px;
     float: left;
     margin: 0 10px 3px 0;
-   // color: #39B54A;
-   // font: 16pt 'Rokkitt', helvetica, arial, sans-serif;
-   // text-shadow: 0px -1px 0.5px #04680E;
-   // text-align: center;
-   // padding-top: 10px;
     position: relative;
     top: -11px;
+}
+#content-area {
+    height: 220px;
+    padding: 50px;
+    width: 600px;
+    margin: auto;
+    position: relative;
+    top: 200px;
+}
+body#cuisine #content-area {
+    background: url('../images/bluec.jpg') #0071BC;
 }
 #banner {
     position: absolute;
     top: 10px;
-    left: 50%;
-    margin-left: -420px;
     z-index: 100;
 }
 #footer {
@@ -83,7 +80,7 @@ div#wrapper {
     position: fixed;
     bottom: 0;
     width: 880px;
-    height: 20px;
+    height: 15px;
     color: #fff;
     background: url('../images/green.jpg');
     font: 12pt 'Rokkitt', helvetica, arial, sans-serif;
@@ -103,7 +100,7 @@ div#wrapper {
 
 /*Page Styles
   ------------------------------------------------------------*/
-/* Home Page -------------------------------------------------*/
+/* Begin Home Styles -----------------------------------------*/
 div#restaurants {
     width: 450px;
     min-height: 100%;
@@ -132,4 +129,39 @@ div#cuisine {
     font: 20pt 'Coustard', 'Rokkitt', helvetica, arial, sans-serif;
     text-shadow: 0px -1px 0.5px #04680E;
 }
+div.badge:hover, div.badge:focus {
+    background: url('../images/badge_hover.png') no-repeat;
+}
 /* End Home Styles -------------------------------------------*/
+/* Begin Form Styles -----------------------------------------*/
+#content-area table {
+    margin: auto;
+}
+input,
+textarea {
+    width: 430px;
+    border: 1px solid #ddd;
+    font-size: 14pt;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+#content-area label {
+    color: #fff;
+    font: 16pt 'Rokkitt', helvetica, arial, sans-serif;
+    margin-right: 40px;
+}
+body#cuisine input, body#cuisine textarea {
+   // border: 1px solid #fff;
+    //background-color: #D9E021;
+    //color: #fff;
+}
+#nav-left {
+   // position: absolute;
+   // top: 50%;
+    float: left;
+}
+#nav-right {
+    //position: absolute;
+   // top: 50%;
+    float: right;
+}
