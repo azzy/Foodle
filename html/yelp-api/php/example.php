@@ -63,7 +63,8 @@ echo "<br>";
 $imageurl = $response->businesses[0]->image_url;
 print $imageurl;
 echo "<br>";
-//$htmlstr = "<img src='" + $imageurl + "'/>";
+$htmlstr = "<img src='" + $imageurl + "'/>";
+print $htmlstr;
 
 // int strpos ( string $haystack , mixed $needle [, int $offset = 0 ] )
 // string substr ( string $string , int $start [, int $length ] )
