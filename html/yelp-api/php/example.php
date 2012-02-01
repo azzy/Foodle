@@ -53,9 +53,14 @@ $response = json_decode($data);
 // Print it for debugging
 print_r($response);
 echo "<br><br><br>";
-print "Hiiiiiiiiiiii";
+print "Search API";
+echo "<br>";
 //$start = strpos($response, "[name]", 0);
-print $response['total'];
+print $response->businesses[0]->name;
+print $response->businesses[0]->rating;
+print "<img src=\""
+print $response->businesses[0]->image_url;
+print "\"/>";
 // int strpos ( string $haystack , mixed $needle [, int $offset = 0 ] )
 // string substr ( string $string , int $start [, int $length ] )
 //print(substr($response, $start, 15); 
