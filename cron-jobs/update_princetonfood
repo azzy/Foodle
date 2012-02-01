@@ -1,2 +1,2 @@
 #!/bin/bash
-java -cp .:../java-common/mysql-connector-java-5.1.18-bin.jar:../java-common/stdlib.jar:../java-common/algs4.jar:../java-common/jsoup-1.6.1.jar grabInfoBetter
+java -cp /var/www/cron-jobs/.:/var/www/java-common/mysql-connector-java-5.1.18-bin.jar:/var/www/java-common/stdlib.jar:/var/www/java-common/algs4.jar:/var/www/java-common/jsoup-1.6.1.jar grabInfoBetter
