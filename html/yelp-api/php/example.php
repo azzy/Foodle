@@ -60,8 +60,8 @@ print $response->businesses[0]->name;
 echo "<br>";
 print $response->businesses[0]->rating;
 echo "<br>";
-$imageurl = $response->businesses[0]->image_url
-//print $imageurl;
+$imageurl = $response->businesses[0]->image_url;
+print $imageurl;
 echo "<br>";
 //$htmlstr = "<img src='" + $imageurl + "'/>";
 
