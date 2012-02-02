@@ -29,7 +29,7 @@ $name = "Witherspoon-grill";
 // From http://non-diligent.com/articles/yelp-apiv2-php-example/
 // Enter the path that the oauth library is in relation to the php file
 require_once ('lib/OAuth.php');
-include("authkeys.php");
+//include("authkeys.php");
 echo $consumer_key;
 
 $consumer_key = "r_LK8yxWWjZLv-FmyGO3Vw";
@@ -74,7 +74,7 @@ curl_setopt($ch, CURLOPT_HEADER, 0);
 $data = curl_exec($ch); // Yelp response
 curl_close($ch);
 
-$data = access($unsigned_url);
+//$data = access($unsigned_url);
 // Handle Yelp response data
 $response = json_decode($data);
 // ------------------------------------------------------------
