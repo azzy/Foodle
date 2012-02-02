@@ -61,7 +61,8 @@ div#wrapper {
     top: -11px;
 }
 #content-area {
-    height: 300px;
+    min-height: 300px;
+    height: 50%;
     padding: 30px;
     width: 640px;
     margin: auto;
@@ -69,6 +70,7 @@ div#wrapper {
     top: 200px;
     overflow-x: hidden;
     overflow-y: auto;
+    margin-bottom: 185px;
 }
 body#cuisine #content-area {
     background: url('../images/bluec.jpg') #0071BC;
@@ -77,6 +79,12 @@ body#cuisine #content-area {
     position: absolute;
     top: 10px;
     z-index: 100;
+    text-align: center;
+    width: 100%;
+}
+#banner img {
+    width: 841px;
+    height: 188px;
 }
 #footer {
     z-index: 100;
@@ -92,7 +100,16 @@ body#cuisine #content-area {
 }
 /*Navigation
   ------------------------------------------------------------*/
-/* Code in some footer navigation in case people get lost? */
+#nav-left {
+    position: relative;
+    top: -220px;
+    float: left;
+}
+#nav-right {
+    position: relative;
+    top: -220px;
+    float: right;
+}
 
 /*Content Styles
   ------------------------------------------------------------*/
@@ -164,24 +181,14 @@ body#cuisine input, body#cuisine textarea {
     //background-color: #D9E021;
     //color: #fff;
 }
-#nav-left {
-   // position: absolute;
-   // top: 50%;
-    float: left;
-}
-#nav-right {
-    //position: absolute;
-   // top: 50%;
-    float: right;
-}
 /* End Form Styles -------------------------------------------*/
 /* Begin Rank Styles -----------------------------------------*/
 #list-1, #list-2 {
     width: 250px;
-   // height: 190px;
+    height: 190px;
     padding: 15px;
-   // overflow-x: hidden;
-   // overflow-y: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 #list-1 {
     background: url('../images/forest.jpg') #6EAF22;
