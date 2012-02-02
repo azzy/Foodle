@@ -31,6 +31,16 @@ $name = "Witherspoon-grill";
 require_once ('lib/OAuth.php');
 include("authkeys.php");
 echo $consumer_key;
+
+$consumer_key = "r_LK8yxWWjZLv-FmyGO3Vw";
+$consumer_secret = "2l3wSMGLsYA0cQCgqnMSVUZpSus";
+$token = "7QgVypM4Z9NE2bWT2xy9KGwwTvq7IwyZ";
+$token_secret = "3qKRFq5mNLpGM5GXtCd9-zRJQ1w";
+
+echo $consumer_key; . "<br/>";
+echo $consumer_secret . "<br/>";
+echo $token . "<br/>";
+echo $token_secret  . "<br/>";
 //cut paste = ctrl+space ctrl+w ctrl+y
 // copy = esc w 
 //$unsigned_url = "http://api.yelp.com/v2/business/the-waterboy-sacramento/name";
@@ -39,7 +49,7 @@ echo $consumer_key;
 $unsigned_url = "http://api.yelp.com/v2/search?term=food&location=08544&name=witherspoon_grill&category=food,restaurant";
 echo $unsigned_url . "</br>";
 
-/*
+
 echo $location . "<br/>";
 // Set your keys here
 // Token object built using the OAuth library
@@ -60,7 +70,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 $data = curl_exec($ch); // Yelp response
 curl_close($ch);
-*/
+
 $data = access($unsigned_url);
 // Handle Yelp response data
 $response = json_decode($data);
