@@ -1,6 +1,6 @@
 <?php
 
-require_once ('lib/OAuth.php');
+include('lib/OAuth.php');
 
 //ChoosinetheSecond:
 $consumer_key = "r_LK8yxWWjZLv-FmyGO3Vw";
