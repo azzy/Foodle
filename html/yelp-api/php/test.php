@@ -30,6 +30,7 @@ $name = "Witherspoon-grill";
 // Enter the path that the oauth library is in relation to the php file
 require_once ('lib/OAuth.php');
 include("authkeys.php");
+echo $consumer_key;
 //cut paste = ctrl+space ctrl+w ctrl+y
 // copy = esc w 
 //$unsigned_url = "http://api.yelp.com/v2/business/the-waterboy-sacramento/name";
