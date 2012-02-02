@@ -10,26 +10,31 @@
 <h1>Search Parameters</h1>
 
 <form method="post" action="<?php echo $PHP_SELF;?>">
- Search for: <input type="text" name="tag1" /> <br/>
+ Search for name of restaurant: <input type="text" name="name" /> <br/>
  Location: <input type="text" name="loc" /> <br/>
  <!--Number of Busnesses to Retun: <input type="text" name="numBus" /><br/> -->
  <input type="submit" value="Submit" /><br/>
 </form>
-
+<form method="post" action="<?php echo $PHP_SELF;?>">
+ Search for cuisine type: <input type="text" name="tag" /> <br/>
+ <!--Location: <input type="text" name="loc" /> <br/> -->
+ <!--Number of Busnesses to Retun: <input type="text" name="numBus" /><br/> -->
+ <input type="submit" value="Submit" /><br/>
+</form>
 <?php
 require_once ('lib/OAuth.php');
 include("access.php");
 include("parse.php");
 
-$tag = $_POST["tag1"];
 $numBus=0;
 $location=$_POST["loc"];
-
+$name = $_POST["name"];
+$tag = $_POST["tag"];
 
 echo "<p> You searched for " . $tag . "</p></br>";;
 $tag = str_replace(" ", "", $tag);
 $location=str_replace(" ", "", $location);
-$name = "Witherspoon-grill";
+$name = str_replace(" ","+", $name);
 echo "<br/>";
 //cut paste = ctrl+space ctrl+w ctrl+y
 // copy = esc w 
@@ -37,17 +42,18 @@ echo "<br/>";
 //$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
 //$unsigned_url = "http://api.yelp.com/v2/search?term=food,".$tag."&location=".$location."&limit=".$numBus."&sort=2&name=".$name."";
 //$unsigned_url = "http://api.yelp.com/v2/search?term=food&location=08544&name=witherspoon_grill&category=food,restaurant";
-$unsigned_url = "http://api.yelp.com/v2/search?find_desc=Witherspoon+Grill&loc=08544";
+$unsigned_url = "http://api.yelp.com/v2/search?term=".$name."&location=08544&limit=2";
 
 echo $unsigned_url . "</br>";
 
+$unsigned_url2 = "http://api.yelp.com/v2/search?location=08544&category_filter=".$tag."&limit=2";
+echo $unsigned_url2 . "</br>";
+//echo "<h1>Take1</h1>";
 
-echo "<h1>Take1</h1>";
-
-$data = access($unsigned_url);
+$data = access($unsigned_url2);
 // Handle Yelp response data
 $response = json_decode($data);
-print_r($response);
+//print_r($response);
 echo "<br><br><br>";
 ?>
     <h1>Search Results</h1>
