@@ -81,6 +81,10 @@ body#cuisine #content-area {
     text-align: center;
     width: 100%;
 }
+#banner img {
+    width: 841px;
+    height: 188px;
+}
 #footer {
     z-index: 100;
     position: fixed;
