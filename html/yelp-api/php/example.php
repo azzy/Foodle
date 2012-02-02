@@ -17,10 +17,11 @@ require_once ('lib/OAuth.php');
 $unsigned_url = "http://api.yelp.com/v2/search?term=food&location=08544&limit=1&sort=2";
 
 // Set your keys here
-$consumer_key = "T7h8nAcJA5KvfPiroKWooQ";
-$consumer_secret = "jLVWAmjRGAGQSKw9EJbpKS5GYzw";
-$token = "ZQO9F_0HeL7XcH54Z66F4NLZ7pAUraN1";
-$token_secret = "GZV-bIEVQKt0NkueKnh4tieKlY8";
+
+$consumer_key = "r_LK8yxWWjZLv-FmyGO3Vw";
+$consumer_secret = "2l3wSMGLsYA0cQCgqnMSVUZpSus";
+$token = "7QgVypM4Z9NE2bWT2xy9KGwwTvq7IwyZ";
+$token_secret = "3qKRFq5mNLpGM5GXtCd9-zRJQ1w";
 
 // Token object built using the OAuth library
 $token = new OAuthToken($token, $token_secret);
