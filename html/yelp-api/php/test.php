@@ -45,6 +45,7 @@ echo $unsigned_url . "</br>";
 echo "<h1>Take1</h1>";
 
 function dude($unsigned_url) {
+    include("authkeys.php");
     // Set your keys here
     // Token object built using the OAuth library
     $token = new OAuthToken($token, $token_secret);
@@ -67,9 +68,9 @@ function dude($unsigned_url) {
     return($data);
 }
 
-$data = dude($unsigned_url);
+$dataEx = dude($unsigned_url);
 // Handle Yelp response data
-$response = json_decode($data);
+$response = json_decode($dataEx);
 print_r($response);
 
 echo "<h1>Take2</h1>";
