@@ -37,10 +37,13 @@ $consumer_secret = "2l3wSMGLsYA0cQCgqnMSVUZpSus";
 $token = "7QgVypM4Z9NE2bWT2xy9KGwwTvq7IwyZ";
 $token_secret = "3qKRFq5mNLpGM5GXtCd9-zRJQ1w";
 
-echo $consumer_key; . "<br/>";
-echo $consumer_secret . "<br/>";
-echo $token . "<br/>";
-echo $token_secret  . "<br/>";
+echo $consumer_key;
+echo "<br/>";
+echo $consumer_secret;
+echo "<br/>";
+echo $token;
+echo "<br/>";
+echo $token_secret;
 //cut paste = ctrl+space ctrl+w ctrl+y
 // copy = esc w 
 //$unsigned_url = "http://api.yelp.com/v2/business/the-waterboy-sacramento/name";
