@@ -49,7 +49,7 @@ echo "<br/>";
 $unsigned_url = "http://api.yelp.com/v2/search?term=food&location=08544&name=witherspoon_grill&category=food,restaurant";
 echo $unsigned_url . "</br>";
 
-/*
+
 echo $location . "<br/>";
 // Set your keys here
 // Token object built using the OAuth library
@@ -70,8 +70,8 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 $data = curl_exec($ch); // Yelp response
 curl_close($ch);
-*/
-$data = access($unsigned_url);
+
+//$data = access($unsigned_url);
 // Handle Yelp response data
 $response = json_decode($data);
 // ------------------------------------------------------------
