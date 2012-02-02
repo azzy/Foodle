@@ -1,7 +1,5 @@
 <?php
 
-include('lib/OAuth.php');
-
 //ChoosinetheSecond:
 $consumer_key = "r_LK8yxWWjZLv-FmyGO3Vw";
 $consumer_secret = "2l3wSMGLsYA0cQCgqnMSVUZpSus";
