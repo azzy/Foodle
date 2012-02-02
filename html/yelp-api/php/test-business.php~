@@ -23,7 +23,6 @@ $location=$_POST["loc"];
 echo "<p> You searched for " . $tag . "</p></br>";;
 $tag = str_replace(" ", "", $tag);
 $location=str_replace(" ", "", $location);
-$name = "Witherspoon-grill";
 
 // --------------OAuth Stuff------------------------------------ 
 // From http://non-diligent.com/articles/yelp-apiv2-php-example/
@@ -37,8 +36,7 @@ $token_secret = "GZV-bIEVQKt0NkueKnh4tieKlY8";
 // copy = esc w 
 //$unsigned_url = "http://api.yelp.com/v2/business/the-waterboy-sacramento/name";
 //$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
-//$unsigned_url = "http://api.yelp.com/v2/search?term=food,".$tag."&location=".$location."&limit=".$numBus."&sort=2&name=".$name."";
-$unsigned_url = "http://api.yelp.com/v2/search?term=food&location=08544&name=witherspoon_grill&category=food,restaurant";
+$unsigned_url = "http://api.yelp.com/v2/search?term=food,".$tag."&location=".$location."&limit=".$numBus."&sort=2";
 echo $unsigned_url . "</br>";
 echo $location . "<br/>";
 // Set your keys here

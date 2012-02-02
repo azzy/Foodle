@@ -10,20 +10,16 @@
 <h1>Search Parameters</h1>
 
 <form method="post" action="<?php echo $PHP_SELF;?>">
- Search for: <input type="text" name="tag1" /> <br/>
- Location: <input type="text" name="loc" /> <br/>
- Number of Busnesses to Retun: <input type="text" name="numBus" /><br/> 
+ Business Name: <input type="text" name="busName" /> <br/> 
  <input type="submit" value="Submit" /><br/>
 </form>
 
 <?php
-$tag = $_POST["tag1"];
-$numBus=$_POST["numBus"];
-$location=$_POST["loc"];
+   $busName = $_POST["busName"];
+//$numBus=$_POST["numBus"];
+//$location=$_POST["loc"];
 echo "<p> You searched for " . $tag . "</p></br>";;
-$tag = str_replace(" ", "", $tag);
-$location=str_replace(" ", "", $location);
-$name = "Witherspoon-grill";
+$busName=str_replace(" ", "-", $busName);
 
 // --------------OAuth Stuff------------------------------------ 
 // From http://non-diligent.com/articles/yelp-apiv2-php-example/
@@ -35,10 +31,9 @@ $token = "ZQO9F_0HeL7XcH54Z66F4NLZ7pAUraN1";
 $token_secret = "GZV-bIEVQKt0NkueKnh4tieKlY8";
 //cut paste = ctrl+space ctrl+w ctrl+y
 // copy = esc w 
-//$unsigned_url = "http://api.yelp.com/v2/business/the-waterboy-sacramento/name";
+$unsigned_url = "http://api.yelp.com/v2/search?name=".$busName."";
 //$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
-//$unsigned_url = "http://api.yelp.com/v2/search?term=food,".$tag."&location=".$location."&limit=".$numBus."&sort=2&name=".$name."";
-$unsigned_url = "http://api.yelp.com/v2/search?term=food&location=08544&name=witherspoon_grill&category=food,restaurant";
+//$unsigned_url = "http://api.yelp.com/v2/search?term=food,".$tag."&location=".$location."&limit=".$numBus."&sort=2";
 echo $unsigned_url . "</br>";
 echo $location . "<br/>";
 // Set your keys here
