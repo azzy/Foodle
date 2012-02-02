@@ -29,10 +29,7 @@ $name = "Witherspoon-grill";
 // From http://non-diligent.com/articles/yelp-apiv2-php-example/
 // Enter the path that the oauth library is in relation to the php file
 require_once ('lib/OAuth.php');
-$consumer_key = "T7h8nAcJA5KvfPiroKWooQ";
-$consumer_secret = "jLVWAmjRGAGQSKw9EJbpKS5GYzw";
-$token = "ZQO9F_0HeL7XcH54Z66F4NLZ7pAUraN1";
-$token_secret = "GZV-bIEVQKt0NkueKnh4tieKlY8";
+include("authkeys.php");
 //cut paste = ctrl+space ctrl+w ctrl+y
 // copy = esc w 
 //$unsigned_url = "http://api.yelp.com/v2/business/the-waterboy-sacramento/name";
@@ -40,6 +37,8 @@ $token_secret = "GZV-bIEVQKt0NkueKnh4tieKlY8";
 //$unsigned_url = "http://api.yelp.com/v2/search?term=food,".$tag."&location=".$location."&limit=".$numBus."&sort=2&name=".$name."";
 $unsigned_url = "http://api.yelp.com/v2/search?term=food&location=08544&name=witherspoon_grill&category=food,restaurant";
 echo $unsigned_url . "</br>";
+
+/*
 echo $location . "<br/>";
 // Set your keys here
 // Token object built using the OAuth library
@@ -60,6 +59,8 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 $data = curl_exec($ch); // Yelp response
 curl_close($ch);
+*/
+$data = access($unsigned_url);
 // Handle Yelp response data
 $response = json_decode($data);
 // ------------------------------------------------------------
