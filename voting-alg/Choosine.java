@@ -38,8 +38,8 @@ public class Choosine {
        	Class.forName("com.mysql.jdbc.Driver");
 	
         String url = "jdbc:mysql://localhost:3306/foodle"; // WHATEVER YOU WOULD WANT HERE
-        String user = "foodle_user"; // OUR USER-ID
-        String password = "cobs1_flammables"; // USER PASSWORD
+        String user = "foodle_admin"; // OUR USER-ID
+        String password = "guru47*speck"; // USER PASSWORD
 
         try {
             
@@ -52,12 +52,14 @@ public class Choosine {
 	    size = rs.getInt(2);
 	    experts = rs.getInt(3);
 	    rs.close();
+	    pst.close();
 
             pst = con.prepareStatement("SELECT COUNT(*) FROM votes WHERE pollid = " + pollid);	    
 	    rs = pst.executeQuery();
 	    rs.first();
             length = rs.getInt(1);
 	    rs.close();
+	    pst.close();
 
             pst = con.prepareStatement("SELECT * FROM votes WHERE pollid = " + pollid);	    
 	    rs = pst.executeQuery();
@@ -141,10 +143,10 @@ public class Choosine {
             // Adding edges to DAG 
             if(!digraph.contains(k/size,k%size)){
                         
-                        v1 = k/size;
-                        v2 = k%size;
+		v1 = k/size;
+		v2 = k%size;
                                           
-                
+			
             }
            digraph.addEdge(v1,v2);
            DirectedCycle finder = new DirectedCycle(digraph);
@@ -152,9 +154,9 @@ public class Choosine {
               
            }
                 }
-                                         
+                
                            
-        }
+	    }
         }
         
         //StdOut.println(digraph);
@@ -171,23 +173,56 @@ public class Choosine {
 	    rs = pst.executeQuery();
 	    rs.first();
 	    String oldtablename = rs.getString(1);
+	    rs.close();
+	    pst.close();
 
 	    /* get a name for the new table (of the form results0.23, where 0 is the pollid, 23 is the 
 	    update number */
 	    int tableindex;
+
+	    System.out.println("Old tablename: ");
+	    System.out.println(oldtablename);
+
 	    if (oldtablename == null) {
 		tableindex = 0;
 	    } else {
 		try {
-		    tableindex = Integer.parseInt(oldtablename.substring(oldtablename.indexOf("_") + 1));
+		    String stringnum = oldtablename.substring(oldtablename.indexOf("_") + 1);
+		    System.out.println("Number from old table: " + stringnum);
+		    tableindex = Integer.parseInt(stringnum);
 		} catch (Exception e) {
 		    System.err.println("ERROR! Bad table name (bad int parsing): " + oldtablename);
 		    tableindex = 0;
 		}
 	    }
 
-	    String tablename = "results" + pollid + "_" + tableindex;
+	    tableindex++;
+	    String tablename = "results" + pollid + "_" + tableindex++;
+	    
+	    // Don't reuse an existing table name
+	    pst = con.prepareStatement("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'foodle' AND table_name = ?");
+	    pst.setString(1, tablename);
+	    rs = pst.executeQuery();
+	    rs.first();
+	    while (rs.getInt(1) > 0) {
+		rs.close();
+		pst.close();
+		tableindex++;
+		tablename = "results" + pollid + "_" + tableindex++;
+		pst = con.prepareStatement("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'foodle' AND table_name = ?");
+		pst.setString(1, tablename);
+		rs = pst.executeQuery();
+		rs.first();
+	    }
+	    rs.close();
+	    pst.close();
+
 	    pst = con.prepareStatement("CREATE TABLE " + tablename + "(choiceid INT PRIMARY KEY, rank INT)");
+	    pst.executeUpdate();
+	    pst.close();
+
+	    System.out.println("Arriving here with tablename:");
+	    System.out.println(tablename);
 
 	    // construct the table
 	    int[] ordering = new int[size];
@@ -198,19 +233,25 @@ public class Choosine {
 		pst.setInt(1, counter);
 		pst.setInt(2, v);
 		pst.executeUpdate();
+		pst.close();
 
 		ordering[counter] = v;
 		counter++;
 	    }
+
 	    // replace the reference to the table from the polls table
 	    pst = con.prepareStatement("UPDATE polls SET resultstable = ? WHERE pollid = ?");
 	    pst.setString(1, tablename);
 	    pst.setInt(2, pollid);
 	    pst.executeUpdate();
+	    pst.close();
 
 	    // drop the old table
-	    pst = con.prepareStatement("DROP TABLE "+oldtablename);
-	    pst.executeUpdate();
+	    if (!oldtablename.equals(tablename)) {
+		pst = con.prepareStatement("DROP TABLE "+oldtablename);
+		pst.executeUpdate();
+		pst.close();
+	    }
 
         } catch (SQLException ex) {
                 Logger lgr = Logger.getLogger(Choosine.class.getName());
