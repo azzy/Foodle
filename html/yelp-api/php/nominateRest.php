@@ -20,6 +20,7 @@
 require_once ('lib/OAuth.php');
 include("access.php");
 include("parse.php");
+include("formmatch.php");
 
 $numBus=0;
 $location=$_POST["loc"];
@@ -28,11 +29,9 @@ $name = $_POST["name"];
 echo "<p> You searched for " . $name. "</p></br>";;
 $name = str_replace(" ", "+", $name);
 $location=str_replace(" ", "", $location);
-/*
-if(preg_match([a-zA-Z]+[,][a-zA-Z]{2} | [0-9]{5}, $location) {
-    echo "You're good!";
+if (!mlocation($location)) {
+  $location = "";
 }
-*/
 
 echo "<br/>";
 //cut paste = ctrl+space ctrl+w ctrl+y
@@ -41,7 +40,7 @@ echo "<br/>";
 //$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
 //$unsigned_url = "http://api.yelp.com/v2/search?term=food,".$tag."&location=".$location."&limit=".$numBus."&sort=2&name=".$name."";
 //$unsigned_url = "http://api.yelp.com/v2/search?term=food&location=08544&name=witherspoon_grill&category=food,restaurant";
-$unsigned_url = "http://api.yelp.com/v2/search?term=".$name."&location=08544&limit=2";
+$unsigned_url = "http://api.yelp.com/v2/search?term=".$name."&location=08544&limit=2&category_filter=food,restaurants";
 
 echo "This is the search url : " . $unsigned_url . "</br>";
 
