@@ -20,8 +20,8 @@ $unsigned_url = "http://api.yelp.com/v2/search?term=food&location=08544&limit=1&
 
 $consumer_key = "r_LK8yxWWjZLv-FmyGO3Vw";
 $consumer_secret = "2l3wSMGLsYA0cQCgqnMSVUZpSus";
-$token = "7QgVypM4Z9NE2bWT2xy9KGwwTvq7IwyZ";
-$token_secret = "3qKRFq5mNLpGM5GXtCd9-zRJQ1w";
+$token = "i5m-nLRW3o-18T2NTisIgGrzRPRpCWfZ";
+$token_secret = "8YnLHst61xmdcAnIIXo3KYEtWBE";
 
 // Token object built using the OAuth library
 $token = new OAuthToken($token, $token_secret);
