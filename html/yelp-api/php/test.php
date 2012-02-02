@@ -34,6 +34,9 @@ $tag = $_POST["tag"];
 echo "<p> You searched for " . $tag . "</p></br>";;
 $tag = str_replace(" ", "", $tag);
 $location=str_replace(" ", "", $location);
+if(preg_match([a-zA-Z]+[,][a-zA-Z]{2} | [0-9]{5}, $location) {
+    echo "You're good!";
+}
 $name = str_replace(" ","+", $name);
 echo "<br/>";
 //cut paste = ctrl+space ctrl+w ctrl+y
