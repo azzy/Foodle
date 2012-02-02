@@ -22,7 +22,7 @@ include("access.php");
 include("parse.php");
 
 $tag = $_POST["tag1"];
-$numBus=0
+$numBus=0;
 $location=$_POST["loc"];
 
 
