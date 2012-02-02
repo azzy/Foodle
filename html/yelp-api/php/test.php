@@ -51,7 +51,7 @@ print_r($response);
 echo "<br><br><br>";
 ?>
     <h1>Search Results</h1>
-    <p> Put the (parsed) search results here</p>
+    <p> Put the (parsed) search results here:</p>
 <?php
 //print businesses(0)->name;
 echo "<br> Printing out various info here: <br> ";
