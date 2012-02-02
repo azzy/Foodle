@@ -37,7 +37,7 @@ echo "<br/>";
 //$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
 //$unsigned_url = "http://api.yelp.com/v2/search?term=food,".$tag."&location=".$location."&limit=".$numBus."&sort=2&name=".$name."";
 //$unsigned_url = "http://api.yelp.com/v2/search?term=food&location=08544&name=witherspoon_grill&category=food,restaurant";
-$unsigned_url = "http://api.yelp.com/v2/search?find_desc=Witherspoon+Grill&find_loc=08544";
+$unsigned_url = "http://api.yelp.com/v2/search?find_desc=Witherspoon+Grill&loc=08544";
 
 echo $unsigned_url . "</br>";
 
