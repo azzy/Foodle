@@ -10,46 +10,31 @@
 <h1>Search Parameters</h1>
 
 <form method="post" action="<?php echo $PHP_SELF;?>">
- Search for: <input type="text" name="tag1" /> <br/>
- Location: <input type="text" name="loc" /> <br/>
- Number of Busnesses to Retun: <input type="text" name="numBus" /><br/> 
+ Business Name: <input type="text" name="busName" /> <br/> 
  <input type="submit" value="Submit" /><br/>
 </form>
 
 <?php
-$tag = $_POST["tag1"];
-$numBus=$_POST["numBus"];
-$location=$_POST["loc"];
+   $busName = $_POST["busName"];
+//$numBus=$_POST["numBus"];
+//$location=$_POST["loc"];
 echo "<p> You searched for " . $tag . "</p></br>";;
-$tag = str_replace(" ", "", $tag);
-$location=str_replace(" ", "", $location);
-$name = "Witherspoon-grill";
+$busName=str_replace(" ", "-", $busName);
 
 // --------------OAuth Stuff------------------------------------ 
 // From http://non-diligent.com/articles/yelp-apiv2-php-example/
 // Enter the path that the oauth library is in relation to the php file
 require_once ('lib/OAuth.php');
-include("authkeys.php");
-echo $consumer_key;
-
-echo $consumer_key;
-echo "<br/>";
-echo $consumer_secret;
-echo "<br/>";
-echo $token;
-echo "<br/>";
-echo $token_secret;
-
-echo "<br/>";
+$consumer_key = "T7h8nAcJA5KvfPiroKWooQ";
+$consumer_secret = "jLVWAmjRGAGQSKw9EJbpKS5GYzw";
+$token = "ZQO9F_0HeL7XcH54Z66F4NLZ7pAUraN1";
+$token_secret = "GZV-bIEVQKt0NkueKnh4tieKlY8";
 //cut paste = ctrl+space ctrl+w ctrl+y
 // copy = esc w 
-//$unsigned_url = "http://api.yelp.com/v2/business/the-waterboy-sacramento/name";
+$unsigned_url = "http://api.yelp.com/v2/search?name=".$busName."";
 //$unsigned_url = "http://api.yelp.com/v2/search?term=tacos&location=sf";
-//$unsigned_url = "http://api.yelp.com/v2/search?term=food,".$tag."&location=".$location."&limit=".$numBus."&sort=2&name=".$name."";
-$unsigned_url = "http://api.yelp.com/v2/search?term=food&location=08544&name=witherspoon_grill&category=food,restaurant";
+//$unsigned_url = "http://api.yelp.com/v2/search?term=food,".$tag."&location=".$location."&limit=".$numBus."&sort=2";
 echo $unsigned_url . "</br>";
-
-
 echo $location . "<br/>";
 // Set your keys here
 // Token object built using the OAuth library
@@ -70,8 +55,6 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 $data = curl_exec($ch); // Yelp response
 curl_close($ch);
-
-//$data = access($unsigned_url);
 // Handle Yelp response data
 $response = json_decode($data);
 // ------------------------------------------------------------
