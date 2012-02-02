@@ -61,7 +61,8 @@ div#wrapper {
     top: -11px;
 }
 #content-area {
-    height: 300px;
+    min-height: 300px;
+    height: 50%;
     padding: 30px;
     width: 640px;
     margin: auto;
@@ -77,6 +78,8 @@ body#cuisine #content-area {
     position: absolute;
     top: 10px;
     z-index: 100;
+    text-align: center;
+    width: 100%;
 }
 #footer {
     z-index: 100;
@@ -165,23 +168,21 @@ body#cuisine input, body#cuisine textarea {
     //color: #fff;
 }
 #nav-left {
-   // position: absolute;
-   // top: 50%;
+    margin-top: -50px;
     float: left;
 }
 #nav-right {
-    //position: absolute;
-   // top: 50%;
+    margin-top: -50px;
     float: right;
 }
 /* End Form Styles -------------------------------------------*/
 /* Begin Rank Styles -----------------------------------------*/
 #list-1, #list-2 {
     width: 250px;
-   // height: 190px;
+    height: 190px;
     padding: 15px;
-   // overflow-x: hidden;
-   // overflow-y: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 #list-1 {
     background: url('../images/forest.jpg') #6EAF22;
