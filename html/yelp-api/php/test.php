@@ -17,6 +17,9 @@
 </form>
 
 <?php
+require_once ('lib/OAuth.php');
+include("authkeys.php");
+
 $tag = $_POST["tag1"];
 $numBus=$_POST["numBus"];
 $location=$_POST["loc"];
@@ -28,8 +31,7 @@ $name = "Witherspoon-grill";
 // --------------OAuth Stuff------------------------------------ 
 // From http://non-diligent.com/articles/yelp-apiv2-php-example/
 // Enter the path that the oauth library is in relation to the php file
-require_once ('lib/OAuth.php');
-include("authkeys.php");
+
 echo $consumer_key;
 
 echo $consumer_key;
