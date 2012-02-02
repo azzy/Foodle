@@ -1,0 +1,7 @@
+<?php
+$teststr = "onceuponatimetherewas a fairy";
+if (preg_match("o.*y", $teststr) {
+    echo "all is well";
+  }
+
+?>
