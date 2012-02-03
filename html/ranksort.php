@@ -30,7 +30,7 @@ $("#sortable2").sortable("serialize");
 <link rel="stylesheet" href="./css/style.css" type="text/css" />
 </head>
 <body class="rank cuisine">
-<div id="banner"><a href="./index.html"><img src="./images/choosine.png"/></a></div>
+<div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
   <div id="container">
     <div id="content-area">
@@ -60,8 +60,8 @@ $("#sortable2").sortable("serialize");
     </div>
 
     </div>
-    <a href="initiate.html"><img src="./images/left.png" id="nav-left" /></a>
-    <a href="email.html"><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
+    <a href="initiate.php"><img src="./images/left.png" id="nav-left" /></a>
+    <a href="email.php"><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
     
   <div class="clear"></div>
   <div id="footer">We know you're really excited to use Choosine,

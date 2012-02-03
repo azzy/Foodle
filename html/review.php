@@ -1,18 +1,8 @@
-<!DOCTYLE html>
-<html lang="en" xml:lang="en">
-<head>
-<meta charset="utf-8">
-<title>Choosine</title>
-<script src="modernizr.min.js"></script> <!-- fix this/use boilerplate -->
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-<script type="text/javascript" src="./js/scripts.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Coustard:400|Rokkitt:400' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="./css/reset.css" type="text/css" />
-<link rel="stylesheet" href="./css/style.css" type="text/css" />
-</head>
+<?php
+  include("header.php");
+?>
 <body class="review cuisine">
-<div id="banner"><a href="./index.html"><img src="./images/choosine.png"/></a></div>
+<div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
   <div id="container">
     <div id="content-area">
@@ -48,7 +38,7 @@
 
       </div>
     <a href="./emails.php"><img src="./images/left.png" id="nav-left" /></a>
-    <a href="./ranksort.html"><img src="./images/right.png" id="nav-right" /></a>
+    <a href="./ranksort.php"><img src="./images/right.png" id="nav-right" /></a>
     
   <div class="clear"></div>
   <div id="footer">We know you're really excited to use Choosine, but
