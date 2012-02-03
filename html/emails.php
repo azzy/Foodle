@@ -6,6 +6,11 @@
 <?php
 require_once "header.php";
 ?>
+<body id="emails cuisine">
+<div id="banner"><a href="./index.html"><img src="./images/choosine.png"/></a></div>
+<div id="wrapper">
+  <div id="container">
+   <div id="content-area">
 <div class="text">
   Your Guests' Emails:
 </div>

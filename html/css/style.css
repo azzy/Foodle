@@ -3,11 +3,12 @@
 html, body { margin: 0; padding: 0; }
 body {
     background: url('../images/yellow.jpg') #FFFF00;
+    text-align:center;
 }
 a:link,
 a:visited { 
     text-decoration: none;
-   // color: #F38921; 
+    color: #fff;
    // border-bottom: 1px dotted #F38921;
 }
 a:hover,
@@ -31,16 +32,18 @@ div#wrapper {
     margin: 0 auto;
     padding: 0;
     background: url('../images/gold.jpg') #FCEE21;
+    text-align:center;
 }
 #container {
     width: 900px;
     min-height: 100%;
     margin: 0 auto;
-    padding: 0;
+    padding-bottom: 40px;
     color: #fff;
     font: 14pt 'Rokkitt', helvetica, arial, sans-serif;
+    text-align:center;
 }
-.text { margin-bottom: 30px; }
+.text { margin-bottom: 27px; }
 #home .text {
     margin: 170px auto 100px auto;
     width: 320px;
@@ -71,9 +74,19 @@ div#wrapper {
     overflow-x: hidden;
     overflow-y: auto;
     margin-bottom: 185px;
+    border-radius:15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    box-shadow: 0px 4px 8px 0 #211F07;
+    -moz-box-shadow: 0px 4px 8px 0 #211F07;
+    -webkit-box-shadow: 0px 4px 8px 0 #211F07;
+    text-align:left;
 }
-body#cuisine #content-area {
+body.cuisine #content-area {
     background: url('../images/bluec.jpg') #0071BC;
+}
+body.restaurants #content-area {
+    background: url('../images/bluer.jpg') #29ABE2;
 }
 #banner {
     position: absolute;
@@ -100,7 +113,7 @@ body#cuisine #content-area {
 }
 /*Navigation
   ------------------------------------------------------------*/
-#nav-left {
+/*#nav-left {
     position: relative;
     top: -220px;
     float: left;
@@ -109,6 +122,21 @@ body#cuisine #content-area {
     position: relative;
     top: -220px;
     float: right;
+}*/
+
+#nav-right {
+    position: fixed;
+    top: 50%;
+    right: 30px;
+    width: 50px;
+    border: none;
+    background: none;
+}
+#nav-left {
+    position: fixed;
+    top:50%;
+    width: 50px;
+    left:30px;
 }
 
 /*Content Styles
@@ -159,14 +187,20 @@ a.badge {
 /* Begin Form Styles -----------------------------------------*/
 #content-area table {
     margin: auto;
+    color: #fff;
+    font: 16pt 'Rokkitt', helvetica, arial, sans-serif;
+    text-shadow: 0px -1px 0.5px #000;
 }
 #content-area .form {
-    margin: 38px 20px;
+    margin: 40px 20px 0 20px;
 }
 input,
 textarea {
     width: 410px;
-    border: 1px solid #ddd;
+    border-top: 2px solid #333;
+    border-left: 1px solid #333; border-right: 1px solid #333;
+    border-bottom: 2px solid #fff;
+    background-color: #E2ECF7;
     font-size: 14pt;
     padding: 5px;
     margin-bottom: 20px;
@@ -174,21 +208,63 @@ textarea {
 #content-area label {
     color: #fff;
     font: 16pt 'Rokkitt', helvetica, arial, sans-serif;
+    text-shadow: 0px -1px 0.5px #000;
     margin-right: 40px;
 }
-body#cuisine input, body#cuisine textarea {
-   // border: 1px solid #fff;
-    //background-color: #D9E021;
-    //color: #fff;
-}
 /* End Form Styles -------------------------------------------*/
+/* Begin Emails Styles ---------------------------------------*/
+.emails .text {
+    font-size: 18pt;
+    margin:20px 0 -30px 20px;
+    text-shadow: 0px -1px 0.5px #000;
+}
+.emails #content-area { text-align: center; }
+body.emails input, body.emails textarea {
+    font-size: 13pt;
+    margin: 3px 0;
+}
+#addnew {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 16pt;
+    text-shadow: 0px -1px 0.5px #000;
+}
+#addnew img {
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 40px;
+}
+.emails input.submit {
+    padding: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0px -1px 0.5px #000;
+    border: none;
+    border-top: 1px solid #fff;
+    background-color: #8CC63F;
+    margin-top: 10px;
+    box-shadow: 0px 3px 6px 0 #211F07;
+    -moz-box-shadow: 0px 3px 6px 0 #211F07;
+    -webkit-box-shadow: 0px 3px 6px 0 #211F07;
+}
+.emails input.submit:hover,
+.emails input.submit:focus {
+    background-color: #6EAF22;
+}
+/* End Emails Styles -----------------------------------------*/
+/* Begin Review Styles ---------------------------------------*/
+
+/* End Review Styles -----------------------------------------*/
 /* Begin Rank Styles -----------------------------------------*/
 #list-1, #list-2 {
     width: 250px;
-    height: 190px;
+    height: 193px;
     padding: 15px;
     overflow-x: hidden;
     overflow-y: auto;
+    box-shadow: 0 -1px 1px 0 #333;
+    -moz-box-shadow: 0px -1px 1px 0 #333;
+    -webkit-box-shadow: 0px -1px 1px 0 #333;
 }
 #list-1 {
     background: url('../images/forest.jpg') #6EAF22;
@@ -219,4 +295,4 @@ span.names {
 }
 .bin { background: url('../images/bin_hover.png') no-repeat; }
 //.bin-hover { background: url('../images/bin_hover.png') no-repeat; }
-/* End Form Styles -------------------------------------------*/
+/* End Rank Styles -------------------------------------------*/

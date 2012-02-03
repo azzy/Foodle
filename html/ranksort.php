@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <title>Choosine</title>
-<script src="modernizr.min.js"></script> <!-- fix this/use boilerplate -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>
@@ -13,23 +12,15 @@
 <script type="text/javascript">
 $( function() {
 $('#sortable1, #sortable2').sortable( {
-//containment: 'document',
 cursor: 'move',
 connectWith: ".connectedSortable",
-placeholder: 'ui-state-highlight'
-//snap: 'li',
-}).disableSelection();
+dropOnEmpty: true
+});
+$("#sortable1, #sortable2").disableSelection();
 });
 
-function collect(listID) {
-var list = document.getElementById(listID);
-var items = list.getElementsByTagName("li");
-var itemsString = "";
-for (var i = 0; i < items.length; i++) {
-if (itemsString.length > 0) itemsString += ":";
-itemsString += items[i].innerHTML;
-}
-alert(itemsString);
+function saveList() {
+$("#sortable2").sortable("serialize");
 }
 </script>
 
@@ -37,8 +28,28 @@ alert(itemsString);
 <link rel="stylesheet" href="./css/reset.css" type="text/css" />
 <link rel="stylesheet" href="./css/style.css" type="text/css" />
 </head>
-<body id="cuisine">
-<div id="banner"><a href="./index.html"><img src="./images/choosine.png"/></a></div>
+
+<?php
+  $type = $_GET['type'];
+  $userkey = $_GET['userkey'];
+  if ($_POST != null) {
+    include("initiate_validate.php");
+    if ($isValid) {
+      echo "validated the form! Good to go. user is ".$userkey;
+    }
+    else {
+      echo "Invalid form. :( We should reject it, and don't return any more html!";
+      // TODO exit here somehow? return previous page (form) or do that in the initiate_validate file?
+    }
+  }
+  else {
+    echo " Didn't get to this page from the form. TODO: populate fields from database if possible, otherwise display an error";
+  }
+
+?>
+
+<body class="rank cuisine">
+<div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
   <div id="container">
     <div id="content-area">
@@ -62,14 +73,14 @@ alert(itemsString);
     </ul>
     </div>
     <div id="list-2">
-      <ul id="sortable1" class="connectedSortable">
-	      <li class="bin"><span class="names">Drop selections here</span></li>
-    </ul>
+      <ul id="sortable2" class="connectedSortable">
+	<li class="bin"><span class="names">Drop selections here</span></li>
+   </ul>
     </div>
 
     </div>
-    <a href="#"><img src="./images/left.png" id="nav-left" /></a>
-    <a href="#"><img src="./images/right.png" id="nav-right" /></a>
+    <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
+    <a href='<?php echo "./email.php?type=$type&userkey=$userkey"; ?>'><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
     
   <div class="clear"></div>
   <div id="footer">We know you're really excited to use Choosine,
