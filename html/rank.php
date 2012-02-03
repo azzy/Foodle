@@ -1,5 +1,6 @@
 <?php
   include("header.php");
+  $type = $_GET['type'];
 ?>
 
 <script type="text/javascript">

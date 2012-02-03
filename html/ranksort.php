@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <title>Choosine</title>
-<script src="modernizr.min.js"></script> <!-- fix this/use boilerplate -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>
@@ -29,6 +28,11 @@ $("#sortable2").sortable("serialize");
 <link rel="stylesheet" href="./css/reset.css" type="text/css" />
 <link rel="stylesheet" href="./css/style.css" type="text/css" />
 </head>
+
+<?php
+  $type = $_GET['type'];
+?>
+
 <body class="rank cuisine">
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
@@ -60,8 +64,8 @@ $("#sortable2").sortable("serialize");
     </div>
 
     </div>
-    <a href="initiate.php"><img src="./images/left.png" id="nav-left" /></a>
-    <a href="email.php"><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
+    <a href='<?php echo "./initiate.php?type=$type"; ?>'><img src="./images/left.png" id="nav-left" /></a>
+    <a href='<?php echo "./email.php?type=$type"; ?>'><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
     
   <div class="clear"></div>
   <div id="footer">We know you're really excited to use Choosine,

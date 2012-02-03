@@ -1,5 +1,6 @@
 <?php
    include("header.php");
+  $type = $_GET['type'];
 ?>
 
 <body class="emails cuisine">
@@ -16,7 +17,7 @@
     </div>
     <a href="javascript:add_field()"><div id="addnew">
       <img src="./images/add.png" />Add another person</div></a>
-      <a href="thankyou.php"><input type="submit" value="create poll" name="submit" class="submit" /></a>
+      <a href='<?php echo "thankyou.php?type=$type"; ?>'><input type="submit" value="create poll" name="submit" class="submit" /></a>
 	</form>
 	
 	<div id="template" style="display:none">
@@ -24,7 +25,7 @@
 	</div>
     </div>
     
-    <a href="ranksort.php"><img src="./images/left.png" id="nav-left" /></a>   
+    <a href='<?php echo "ranksort.php?type=$type"; ?>'><img src="./images/left.png" id="nav-left" /></a>   
   <div class="clear"></div>
 
   </div>
