@@ -154,7 +154,7 @@
                 
                $('#yelpdata').html("here??");
                var searchTxt =  $("#searchstuff").find("textarea").val();
-
+                $('#yelpdata').html(searchTxt);
               
 
                 
@@ -200,7 +200,9 @@
                 $.ajax(ajaxOpts);
                 */
                 var toSend = {"search" : searchTxt,};
+                $('#showthis').html(searchTxt);
                 var toSendString = JSON.stringify(data);
+                $('#showthis2').html(searchTxt);
                 $.post("test-ajax.php", { data : toSendString}, showResult, "text");
                 
                 $('#yelpdata').html("past ajax");
