@@ -183,6 +183,7 @@
                 var ajaxOpts = {
                     type : "post",
                     url : "test-ajax.php",
+                    dataType : "json",
                     data : "&id=" + "12345",
                     success : function(data) {
                         $('#showthis2').html("okay...");
