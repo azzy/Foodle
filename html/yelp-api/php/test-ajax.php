@@ -1,3 +1,3 @@
 <?php
-    echo "kk it works";
+    echo {"name" : "resturant name", "id" : "restaurant id"};
 ?>

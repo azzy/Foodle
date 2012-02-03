@@ -181,7 +181,8 @@
                     url : "test-ajax.php",
                     data : { id : "12345" },
                     success : function(data) {
-                        $('#showthis').html(data);
+                        var show = data.name + "<- name; id -> " + data.id;
+                        $('#showthis').html(data.name);
                         
                     }
                 };
