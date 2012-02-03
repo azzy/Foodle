@@ -152,7 +152,7 @@
               
 
                 
-
+               /*
                 var ajaxOpts = {
                     type: "post",
                     url: "searchRest.php",
@@ -171,6 +171,15 @@
                     },
                     error : function(XMLHttpRequest, textStatus, errorThrown) {
                         $('#yelpdata').html("I got nothin'").show(500);
+                    }
+                };
+                */
+                var ajaxOpts = {
+                    type : "post",
+                    url : "test-ajax.php",
+                    data : { id : "12345" },
+                    success : function(data) {
+                        $('#showthis').toggle();
                     }
                 };
                 
