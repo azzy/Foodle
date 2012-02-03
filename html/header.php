@@ -16,8 +16,4 @@
 <link rel="stylesheet" href="./css/reset.css" type="text/css" />
 <link rel="stylesheet" href="./css/style.css" type="text/css" />
 </head>
-<body id="cuisine">
-<div id="banner"><a href="./index.html"><img src="./images/choosine.png"/></a></div>
-<div id="wrapper">
-  <div id="container">
-   <div id="content-area">
+

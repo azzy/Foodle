@@ -13,23 +13,15 @@
 <script type="text/javascript">
 $( function() {
 $('#sortable1, #sortable2').sortable( {
-//containment: 'document',
 cursor: 'move',
 connectWith: ".connectedSortable",
-placeholder: 'ui-state-highlight'
-//snap: 'li',
-}).disableSelection();
+dropOnEmpty: true
+});
+$("#sortable1, #sortable2").disableSelection();
 });
 
-function collect(listID) {
-var list = document.getElementById(listID);
-var items = list.getElementsByTagName("li");
-var itemsString = "";
-for (var i = 0; i < items.length; i++) {
-if (itemsString.length > 0) itemsString += ":";
-itemsString += items[i].innerHTML;
-}
-alert(itemsString);
+function saveList() {
+$("#sortable2").sortable("serialize");
 }
 </script>
 
@@ -37,7 +29,7 @@ alert(itemsString);
 <link rel="stylesheet" href="./css/reset.css" type="text/css" />
 <link rel="stylesheet" href="./css/style.css" type="text/css" />
 </head>
-<body id="cuisine">
+<body class="rank cuisine">
 <div id="banner"><a href="./index.html"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
   <div id="container">
@@ -62,14 +54,14 @@ alert(itemsString);
     </ul>
     </div>
     <div id="list-2">
-      <ul id="sortable1" class="connectedSortable">
-	      <li class="bin"><span class="names">Drop selections here</span></li>
-    </ul>
+      <ul id="sortable2" class="connectedSortable">
+	<li class="bin"><span class="names">Drop selections here</span></li>
+   </ul>
     </div>
 
     </div>
-    <a href="#"><img src="./images/left.png" id="nav-left" /></a>
-    <a href="#"><img src="./images/right.png" id="nav-right" /></a>
+    <a href="initiate.html"><img src="./images/left.png" id="nav-left" /></a>
+    <a href="email.html"><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
     
   <div class="clear"></div>
   <div id="footer">We know you're really excited to use Choosine,

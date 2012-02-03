@@ -11,37 +11,30 @@
 <link rel="stylesheet" href="./css/reset.css" type="text/css" />
 <link rel="stylesheet" href="./css/style.css" type="text/css" />
 </head>
-<body class="initiate cuisine">
+<body class="emails cuisine">
 <div id="banner"><a href="./index.html"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
   <div id="container">
     <div id="content-area">
-    <div class="form">
-      <form name="input" method="post">
-      <table>
-	<tr>
-	  <td><label for="dinner">Dinner Name:</label></td>
-	  <td><input id="dinner" name="dinner" /></td>
-	</tr><tr>
-	  <td><label for="name">Your Name:</label></td>
-	  <td><input id="name" name="name" /></td>
-	</tr><tr>
-	  <td><label for="email">Your Email:</label></td>
-	  <td><input id="email" name="email" placeholder="" /></td>
-	</tr><tr>
-	  <td><label for="location">Your Location:</label></td>
-	  <td><input id="location" name="location" placeholder="City, State or ZIP"/></td>
-	</tr>
-      </table>
-      <a href="ranksort.html"><input type="image"
-      src="./images/right.png" width="50px" height="50px" border="0"
-      id="nav-right" /></a>
-     </form>
+    <div class="text">Your Guests' Emails:</div>
+    <form name="input" method="post">
+    <div class="form" id="emails-form">
+      <input />
+      <input />
+      <input />
     </div>
+    <a href="javascript:add_field()"><div id="addnew">
+      <img src="./images/add.png" />Add another person</div></a>
+      <a href="thankyou.html"><input type="submit" value="create poll" name="submit" class="submit" /></a>
+	</form>
+	
+	<div id="template" style="display:none">
+	  <input />
+	</div>
     </div>
-    <div class="clear"></div>
-    <div id="footer">We know you're really excited to use Choosine, but
-  it doesn't exist yet! Sorry :(</div>
+    
+    <a href="ranksort.html"><img src="./images/left.png" id="nav-left" /></a>   
+  <div class="clear"></div>
 
   </div>
  </div> <!-- end wrapper -->
