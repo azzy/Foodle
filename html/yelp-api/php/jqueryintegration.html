@@ -1,0 +1,231 @@
+<html>
+    <style>
+        
+        .action
+        {
+            background-color: #C0DCFF;
+            position: fixed;
+            top: 100px;
+            left: 200px;
+            height: 100px;
+            width: 200px;
+        }
+
+        
+        .reaction
+        {
+            background-color: #F9D8CB;
+            position: fixed;
+            top: 300px;
+            left: 200px;
+            height: 100px;
+            width: 200px;
+        }
+        
+        .inputbox
+        {
+            background-color: #BEF1CB;
+            position: fixed;
+            top: 200px;
+            left: 400px;
+            height: 100px;
+            width: 200px;
+        }
+        
+        .restaurant {
+            background-color: #1DD300;
+        
+        }
+        
+        .searchbutton{
+            background-color: #1DD300;
+            position: fixed;
+            top: 220px;
+            left: 200px;
+            height: 40px;
+            width: 100px;
+        }        
+        
+        .sec {
+            background-color: #1DD300;
+            position: fixed;
+            top: 220px;
+            left: 200px;
+            height: 40px;
+            width: 100px;
+        }
+        
+        .shadow {
+            -webkit-box-shadow: 0px 0px 10px #222; /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+            -moz-box-shadow: 0px 0px 10px #222; /* FF3.5 - 3.6 */
+            box-shadow: 0px 0px 10px #222; /* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 */
+        }
+        
+        .yellowshadow {
+            -webkit-box-shadow: 0px 0px 10px #DFEC02; /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+            -moz-box-shadow: 0px 0px 10px #DFEC02; /* FF3.5 - 3.6 */
+            box-shadow: 0px 0px 10px #DFEC02; /* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 */
+        }
+        
+        
+    </style>
+
+
+    <head>
+        <title>JQuery</title>
+    </head>
+
+    <body>
+        
+        <h1 id="theimportantthing" class="aheader">But what is an example really?</h1>
+        <h2 class="aheader">Another heading...</h2>
+        <h3 class="aheader">But that doesn't make sense</h3>
+
+        <ul id="restlist">
+            <li class="restaurant">Rest1</li>
+            <li class="restaurant">Rest2</li>
+            <li class="restaurant">Rest3</li>
+        </ul>
+
+         <div class="action">
+            When we click on this guy
+        </div>
+        <div class="reaction">
+            It'll do stuff to this guy
+        </div>
+
+
+        <div class="inputbox">
+            <label>Ah look over yonder it's a text box</label>
+            <input type="text" id="textguy" />
+            <p id="placetoputit">
+            
+            </p>
+        </div>
+        
+
+        <div id="searchstuff">
+            <div class="searchtext"><label>Search:</label><textarea id = "searchtxt" cols="20" rows="1"></textarea></div>
+			<button id="search">Search</button>
+            
+            <div class="sec">
+                <!-- <img src="plus-sm.png" alt="plus" id="plus"/><img src="X.jpg" alt="x" id="x"/> -->
+                <button id="add">Add To List</button> <button id="back">Back</button>
+            </div>
+            
+            <p id = "yelpdata">
+            
+            </p>
+        </div>
+    </body>
+</html>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    //Initialize the page (This function runs on pageload)
+    $(function () {
+        $('.sec').toggle();
+    });
+
+    //$(‘.searchbutton’).click(function() {
+        //var searchTxt = $('#searchtext');
+        //var data = $.get("searchRest.php", searchTxt);
+        //var data = "lalalalalalalalalalala";
+        //$('#yelpdata').toggle(); 
+        //$('#yelpdata').html(data);
+        //$('#searchbutton').toggle();
+        //$('.sec').toggle(); 
+    //});
+    
+    $('#search').click(function () {
+                $('.sec').toggle();
+                $('#search').toggle();
+                //var searchTxt = $.get("searchRest.php", searchTxt);
+                
+                var ajaxOpts = {
+                    type: "post",
+                    url: "searchRest.php",
+                    dataType : 'json',
+                    data: { search : searchTxt},
+                    success : function(data) {
+                        if (data.error === true) {
+                            $('#yelpdata').html(searchTxt);
+                        }
+                        else {
+                            $('#yelpdata').html(data.response.name);
+                            $('#yelpdata').html(data.response);
+                        }
+                    },
+                    error : function(XMLHttpRequest, textStatus, errorThrown) {
+                        $('#yelpdata').html("I got nothin'");
+                    }
+                };
+                
+                $.ajax(ajaxOpts);
+                
+                
+    });
+    
+    $('#add').click(function () {
+                $('.sec').toggle();
+                $('#search').toggle();
+                // info in box to list
+                
+                var yelpdata = "yelpdata"; // yelp data info -- name and id?
+                
+                /*
+                //define ajax config object
+                var ajaxOpts = {
+                    type: "post",
+                    url: "addToList.php",
+                    dataType : 'json',
+                    data: "&newlistitem=" + $("#searchstuff").find("textarea").val(),
+                    success: function(data) {
+                        //create a container for the new comment
+                        var li = $("<li>").addClass("restaurant").appendTo("#restlist");
+                    
+                        //add author name and comment to container
+                        $("<li>").text($("#searchstuff").find("textarea").val()).appendTo(li);
+                        
+                        //empty inputs
+                        $("#searchstuff").find("textarea").val("");
+
+                    }
+                    error : function(data) {
+                        alert("There was an error with your search request");
+                    }
+                };
+                
+                $.ajax(ajaxOpts);
+                */
+
+                $('#yelpdata').html("");
+    });
+    
+    $('#back').click(function () {
+                $('.sec').toggle();
+                $('#search').toggle();
+                $('#yelpdata').html("");
+    });
+
+   
+    
+/*
+    $('#plus').click(function() {
+        // add new list item
+        alert("kk");
+    }); 
+
+    $('#xbutton').click(function() {
+        $('#yelpdata').toggle(); 
+        $('#plus').toggle(); 
+        $('#xbutton').toggle(); 
+        $('#searchbutton').toggle();  
+    }); 
+*/
+
+
+</script>
