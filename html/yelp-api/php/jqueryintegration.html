@@ -119,6 +119,10 @@
             <br>
             <br>
             <p id = "showthis">show this</p>
+            
+            <br>
+            <br>
+            <p id = "showthis2">show this</p>
         </div>
     </body>
 </html>
@@ -181,7 +185,7 @@
                     url : "test-ajax.php",
                     data : { id : "12345" },
                     success : function(data) {
-                        
+                        $('#showthis2').html("okay...");
                         var show = data.name + "<- name; id -> " + data.id;
                         $('#showthis').html(show);
                         
