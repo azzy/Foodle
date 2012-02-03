@@ -90,7 +90,7 @@
          <div class="action">
             When we click on this guy
         </div>
-        <div class="reaction">
+        <div class="nothing">
             It'll do stuff to this guy
         </div>
 
@@ -112,10 +112,11 @@
                 <!-- <img src="plus-sm.png" alt="plus" id="plus"/><img src="X.jpg" alt="x" id="x"/> -->
                 <button id="add">Add To List</button> <button id="back">Back</button>
             </div>
-            
+            <p> Yelp Data should print under here </p>
             <p id = "yelpdata">
             
             </p>
+            <p id = "showthis">show this</p>
         </div>
     </body>
 </html>
@@ -145,6 +146,13 @@
                 $('#search').toggle();
                 //var searchTxt = $.get("searchRest.php", searchTxt);
                 
+               $('#yelpdata').html("here??");
+               var searchTxt =  $("#searchstuff").find("textarea").val();
+
+              
+
+                
+
                 var ajaxOpts = {
                     type: "post",
                     url: "searchRest.php",
@@ -155,17 +163,22 @@
                             $('#yelpdata').html(searchTxt);
                         }
                         else {
-                            $('#yelpdata').html(data.response.name);
-                            $('#yelpdata').html(data.response);
+                            $('#yelpdata').html("hereeee").show(500);
+                            $('#yelpdata').html(data.response.name).show(500);
+                            $('#yelpdata').html(data.response).show(500);
+                            $('#showthis').toggle();
                         }
                     },
                     error : function(XMLHttpRequest, textStatus, errorThrown) {
-                        $('#yelpdata').html("I got nothin'");
+                        $('#yelpdata').html("I got nothin'").show(500);
                     }
                 };
                 
+                $('#yelpdata').html(searchTxt);
+                
                 $.ajax(ajaxOpts);
                 
+                $('#yelpdata').html("past ajax");
                 
     });
     
