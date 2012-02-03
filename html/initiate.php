@@ -6,6 +6,7 @@
 <?php
   include("header.php");
   $type = $_GET['type'];
+  $userkey = $_GET['userkey'];
   echo '<body class="initiate '.$type.'">';
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
@@ -13,7 +14,7 @@
   <div id="container">
    <div id="content-area">
     <div class="form">
-      <form name="input" method="post">
+      <form name="input" method="post" action='<?php echo "./ranksort.php?type=$type&userkey=$userkey"; ?>'>
       <table>
 	<tr>
 	  <td><label for="dinner">Dinner Name:</label></td>
@@ -33,7 +34,12 @@
     </div>
     </div><!-- end content-area -->
     <a href='./index.php'><img src="./images/left.png" id="nav-left" /></a>
-    <a href='<?php echo "./ranksort.php?type=$type"; ?>'><img src="./images/right.png" id="nav-right" /></a>
+    <script type="text/javascript">
+    function submitform() {
+       document.input.submit();
+    }
+    </script>
+    <a href='javascript: submitform()'><img src="./images/right.png" id="nav-right" /></a>
 
 <?php
 require_once "footer.php";

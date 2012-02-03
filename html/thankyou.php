@@ -1,6 +1,7 @@
 <?php
   include("header.php");
   $type = $_GET['type'];
+  $userkey = $_GET['userkey'];
 ?>
 <body class="review cuisine">
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
@@ -11,8 +12,8 @@
 	following URL to view your results.</div>
 	<div class="text">321kl4jsdfglkjl1;14235j;</div>
       </div>
-    <a href='<?php echo "./emails.php?type=$type"; ?>'><img src="./images/left.png" id="nav-left" /></a>
-    <a href='<?php echo "./ranksort.php?type=$type"; ?>'><img src="./images/right.png" id="nav-right" /></a>
+    <a href='<?php echo "./emails.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
+    <a href='<?php echo "./ranksort.php?type=$type&userkey=$userkey"; ?>'><img src="./images/right.png" id="nav-right" /></a>
     
   <div class="clear"></div>
   <div id="footer">We know you're really excited to use Choosine, but

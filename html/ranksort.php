@@ -31,6 +31,21 @@ $("#sortable2").sortable("serialize");
 
 <?php
   $type = $_GET['type'];
+  $userkey = $_GET['userkey'];
+  if ($_POST != null) {
+    include("initiate_validate.php");
+    if ($isValid) {
+      echo "validated the form! Good to go. user is ".$userkey;
+    }
+    else {
+      echo "Invalid form. :( We should reject it, and don't return any more html!";
+      // TODO exit here somehow? return previous page (form) or do that in the initiate_validate file?
+    }
+  }
+  else {
+    echo " Didn't get to this page from the form. TODO: populate fields from database if possible, otherwise display an error";
+  }
+
 ?>
 
 <body class="rank cuisine">
@@ -64,8 +79,8 @@ $("#sortable2").sortable("serialize");
     </div>
 
     </div>
-    <a href='<?php echo "./initiate.php?type=$type"; ?>'><img src="./images/left.png" id="nav-left" /></a>
-    <a href='<?php echo "./email.php?type=$type"; ?>'><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
+    <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
+    <a href='<?php echo "./email.php?type=$type&userkey=$userkey"; ?>'><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
     
   <div class="clear"></div>
   <div id="footer">We know you're really excited to use Choosine,

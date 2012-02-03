@@ -20,7 +20,7 @@ function newUser($pollid, $usertype, $email, $name = NULL) {
       }
       else {
         print "Error!: Could not fetch the number of voters in your poll.";
-	die();
+	return; //die();
       }
     }
 
@@ -47,7 +47,7 @@ function newUser($pollid, $usertype, $email, $name = NULL) {
     
   } catch (PDOException $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
-    die();;
+    return; //die();;
   }
 
   return $urlkey;
@@ -72,7 +72,7 @@ function getUserInfo($urlkey) {
     return NULL;
   } catch (PDOException $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
-    die();;
+    return; //die();;
   }
 }
 
@@ -94,7 +94,7 @@ function updateUserName($urlkey, $name) {
     
   } catch (PDOException $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
-    die();;
+    return; //die();;
   }
 }
 ?>

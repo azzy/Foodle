@@ -1,6 +1,7 @@
 <?php
   include("header.php");
   $type = $_GET['type'];
+  $userkey = $_GET['userkey'];
 ?>
 
 <script type="text/javascript">

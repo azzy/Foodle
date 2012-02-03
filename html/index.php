@@ -1,5 +1,9 @@
 <?php
   include("header.php");
+
+// TODO: process user key info in a get request to skip to the poll page
+  //$type = $_GET['type'];
+  //$userkey = $_GET['userkey'];
 ?>
 
 <body id="home">
