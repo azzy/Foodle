@@ -180,6 +180,7 @@
                     }
                 };
                 */
+                /*
                 var ajaxOpts = {
                     type : "post",
                     url : "test-ajax.php",
@@ -197,10 +198,20 @@
                 $('#yelpdata').html(searchTxt);
                 
                 $.ajax(ajaxOpts);
+                */
+                var toSend = {"search" : searchTxt,};
+                var toSendString = JSON.stringify(data);
+                $.post("test-ajax.php", { data : toSendString}, showResult, "text");
                 
                 $('#yelpdata').html("past ajax");
                 
     });
+    
+    function showResult(res) {
+        $("#showthis").html("Response: " + res);
+        var obj = JSON.parse(res);
+        $("#showthis2").html("ID: " + obj.id);
+    }
     
     $('#add').click(function () {
                 $('.sec').toggle();
