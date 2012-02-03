@@ -1,0 +1,25 @@
+<?php
+include("dbinfo.inc.php");
+ $pollid = $_POST['pollid']
+ $host = "localhost";
+ $choiceid = $_POST['choiceid'];
+ $yelpid = $_POST['yelpid'];
+ $userid = $_POST['userid'];
+ $rank = $_POST['rank'];
+ $to = $_POST['to'];
+ $url = $_POST['url'];
+ $from = $_POST['from'];
+echo $pollid;
+echo $choiceid;
+echo $yelpid;
+echo $userid;
+echo $rank;
+echo $to;
+echo $from;
+echo $url;
+sendEmail($to, $url, $from)
+setupPollChoice($host,$username, $password, $database, $pollid)
+setupVotes($host,$username, $password, $database, $pollid)
+insertPollChoice($host,$username, $password, $database, $choiceid, $yelpid, $pollid)
+insertVotes($host,$username, $password, $database, $pollid, $userid, $choiceid, $rank)
+?> 
