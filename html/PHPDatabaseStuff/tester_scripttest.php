@@ -1,0 +1,30 @@
+<?php
+include_once("dbinfo.inc.php");
+include_once("sendEmail.php");
+include_once("setupPollChoice.php");
+include_once("setupVotes.php");
+include_once("insertPollChoice.php");
+include_once("insertVotes.php");
+$pollid = 5; //$_POST['pollid'];
+$host = "localhost";
+$choiceid = 0; //$_POST['choiceid'];
+$yelpid = 'the-bent-spoon-princeton'; //$_POST['yelpid'];
+$userid = 0; //$_POST['userid'];
+$rank = 1; //$_POST['rank'];
+$to = "pasricha@princeton.edu"; //$_POST['to'];
+$url = "url_thingee"; //$_POST['url'];
+$from = "cjbutton@hotmail.com"; //$_POST['from'];
+echo $pollid;
+echo $choiceid;
+echo $yelpid;
+echo $userid;
+echo $rank;
+echo $to;
+echo $from;
+echo $url;
+sendEmail($to, $url, $from);
+setupPollChoice($host, $username, $password, $database, $pollid);
+setupVotes($host,$username, $password, $database, $pollid);
+insertPollChoice($host,$username, $password, $database, $choiceid, $yelpid, $pollid);
+insertVotes($host,$username, $password, $database, $pollid, $userid, $choiceid, $rank);
+?> 

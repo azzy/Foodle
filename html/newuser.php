@@ -2,7 +2,7 @@
 require_once("urlkey_generator.php");
 
 /* Generates a new user for a poll, and returns their unique access key (for the url). */
-function NewUser(int $pollid, string $usertype, string $email, string $name = NULL) {
+function newUser($pollid, $usertype, $email, $name = NULL) {
   $urlkey = NewGuid();
 
   include("foodledbinfo.php");
@@ -12,13 +12,17 @@ function NewUser(int $pollid, string $usertype, string $email, string $name = NU
 
     $userid = -1;
     if ($stmt = $db->prepare("SELECT numvoters FROM polls WHERE pollid = ".$pollid)) {
+      $stmt->execute();
       $row = $stmt->fetch();
       if ($row) {
-	$userid = $row->numvoters;
+	$userid = $row['numvoters'];
 	$userid++;
       }
+      else {
+        print "Error!: Could not fetch the number of voters in your poll.";
+	die();
+      }
     }
-    echo $userid;
 
     //'$poll','$first','$last','$email')";
     if ($stmt = $db->prepare("INSERT INTO users VALUES (?, ?, ?, ?, ?, ?)")) {
@@ -51,7 +55,7 @@ function NewUser(int $pollid, string $usertype, string $email, string $name = NU
 
 /* Gets the user info, including userid and pollid, from the database using the url key
    for that user. Returns the data in an associative array. */
-function getUserInfo(int $urlkeystring) {
+function getUserInfo($urlkey) {
 
   include("foodledbinfo.php");
 
@@ -59,7 +63,7 @@ function getUserInfo(int $urlkeystring) {
     $db = new PDO('mysql:host=localhost;dbname='.$database, $username, $password);
 
     $userid = -1;
-    if ($stmt = $db->prepare("SELECT * FROM users WHERE urlkey = ".$urlkeystring)) {
+    if ($stmt = $db->prepare("SELECT * FROM users WHERE urlkey = ".$urlkey)) {
       $row = $stmt->fetch();
       if ($row) {
 	return $row;
@@ -72,14 +76,14 @@ function getUserInfo(int $urlkeystring) {
   }
 }
 
-function updateUserName(string $urlkey, string $name) {
+function updateUserName($urlkey, $name) {
 
-  include_once("foodledbinfo.php");
+  include("foodledbinfo.php");
 
   try {
     $db = new PDO('mysql:host=localhost;dbname='.$database, $username, $password);
 
-    $query = "UPDATE users SET username = ? WHERE urlkey = ?");
+    $query = "UPDATE users SET username = ? WHERE urlkey = ?";
     if ($stmt = $db->prepare($query)) {
       $stmt->bindParam(1, $name); // since they're indexed from 1, the userid == the total
       $stmt->bindParam(2, $urlkey);
