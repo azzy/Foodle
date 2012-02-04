@@ -276,10 +276,17 @@ body.emails input, body.emails textarea {
     padding: 15px;
     overflow-x: hidden;
     overflow-y: auto;
-    border-top: 2px solid #333;
-    border-left: 1px solid #333;
-    border-right: 1px solid #333;
     border-bottom: 1px solid #57B3E5;
+}
+.restaurants #list-1, .restaurants #list-2 {
+    border-top: 2px solid #005589;
+    border-left: 1px solid #005589;
+    border-right: 1px solid #005589;
+}
+.cuisine #list-1, .cuisine #list-2 {
+    border-top: 2px solid #004C6D;
+    border-left: 1px solid #004C6D;
+    border-right: 1px solid #004C6D;
 }
 #list-1 {
     background: url('../images/forest.jpg') #6EAF22;

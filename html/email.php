@@ -2,14 +2,13 @@
    include("header.php");
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
+  echo '</head><body class="emails $type">';
 ?>
-
-<body class="emails cuisine">
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
   <div id="container">
     <div id="content-area">
-    <div class="text">Your Guests' Emails:</div>
+    <div class="text">Your Guests&apost; Emails:</div>
     <form name="input" method="post">
     <div class="form" id="emails-form">
       <input />
