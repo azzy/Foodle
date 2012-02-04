@@ -203,7 +203,7 @@
                 $('#showthis').html(searchTxt);
                 //var toSendString = JSON.stringify(data);
                 $('#showthis2').html(searchTxt);
-                $.post("test-ajax.php", { data : searchTxt}, showResult, "text");
+                $.post("test-ajax.php", { data : searchTxt}, showResult, "json");
                 
                 $('#yelpdata').html("past ajax");
                 
