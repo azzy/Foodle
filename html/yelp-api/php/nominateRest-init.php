@@ -29,13 +29,8 @@
             $.post("initRest.php", //ajax file
                 { sendValue: str },
                 function(data) {
-                    $('#test3').html("here");
-                    $('#test4').html(data.num);
-                    $('#yelpratingimg').html(data.0.name);
-                    for (var i = 0; i < 8; i++) {
-                        //$('<li>').addClass("restaurant").html(data.$i.name).appendTo('#restlist');
-                        $("<li>").addClass("restaurant").text(data.$i.name).appendTo("#restlist");
-                    }
+                    alert("here");
+                    
                 },
                 "json"
                 );
