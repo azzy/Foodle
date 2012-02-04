@@ -120,6 +120,8 @@
             <br>
             <p id = "showthis">show this</p>
             <br><br>
+            <p id = "showthis2">show this 2</p>
+            <br><br>
             <p id = "test1">test1</p>
             <br><br>
             <p id = "test2">test2</p>
@@ -155,7 +157,7 @@
                 //var toSend = {"search" : searchTxt,};
                 $('#test3').html("test3-go");
                 //var toSendString = JSON.stringify(data);
-                sendValue(searchTxt);
+                getYelp(searchTxt);
                 $('#test4').html("test4-go");
                 
         });
@@ -170,13 +172,7 @@
         "json" // how data is formatted in return from server
         );
     }
-    
-    function showResult(res) {
-        $("#showthis").html("Response: " + res);
-        //var obj = JSON.parse(res);
-        //$("#showthis2").html("ID: " + obj.id);
-    }
-    
+        
     $('#add').click(function () {
                 $('.sec').toggle();
                 $('#search').toggle();
@@ -190,6 +186,16 @@
                 $("#searchstuff").find("textarea").val("");
                 $('#yelpdata').html("");
     });
+    // get data from #yelpdata field
+    function getYelp(str) {
+        $.post("searchRest.php", //ajax file
+        { sendValue: str },
+        function(data) {
+            $('#yelpdata').html(data.returnValueName + " " + data.returnValueId);
+        },
+        "json"
+        );
+    }
     
     $('#back').click(function () {
                 $('.sec').toggle();
