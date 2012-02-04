@@ -143,7 +143,8 @@
         $('.sec').toggle();
     });
     
-    $('#search').click(function () {
+    $(document).ready(function() {
+        $('#search').click(function () {
                 $('.sec').toggle();
                 $('#search').toggle();
                 //var searchTxt = $.get("searchRest.php", searchTxt);
@@ -154,13 +155,21 @@
                 //var toSend = {"search" : searchTxt,};
                 $('#test3').html("test3-go");
                 //var toSendString = JSON.stringify(data);
-                $.post("test-ajax.php", searchTxt, function(res) {
-                    $('#showthis').html("yayyy it works : " . res);
-                });
-                
+                sendValue(searchTxt);
                 $('#test4').html("test4-go");
                 
+        });
     });
+
+    function sendValue(str) {
+        $.post("test-ajax.php", // ajax file
+        { sendValue: str }, // create object 
+        function(data){ //function called when server returns value
+            $('#showthis').html(data.returnValue);
+        },
+        "json" // how data is formatted in return from server
+        );
+    }
     
     function showResult(res) {
         $("#showthis").html("Response: " + res);
