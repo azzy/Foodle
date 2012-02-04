@@ -35,12 +35,11 @@
     </div><!-- end content-area -->
     <a href='./index.php'><img src="./images/left.png" id="nav-left" /></a>
     <a href='javascript: submitform()'><img src="./images/right.png" id="nav-right" /></a>
-
-<?php
-    require_once "footer.php";
-?>
 <script type="text/javascript">
     <!--function submitform() {
     document.input.submit();
   }//-->
 </script>
+<?php
+    require_once "footer.php";
+?>
