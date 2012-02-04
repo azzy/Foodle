@@ -69,7 +69,7 @@
         $('#test2').html("here-2");
         
     });
-    //window.onload=start;
+    window.onload=start;
     
     function addYelp(str) {
         $.post("initRest.php", //ajax file
@@ -79,7 +79,7 @@
             $('#test4').html(data.num);
             $('#yelpratingimg').html(data.0.name);
             for (var i = 0; i < 8; i++) {
-                $('<li>').addClass("restaurant").html(data.$i.name).appendTo('#restlist');
+                //$('<li>').addClass("restaurant").html(data.$i.name).appendTo('#restlist');
                 $("<li>").addClass("restaurant").text(data.$i.name).appendTo("#restlist");
             }
         },
