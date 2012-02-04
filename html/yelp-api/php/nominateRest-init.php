@@ -21,7 +21,7 @@
         <title>JQuery</title>
     </head>
 
-    <body>
+    <body onload=start()">
         
         <h1 id="maintitle" class="aheader">Search for your restaurant</h1>
 
@@ -69,7 +69,7 @@
         $('#test2').html("here-2");
         
     });
-    window.onload=start;
+    //window.onload=start;
     
     function addYelp(str) {
         $.post("initRest.php", //ajax file
