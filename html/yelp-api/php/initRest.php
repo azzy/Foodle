@@ -70,7 +70,7 @@ for ($i = 0; $i < 10; $i++) {
 echo "<br><br>";
 echo "here";
 echo json_decode(json_encode($arr));
-$arr[0] = array("name"=>"testname", "id"=>"testid");
+//$arr[0] = array("name"=>"testname", "id"=>"testid");
 echo $arr;
 
 
