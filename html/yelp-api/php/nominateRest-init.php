@@ -30,11 +30,13 @@
             $.post("initRest.php", //ajax file
                 { sendValue: str },
                 function(data) {
-                  alert("here");
-		  for (var i=0; i < data.num; i++) {
-                    alert(data[i].name);
-		  }
-                    alert(data[0].name);
+                    alert("here");
+                    for (var i=0; i < data.num; i++) {
+                    
+                
+                    $("<li>").addClass("restaurant").html(data.$i.name).appendTo("#restlist");
+                    }
+            
                     
                 },
                 "json"
