@@ -177,13 +177,13 @@
         "json" // how data is formatted in return from server
         );
     }
-        
+    var dataStuff;   
     $('#add').click(function () {
                 $('.sec').toggle();
                 $('#search').toggle();
                 // info in box to list
                 var yelpdata = $('#yelpdata').val(); // yelp data info -- name and id?    
-                $('#test5').html($('#yelpdata').val());
+                $('#test5').html(dataStuff);
                 //create a container for the new comment
                 var li = $("<li>").addClass("restaurant").appendTo("#restlist");            
                 //add author name and comment to container
@@ -197,6 +197,7 @@
         $.post("searchRest.php", //ajax file
         { sendValue: str },
         function(data) {
+            dataStuff = data;
             $('<p>').addClass("yelpname").html(data.returnValueName + " " + data.returnValueId).appendTo('#yelpdata');
             $('<p>').addClass("yelprating").html(data.returnValueRating).appendTo('#yelpdata');
             $('<p>').addClass("yelpratingimg").html("<img src=" + data.returnValueRatingImg + " alt='rating'>").appendTo('#yelpdata');
