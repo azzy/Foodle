@@ -6,25 +6,6 @@ function add_field()
     document.getElementById('emails-form').appendChild(div1);
 }
 
-//Initialize the page (This function runs on pageload)
-$(function () {
-    $('.sec').toggle();
-});
-
-// when doc is ready, if search button is clicked retrieve yelp info
-$(document).ready(function() {
-    $('#search').click(function () {
-        // toggle on secondary buttons, toggle off main search button
-        $('.sec').toggle();
-        $('#search').toggle();
-        // retrieve the search text
-        var searchTxt =  $("#searchstuff").find("textarea").val();
-        // get yelp data on the search text
-        getYelp(searchTxt);
-        
-    });
-});
-
 // click on the add button to add yelp info to the html list    
 $('#add').click(function () {
     // toggle secondary keys off and search key on
