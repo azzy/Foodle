@@ -58,16 +58,22 @@ $num = 10; // number of restaurants to return
 $unsigned_url = "http://api.yelp.com/v2/search?&location=".$loc."&limit=".$num."&category_filter=food,restaurants";
 $data = access($unsigned_url);
 $response = json_decode($data);
-echo "started";
+echo "started<br>";
 $arr = array("num"=>$num);
-echo $arr;
+print_r($arr);
+$arr2 = array("foo" => "bar", 12 => true);
+echo $arr2["foo"];
 /*
 for ($i = 0; $i < 10; $i++) {
     $arrRest = array("name"=>name($response, $i), "id"=>id($response, $i), "rating"=>rating($response, $i), "ratingimg"=>ratingimg($response, $i), "snippet"=>snippet($response, $i), "categories"=>($response, $i));
     $arr[$i] = $arrRest;
 }
 */
-echo json_encode($arr);
+echo "<br><br>";
+echo "here";
+print_r(json_decode(json_encode($arr)));
+$arr[0] = array("name"=>"testname", "id"=>"testid");
+print_r(json_decode(json_encode($arr)));
 
 
 
