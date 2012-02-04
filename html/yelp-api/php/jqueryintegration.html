@@ -177,20 +177,22 @@
         "json" // how data is formatted in return from server
         );
     }
-    var dataStuff;   
+       
     $('#add').click(function () {
                 $('.sec').toggle();
                 $('#search').toggle();
                 // info in box to list
-                var yelpdata = $('#yelpdata').val(); // yelp data info -- name and id?    
-                $('#test5').html(dataStuff);
+                //var yelpdata = $('#yelpdata').val(); // yelp data info -- name and id?    
+                //$('#test5').html(dataStuff);
                 //create a container for the new comment
-                var li = $("<li>").addClass("restaurant").appendTo("#restlist");            
+                //var li = $("<li>").addClass("restaurant").appendTo("#restlist");            
                 //add author name and comment to container
-                $("<li>").text(yelpdata).appendTo(li);
+                //$("<li>").text(yelpdata).appendTo(li);
                 //empty inputs
-                $("#searchstuff").find("textarea").val("");
-                $('#yelpdata').html("");
+                //$("#searchstuff").find("textarea").val("");
+                //$('#yelpdata').html("");
+                var searchTxt =  $("#searchstuff").find("textarea").val();
+                listYelp(searchTxt);
     });
     // get data from #yelpdata field
     function getYelp(str) {
@@ -202,12 +204,24 @@
             $('<p>').addClass("yelprating").html(data.returnValueRating).appendTo('#yelpdata');
             $('<p>').addClass("yelpratingimg").html("<img src=" + data.returnValueRatingImg + " alt='rating'>").appendTo('#yelpdata');
             $('<p>').addClass("yelpsnippet").html(data.returnValueSnippet).appendTo('#yelpdata');
-            //$('#yelprating').html(data.returnValueRating);
-            //$('#yelpratingimg').html("<img src=" + data.returnValueRatingImg + " alt='rating'>");
-            //$('#yelpsnippet').html(data.returnValueSnippet + "<br>");
         },
         "json"
         );
+    }
+    
+    function listYelp(str) {
+        $.post("searchRest.php", 
+        { sendValue : str },
+        function(data) {
+            //var li = $("<li>").addClass("restaurant");            
+            //add author name and comment to container
+            $("<li>").addClass("restaurant").text(data.returnValueName + " " + data.returnValueId).appendTo("#restlist");
+            //empty inputs
+            $("#searchstuff").find("textarea").val("");
+            $('#yelpdata').html("");
+        },
+        "json"
+        );            
     }
     
     $('#back').click(function () {
