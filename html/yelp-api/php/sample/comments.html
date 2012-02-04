@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="comments.css">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Asynchronous Comments</title>
+	</head>
+	<body>
+		<div id="content">
+			<h2>Some Content</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+		<div id="comments">
+			<h2>Reader Comments</h2>
+		</div>
+		<div id="leaveComment">
+			<h2>Leave a Comment</h2>
+			<div class="row"><label>Your Name:</label><input type="text"></div>
+			<div class="row"><label>Comment:</label><textarea cols="10" rows="5"></textarea></div>
+			<button id="add">Add</button>
+		</div>
+		<script type="text/javascript" src="jquery-1.3.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				
+				//retrieve comments to display on page
+				$.getJSON("comments.php?jsoncallback=?", function(data) {
+				 
+					//loop through all items in the JSON array
+					for (var x = 0; x < data.length; x++) {
+					
+						//create a container for each comment
+						var div = $("<div>").addClass("row").appendTo("#comments");
+						
+						//add author name and comment to container
+						$("<label>").text(data[x].name).appendTo(div);
+						$("<div>").addClass("comment").text(data[x].comment).appendTo(div);
+					}
+				});	
+				
+				//add click handler for button
+				$("#add").click(function() {
+				
+					//define ajax config object
+					var ajaxOpts = {
+						type: "post",
+						url: "addComment.php",
+						data: "&author=" + $("#leaveComment").find("input").val() + "&comment=" + $("#leaveComment").find("textarea").val(),
+						success: function(data) {
+							
+							//create a container for the new comment
+							var div = $("<div>").addClass("row").appendTo("#comments");
+						
+							//add author name and comment to container
+							$("<label>").text($("#leaveComment").find("input").val()).appendTo(div);
+							$("<div>").addClass("comment").text($("#leaveComment").find("textarea").val()).appendTo(div);
+							
+							//empty inputs
+							$("#leaveComment").find("input").val("");
+							$("#leaveComment").find("textarea").val("");
+						}
+					};
+					
+					$.ajax(ajaxOpts);
+				
+				});		
+			});			
+		</script>
+	</body>
+</html>

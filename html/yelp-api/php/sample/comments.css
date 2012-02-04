@@ -1,0 +1,11 @@
+body { font-family:verdana; font-size:11px; color:#ffffff; }
+#content { width:400px; height:195px; border:3px solid #000000; margin:0 auto 10px; font-size:13px; background-color:#575454; }
+#content p { padding:0 10px; }
+#comments { width:400px; border:3px solid #000000; margin:0 auto 10px; padding-top:5px; background-color:#575454; }
+.comment { background-color:#d4d7d6; border:1px solid #000000; padding:5px 0 5px 5px; color:#000000; }
+#leaveComment { width:400px; border:3px solid #000000; margin:0 auto; overflow:hidden; position:relative; background-color:#575454; }
+h2 { text-align:center; margin:5px 0 10px; }
+.row { padding-left:5px; margin-bottom:5px; clear:both; overflow:hidden; }
+.row label { width:100px; text-align:right; margin-right:5px; display:block; float:left; font-weight:bold; padding-top:5px; }
+.row input, .row textarea, .row div { width:280px; display:block; float:left; }
+#add { position:absolute; bottom:5px; left:60px; font-weight:bold; font-size:10px; width:45px; }
