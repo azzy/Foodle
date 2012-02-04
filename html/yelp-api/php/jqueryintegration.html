@@ -122,7 +122,7 @@
             
             <br>
             <br>
-            <p id = "showthis2">show this</p>
+            <p id = "showthis2">show this too</p>
         </div>
     </body>
 </html>
@@ -199,11 +199,11 @@
                 
                 $.ajax(ajaxOpts);
                 */
-                var toSend = {"search" : searchTxt,};
+                //var toSend = {"search" : searchTxt,};
                 $('#showthis').html(searchTxt);
-                var toSendString = JSON.stringify(data);
+                //var toSendString = JSON.stringify(data);
                 $('#showthis2').html(searchTxt);
-                $.post("test-ajax.php", { data : toSendString}, showResult, "text");
+                $.post("test-ajax.php", { data : searchTxt}, showResult, "text");
                 
                 $('#yelpdata').html("past ajax");
                 
