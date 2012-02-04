@@ -72,7 +72,9 @@
         $.post("initRest.php", //ajax file
         { sendValue: str },
         function(data) {
-            $('#yelpdata').html("here");
+            $('#yelpname').html("here");
+            $('#yelprating').html(data.num);
+            $('#yelpratingimg').html(data.0.name);
             for (var i = 0; i < data.num; i++) {
                 $('<li>').addClass("restaurant").html(data.$i.name).appendTo('#restlist');
             }
