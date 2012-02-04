@@ -1,3 +1,14 @@
+// function to retrieve yelp info
+function search () {
+  // toggle on secondary buttons, toggle off main search button
+  $('#addnew').toggle();
+  $('#yelpdata').toggle();
+  // retrieve the search text
+  var searchTxt =  $("#searchstuff").find("input").val();
+  // get yelp data on the search text
+  getYelp(searchTxt);
+}
+
 // click on the add button to add yelp info to the html list    
 $('#add').click(function () {
     // toggle secondary keys off and search key on
@@ -9,6 +20,7 @@ $('#add').click(function () {
     // add yelp data to the list
     listYelp(searchTxt);
 });
+
 // get yelp data for display
 function getYelp(str) {
     $.post("searchRest.php", //ajax file
@@ -24,6 +36,7 @@ function getYelp(str) {
            "json"
           );
 }
+
 // add yelp data to list
 function listYelp(str) {
     $.post("searchRest.php", 

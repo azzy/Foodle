@@ -272,6 +272,7 @@ body.emails input, body.emails textarea {
 /* Begin Rank Styles -----------------------------------------*/
 .rank #content-area {
     height: auto;
+    margin-bottom: 200px;
 }
 #list-1, #list-2 {
     width: 250px;
@@ -353,10 +354,22 @@ ul#sortable2 li.bin {
 //.bin-hover { background: url('../images/bin_hover.png') no-repeat; }
 /* Integrating Search in Rank Page Styles --------------------*/
 #searchstuff{
+    //border: 1px solid #000;
+    clear: both;
+    //margin-top: 30px;
+    padding: 25px 34px 25px 19px;
+    width: 227px;
 }
-#plus {
-    width: 40px;
+#searchstuff label { font-size: 14pt; margin-right: 10px; }
+#searchstuff input {
+    font-size: 10pt;
+    padding: 3px;
+    width: 125px;
+    margin: 0;
 }
+.rank #addnew { font-size: 14pt; margin-top: 10px; clear: both; text-align: right; }
+#addnew img{ margin-top: -5px; width: 30px; }
+#search { float: right; width: 33px; margin-top: -2px; }
 #yelpdata {
     z-index: 300;
     position: absolute;
