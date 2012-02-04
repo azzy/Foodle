@@ -102,6 +102,6 @@ $(document).ready(function() {
     </script>
 
     <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
-    <a href='#<?php /*echo "./email.php?type=$type&userkey=$userkey";*/ ?>'*/><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
+    <a href='<?php echo "./email.php?type=$type&userkey=$userkey"; ?>'><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
     
     <?php include("footer.php"); ?>
