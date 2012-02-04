@@ -269,10 +269,10 @@ body.emails input, body.emails textarea {
 }
 
 /* End Emails Styles -----------------------------------------*/
-/* Begin Review Styles ---------------------------------------*/
-
-/* End Review Styles -----------------------------------------*/
 /* Begin Rank Styles -----------------------------------------*/
+.rank #content-area {
+    height: auto;
+}
 #list-1, #list-2 {
     width: 250px;
     height: 193px;
@@ -351,6 +351,30 @@ ul#sortable2 li.bin {
     list-style: none;
 }
 //.bin-hover { background: url('../images/bin_hover.png') no-repeat; }
+/* Integrating Search in Rank Page Styles --------------------*/
+#searchstuff{
+}
+#plus {
+    width: 40px;
+}
+#yelpdata {
+    z-index: 300;
+    position: absolute;
+    top: 50%
+    left: 50%
+    width: 300px;
+    height: 200px;
+    overflow-y: auto;
+    text-align: center;
+    background-color: #6EAF22;
+    margin: -100px 0 0 -150px;
+    padding: 20px;
+   // font-size: 12pt;
+   // line-height: 1.3em;
+    box-shadow: 0 -1px 1px 0 #211F07;
+    -moz-box-shadow: 0px -1px 1px 0 #211F07;
+    -webkit-box-shadow: 0px -1px 1px 0 #211F07;
+}
 /* End Rank Styles -------------------------------------------*/
 /* Begin Results Styles --------------------------------------*/
 body.results div.floatleft,

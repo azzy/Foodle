@@ -72,6 +72,15 @@
 	<li class="bin">Drop selections here</li>
    </ul>
     </div>
+    
+    <div id="searchstuff">
+      <div class="searchtext"><label>Search:</label><textarea id = "searchtxt" cols="20" rows="1"></textarea></div>
+      <button id="search">Search</button>
+    
+    <div class="sec">
+    <!-- <img src="plus-sm.png" alt="plus" id="plus"/><img src="X.jpg" alt="x" id="x"/> -->
+    <button id="add">Add To List</button> <button id="back">Back</button>
+    </div>
 
     </div>
     <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
@@ -104,5 +113,25 @@ if (this == event.target) $(this).children('ul').toggle();
 });
 });
 });
+
+//Initialize the page (This function runs on pageload)
+$(function () {
+    $('.sec').toggle();
+});
+
+// when doc is ready, if search button is clicked retrieve yelp info
+$(document).ready(function() {
+    $('#search').click(function () {
+        // toggle on secondary buttons, toggle off main search button
+        $('.sec').toggle();
+        $('#search').toggle();
+        // retrieve the search text
+        var searchTxt =  $("#searchstuff").find("input").val();
+        // get yelp data on the search text
+        getYelp(searchTxt);
+        
+    });
+});
+
 //-->
 </script>
