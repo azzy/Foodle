@@ -377,11 +377,14 @@ ul#sortable2 li.bin {
     width: 200px;
     height: 200px;
     overflow-y: auto;
-    background-color: #FFFF00;
-    color: #39B54A;
+    background: url('../images/bluec.jpg') #0071BC;
+    color: #fff;
     text-shadow: 0px -1px 0.5px #04680E;
-    margin: -100px 0 0 -200px;
+    margin: -100px 0 0 -100px;
     padding: 20px;
+    border-radius:15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
     box-shadow: 0px 4px 8px 0 #211F07;
     -moz-box-shadow: 0px 4px 8px 0 #211F07;
     -webkit-box-shadow: 0px 4px 8px 0 #211F07;
