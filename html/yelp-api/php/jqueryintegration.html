@@ -82,9 +82,11 @@
         <h3 class="aheader">But that doesn't make sense</h3>
 
         <ul id="restlist">
+            <div id="restlist-div">
             <li class="restaurant">Rest1</li>
             <li class="restaurant">Rest2</li>
             <li class="restaurant">Rest3</li>
+            </div>
         </ul>
 
          <div class="action">
@@ -194,11 +196,13 @@
         $.post("searchRest.php", //ajax file
         { sendValue: str },
         function(data) {
-            $('#showthis').html("hmmm");
-            $('#yelpname').html(data.returnValueName + " " + data.returnValueId);
-            $('#yelprating').html(data.returnValueRating);
-            $('#yelpratingimg').html("<img src=" + data.returnValueRatingImg + " alt='rating'>");
-            $('#yelpsnippet').html(data.returnValueSnippet + "<br>");
+            $('<p>').addClass("yelpname").html(data.returnValueName + " " + data.returnValueId).appendTo('#yelpdata');
+            $('<p>').addClass("yelprating").html(data.returnValueRating).appendTo('#yelpdata');
+            $('<p>').addClass("yelpratingimg").html("<img src=" + data.returnValueRatingImg + " alt='rating'>").appendTo('#yelpdata');
+            $('<p>').addClass("yelpsnippet").html(data.returnValueSnippet).appendTo('#yelpdata');
+            //$('#yelprating').html(data.returnValueRating);
+            //$('#yelpratingimg').html("<img src=" + data.returnValueRatingImg + " alt='rating'>");
+            //$('#yelpsnippet').html(data.returnValueSnippet + "<br>");
         },
         "json"
         );
