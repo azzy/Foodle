@@ -21,6 +21,7 @@
         <title> JQuery</title>
         <script type="text/javascript">
         function codeAddress() {
+            alert("here");
             doThis('08544');
         }
         function doThis(str) {
@@ -29,8 +30,11 @@
             $.post("initRest.php", //ajax file
                 { sendValue: str },
                 function(data) {
-                    <?php print_r(json_decode(data));?>
-                    alert(data.num);
+                  alert("here");
+		  for (var i=0; i < data.num; i++) {
+                    alert(data[i].name);
+		  }
+                    alert(data[0].name);
                     
                 },
                 "json"
