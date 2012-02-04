@@ -60,9 +60,9 @@
 
         <ul id="restlist">
             <div id="restlist-div">
-            <li class="restaurant">Restaurant 1</li>
-            <li class="restaurant">Restaurant 2</li>
-            <li class="restaurant">Restaurant 3</li>
+            <li class="restaurant">Rest1</li>
+            <li class="restaurant">Rest2</li>
+            <li class="restaurant">Rest3</li>
             </div>
         </ul>
 
@@ -84,6 +84,19 @@
             </p>
             <br>
             <br>
+            <p id = "showthis">show this</p>
+            <br><br>
+            <p id = "showthis2">show this 2</p>
+            <br><br>
+            <p id = "test1">test1</p>
+            <br><br>
+            <p id = "test2">test2</p>
+            <br><br>
+            <p id = "test3">test3</p>
+            <br><br>
+            <p id = "test4">test4</p>
+            <br><br>
+            <p id = "test5">test5</p>
         </div>
     </body>
 </html>
@@ -98,7 +111,6 @@
         $('.sec').toggle();
     });
     
-    // when doc is ready, if search button is clicked retrieve yelp info
     $(document).ready(function() {
         $('#search').click(function () {
                 // toggle on secondary buttons, toggle off main search button
@@ -111,18 +123,34 @@
                 
         });
     });
+
+    function sendValue(str) {
+        $.post("test-ajax.php", // ajax file
+        { sendValue: str }, // create object 
+        function(data){ //function called when server returns value
+            $('#showthis').html(data.returnValue);
+        },
+        "json" // how data is formatted in return from server
+        );
+    }
        
     $('#add').click(function () {
-                // toggle secondary keys off and search key on
                 $('.sec').toggle();
                 $('#search').toggle();
                 // info in box to list
-                
+                //var yelpdata = $('#yelpdata').val(); // yelp data info -- name and id?    
+                //$('#test5').html(dataStuff);
+                //create a container for the new comment
+                //var li = $("<li>").addClass("restaurant").appendTo("#restlist");            
+                //add author name and comment to container
+                //$("<li>").text(yelpdata).appendTo(li);
+                //empty inputs
+                //$("#searchstuff").find("textarea").val("");
+                //$('#yelpdata').html("");
                 var searchTxt =  $("#searchstuff").find("textarea").val();
-                // add yelp data to the list
                 listYelp(searchTxt);
     });
-    // get yelp data for display
+    // get data from #yelpdata field
     function getYelp(str) {
         $.post("searchRest.php", //ajax file
         { sendValue: str },
@@ -137,7 +165,7 @@
         "json"
         );
     }
-    // add yelp data to list
+    
     function listYelp(str) {
         $.post("searchRest.php", 
         { sendValue : str },
