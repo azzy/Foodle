@@ -21,7 +21,10 @@
         <title> JQuery</title>
         <script type="text/javascript">
         function codeAddress() {
-            alert('ok');
+            doThis('ok');
+        }
+        function doThis(str) {
+            alert(str);
         }
         window.onload = codeAddress;
         </script>
