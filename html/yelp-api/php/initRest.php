@@ -59,6 +59,7 @@ $unsigned_url = "http://api.yelp.com/v2/search?&location=".$loc."&limit=".$num."
 $data = access($unsigned_url);
 $response = json_decode($data);
 print_r($response);
+$num = count($response->businesses);
 echo "<br><br>";
 echo "started<br>";
 $arr = array("num"=>$num);
@@ -66,7 +67,7 @@ print_r($arr);
 $arr2 = array("foo" => "bar", 12 => true);
 echo $arr2["foo"];
 
-for ($i = 0; $i < 10; $i++) {
+for ($i = 0; $i < $num; $i++) {
     //$arrRest = array("name"=>name($response, $i), "id"=>id($response, $i), "rating"=>rating($response, $i), "ratingimg"=>ratingimg($response, $i), "snippet"=>snippet($response, $i), "categories"=>($response, $i));
     $arrRest = array("name"=>"test", "id"=>"testid");
     $arr[$i] = $arrRest;
