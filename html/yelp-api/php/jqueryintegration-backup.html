@@ -119,16 +119,10 @@
             <br>
             <br>
             <p id = "showthis">show this</p>
-            <br><br>
-            <p id = "test1">test1</p>
-            <br><br>
-            <p id = "test2">test2</p>
-            <br><br>
-            <p id = "test3">test3</p>
-            <br><br>
-            <p id = "test4">test4</p>
-            <br><br>
-            <p id = "test5">test5</p>
+            
+            <br>
+            <br>
+            <p id = "showthis2">show this too</p>
         </div>
     </body>
 </html>
@@ -142,23 +136,78 @@
     $(function () {
         $('.sec').toggle();
     });
+
+    //$(‘.searchbutton’).click(function() {
+        //var searchTxt = $('#searchtext');
+        //var data = $.get("searchRest.php", searchTxt);
+        //var data = "lalalalalalalalalalala";
+        //$('#yelpdata').toggle(); 
+        //$('#yelpdata').html(data);
+        //$('#searchbutton').toggle();
+        //$('.sec').toggle(); 
+    //});
     
     $('#search').click(function () {
                 $('.sec').toggle();
                 $('#search').toggle();
                 //var searchTxt = $.get("searchRest.php", searchTxt);
                 
-               $('#test1').html("test1-go");
+               $('#yelpdata').html("here??");
                var searchTxt =  $("#searchstuff").find("textarea").val();
-                $('#test2').html("test2-go");
-                //var toSend = {"search" : searchTxt,};
-                $('#test3').html("test3-go");
-                //var toSendString = JSON.stringify(data);
-                $.post("test-ajax.php", searchTxt, function(res) {
-                    $('#showthis').html("yayyy it works : " . res);
-                });
+                $('#yelpdata').html(searchTxt);
+              
+
                 
-                $('#test4').html("test4-go");
+               /*
+                var ajaxOpts = {
+                    type: "post",
+                    url: "searchRest.php",
+                    dataType : 'json',
+                    data: { search : searchTxt},
+                    success : function(data) {
+                        if (data.error === true) {
+                            $('#yelpdata').html(searchTxt);
+                        }
+                        else {
+                            $('#yelpdata').html("hereeee").show(500);
+                            $('#yelpdata').html(data.response.name).show(500);
+                            $('#yelpdata').html(data.response).show(500);
+                            $('#showthis').toggle();
+                        }
+                    },
+                    error : function(XMLHttpRequest, textStatus, errorThrown) {
+                        $('#yelpdata').html("I got nothin'").show(500);
+                    }
+                };
+                */
+                /*
+                var ajaxOpts = {
+                    type : "post",
+                    url : "test-ajax.php",
+                    dataType : "json",
+                    data : "&id=" + "12345",
+                    success : function(data) {
+                        $('#showthis2').html("okay...");
+                        //var show = data.name + "<- name; id -> " + data.id;
+                        $('#showthis').html("  ");
+                        $('#showthis').html(data.name);
+                        
+                    }
+                };
+                
+                $('#yelpdata').html(searchTxt);
+                
+                $.ajax(ajaxOpts);
+                */
+                //var toSend = {"search" : searchTxt,};
+                $('#showthis').html(searchTxt);
+                //var toSendString = JSON.stringify(data);
+                $('#showthis2').html(searchTxt);
+                $.post("test-ajax.php", { data : searchTxt}, function(res) {
+                    $('#showthis').html("yayyy it works");
+                }, "text");
+                
+                $('#yelpdata').html("past ajax");
                 
     });
     
@@ -172,22 +221,59 @@
                 $('.sec').toggle();
                 $('#search').toggle();
                 // info in box to list
-                var yelpdata = "yelpdata"; // yelp data info -- name and id?                
-                //create a container for the new comment
-                var li = $("<li>").addClass("restaurant").appendTo("#restlist");            
-                //add author name and comment to container
-                $("<li>").text(yelpdata).appendTo(li);
-                //empty inputs
-                $("#searchstuff").find("textarea").val("");
+                
+                var yelpdata = "yelpdata"; // yelp data info -- name and id?
+                
+                /*
+                //define ajax config object
+                var ajaxOpts = {
+                    type: "post",
+                    url: "addToList.php",
+                    dataType : 'json',
+                    data: "&newlistitem=" + $("#searchstuff").find("textarea").val(),
+                    success: function(data) {
+                        //create a container for the new comment
+                        var li = $("<li>").addClass("restaurant").appendTo("#restlist");
+                    
+                        //add author name and comment to container
+                        $("<li>").text($("#searchstuff").find("textarea").val()).appendTo(li);
+                        
+                        //empty inputs
+                        $("#searchstuff").find("textarea").val("");
+
+                    }
+                    error : function(data) {
+                        alert("There was an error with your search request");
+                    }
+                };
+                
+                $.ajax(ajaxOpts);
+                */
+
                 $('#yelpdata').html("");
     });
     
     $('#back').click(function () {
                 $('.sec').toggle();
                 $('#search').toggle();
-                $("#searchstuff").find("textarea").val("");
                 $('#yelpdata').html("");
     });
+
+   
+    
+/*
+    $('#plus').click(function() {
+        // add new list item
+        alert("kk");
+    }); 
+
+    $('#xbutton').click(function() {
+        $('#yelpdata').toggle(); 
+        $('#plus').toggle(); 
+        $('#xbutton').toggle(); 
+        $('#searchbutton').toggle();  
+    }); 
+*/
 
 
 </script>
