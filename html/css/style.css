@@ -328,12 +328,13 @@ span.names {
 }
 .bin, .bin-hover {
     width: 230px;
-    height: 39px;
+    height: 29px;
     margin-bottom: 2px;
 }
 ul#sortable1 li.bin,
 ul#sortable2 li.bin {     
-    padding: 10px 0px 5px 20px;
+    padding-top: 10px;
+    text-align: center;
     background: url('../images/bin_hover.png') no-repeat; 
     list-style: none;
 }
