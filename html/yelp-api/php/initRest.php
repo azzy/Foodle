@@ -60,7 +60,7 @@ $data = access($unsigned_url);
 $response = json_decode($data);
 echo "started<br>";
 $arr = array("num"=>$num);
-echo $arr;
+print_r($arr);
 $arr2 = array("foo" => "bar", 12 => true);
 echo $arr2["foo"];
 /*
@@ -71,9 +71,9 @@ for ($i = 0; $i < 10; $i++) {
 */
 echo "<br><br>";
 echo "here";
-echo json_decode(json_encode($arr));
-//$arr[0] = array("name"=>"testname", "id"=>"testid");
-echo $arr;
+print_r(json_decode(json_encode($arr)));
+$arr[0] = array("name"=>"testname", "id"=>"testid");
+print_r(json_decode(json_encode($arr)));
 
 
 
