@@ -11,23 +11,28 @@ function sendEmail($to, $url, $from)
 
 
 <?php
+function sendPollEmail($pollid)
+{
 include("dbinfo.inc.php");
 mysql_connect(localhost,$username,$password);
 @mysql_select_db("foodle") or die( "Unable to select database");
-$query="SELECT * FROM users";
+$query="SELECT * FROM users WHERE pollid='$id'";
 $result=mysql_query($query);
 $num=mysql_numrows($result); 
 mysql_close();
 $i=0;
 while ($i < $num) {
-$to=mysql_result($result,$i,"email");
-$c = mysql_result($result,$i,"pollid");
-$j = 0;
-while ($j < $num){
-$from=mysql_result($result,$i,"email");
-if ((mysql_result($result,$i,"usertype") == 'a') && (mysql_result($result,$i,"pollid") == $c)) sendEmail($to, "www.choosine.com", $from)
-++$j;
-}
+if((mysql_result($result,$i,"usertype") == 'a') $from=mysql_result($result,$i,"email");
 ++$i;
-} 
+}
+while ($i < $num) {
+$to =mysql_result($result,$i,"email");
+sendEmail($to, "www.choosine.com", $from);
+++$i;
+}
+}
+?>
+
+<?php
+sendPollEmail("14");
 ?>
