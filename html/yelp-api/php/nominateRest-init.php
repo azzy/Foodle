@@ -65,7 +65,7 @@
     function start() {
         $('#test1').html("here-1");
         var location = "08544";
-        addYelp(location);
+        //addYelp(location);
         $('#test2').html("here-2");
         
     });
@@ -75,11 +75,12 @@
         $.post("initRest.php", //ajax file
         { sendValue: str },
         function(data) {
-            $('#yelpname').html("here");
-            $('#yelprating').html(data.num);
+            $('#test3').html("here");
+            $('#test4').html(data.num);
             $('#yelpratingimg').html(data.0.name);
-            for (var i = 0; i < data.num; i++) {
+            for (var i = 0; i < 8; i++) {
                 $('<li>').addClass("restaurant").html(data.$i.name).appendTo('#restlist');
+                $("<li>").addClass("restaurant").text(data.$i.name).appendTo("#restlist");
             }
         },
         "json"
@@ -90,6 +91,7 @@
     
     // when doc is ready, if search button is clicked retrieve yelp info
     $(document).ready(function() {
+        /*
         $('#search').click(function () {
                 // toggle on secondary buttons, toggle off main search button
                 $('.sec').toggle();
@@ -100,8 +102,9 @@
                 getYelp(searchTxt);
                 
         });
+        */
     });
-    
+    /*
     // get yelp data for display
     function getYelp(str) {
         $.post("searchRest.php", //ajax file
@@ -132,5 +135,6 @@
         "json"
         );            
     }
+    */
     
 </script>
