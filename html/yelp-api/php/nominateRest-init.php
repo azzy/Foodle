@@ -74,7 +74,7 @@
         function(data) {
             $('#yelpdata').html(data);
             for (var i = 0; i < data.num; i++) {
-                $('<li>').addClass("restaurant").html(data[$i].name).appendTo('#restlist');
+                $('<li>').addClass("restaurant").html(data.$i.name).appendTo('#restlist');
             }
         },
         "json"
