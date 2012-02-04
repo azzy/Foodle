@@ -64,6 +64,7 @@ function getUserInfo($urlkey) {
 
     $userid = -1;
     if ($stmt = $db->prepare("SELECT * FROM users WHERE urlkey = ".$urlkey)) {
+      $stmt->execute();
       $row = $stmt->fetch();
       if ($row) {
 	return $row;
