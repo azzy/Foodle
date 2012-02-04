@@ -69,7 +69,7 @@ $arr2 = array("foo" => "bar", 12 => true);
 
 for ($i = 0; $i < $num; $i++) {
     //$arrRest = array("name"=>name($response, $i), "id"=>id($response, $i), "rating"=>rating($response, $i), "ratingimg"=>ratingimg($response, $i), "snippet"=>snippet($response, $i), "categories"=>($response, $i));
-    $arrRest = array("name"=>name($response, $i), "id"=>id($response, $i));
+    $arrRest = array("name"=>name($response, $i), "id"=>id($response, $i), "rating"=>rating($response, $i), "ratingimg"=>ratingimg($response, $i));
     $arr[$i] = $arrRest;
 }
 
