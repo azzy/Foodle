@@ -18,34 +18,7 @@
 
 
     <head>
-        <title> JQuery</title>
-        <script type="text/javascript">
-        function codeAddress() {
-            alert("here");
-             $("<li>").addClass("restaurant").html("laaa").appendTo("#restlist");
-            doThis('08544');
-        }
-        function doThis(str) {
-            alert(str);
-            
-            $.post("initRest.php", //ajax file
-                { sendValue: str },
-                function(data) {
-                    alert("here");
-                    for (var i=0; i < data.num; i++) {
-                    
-		      alert(data[i].name); 
-                      $("<li>").addClass("restaurant").html(data[i].name).appendTo("#restlist");
-                    }
-            
-                    
-                },
-                "json"
-                );
-            
-        }
-        window.onload = codeAddress;
-        </script>
+        <title>JQuery</title>
     </head>
 
     <body>
@@ -59,14 +32,15 @@
             <li class="restaurant">Restaurant 3</li>
             </div>
         </ul>
-        
-        <p id="test1">test1</p>
-        <p id="test2">test2</p>
-        <p id="test3">test3</p>
-        <p id="test4">test4</p>
 
         <div id="searchstuff">
+            <div class="searchtext"><label>Search:</label><textarea id = "searchtxt" cols="20" rows="1"></textarea></div>
+			<button id="search">Search</button>
             
+            <div class="sec">
+                <!-- <img src="plus-sm.png" alt="plus" id="plus"/><img src="X.jpg" alt="x" id="x"/> -->
+                <button id="add">Add To List</button> <button id="back">Back</button>
+            </div>
             <p> Yelp Data should print under here </p>
             <p id = "yelpdata">
                 <p id="yelpname"></p>
@@ -75,8 +49,6 @@
                 <p id="yelpsnippet"></p>  
                 <p id="yelpcat"></p>                  
             </p>
-            
-            
             <br>
             <br>
         </div>
@@ -89,7 +61,53 @@
 <script type="text/javascript">
 
     //Initialize the page (This function runs on pageload)
-    /*
+    $(function () {
+        $('.sec').toggle();
+        var location = "08544";
+        addYelp = addYelp(location);
+        
+    });
+    
+    function addYelp(str) {
+        $.post("initRest.php", //ajax file
+        { sendValue: str },
+        function(data) {
+            $('#yelpdata').html(data);
+            for (var i = 0; i < data.num; i++) {
+                $('<li>').addClass("restaurant").html(data[$i].name).appendTo('#restlist');
+            }
+        },
+        "json"
+        );
+    }
+    
+    
+    
+    // when doc is ready, if search button is clicked retrieve yelp info
+    $(document).ready(function() {
+        $('#search').click(function () {
+                // toggle on secondary buttons, toggle off main search button
+                $('.sec').toggle();
+                $('#search').toggle();
+                // retrieve the search text
+                var searchTxt =  $("#searchstuff").find("textarea").val();
+                // get yelp data on the search text
+                getYelp(searchTxt);
+                
+        });
+    });
+    
+    // click on the add button to add yelp info to the html list    
+    $('#add').click(function () {
+                // toggle secondary keys off and search key on
+                $('.sec').toggle();
+                $('#search').toggle();
+                // info in box to list
+                
+                var searchTxt =  $("#searchstuff").find("textarea").val();
+                // add yelp data to the list
+                listYelp(searchTxt);
+    });
     // get yelp data for display
     function getYelp(str) {
         $.post("searchRest.php", //ajax file
@@ -120,6 +138,11 @@
         "json"
         );            
     }
-    */
     
+    $('#back').click(function () {
+                $('.sec').toggle();
+                $('#search').toggle();
+                $("#searchstuff").find("textarea").val("");
+                $('#yelpdata').html("");
+    });
 </script>
