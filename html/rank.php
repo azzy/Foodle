@@ -74,58 +74,52 @@
     </div>
     
     <div id="searchstuff">
-      <div class="searchtext"><label>Search:</label><input id="searchtxt" cols="20" rows="1" /></div>
-      <a href="javascript:search();"><img id="search" src="./images/search.png" /></a>
-    
-    <div id="addnew"><img src="./images/add.png" />Add To List</div>
+      <div class="searchtext"><label>Search:</label>
+      <input id="searchtxt" cols="20" rows="1" /></div>
+      <a href="javascript: search()"><img id="search" src="./images/search.png" /></a>
+      <a href="javascript: addYelpInfo()"><div id="addnew">
+    <img src="./images/add.png" />Add To List</div></a>
+    <ul id="yelpdata">
+    <li class="yelpname"></li>
+    <li class="yelprating"></li>
+    <li class="yelpsnippet"></li>
+    <li class="yelpcat"></li>
+    </ul>
 
     </div>
     <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
     <a href='<?php echo "./email.php?type=$type&userkey=$userkey"; ?>'><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
-    
-<?php
-  include("footer.php");
-?>
 <script type="text/javascript">
 <!--
 $( function() {
-$('#sortable1, #sortable2').sortable( {
-cursor: 'move',
-connectWith: ".connectedSortable",
-dropOnEmpty: true
-});
-$("#sortable1, #sortable2").disableSelection();
+  //initialize sortables
+  $('#sortable1, #sortable2').sortable( {
+  cursor: 'move',
+  connectWith: ".connectedSortable",
+  dropOnEmpty: true
+  });
+  $("#sortable1, #sortable2").disableSelection();
+
+  // initialize search text
+  $('#addnew').hide();
+  $('#yelpdata').hide();
+
+  // initialize expand/collapse list
+  $('li.heading').children('.info').hide();
+  $('li.heading').each(
+  function(column) {
+  $(this).click(function(event) {
+  if (this == event.target) $(this).children('ul').toggle();
+  });
+  });
 });
 
+//function to save the newly sorted list
 function saveList() {
-$("#sortable2").sortable("serialize");
-}
-
-$(document).ready(function() {
-$('li.heading').children('.info').hide();
-$('li.heading').each(
-function(column) {
-$(this).click(function(event) {
-if (this == event.target) $(this).children('ul').toggle();
-});
-});
-});
-
-//Initialize the page (This function runs on pageload)
-$(function () {
-    $('.sec').toggle();
-});
-
-// when doc is ready, if search button is clicked retrieve yelp info
-
-function search () {
-    // toggle on secondary buttons, toggle off main search button
-    $('#addnew').toggle();
-    //$('#search').toggle();
-    // retrieve the search text
-    var searchTxt =  $("#searchstuff").find("input").val();
-    // get yelp data on the search text
-    getYelp(searchTxt);
+  $("#sortable2").sortable("serialize");
 }
 //-->
 </script>
+<?php
+  include("footer.php");
+?>

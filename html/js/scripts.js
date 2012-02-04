@@ -1,25 +1,36 @@
+// function to retrieve yelp info
+function search () {
+  // toggle on secondary buttons, toggle off main search button
+  $('#addnew').toggle();
+  $('#yelpdata').toggle();
+  // retrieve the search text
+  var searchTxt =  $("#searchstuff").find("input").val();
+  // get yelp data on the search text
+  getYelp(searchTxt);
+}
+
 // click on the add button to add yelp info to the html list    
-$('#add').click(function () {
+function addYelpInfo () {
     // toggle secondary keys off and search key on
-    $('.sec').toggle();
+    $('#addnew').toggle();
     $('#search').toggle();
     // info in box to list
     
-    var searchTxt =  $("#searchstuff").find("textarea").val();
+    var searchTxt =  $("#searchstuff").find("input").val();
     // add yelp data to the list
     listYelp(searchTxt);
-});
+}
+
 // get yelp data for display
 function getYelp(str) {
-    $.post("searchRest.php", //ajax file
+    $.post("../php/searchRest.php", //ajax file
            { sendValue: str },
            function(data) {
                dataStuff = data;
-               $('<p>').addClass("yelpname").html(data.returnValueName + " " + data.returnValueId).appendTo('#yelpdata');
-               $('<p>').addClass("yelprating").html(data.returnValueRating).appendTo('#yelpdata');
-               $('<p>').addClass("yelpratingimg").html("<img src=" + data.returnValueRatingImg + " alt='rating'>").appendTo('#yelpdata');
-               $('<p>').addClass("yelpsnippet").html(data.returnValueSnippet).appendTo('#yelpdata');
-               $('<p>').addClass("yelpcat").html(data.returnValueCategory).appendTo('#yelpdata');
+               $("#yelpdata li.yelpname").html(data.returnValueName + " " + data.returnValueId);
+	       $("#yelpdata li.yelprating").html(data.returnValueRating + '<img src="' + data.returnValueRatingImg + '" />');
+	       $("#yelpdata li.yelpsnippet").html(data.returnValueSnippet);
+	       $("#yelpdata li.yelpcat").html(data.returnValueCategory);
            },
            "json"
           );
@@ -33,7 +44,7 @@ function listYelp(str) {
                //add author name and comment to container
                $("<li>").addClass("restaurant").text(data.returnValueName + " " + data.returnValueId).appendTo("#restlist");
                //empty inputs
-               $("#searchstuff").find("textarea").val("");
+               $("#searchstuff").find("input").val("");
                $('#yelpdata').html("");
            },
            "json"

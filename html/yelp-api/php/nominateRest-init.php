@@ -21,30 +21,23 @@
         <title> JQuery</title>
         <script type="text/javascript">
         function codeAddress() {
-            //addYelp("08544");
-            alert('ok');
+            doThis('08544');
         }
-        /*
-        
-        function addYelp(str) {
-        $.post("initRest.php", //ajax file
-        { sendValue: str },
-        function(data) {
-            $('#test3').html("here");
-            $('#test4').html(data.num);
-            $('#yelpratingimg').html(data.0.name);
-            for (var i = 0; i < 8; i++) {
-                //$('<li>').addClass("restaurant").html(data.$i.name).appendTo('#restlist');
-                $("<li>").addClass("restaurant").text(data.$i.name).appendTo("#restlist");
-            }
-        },
-        "json"
-        );
+        function doThis(str) {
+            alert(str);
+            
+            $.post("initRest.php", //ajax file
+                { sendValue: str },
+                function(data) {
+                    alert(data.num);
+                    
+                },
+                "json"
+                );
+            
         }
-        */
         window.onload = codeAddress;
-    
-    </script>
+        </script>
     </head>
 
     <body>
