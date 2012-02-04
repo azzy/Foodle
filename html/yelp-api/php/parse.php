@@ -27,5 +27,13 @@ function ratingimgsm($response, $ind){
 function id($response, $ind){
   return "" .  $response->businesses[$ind]->id;
 }
+function categories($response, $ind){
+  $length = count($response->businesses[$ind]->categories);
+  $return = "";
+  for ($i = 0; $i <= $length; $i++) {
+    $return = $return . $response->businesses[$ind]->categories[$i][0];
+  }
+  return($return);
+}
 
 ?>

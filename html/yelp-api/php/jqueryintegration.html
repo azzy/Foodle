@@ -204,6 +204,7 @@
             $('<p>').addClass("yelprating").html(data.returnValueRating).appendTo('#yelpdata');
             $('<p>').addClass("yelpratingimg").html("<img src=" + data.returnValueRatingImg + " alt='rating'>").appendTo('#yelpdata');
             $('<p>').addClass("yelpsnippet").html(data.returnValueSnippet).appendTo('#yelpdata');
+            $('<p>').addClass("yelpcat").html(data.returnValueCategories).appendTo('#yelpdata');
         },
         "json"
         );
