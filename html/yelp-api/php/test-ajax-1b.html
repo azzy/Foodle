@@ -6,6 +6,10 @@
  
 <script type="text/javascript"><!--
 $(document).ready(function(){ 
+  if(JSON.stringify({ x: 5 }) === '{"x":5}'){
+    $('#fullresponse').html("yup yup");
+  }
+  
   var data = 
   { 
     "sales": [ 
@@ -15,6 +19,8 @@ $(document).ready(function(){
   }
   var dataString = JSON.stringify(data);
   $.post('simpleformSubmit.php', { data: dataString}, showResult, "text");
+  
+  
 });
  
 function showResult(res)
@@ -23,6 +29,7 @@ function showResult(res)
   var obj = JSON.parse(res);
   $("#sales1Lastname").html("Lastname of sales[1]: " +obj.sales[1].lastname);
 }
+
 //--></script>
 </head>
 <body>
