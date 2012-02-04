@@ -18,13 +18,13 @@
 
 
     <head>
-        <title>JQuery</title>
+        <title> JQuery</title>
         <script type="text/javascript">
         function codeAddress() {
             //addYelp("08544");
-            alert("ok");
+            alert('ok');
         }
-        window.onload = codeAddress;
+        
         
         function addYelp(str) {
         $.post("initRest.php", //ajax file
@@ -40,6 +40,8 @@
         },
         "json"
         );
+        
+        window.onload = codeAddress;
     }
     </script>
     </head>
@@ -85,56 +87,6 @@
 <script type="text/javascript">
 
     //Initialize the page (This function runs on pageload)
-    
-    /*
-    $(function() {
-        $('#test1').text("here-1");
-        var location = "08544";
-        //addYelp(location);
-        $('#test2').html("here-2");
-        
-    });
-    */
-    //window.onload=start;
-    
-    function addYelp(str) {
-        $.post("initRest.php", //ajax file
-        { sendValue: str },
-        function(data) {
-            $('#test3').html("here");
-            $('#test4').html(data.num);
-            $('#yelpratingimg').html(data.0.name);
-            for (var i = 0; i < 8; i++) {
-                //$('<li>').addClass("restaurant").html(data.$i.name).appendTo('#restlist');
-                $("<li>").addClass("restaurant").text(data.$i.name).appendTo("#restlist");
-            }
-        },
-        "json"
-        );
-    }
-    
-    
-    
-    // when doc is ready, if search button is clicked retrieve yelp info
-    $(document).ready(function() {
-        $('#test1').text("here-1");
-        var location = "08544";
-        //addYelp(location);
-        $('#test2').html("here-2");
-    
-        /*
-        $('#search').click(function () {
-                // toggle on secondary buttons, toggle off main search button
-                $('.sec').toggle();
-                $('#search').toggle();
-                // retrieve the search text
-                var searchTxt =  $("#searchstuff").find("textarea").val();
-                // get yelp data on the search text
-                getYelp(searchTxt);
-                
-        });
-        */
-    });
     /*
     // get yelp data for display
     function getYelp(str) {
