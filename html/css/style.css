@@ -293,7 +293,9 @@ ul.sort {
     list-style-image: none;
 }
 #sortable1, #sortable2 { list-style-type: none; }
-ul#results {
+ul#results,
+ul#sortable1,
+ul#sortable2 {
     list-style-type: circle;
     list-style-position: inside;
     margin-top: 5px;
@@ -331,8 +333,9 @@ span.names {
 }
 ul#sortable1 li.bin,
 ul#sortable2 li.bin {     
-    padding: 6px 0px 5px 16px;
+    padding: 10px 0px 5px 20px;
     background: url('../images/bin_hover.png') no-repeat; 
+    list-style: none;
 }
 //.bin-hover { background: url('../images/bin_hover.png') no-repeat; }
 /* End Rank Styles -------------------------------------------*/
