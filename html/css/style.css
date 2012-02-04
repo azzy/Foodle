@@ -293,10 +293,6 @@ ul.sort {
     list-style-image: none;
 }
 #sortable1, #sortable2 { list-style-type: none; }
-/*li.draggable {
-    padding: 5px;
-    margin-bottom: 5px;
-}*/
 ul#results {
     list-style-type: circle;
     list-style-position: inside;
@@ -333,7 +329,8 @@ span.names {
     height: 39px;
     margin-bottom: 2px;
 }
-.bin {     
+ul#sortable1 li.bin,
+ul#sortable2 li.bin {     
     padding: 6px 0px 5px 16px;
     background: url('../images/bin_hover.png') no-repeat; 
 }
