@@ -154,8 +154,8 @@
                 //var toSend = {"search" : searchTxt,};
                 $('#test3').html("test3-go");
                 //var toSendString = JSON.stringify(data);
-                $.post("test-ajax.php", { data : searchTxt}, function(res) {
-                    $('#showthis').html("yayyy it works");
+                $.post("test-ajax.php", searchTxt, function(res) {
+                    $('#showthis').html("yayyy it works : " . res);
                 });
                 
                 $('#test4').html("test4-go");
@@ -185,6 +185,7 @@
     $('#back').click(function () {
                 $('.sec').toggle();
                 $('#search').toggle();
+                $("#searchstuff").find("textarea").val("");
                 $('#yelpdata').html("");
     });
 
