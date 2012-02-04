@@ -58,6 +58,8 @@ $num = 10; // number of restaurants to return
 $unsigned_url = "http://api.yelp.com/v2/search?&location=".$loc."&limit=".$num."&category_filter=food,restaurants";
 $data = access($unsigned_url);
 $response = json_decode($data);
+print_r($response);
+echo "<br><br>";
 echo "started<br>";
 $arr = array("num"=>$num);
 print_r($arr);
