@@ -9,20 +9,20 @@
   $userkey = $_GET['userkey'];
 ?>
 <script type="text/javascript">
-<!--$( function() {
-$('#sortable1, #sortable2').sortable( {
-cursor: 'move',
-connectWith: ".connectedSortable",
-dropOnEmpty: true
-});
-$("#sortable1, #sortable2").disableSelection();
-});
+$( function() {
+  $('#sortable1, #sortable2').sortable( {
+    cursor: 'move',
+    connectWith: ".connectedSortable",
+    dropOnEmpty: true
+  });
+  $("#sortable1, #sortable2").disableSelection();
+}),
 
-/* TODO: also pass in the user key!! */
 function saveList() {
   
   alert($("#sortable2").sortable("toArray"));
   var jsonList = $("#sortable2").sortable("toArray");
+  jsonList.userkey = '<?php echo $userkey ?>';
   $.ajax({
     type: 'POST',
     traditional: true,
