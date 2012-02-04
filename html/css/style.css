@@ -29,6 +29,8 @@ div#wrapper {
     width: 90%;
     min-width: 950px;
     min-height: 100%;
+    height: auto !important;
+    height: 100%;
     margin: 0 auto;
     padding: 0;
     background: url('../images/gold.jpg') #FCEE21;
@@ -37,13 +39,21 @@ div#wrapper {
 #container {
     width: 900px;
     min-height: 100%;
+    height: auto !important;
+    height: 100%;
     margin: 0 auto;
-    padding-bottom: 40px;
     color: #fff;
     font: 14pt 'Rokkitt', helvetica, arial, sans-serif;
     text-align:center;
 }
-.text { margin-bottom: 27px; }
+body.initiate #container,
+body.rank #container,
+body.emails div#container,
+body.thanks #container,
+body.results #container {
+    padding-bottom: 40px;
+}
+.text { margin-bottom: 27px; text-align:left; }
 #home .text {
     margin: 170px auto 100px auto;
     width: 320px;
@@ -149,19 +159,18 @@ body.restaurants #content-area {
 /*Page Styles
   ------------------------------------------------------------*/
 /* Begin Home Styles -----------------------------------------*/
-div#restaurants {
+div#restaurants, div#cuisine {
     width: 450px;
     min-height: 100%;
-    float: left;
     margin: 0;
+}
+div#restaurants {
+    float: left;
     background: url('../images/bluer.jpg') #29ABE2;
 }
 
 div#cuisine {
-    width: 450px;
-    min-height: 100%;
     float: right;
-    margin: 0;
     background: url('../images/bluec.jpg') #0071BC;
 }
 div.badge {
@@ -234,23 +243,28 @@ body.emails input, body.emails textarea {
     margin-right: 10px;
     width: 40px;
 }
+.emails input.submit, .results #formsubmit, .heading {
+    text-shadow: 0px -1px 0.5px #333;
+    border: none;
+    border-top: 1px solid #fff;
+    background-color: #8CC63F;
+    box-shadow: 0px 2px 4px 0 #211F07;
+    -moz-box-shadow: 0px 2px 4px 0 #211F07;
+    -webkit-box-shadow: 0px 2px 4px 0 #211F07;
+}
 .emails input.submit {
     padding: 10px;
     color: #fff;
     text-transform: uppercase;
-    text-shadow: 0px -1px 0.5px #000;
-    border: none;
-    border-top: 1px solid #fff;
-    background-color: #8CC63F;
     margin-top: 10px;
-    box-shadow: 0px 3px 6px 0 #211F07;
-    -moz-box-shadow: 0px 3px 6px 0 #211F07;
-    -webkit-box-shadow: 0px 3px 6px 0 #211F07;
 }
 .emails input.submit:hover,
-.emails input.submit:focus {
+.emails input.submit:focus,
+.results #formsubmit:hover,
+.results #formsubmit:focus {
     background-color: #6EAF22;
 }
+
 /* End Emails Styles -----------------------------------------*/
 /* Begin Review Styles ---------------------------------------*/
 
@@ -262,9 +276,10 @@ body.emails input, body.emails textarea {
     padding: 15px;
     overflow-x: hidden;
     overflow-y: auto;
-    box-shadow: 0 -1px 1px 0 #333;
-    -moz-box-shadow: 0px -1px 1px 0 #333;
-    -webkit-box-shadow: 0px -1px 1px 0 #333;
+    border-top: 2px solid #333;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #57B3E5;
 }
 #list-1 {
     background: url('../images/forest.jpg') #6EAF22;
@@ -283,11 +298,35 @@ ul.sort {
     background: url('../images/draggable.png') no-repeat;
     margin-bottom: 2px;
 }
+ul#results {
+    list-style-type: circle;
+    list-style-position: inside;
+    margin-top: 5px;
+}
+ul#results li.heading {
+    width: 207px;
+    padding: 6px 0px 5px 16px;
+    margin-bottom: 8px;
+    margin-left: 4px;
+}
+.info {
+    width: 195px;
+    height: auto;
+    background-color: #6EAF22;
+    margin: 7px 0 -5px -16px;
+    padding: 8px 14px;
+    font-size: 12pt;
+    line-height: 1.3em;
+    box-shadow: 0 -1px 1px 0 #211F07;
+    -moz-box-shadow: 0px -1px 1px 0 #211F07;
+    -webkit-box-shadow: 0px -1px 1px 0 #211F07;
+    text-shadow: none;
+    list-style-type: none;
+}
 span.names {
     position: relative; top: 10px; left: 33px;
     text-shadow: 0px -1px 0.5px #04680E;
 }
-.draggable.ui-draggable-dragging { background: url('../images/draggableb.png') no-repeat; }
 .bin, .bin-hover {
     width: 230px;
     height: 39px;
@@ -296,3 +335,30 @@ span.names {
 .bin { background: url('../images/bin_hover.png') no-repeat; }
 //.bin-hover { background: url('../images/bin_hover.png') no-repeat; }
 /* End Rank Styles -------------------------------------------*/
+/* Begin Results Styles --------------------------------------*/
+body.results div.floatleft,
+body.results div.floatright {
+   // margin-top: 10px;
+}
+body.results #list-1,
+body.results #list-2 {
+    height: 205px;
+    margin-bottom: 8px;
+}
+body.results .text {
+    margin-bottom: 8px;
+}
+body.results div.floatleft { width: 300px; }
+body.results input { margin: 5px 10px 5px 8px; width: auto; }
+body.results #content-area { overflow: hidden; }
+#formsubmit {
+    clear: both;
+    padding: 3px;
+    font-size: 13pt;
+    width: 70px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    float: right;
+}
+/* End Results Styles ----------------------------------------*/
