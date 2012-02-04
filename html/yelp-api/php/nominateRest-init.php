@@ -32,6 +32,11 @@
             <li class="restaurant">Restaurant 3</li>
             </div>
         </ul>
+        
+        <p id="test1">test1</p>
+        <p id="test2">test2</p>
+        <p id="test3">test3</p>
+        <p id="test4">test4</p>
 
         <div id="searchstuff">
             
@@ -43,10 +48,7 @@
                 <p id="yelpsnippet"></p>  
                 <p id="yelpcat"></p>                  
             </p>
-            <p id="test1">test1</p>
-            <p id="test2">test2</p>
-            <p id="test3">test3</p>
-            <p id="test4">test4</p>
+            
             
             <br>
             <br>
