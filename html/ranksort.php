@@ -4,33 +4,13 @@
   //-----------------------------------------------------------------------
 ?>
 <?php
-  include("header.php");
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
+  include("header.php");
 ?>
-<script type="text/javascript">
-    /*$( function() {
-  $('#sortable1, #sortable2').sortable( {
-    cursor: 'move',
-    connectWith: ".connectedSortable",
-    dropOnEmpty: true
-  });
-  $("#sortable1, #sortable2").disableSelection();
-  }),*/
-$(document).ready(function() {
-  $('li.heading').children('ul').hide();
-  $('li.heading').each(
-    function(column) {
-      $(this).click(function(event) {
-        if (this == event.target) $(this).children('ul').toggle();
-      });
-    }
-  );
-});
-</script>
-
+</head>
 <?php
-  echo '</head><body class="rank '.$type.'">';
+   echo '<body class="rank '.$type.'">';
   if ($_POST != null) {
     include("initiate_validate.php");
     if ($isValid) {
@@ -57,18 +37,34 @@ $(document).ready(function() {
 
     <div id="list-1">
       <ul id="sortable1" class="connectedSortable">
-      <li class="draggable heading">Restaurant Name
-          <ul class="info"><li>Information loaded from YELP API</li></ul>
-      </li>
-      <li class="draggable heading">Restaurant Name
-          <ul class="info"><li>Information loaded from YELP API</li></ul>
-      </li>
-      <li class="draggable heading">Restaurant Name
-          <ul class="info"><li>Information loaded from YELP API</li></ul>
-      </li>
-      <li class="draggable heading">Restaurant Name
-          <ul class="info"><li>Information loaded from YELP API</li></ul>
-      </li>
+<?php
+  if ($type == "restaurants") {
+    for ($i = 1; $i <= 10; $i++) {
+      echo '<li class="draggable heading" id="switch-to-uniqueid'.$i.'">';
+      echo 'Restaurant Name retrieved from YELP';
+      echo '<ul class="info"><li>Information retrieved from YELP</li></ul></li>';
+    }
+  }
+  else if ($type == "cuisine") {
+    $cuisines = array('American','Desserts & Ice Cream','Breakfast & Brunch',
+		      'Burgers','Cafes','Chinese','Delis & Sandwiches','Diners',
+		      'French','Greek','Indian & Pakistani','Italian','Japanese',
+		      'Latin American','Mexican','Middle Eastern','Pizza','Seafood',
+		      'Southern & Soul Food','South-East Asian','Vegan & Vegetarian');
+    $ids = array('tradamerican,newamerican','bakeries,desserts,icecream',
+		 'breakfast_brunch','burgers','cafes,coffee,tea','chinese,dimsum',
+		 'delis,sandwiches','diners','french','greek','indpak,pakistan',
+		 'italian','japanese,sushi','latin,peruvian','mexican','mideastern',
+		 'pizza','seafood','soulfood,southern',
+		 'thai,malaysian,singaporean,vietnamese,indonesian','vegan,vegetarian');
+    $length = count($cuisines);
+    for ($i = 1; $i <= $length; $i++) {
+      echo '<li class="draggable heading" id="'.$ids[$i].'">'.$cuisines[$i].'</li>';
+    }
+  }
+  else echo  " Didn't get to this page properly. TODO: display error page";
+
+?>
     </ul>
     </div>
     <div id="list-2">
@@ -76,11 +72,58 @@ $(document).ready(function() {
 	<li class="bin">Drop selections here</li>
    </ul>
     </div>
-
+    
+<?php
+  if ($type == "restaurants") {?>
+    <div id="searchstuff">
+      <div class="searchtext"><label>Search:</label>
+      <input id="searchtxt" cols="20" rows="1" />
+    <a href="javascript: search()"><img id="search" src="./images/search.png" /></a>
     </div>
+      <a href="javascript: addYelpInfo()"><div id="addnew">
+    <img src="./images/add.png" />Add To List</div></a>
+    </div>
+</div>
+ <ul id="yelpdata">
+    <li class="yelpname"></li>
+    <li class="yelprating"></li>
+    <li class="yelpsnippet"></li>
+    <li class="yelpcat"></li>
+    <li class="readmore"></li>
+    </ul>
+<?php
+  } else { echo '</div>'; }
+?>
 
-    <script type="text/javascript">
-    function saveList() {
+    <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
+    <a href='<?php echo "./email.php?type=$type&userkey=$userkey"; ?>'><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
+<script type="text/javascript">
+<!--
+$( function() {
+  //initialize sortables
+  $('#sortable1, #sortable2').sortable( {
+  cursor: 'move',
+  connectWith: ".connectedSortable",
+  dropOnEmpty: true
+  });
+  $("#sortable1, #sortable2").disableSelection();
+
+  // initialize search text
+  $('#addnew').hide();
+  $('#yelpdata').hide();
+
+  // initialize expand/collapse list
+  $('li.heading').children('.info').hide();
+  $('li.heading').each(
+  function(column) {
+  $(this).click(function(event) {
+  if (this == event.target) $(this).children('ul').toggle();
+  });
+  });
+});
+
+//function to save the newly sorted list
+function saveList() {
 
       alert($("#sortable2").sortable("toArray"));
       var jsonList = $("#sortable2").sortable("toArray");
@@ -98,10 +141,8 @@ $(document).ready(function() {
 	}
       });
     }
-    //-->
-    </script>
-
-    <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
-    <a href='<?php echo "./email.php?type=$type&userkey=$userkey"; ?>'><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
-    
-    <?php include("footer.php"); ?>
+//-->
+</script>
+<?php
+  include("footer.php");
+?>

@@ -52,30 +52,17 @@ include("access.php");
 include("parse.php");
 include("formmatch.php");
 $loc = $_POST['sendValue'];
-//$loc = "08544";
-$num = 10; // max number of restaurants to return
-// create URL and get Yelp response
+$num = 10; // number of restaurants to return
+
 $unsigned_url = "http://api.yelp.com/v2/search?&location=".$loc."&limit=".$num."&category_filter=food,restaurants";
 $data = access($unsigned_url);
 $response = json_decode($data);
-//print_r($response);
-$num = count($response->businesses);
-//echo "<br><br>";
-//echo "started<br>";
 $arr = array("num"=>$num);
-//print_r($arr);
-
-for ($i = 0; $i < $num; $i++) {
-    $arrRest = array("name"=>name($response, $i), "id"=>id($response, $i), "rating"=>rating($response, $i), "ratingimg"=>ratingimg($response, $i), "snippet"=>snippet($response, $i),  "categories"=>categories($response, $i));
-    $index = "".$i;
-    $arr[$index] = $arrRest;
+for ($i = 0; $i < 10; $i++) {
+    $arrRest = array("name"=>name($response, $i), "id"=>id($response, $i), "rating"=>rating($response, $i), "ratingimg"=>ratingimg($response, $i), "snippet"=>snippet($response, $i), "categories"=>($response, $i));
+    $arr[$i] = $arrRest;
 }
 echo json_encode($arr);
-
-//echo "<br><br>";
-//print_r(json_decode(json_encode($arr)));
-//$arr[0] = array("name"=>"testname", "id"=>"testid");
-//print_r(json_decode(json_encode($arr)));
 
 
 

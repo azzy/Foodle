@@ -65,8 +65,9 @@ else {
 			   "returnValueRating"=> "Rating: ".rating($response,0), 
 			   "returnValueRatingImg"=>ratingimg($response,0), 
 			   "returnValueSnippet"=> "Review: ".snippet($response,0), 
-			   "returnValueCategory"=>"Categories: ".categories($response,0),
-			   "returnValueURL"=> '<a href="'.url($response,0).'">Read more on Yelp.com</a>'));
+			   "returnValueCategory"=>"Categories: ".categories($response,0)
+			   //"returnValueURL"=>"<a href=\"".url($response,0)."\">Read more on Yelp.com</a>"
+));
 }
 
 
