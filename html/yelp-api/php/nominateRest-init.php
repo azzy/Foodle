@@ -22,6 +22,7 @@
         <script type="text/javascript">
         function codeAddress() {
             addYelp("08544");
+            alert("ok");
         }
         window.onload = codeAddress;
         
