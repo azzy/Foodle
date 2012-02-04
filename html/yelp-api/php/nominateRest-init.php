@@ -24,7 +24,7 @@
             //addYelp("08544");
             alert('ok');
         }
-        
+        /*
         
         function addYelp(str) {
         $.post("initRest.php", //ajax file
@@ -40,7 +40,7 @@
         },
         "json"
         );
-        
+        */
         window.onload = codeAddress;
     }
     </script>
