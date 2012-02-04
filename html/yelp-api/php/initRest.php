@@ -51,17 +51,22 @@ require_once ('lib/OAuth.php');
 include("access.php");
 include("parse.php");
 include("formmatch.php");
-$loc = $_POST['sendValue'];
+//$loc = $_POST['sendValue'];
+$loc = "08544";
 $num = 10; // number of restaurants to return
 
 $unsigned_url = "http://api.yelp.com/v2/search?&location=".$loc."&limit=".$num."&category_filter=food,restaurants";
 $data = access($unsigned_url);
 $response = json_decode($data);
+echo "started";
 $arr = array("num"=>$num);
+echo $arr;
+/*
 for ($i = 0; $i < 10; $i++) {
     $arrRest = array("name"=>name($response, $i), "id"=>id($response, $i), "rating"=>rating($response, $i), "ratingimg"=>ratingimg($response, $i), "snippet"=>snippet($response, $i), "categories"=>($response, $i));
     $arr[$i] = $arrRest;
 }
+*/
 echo json_encode($arr);
 
 
