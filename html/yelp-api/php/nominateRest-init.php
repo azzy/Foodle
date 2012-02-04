@@ -21,7 +21,7 @@
         <title>JQuery</title>
     </head>
 
-    <body onload=start()">
+    <body>
         
         <h1 id="maintitle" class="aheader">Search for your restaurant</h1>
 
@@ -62,14 +62,14 @@
     //Initialize the page (This function runs on pageload)
     
     
-    function start() {
-        $('#test1').html("here-1");
+    $(function() {
+        $('#test1').text("here-1");
         var location = "08544";
         //addYelp(location);
         $('#test2').html("here-2");
         
     });
-    window.onload=start;
+    //window.onload=start;
     
     function addYelp(str) {
         $.post("initRest.php", //ajax file
