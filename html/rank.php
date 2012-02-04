@@ -4,12 +4,13 @@
   //-----------------------------------------------------------------------
 ?>
 <?php
-  include("header.php");
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
+  include("header.php");
 ?>
 <script type="text/javascript">
-<!--$( function() {
+<!--
+$( function() {
 $('#sortable1, #sortable2').sortable( {
 cursor: 'move',
 connectWith: ".connectedSortable",
@@ -23,7 +24,7 @@ $("#sortable2").sortable("serialize");
 }
 
 $(document).ready(function() {
-$('li.heading').children('ul').hide();
+$('li.heading').children('.info').hide();
 $('li.heading').each(
 function(column) {
 $(this).click(function(event) {
@@ -33,8 +34,9 @@ if (this == event.target) $(this).children('ul').toggle();
 });
 //-->
 </script>
-
+</head>
 <?php
+   echo '<body class="rank '.$type.'">';
   if ($_POST != null) {
     include("initiate_validate.php");
     if ($isValid) {
@@ -48,7 +50,6 @@ if (this == event.target) $(this).children('ul').toggle();
   else {
     echo " Didn't get to this page from the form. TODO: populate fields from database if possible, otherwise display an error";
   }
-echo '<body class="initiate '.$type.'">';
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">

@@ -7,7 +7,7 @@
   include("header.php");
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
-  echo '<body class="initiate '.$type.'">';
+  echo '</head><body class="initiate '.$type.'">';
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
