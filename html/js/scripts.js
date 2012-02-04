@@ -1,8 +1,8 @@
 // function to retrieve yelp info
 function search () {
   // toggle on secondary buttons, toggle off main search button
-  $('#addnew').toggle();
-  $('#yelpdata').toggle();
+  $('#addnew').show();
+  $('#yelpdata').show();
   // retrieve the search text
   var searchTxt =  $("#searchstuff").find("input").val();
   // get yelp data on the search text
@@ -12,8 +12,8 @@ function search () {
 // click on the add button to add yelp info to the html list    
 function addYelpInfo () {
     // toggle secondary keys off and search key on
-    $('#addnew').toggle();
-    $('#search').toggle();
+    $('#addnew').hide();
+    $('#yelpdata').hide();
     // info in box to list
     
     var searchTxt =  $("#searchstuff").find("input").val();
