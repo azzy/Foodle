@@ -46,4 +46,3 @@ $('#back').click(function () {
     $("#searchstuff").find("textarea").val("");
     $('#yelpdata').html("");
 });
-</script>
