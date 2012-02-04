@@ -293,20 +293,16 @@ ul.sort {
     list-style-image: none;
 }
 #sortable1, #sortable2 { list-style-type: none; }
-/*.draggable {
-    width: 230px;
-    height: 39px;
-    background: url('../images/draggable.png') no-repeat;
-    margin-bottom: 2px;
-}*/
-ul#results {
+ul#results,
+ul#sortable1,
+ul#sortable2 {
     list-style-type: circle;
     list-style-position: inside;
     margin-top: 5px;
 }
 ul#results li.heading,
 ul#sortable1 li.heading,
-ul#sortable2 li.heading, {
+ul#sortable2 li.heading {
     width: 207px;
     padding: 6px 0px 5px 16px;
     margin-bottom: 8px;
@@ -332,12 +328,15 @@ span.names {
 }
 .bin, .bin-hover {
     width: 230px;
-    height: 39px;
+    height: 29px;
     margin-bottom: 2px;
 }
-.bin {     
-    padding: 6px 0px 5px 16px;
+ul#sortable1 li.bin,
+ul#sortable2 li.bin {     
+    padding-top: 10px;
+    text-align: center;
     background: url('../images/bin_hover.png') no-repeat; 
+    list-style: none;
 }
 //.bin-hover { background: url('../images/bin_hover.png') no-repeat; }
 /* End Rank Styles -------------------------------------------*/
