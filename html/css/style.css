@@ -293,12 +293,10 @@ ul.sort {
     list-style-image: none;
 }
 #sortable1, #sortable2 { list-style-type: none; }
-/*.draggable {
-    width: 230px;
-    height: 39px;
-    background: url('../images/draggable.png') no-repeat;
-    margin-bottom: 2px;
-}*/
+.draggable {
+    padding: 5px;
+    margin-bottom: 5px;
+}
 ul#results {
     list-style-type: circle;
     list-style-position: inside;
