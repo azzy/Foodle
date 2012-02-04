@@ -18,7 +18,7 @@
 
 
     <head>
-        <title<!-- lalala-->> JQuery</title>
+        <title> JQuery</title>
         <script type="text/javascript">
         function codeAddress() {
             //addYelp("08544");
