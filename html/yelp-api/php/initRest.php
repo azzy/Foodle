@@ -67,7 +67,11 @@ for ($i = 0; $i < 10; $i++) {
     $arr[$i] = $arrRest;
 }
 */
-echo json_encode($arr);
+echo "<br><br>";
+echo "here";
+echo json_decode(json_encode($arr));
+$arr[0] = array("name"=>"testname", "id"=>"testid");
+echo $arr;
 
 
 
