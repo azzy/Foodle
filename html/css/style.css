@@ -364,7 +364,7 @@ ul#sortable2 li.bin {
 #searchstuff input {
     font-size: 10pt;
     padding: 3px;
-    width: 100px;
+    width: 120px;
     margin: 0;
 }
 .rank #addnew { font-size: 14pt; margin-top: 10px; clear: both; text-align: right; }
@@ -373,7 +373,7 @@ ul#sortable2 li.bin {
 #yelpdata {
     z-index: 300;
     position: absolute;
-    top: 0; left: 0;
+    top: 50%; left: 50%;
     width: 200px;
     height: 200px;
     overflow-y: auto;

@@ -73,6 +73,8 @@
    </ul>
     </div>
     
+<?php
+  if ($type == "restaurants") {?>
     <div id="searchstuff">
       <div class="searchtext"><label>Search:</label>
       <input id="searchtxt" cols="20" rows="1" />
@@ -80,7 +82,6 @@
     </div>
       <a href="javascript: addYelpInfo()"><div id="addnew">
     <img src="./images/add.png" />Add To List</div></a>
-
     </div>
 </div>
  <ul id="yelpdata">
@@ -90,6 +91,10 @@
     <li class="yelpcat"></li>
     <li class="readmore"></li>
     </ul>
+<?php
+  } else { echo '</div>'; }
+?>
+
     <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
     <a href='<?php echo "./email.php?type=$type&userkey=$userkey"; ?>'><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
 <script type="text/javascript">
