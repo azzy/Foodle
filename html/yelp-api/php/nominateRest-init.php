@@ -19,6 +19,12 @@
 
     <head>
         <title>JQuery</title>
+        <script type="text/javascript">
+        function codeAddress() {
+            alert('ok');
+        }
+        window.onload = codeAddress;
+    </script>
     </head>
 
     <body>
@@ -63,7 +69,7 @@
 
     //Initialize the page (This function runs on pageload)
     
-    
+    /*
     $(function() {
         $('#test1').text("here-1");
         var location = "08544";
@@ -71,6 +77,7 @@
         $('#test2').html("here-2");
         
     });
+    */
     //window.onload=start;
     
     function addYelp(str) {
