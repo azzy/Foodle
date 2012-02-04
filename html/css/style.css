@@ -357,7 +357,7 @@ ul#sortable2 li.bin {
     //border: 1px solid #000;
     clear: both;
     //margin-top: 30px;
-    padding: 25px 34px 25px 19px;
+    padding: 25px 34px 25px 0;
     width: 227px;
 }
 #searchstuff label { font-size: 14pt; margin-right: 10px; }
