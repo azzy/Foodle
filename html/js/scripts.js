@@ -1,11 +1,3 @@
-//Add Field to emails-form.
-function add_field()
-{
-    var div1 = document.createElement('div');
-    div1.innerHTML = document.getElementById('template').innerHTML;
-    document.getElementById('emails-form').appendChild(div1);
-}
-
 // click on the add button to add yelp info to the html list    
 $('#add').click(function () {
     // toggle secondary keys off and search key on

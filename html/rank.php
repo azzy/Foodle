@@ -8,32 +8,6 @@
   $userkey = $_GET['userkey'];
   include("header.php");
 ?>
-<script type="text/javascript">
-<!--
-$( function() {
-$('#sortable1, #sortable2').sortable( {
-cursor: 'move',
-connectWith: ".connectedSortable",
-dropOnEmpty: true
-});
-$("#sortable1, #sortable2").disableSelection();
-});
-
-function saveList() {
-$("#sortable2").sortable("serialize");
-}
-
-$(document).ready(function() {
-$('li.heading').children('.info').hide();
-$('li.heading').each(
-function(column) {
-$(this).click(function(event) {
-if (this == event.target) $(this).children('ul').toggle();
-});
-});
-});
-//-->
-</script>
 </head>
 <?php
    echo '<body class="rank '.$type.'">';
@@ -106,3 +80,29 @@ if (this == event.target) $(this).children('ul').toggle();
 <?php
   include("footer.php");
 ?>
+<script type="text/javascript">
+<!--
+$( function() {
+$('#sortable1, #sortable2').sortable( {
+cursor: 'move',
+connectWith: ".connectedSortable",
+dropOnEmpty: true
+});
+$("#sortable1, #sortable2").disableSelection();
+});
+
+function saveList() {
+$("#sortable2").sortable("serialize");
+}
+
+$(document).ready(function() {
+$('li.heading').children('.info').hide();
+$('li.heading').each(
+function(column) {
+$(this).click(function(event) {
+if (this == event.target) $(this).children('ul').toggle();
+});
+});
+});
+//-->
+</script>
