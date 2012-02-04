@@ -1,15 +1,19 @@
 <?php
-   include("header.php");
+  //-----------------------------------------------------------------------
+  // Author: Choosine
+  //-----------------------------------------------------------------------
+?>
+<?php
+  include("header.php");
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
+  echo '</head><body class="emails '.$type.'">';
 ?>
-
-<body class="emails cuisine">
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
   <div id="container">
     <div id="content-area">
-    <div class="text">Your Guests' Emails:</div>
+    <div class="text">Your Guests\' Emails:</div>
     <form name="input" method="post">
     <div class="form" id="emails-form">
       <input />
@@ -27,10 +31,4 @@
     </div>
     
     <a href='<?php echo "ranksort.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>   
-  <div class="clear"></div>
-
-  </div>
- </div> <!-- end wrapper -->
-
-</body>
-</html>
+    <?php include("footer.php"); ?>

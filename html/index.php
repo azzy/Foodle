@@ -5,8 +5,7 @@
   //$type = $_GET['type'];
   //$userkey = $_GET['userkey'];
 ?>
-
-<body id="home">
+</head><body id="home">
     <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
 <div id="container">
@@ -31,12 +30,4 @@
       </ul>
     </div>
  </div>
-
-  <div class="clear"></div>
-  <div id="footer">We know you're really excited to use Choosine,
-  but it doesn't exist yet! Sorry :(</div>
-  </div>
-  </div> <!-- end wrapper -->
-
-</body>
-</html>
+    <?php include("footer.php"); ?>
