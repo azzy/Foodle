@@ -114,7 +114,10 @@
             </div>
             <p> Yelp Data should print under here </p>
             <p id = "yelpdata">
-            
+                <p id="yelpname"></p>
+                <p id="yelprating"></p>
+                <p id="yelpratingimg"></p>
+                <p id="yelpsnippet"></p>           
             </p>
             <br>
             <br>
@@ -192,7 +195,10 @@
         { sendValue: str },
         function(data) {
             $('#showthis').html("hmmm");
-            $('#yelpdata').html(data.returnValueName + " " + data.returnValueId);
+            $('#yelpname').html(data.returnValueName + " " + data.returnValueId);
+            $('#yelprating').html(data.returnValueRating);
+            $('#yelpratingimg').html("<img src=" + data.returnValueRatingImg + " alt='rating'>");
+            $('#yelpsnippet').html(data.returnValueSnippet + "<br>");
         },
         "json"
         );
@@ -204,6 +210,4 @@
                 $("#searchstuff").find("textarea").val("");
                 $('#yelpdata').html("");
     });
-
-
 </script>
