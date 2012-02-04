@@ -68,7 +68,7 @@ print_r($arr);
 
 for ($i = 0; $i < $num; $i++) {
     //$arrRest = array("name"=>name($response, $i), "id"=>id($response, $i), "rating"=>rating($response, $i), "ratingimg"=>ratingimg($response, $i), "snippet"=>snippet($response, $i), "categories"=>($response, $i));
-    $arrRest = array("name"=>name($response, $i), "id"=>id($response, $i), "rating"=>rating($response, $i), "ratingimg"=>ratingimg($response, $i)), "snippet"=>snippet($response, $i),  "categories"=>categories($response, $i));
+    $arrRest = array("name"=>name($response, $i), "id"=>id($response, $i), "rating"=>rating($response, $i), "ratingimg"=>ratingimg($response, $i), "snippet"=>snippet($response, $i),  "categories"=>categories($response, $i));
     $arr[$i] = $arrRest;
 }
 
