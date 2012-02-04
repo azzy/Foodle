@@ -9,44 +9,24 @@
   $userkey = $_GET['userkey'];
 ?>
 <script type="text/javascript">
-$( function() {
+    /*$( function() {
   $('#sortable1, #sortable2').sortable( {
     cursor: 'move',
     connectWith: ".connectedSortable",
     dropOnEmpty: true
   });
   $("#sortable1, #sortable2").disableSelection();
-}),
-
-function saveList() {
-  
-  alert($("#sortable2").sortable("toArray"));
-  var jsonList = $("#sortable2").sortable("toArray");
-  jsonList.userkey = '<?php echo $userkey ?>';
-  $.ajax({
-    type: 'POST',
-    traditional: true,
-    data: jsonList,
-    url: '/ajax/saveList.php',
-    success: function(data) {
-      alert('YAY! Post success: ' + data);
-    },
-    error: function(error) {
-      alert('Error on post: ' + error);
-    }
-  });
-}
-
+  }),*/
 $(document).ready(function() {
-$('li.heading').children('ul').hide();
-$('li.heading').each(
-function(column) {
-$(this).click(function(event) {
-if (this == event.target) $(this).children('ul').toggle();
+  $('li.heading').children('ul').hide();
+  $('li.heading').each(
+    function(column) {
+      $(this).click(function(event) {
+        if (this == event.target) $(this).children('ul').toggle();
+      });
+    }
+  );
 });
-});
-});
-//-->
 </script>
 
 <?php
@@ -98,6 +78,29 @@ if (this == event.target) $(this).children('ul').toggle();
     </div>
 
     </div>
+
+    <script type="text/javascript">
+    function saveList() {
+
+      alert($("#sortable2").sortable("toArray"));
+      var jsonList = $("#sortable2").sortable("toArray");
+      jsonList.userkey = '<?php echo $userkey ?>';
+      $.ajax({
+	type: 'POST',
+	traditional: true,
+	data: jsonList,
+	url: '/ajax/saveList.php',
+	success: function(data) {
+	  alert('YAY! Post success: ' + data);
+	},
+	error: function(error) {
+	  alert('Error on post: ' + error);
+	}
+      });
+    }
+    //-->
+    </script>
+
     <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
     <a href='<?php echo "./email.php?type=$type&userkey=$userkey"; ?>'><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
     
