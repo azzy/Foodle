@@ -1,33 +1,55 @@
 <?php
+  //-----------------------------------------------------------------------
+  // Author: Choosine
+  //-----------------------------------------------------------------------
+?>
+<?php
   include("header.php");
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
 ?>
-
 <script type="text/javascript">
-$( init );
-
-function init() {
-$('.draggable').draggable( {
-containment: 'document',
+<!--$( function() {
+$('#sortable1, #sortable2').sortable( {
 cursor: 'move',
-snap: 'li',
-start: $('.draggable').css("top: -40px;")
+connectWith: ".connectedSortable",
+dropOnEmpty: true
 });
-$('.bin').droppable( {
-over: $("this").addClass("bin-hover"),
-drop: handleDropEvent
+$("#sortable1, #sortable2").disableSelection();
 });
+
+function saveList() {
+$("#sortable2").sortable("serialize");
 }
 
-function handleDropEvent( event, ui) {
-var draggable = ui.draggable;
-//do something
-}
+$(document).ready(function() {
+$('li.heading').children('ul').hide();
+$('li.heading').each(
+function(column) {
+$(this).click(function(event) {
+if (this == event.target) $(this).children('ul').toggle();
+});
+});
+});
+//-->
 </script>
-</head>
 
-<body id="cuisine">
+<?php
+  if ($_POST != null) {
+    include("initiate_validate.php");
+    if ($isValid) {
+      echo "validated the form! Good to go. user is ".$userkey;
+    }
+    else {
+      echo "Invalid form. :( We should reject it, and don't return any more html!";
+      // TODO exit here somehow? return previous page (form) or do that in the initiate_validate file?
+    }
+  }
+  else {
+    echo " Didn't get to this page from the form. TODO: populate fields from database if possible, otherwise display an error";
+  }
+echo '<body class="initiate '.$type.'">';
+?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
   <div id="container">
@@ -35,89 +57,51 @@ var draggable = ui.draggable;
       <div class="text">
 	Rank the cuisines in the green box in order of preference by
       dragging into the blue box. Select as many as you care about,
-      and put your very favorites on top!
+      and put your very favorite ones on top!
 	</div>
 
     <div id="list-1">
-      <ul class="sort">
-      <li class="draggable"><span class="names">American (Traditional)</span></li>
-      <li class="draggable"><span class="names">Asian Fusion</span></li>
-      <li class="draggable"><span class="names">Barbeque</span></li>
-      <li class="draggable"><span class="names">Buffets</span></li>
-      <li class="draggable"><span class="names">Burgers</span></li>
-      <li class="draggable"><span class="names">Chinese</span></li>
-      <li class="draggable"><span class="names">Delis</span></li>
-      <li class="draggable"><span class="names">Diners</span></li>
-      <li class="draggable"><span class="names">Fast Food</span></li>
-      <li class="draggable"><span class="names">French</span></li>
-      <li class="draggable"><span class="names">Greek</span></li>
-      <li class="draggable"><span class="names">Indian</span></li>
-      <li class="draggable"><span class="names">Italian</span></li>
-      <li class="draggable"><span class="names">Japanese</span></li>
-      <li class="draggable"><span class="names">Korean</span></li>
-      <li class="draggable"><span class="names">Malaysian</span></li>
-      <li class="draggable"><span class="names">Mediterranean</span></li>
-      <li class="draggable"><span class="names">Mexican</span></li>
-      <li class="draggable"><span class="names">Pakistani</span></li>
-      <li class="draggable"><span class="names">Pizza</span></li>
-      <li class="draggable"><span class="names">Portuguese</span></li>
-      <li class="draggable"><span class="names">Sandwiches</span></li>
-      <li class="draggable"><span class="names">Seafood</span></li>
-      <li class="draggable"><span class="names">Soup</span></li>
-      <li class="draggable"><span class="names">Spanish</span></li>
-      <li class="draggable"><span class="names">Steakhouses</span></li>
-      <li class="draggable"><span class="names">Sushi Bars</span></li>
-      <li class="draggable"><span class="names">Tex-Mex</span></li>
-      <li class="draggable"><span class="names">Thai</span></li>
-      <li class="draggable"><span class="names">Vegetarian</span></li>
-      <li class="draggable"><span class="names">Vietnamese</span></li>
+      <ul id="sortable1" class="connectedSortable">
+<?php
+  if ($type == "restaurants") {
+    for ($i = 1; $i <= 10; $i++) {
+      echo '<li class="draggable heading" id="switch-to-uniqueid'.$i.'">';
+      echo 'Restaurant Name retrieved from YELP';
+      echo '<ul class="info"><li>Information retrieved from YELP</li></ul></li>';
+    }
+  }
+  else if ($type == "cuisine") {
+    $cuisines = array('American','Desserts & Ice Cream','Breakfast & Brunch',
+		      'Burgers','Cafes','Chinese','Delis & Sandwiches','Diners',
+		      'French','Greek','Indian & Pakistani','Italian','Japanese',
+		      'Latin American','Mexican','Middle Eastern','Pizza','Seafood',
+		      'Southern & Soul Food','South-East Asian','Vegan & Vegetarian');
+    $ids = array('tradamerican,newamerican','bakeries,desserts,icecream',
+		 'breakfast_brunch','burgers','cafes,coffee,tea','chinese,dimsum',
+		 'delis,sandwiches','diners','french','greek','indpak,pakistan',
+		 'italian','japanese,sushi','latin,peruvian','mexican','mideastern',
+		 'pizza','seafood','soulfood,southern',
+		 'thai,malaysian,singaporean,vietnamese,indonesian','vegan,vegetarian');
+    $length = count($cuisines);
+    for ($i = 1; $i <= $length; $i++) {
+      echo '<li class="draggable heading" id="'.$ids[$i].'">'.$cuisines[$i].'</li>';
+    }
+  }
+  else echo  " Didn't get to this page properly. TODO: display error page";
+
+?>
     </ul>
     </div>
     <div id="list-2">
-      <ul class="sort">
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-      <li class="bin"></li>
-    </ul>
+      <ul id="sortable2" class="connectedSortable">
+	<li class="bin">Drop selections here</li>
+   </ul>
     </div>
 
     </div>
-    <a href="#"><img src="./images/left.png" id="nav-left" /></a>
-    <a href="#"><img src="./images/right.png" id="nav-right" /></a>
+    <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
+    <a href='<?php echo "./email.php?type=$type&userkey=$userkey"; ?>'><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
     
-  <div class="clear"></div>
-  <div id="footer">We know you're really excited to use Choosine,
-  but it doesn't exist yet! Sorry :(</div>
-  </div>
-  </div> <!-- end wrapper -->
-
-</body>
-</html>
+<?php
+  include("footer.php");
+?>
