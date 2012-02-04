@@ -21,10 +21,20 @@
         <title> JQuery</title>
         <script type="text/javascript">
         function codeAddress() {
-            doThis('ok');
+            doThis('08544');
         }
         function doThis(str) {
             alert(str);
+            
+            $.post("initRest.php", //ajax file
+                { sendValue: str },
+                function(data) {
+                    alert(data.num);
+                    
+                },
+                "json"
+                );
+            
         }
         window.onload = codeAddress;
         </script>
