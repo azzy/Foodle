@@ -75,18 +75,20 @@
     
     <div id="searchstuff">
       <div class="searchtext"><label>Search:</label>
-      <input id="searchtxt" cols="20" rows="1" /></div>
-      <a href="javascript: search()"><img id="search" src="./images/search.png" /></a>
+      <input id="searchtxt" cols="20" rows="1" />
+    <a href="javascript: search()"><img id="search" src="./images/search.png" /></a>
+    </div>
       <a href="javascript: addYelpInfo()"><div id="addnew">
     <img src="./images/add.png" />Add To List</div></a>
+
+    </div>
     <ul id="yelpdata">
     <li class="yelpname"></li>
     <li class="yelprating"></li>
     <li class="yelpsnippet"></li>
     <li class="yelpcat"></li>
+    <li class="readmore"></li>
     </ul>
-
-    </div>
     <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
     <a href='<?php echo "./email.php?type=$type&userkey=$userkey"; ?>'><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
 <script type="text/javascript">
