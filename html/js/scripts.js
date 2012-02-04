@@ -28,9 +28,10 @@ function getYelp(str) {
            function(data) {
                dataStuff = data;
                $("#yelpdata li.yelpname").html(data.returnValueName + " " + data.returnValueId);
-	       $("#yelpdata li.yelprating").html(data.returnValueRating + '<img src="' + data.returnValueRatingImg + '" />');
+	       $("#yelpdata li.yelprating").html('<img src="' + data.returnValueRatingImg + '" />');
 	       $("#yelpdata li.yelpsnippet").html(data.returnValueSnippet);
 	       $("#yelpdata li.yelpcat").html(data.returnValueCategory);
+	       $("#yelpdata li.readmore").html(data.returnValueURL);
            },
            "json"
           );
