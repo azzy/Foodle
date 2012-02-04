@@ -119,8 +119,23 @@ $( function() {
 
 //function to save the newly sorted list
 function saveList() {
-  $("#sortable2").sortable("serialize");
-}
+
+      alert($("#sortable2").sortable("toArray"));
+      var jsonList = $("#sortable2").sortable("toArray");
+      jsonList.userkey = '<?php echo $userkey ?>';
+      $.ajax({
+	type: 'POST',
+	traditional: true,
+	data: jsonList,
+	url: '/ajax/saveList.php',
+	success: function(data) {
+	  alert('YAY! Post success: ' + data);
+	},
+	error: function(error) {
+	  alert('Error on post: ' + error);
+	}
+      });
+    }
 //-->
 </script>
 <?php
