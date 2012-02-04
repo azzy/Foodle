@@ -63,12 +63,14 @@ $arr = array("num"=>$num);
 print_r($arr);
 $arr2 = array("foo" => "bar", 12 => true);
 echo $arr2["foo"];
-
+/*
 for ($i = 0; $i < 10; $i++) {
-    $arrRest = array("name"=>name($response, $i), "id"=>id($response, $i), "rating"=>rating($response, $i), "ratingimg"=>ratingimg($response, $i), "snippet"=>snippet($response, $i), "categories"=>($response, $i));
+    //$arrRest = array("name"=>name($response, $i), "id"=>id($response, $i), "rating"=>rating($response, $i), "ratingimg"=>ratingimg($response, $i), "snippet"=>snippet($response, $i), "categories"=>($response, $i));
+    $arrRest = array("name"=>name($response, $i), "id"=>id($response, $i));
     $arr[$i] = $arrRest;
 }
-
+*/
+$arr[0] = $arr2;
 echo "<br><br>";
 echo "here";
 print_r(json_decode(json_encode($arr)));
