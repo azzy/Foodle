@@ -51,33 +51,17 @@ require_once ('lib/OAuth.php');
 include("access.php");
 include("parse.php");
 include("formmatch.php");
-//$loc = $_POST['sendValue'];
-$loc = "08544";
-$num = 10; // number of restaurants to return
 
-$unsigned_url = "http://api.yelp.com/v2/search?&location=".$loc."&limit=".$num."&category_filter=food,restaurants";
-$data = access($unsigned_url);
-$response = json_decode($data);
-echo "started<br>";
-$arr = array("num"=>$num);
-print_r($arr);
-$arr2 = array("foo" => "bar", 12 => true);
-echo $arr2["foo"];
-/*
-for ($i = 0; $i < 10; $i++) {
-    $arrRest = array("name"=>name($response, $i), "id"=>id($response, $i), "rating"=>rating($response, $i), "ratingimg"=>ratingimg($response, $i), "snippet"=>snippet($response, $i), "categories"=>($response, $i));
-    $arr[$i] = $arrRest;
+if (empty($_POST['sendValue'])) {
+    echo json_encode(array("returnValueName"=>"This is name from PHP : ", "returnValueId"=>"This is id from PHP : "));
 }
-*/
-echo "<br><br>";
-echo "here";
-print_r(json_decode(json_encode($arr)));
-$arr[0] = array("name"=>"testname", "id"=>"testid");
-print_r(json_decode(json_encode($arr)));
-
-
-
-
+else {
+    $name = str_replace(" ", "+", $_POST['sendValue']);
+    $unsigned_url = "http://api.yelp.com/v2/search?term=".$name."&location=08544&limit=2&category_filter=food,restaurants";
+    $data = access($unsigned_url);
+    $response = json_decode($data);
+    echo json_encode(array("returnValueName"=>"Name : ".name($response, 0), "returnValueId"=>"ID: ".id($response, 0), "returnValueRating"=>rating($response,0), "returnValueRatingImg"=>ratingimg($response,0), "returnValueSnippet"=> "Snippet: ".snippet($response,0), "returnValueCategory"=>"Categories: ".categories($response,0)));
+}
 
 
 ?>
