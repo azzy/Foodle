@@ -60,13 +60,16 @@
 <script type="text/javascript">
 
     //Initialize the page (This function runs on pageload)
-    window.onload=$(function () {
+    
+    
+    function start() {
         $('#test1').html("here-1");
         var location = "08544";
         addYelp(location);
         $('#test2').html("here-2");
         
     });
+    window.onload=start;
     
     function addYelp(str) {
         $.post("initRest.php", //ajax file
