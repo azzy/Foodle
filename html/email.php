@@ -1,10 +1,5 @@
 <?php
-  //-----------------------------------------------------------------------
-  // Author: Choosine
-  //-----------------------------------------------------------------------
-?>
-<?php
-  include("header.php");
+   include("header.php");
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
   echo '</head><body class="emails '.$type.'">';
@@ -13,7 +8,7 @@
 <div id="wrapper">
   <div id="container">
     <div id="content-area">
-    <div class="text">Your Guests\' Emails:</div>
+    <div class="text">Your Guests&apos; Emails:</div>
     <form name="input" method="post">
     <div class="form" id="emails-form">
       <input />
@@ -31,4 +26,16 @@
     </div>
     
     <a href='<?php echo "ranksort.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>   
-    <?php include("footer.php"); ?>
+ <?php include('footer.php'); ?>
+
+
+<script type="text/javascript">
+<!--//Add Field to emails-form.
+function add_field()
+{
+    var div1 = document.createElement('div');
+    div1.innerHTML = document.getElementById('template').innerHTML;
+    document.getElementById('emails-form').appendChild(div1);
+}
+//-->
+</script>

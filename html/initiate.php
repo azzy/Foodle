@@ -40,7 +40,6 @@
     }
     </script>
     <a href='javascript: submitform()'><img src="./images/right.png" id="nav-right" /></a>
-
 <?php
-require_once "footer.php";
+    require_once "footer.php";
 ?>

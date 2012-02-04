@@ -206,13 +206,16 @@ a.badge {
 input,
 textarea {
     width: 410px;
-    border-top: 2px solid #333;
-    border-left: 1px solid #333; border-right: 1px solid #333;
     border-bottom: 2px solid #fff;
-    background-color: #E2ECF7;
     font-size: 14pt;
     padding: 5px;
     margin-bottom: 20px;
+}
+.cuisine input, .cuisine textarea {
+    background-color: #E2ECF7;
+}
+.restaurant input, .restaurant textarea {
+    background-color: #fff;
 }
 #content-area label {
     color: #fff;
@@ -276,10 +279,19 @@ body.emails input, body.emails textarea {
     padding: 15px;
     overflow-x: hidden;
     overflow-y: auto;
-    border-top: 2px solid #333;
-    border-left: 1px solid #333;
-    border-right: 1px solid #333;
     border-bottom: 1px solid #57B3E5;
+}
+.restaurants #list-1, .restaurants #list-2,
+.restaurants input, .restaurants textarea {
+    border-top: 2px solid #005589;
+    border-left: 1px solid #005589;
+    border-right: 1px solid #005589;
+}
+.cuisine #list-1, .cuisine #list-2,
+.cuisine input, .cuisine textarea {
+    border-top: 2px solid #004C6D;
+    border-left: 1px solid #004C6D;
+    border-right: 1px solid #004C6D;
 }
 #list-1 {
     background: url('../images/forest.jpg') #6EAF22;
@@ -335,7 +347,7 @@ ul#sortable1 li.bin,
 ul#sortable2 li.bin {     
     padding-top: 10px;
     text-align: center;
-    background: url('../images/bin_hover.png') no-repeat; 
+    background: url('../images/bin_hover.png') top center no-repeat; 
     list-style: none;
 }
 //.bin-hover { background: url('../images/bin_hover.png') no-repeat; }
