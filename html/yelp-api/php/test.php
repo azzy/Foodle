@@ -78,7 +78,9 @@ echo "<br><img src='" . ratingimg($response, 0)  . "'>Rating Img normal</img><br
 echo "<img src='" . snippetimg($response, 0)  . "'>Snippet</img><br>";
 echo "<img src='" . ratingimgsm($response, 0)  . "'>Small Rating</img><br>";
 echo tags($response, 0);
+echo categories($response, 0);
 echo "<br><br><br><br>";
+
 print_r($response);
 ?>
 
