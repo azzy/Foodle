@@ -93,6 +93,11 @@
     
     // when doc is ready, if search button is clicked retrieve yelp info
     $(document).ready(function() {
+        $('#test1').text("here-1");
+        var location = "08544";
+        //addYelp(location);
+        $('#test2').html("here-2");
+    
         /*
         $('#search').click(function () {
                 // toggle on secondary buttons, toggle off main search button
