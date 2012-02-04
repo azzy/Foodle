@@ -1,8 +1,8 @@
 // function to retrieve yelp info
 function search () {
   // toggle on secondary buttons, toggle off main search button
-  $('#addnew').toggle();
-  $('#yelpdata').toggle();
+  $('#addnew').show();
+  $('#yelpdata').show();
   // retrieve the search text
   var searchTxt =  $("#searchstuff").find("input").val();
   // get yelp data on the search text
@@ -12,8 +12,8 @@ function search () {
 // click on the add button to add yelp info to the html list    
 function addYelpInfo () {
     // toggle secondary keys off and search key on
-    $('#addnew').toggle();
-    $('#search').toggle();
+    $('#addnew').hide();
+    $('#yelpdata').hide();
     // info in box to list
     
     var searchTxt =  $("#searchstuff").find("input").val();
@@ -28,9 +28,10 @@ function getYelp(str) {
            function(data) {
                dataStuff = data;
                $("#yelpdata li.yelpname").html(data.returnValueName + " " + data.returnValueId);
-	       $("#yelpdata li.yelprating").html(data.returnValueRating + '<img src="' + data.returnValueRatingImg + '" />');
+	       $("#yelpdata li.yelprating").html('<img src="' + data.returnValueRatingImg + '" />');
 	       $("#yelpdata li.yelpsnippet").html(data.returnValueSnippet);
 	       $("#yelpdata li.yelpcat").html(data.returnValueCategory);
+	       $("#yelpdata li.readmore").html(data.returnValueURL);
            },
            "json"
           );

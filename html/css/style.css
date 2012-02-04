@@ -357,7 +357,7 @@ ul#sortable2 li.bin {
     //border: 1px solid #000;
     clear: both;
     //margin-top: 30px;
-    padding: 25px 34px 25px 0;
+    padding: 25px 34px 25px 19px;
     width: 227px;
 }
 #searchstuff label { font-size: 14pt; margin-right: 10px; }
@@ -373,20 +373,20 @@ ul#sortable2 li.bin {
 #yelpdata {
     z-index: 300;
     position: absolute;
-    top: 50%
-    left: 50%
-    width: 300px;
+    top: 0; left: 0;
+    width: 200px;
     height: 200px;
     overflow-y: auto;
-    text-align: center;
-    background-color: #6EAF22;
-    margin: -100px 0 0 -150px;
+    background-color: #FFFF00;
+    margin: -100px 0 0 -200px;
     padding: 20px;
    // font-size: 12pt;
    // line-height: 1.3em;
     box-shadow: 0 -1px 1px 0 #211F07;
     -moz-box-shadow: 0px -1px 1px 0 #211F07;
     -webkit-box-shadow: 0px -1px 1px 0 #211F07;
+}
+.yelprating img {
 }
 /* End Rank Styles -------------------------------------------*/
 /* Begin Results Styles --------------------------------------*/
