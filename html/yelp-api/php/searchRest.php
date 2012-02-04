@@ -60,7 +60,7 @@ else {
     $unsigned_url = "http://api.yelp.com/v2/search?term=".$name."&location=08544&limit=2&category_filter=food,restaurants";
     $data = access($unsigned_url);
     $response = json_decode($data);
-    echo json_encode(array("returnValueName"=>"This is name from PHP : ".name($response), "returnValueId"=>"This is id from PHP : ".id($response)));
+    echo json_encode(array("returnValueName"=>"This is name from PHP : ".name($response, 0), "returnValueId"=>"This is id from PHP : ".id($response, 0)));
 }
 
 

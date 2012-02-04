@@ -24,5 +24,8 @@ function tags($response, $ind){
 function ratingimgsm($response, $ind){
   return "" .  $response->businesses[$ind]->rating_img_url_small;
 }
+function id($response, $ind){
+  return "" .  $response->businesses[$ind]->id;
+}
 
 ?>

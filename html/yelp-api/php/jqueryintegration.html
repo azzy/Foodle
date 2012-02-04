@@ -177,7 +177,7 @@
                 $('.sec').toggle();
                 $('#search').toggle();
                 // info in box to list
-                var yelpdata = "yelpdata"; // yelp data info -- name and id?                
+                var yelpdata = $('#yelpdata').val(); // yelp data info -- name and id?                
                 //create a container for the new comment
                 var li = $("<li>").addClass("restaurant").appendTo("#restlist");            
                 //add author name and comment to container
@@ -191,6 +191,7 @@
         $.post("searchRest.php", //ajax file
         { sendValue: str },
         function(data) {
+            $('#showthis').html("hmmm");
             $('#yelpdata').html(data.returnValueName + " " + data.returnValueId);
         },
         "json"
