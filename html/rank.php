@@ -82,7 +82,8 @@
     <img src="./images/add.png" />Add To List</div></a>
 
     </div>
-    <ul id="yelpdata">
+</div>
+ <ul id="yelpdata">
     <li class="yelpname"></li>
     <li class="yelprating"></li>
     <li class="yelpsnippet"></li>
