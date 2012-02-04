@@ -29,7 +29,7 @@
             $.post("initRest.php", //ajax file
                 { sendValue: str },
                 function(data) {
-                    alert("here");
+                    alert(data.num);
                     
                 },
                 "json"
