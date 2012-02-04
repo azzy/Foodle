@@ -34,13 +34,7 @@
         </ul>
 
         <div id="searchstuff">
-            <div class="searchtext"><label>Search:</label><textarea id = "searchtxt" cols="20" rows="1"></textarea></div>
-			<button id="search">Search</button>
             
-            <div class="sec">
-                <!-- <img src="plus-sm.png" alt="plus" id="plus"/><img src="X.jpg" alt="x" id="x"/> -->
-                <button id="add">Add To List</button> <button id="back">Back</button>
-            </div>
             <p> Yelp Data should print under here </p>
             <p id = "yelpdata">
                 <p id="yelpname"></p>
@@ -49,6 +43,11 @@
                 <p id="yelpsnippet"></p>  
                 <p id="yelpcat"></p>                  
             </p>
+            <p id="test1">test1</p>
+            <p id="test2">test2</p>
+            <p id="test3">test3</p>
+            <p id="test4">test4</p>
+            
             <br>
             <br>
         </div>
@@ -62,9 +61,10 @@
 
     //Initialize the page (This function runs on pageload)
     $(function () {
-        $('.sec').toggle();
+        $('#test1').html("here-1");
         var location = "08544";
-        addYelp = addYelp(location);
+        addYelp(location);
+        $('#test2').html("here-2");
         
     });
     
@@ -99,17 +99,6 @@
         });
     });
     
-    // click on the add button to add yelp info to the html list    
-    $('#add').click(function () {
-                // toggle secondary keys off and search key on
-                $('.sec').toggle();
-                $('#search').toggle();
-                // info in box to list
-                
-                var searchTxt =  $("#searchstuff").find("textarea").val();
-                // add yelp data to the list
-                listYelp(searchTxt);
-    });
     // get yelp data for display
     function getYelp(str) {
         $.post("searchRest.php", //ajax file
@@ -141,10 +130,4 @@
         );            
     }
     
-    $('#back').click(function () {
-                $('.sec').toggle();
-                $('#search').toggle();
-                $("#searchstuff").find("textarea").val("");
-                $('#yelpdata').html("");
-    });
 </script>
