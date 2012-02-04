@@ -60,7 +60,7 @@
 <script type="text/javascript">
 
     //Initialize the page (This function runs on pageload)
-    $(function () {
+    window.onload=$(function () {
         $('#test1').html("here-1");
         var location = "08544";
         addYelp(location);
