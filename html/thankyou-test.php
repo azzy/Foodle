@@ -14,8 +14,8 @@
       <div class="text">Thank you for using Choosine! Please use the
 	following URL to view your results.</div>
 	<div class="text">
-        <a href=<?php echo "./vote.php?type=$type&userkey=$userkey";?>>Vote for your poll!</a> <br/>
-        <a href=<?php echo "./results.php?type=$type&userkey=$userkey"?>>Administer your poll!</a>
+        <p><a href=<?php echo "./vote.php?type=$type&userkey=$userkey";?>>Vote for your poll!</a> <br/>
+        <a href=<?php echo "./results.php?type=$type&userkey=$userkey"?>>Administer your poll!</a></p>
     </div>
     </div>
     
