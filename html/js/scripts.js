@@ -58,15 +58,15 @@ function search (loc) {
 }
 
 // click on the add button to add yelp info to the html list    
-function addYelpInfo () {
+function addYelpInfo (loc) {
     // toggle secondary keys off and search key on
     $('#addnew').hide();
     $('#yelpdata').hide();
     // info in box to list
     
-    var searchTxt =  $("#searchstuff").find("input").val();
+    var searchTxt =  $("#searchtxt").val();
     // add yelp data to the list
-    listYelp(searchTxt);
+    listYelp(searchTxt, loc);
 }
 
 // get yelp data for display
@@ -88,9 +88,11 @@ function getYelp(str, loc) {
           );
 }
 // add yelp data to list
-function listYelp(str) {
+function listYelp(str, loc) {
     $.post("../functions/searchRest.php", 
-           { sendValue : str },
+           { sendValue : str,
+	     location: loc
+	   },
            function(data) {
 	       var id = data.returnValueId;
                //add author name and comment to container
