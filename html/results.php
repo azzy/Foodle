@@ -26,6 +26,7 @@
     //$rankedResults = genResults($pollid, 3);
     $rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
     $location = "08544";
+    /*
     print_r($rankedResults);
     
     for ($i = 0; $i < 2; $i++) {        
@@ -37,7 +38,7 @@
     //echo($rankedResults[0]."<br>");
     //print_r(getData($rankedResults[0], 2, $pollinfo['location']));
     // TODO: get restaurants for these cuisines
-    
+    */
     
   }
 ?>
