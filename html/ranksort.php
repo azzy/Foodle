@@ -116,10 +116,12 @@ else {
 
 						      </div><!-- end of content -->
 						      <?php
-  } else { echo '</div><!-- end of content -->'; }
-if ($nominate == true) {
+  } else { echo '</div><!-- end of content -->'; }?>
+<?php	  	
+if ($nominate===true) {
   echo "<a href='./initiate.php?type=".$type."&userkey=".$userkey."'><img src='./images/left.png' id='nav-left' /></a>";
-} ?>
+}
+?>
 <a href='javascript: saveList()'><img src="./images/right.png" id="nav-right" /></a>
   <script type="text/javascript">
   <!--
