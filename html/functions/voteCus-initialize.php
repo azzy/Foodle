@@ -10,7 +10,7 @@
     $pollid = $userinfo['pollid'];
     
     $arrOfIds = getPollChoices($pollid);
-    
+    /*
     function addItems($arrOfIds, $idToCuis) {
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
@@ -18,6 +18,7 @@
             echo("<li class='restaurant'>".$name."</li>");
         }
     }
+    */
 
     //echo("<br/><br/>");
 ?>
@@ -30,8 +31,9 @@
     lalalala
     <p><?php echo("userkey ".$userkey." pollid ".$pollid."<br/><br/>");?></p>
     <p><?php print_r($arrOfIds);?></p>
+    <p><?php print_r($idToCuis);?></p>
     <ul id="cuslist">
-        <?php addItems($arrOfIds, $idToCuis);?>
+        
     </ul>
 </body>
 </html>
