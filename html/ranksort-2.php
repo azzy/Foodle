@@ -136,7 +136,7 @@ function saveList() {
 
   var jsonList = $.extend({} ,$("#sortable2").sortable("toArray"));
   jsonList.userkey = '<?php echo $userkey ?>';
-  jsonList.nominate = '<?php echo $nominate ?>'
+  jsonList.nominate = true;
     console.log(jsonList); // TODO: remove
   $.ajax({
     type: 'POST',
