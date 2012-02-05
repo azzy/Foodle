@@ -27,7 +27,7 @@ function getYelp(str) {
            { sendValue: str },
            function(data) {
                //dataStuff = data;
-	       $("#yelpdata ul").id = data.returnValueId;
+	       $("#yelpdata ul").attr('id', data.returnValueId);
                $("#yelpdata li.yelpname").html(data.returnValueName);
 	       $("#yelpdata li.yelprating").html('<img src="' + data.returnValueRatingImg + '" />');
 	       $("#yelpdata li.yelpsnippet").html(data.returnValueSnippet);
