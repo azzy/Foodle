@@ -17,10 +17,10 @@
     function addItems($arrOfIds) {
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
-            echo("here2"); 
+            //echo("here2"); 
             $response=getData($arrOfIds[$i]);
             $name = $response['name'];
-            echo("<li class='restaurant'>".$name."<li>");
+            echo("<li class='restaurant'>".$name."</li>");
         }
     }
     
