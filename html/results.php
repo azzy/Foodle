@@ -10,6 +10,9 @@
   include_once("functions/genResults.php");
   $userinfo = getUserInfo($userkey);
   $pollid = $userinfo['pollid'];
+  if (!$pollid) {
+    // TODO: return some logical error page instead
+  }
   if ($type == 'restaurants') {
     $rankedResults = genResults($pollid, 5);
   }

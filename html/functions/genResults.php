@@ -1,12 +1,12 @@
 <?php
 /* Gets the top $num_results results for a poll, running Kanika's ranking algorithm! */
 function genResults($pollid, $num_results) {
-  $output = shell_exec("java -cp ../voting-alg/.:../java-common/mysql-connector-java-5.1.18-bin.jar:../java-common/stdlib.jar:../java-common/algs4.jar Choosine ".$pollid);
+  $output = shell_exec("java -cp ../voting-alg/.:../java-common/mysql-connector-java-5.1.18-bin.jar:../java-common/stdlib.jar:../java-common/algs4.jar Choosine {$pollid}");
   if (strpos($output,'ERROR') === 0) {
     // there was an error
 
   } else {
-    include_once('foodledbinfo.php');
+    include('foodledbinfo.php');
     try {
       $db = new PDO('mysql:host=localhost;dbname='.$database, $username, $password);
 
