@@ -42,28 +42,39 @@ if (array_key_exists('location', $pollinfo)) {
     <div id="list-1">
       <ul id="sortable1" class="connectedSortable">
 <?php
-  if ($type == "restaurants") { 
-    echo '<script type="text/javascript">
+  if ($type == "restaurants") {
+    if ($nominate == true) {
+      echo '<script type="text/javascript">
     <!--
 	initiateRestNom("'.$location.'");
     //-->
     </script>';
+    }
+    else {
+      include("functions/initiateRestVote.php");
+      addItems($arrOfIds);
+    }
   }
   else if ($type == "cuisine") {
-    $cuisines = array('American','Desserts & Ice Cream','Breakfast & Brunch',
-		      'Burgers','Cafes','Chinese','Delis & Sandwiches','Diners',
-		      'French','Greek','Indian & Pakistani','Italian','Japanese',
-		      'Latin American','Mexican','Middle Eastern','Pizza','Seafood',
-		      'Southern & Soul Food','South-East Asian','Vegan & Vegetarian');
-    $ids = array('tradamerican,newamerican','bakeries,desserts,icecream',
-		 'breakfast_brunch','burgers','cafes,coffee,tea','chinese,dimsum',
-		 'delis,sandwiches','diners','french','greek','indpak,pakistan',
-		 'italian','japanese,sushi','latin,peruvian','mexican','mideastern',
-		 'pizza','seafood','soulfood,southern',
-		 'thai,malaysian,singaporean,vietnamese,indonesian','vegan,vegetarian');
-    $length = count($cuisines);
-    for ($i = 1; $i <= $length; $i++) {
-      echo '<li class="draggable heading" id="'.$ids[$i].'">'.$cuisines[$i].'</li>';
+    if ($nominate == true) {
+      $cuisines = array('American','Desserts & Ice Cream','Breakfast & Brunch',
+			'Burgers','Cafes','Chinese','Delis & Sandwiches','Diners',
+			'French','Greek','Indian & Pakistani','Italian','Japanese',
+			'Latin American','Mexican','Middle Eastern','Pizza','Seafood',
+			'Southern & Soul Food','South-East Asian','Vegan & Vegetarian');
+      $ids = array('tradamerican,newamerican','bakeries,desserts,icecream',
+		   'breakfast_brunch','burgers','cafes,coffee,tea','chinese,dimsum',
+		   'delis,sandwiches','diners','french','greek','indpak,pakistan',
+		   'italian','japanese,sushi','latin,peruvian','mexican','mideastern',
+		   'pizza','seafood','soulfood,southern',
+		   'thai,malaysian,singaporean,vietnamese,indonesian','vegan,vegetarian');
+      $length = count($cuisines);
+      for ($i = 1; $i <= $length; $i++) {
+	echo '<li class="draggable heading" id="'.$ids[$i].'">'.$cuisines[$i].'</li>';
+      }
+    }
+    else {
+      
     }
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
@@ -102,9 +113,12 @@ if (array_key_exists('location', $pollinfo)) {
 <?php
   } else { echo '</div><!-- end of content -->'; }
 ?>
-
-    <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
-    <a href='javascript: saveList()'><img src="./images/right.png" id="nav-right" /></a> <!-- '<?php echo "./email.php?type=$type&userkey=$userkey"; ?>' and onClick="saveList();"-->
+<?php
+  if ($nominate===true) {
+    echo "<a href='./initiate.php?type=".$type."&userkey=".$userkey."'><img src='./images/left.png' id='nav-left' /></a>";
+  }
+?>
+<a href='javascript: saveList()'><img src="./images/right.png" id="nav-right" /></a>
 <script type="text/javascript">
 <!--
 $( function() {
@@ -128,7 +142,11 @@ function saveList() {
     data: jsonList,
     url: '/ajax/saveList.php',
     success: function(data) {
-      window.location = '<?php echo "./email.php?type={$type}&userkey={$userkey}"; ?>';
+	if ($nominate) {
+          window.location = '<?php echo "./email.php?type={$type}&userkey={$userkey}&nominate={$nominate}"; ?>';
+	} else {
+	  window.location = '<?php echo "./results.php?type={$type}&userkey={$userkey}&nominate={$nominate}"; ?>';
+	}
     },
     error: function(error) {
       console.log("Error on posting data; try again?");
