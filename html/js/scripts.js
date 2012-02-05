@@ -60,6 +60,7 @@ function listYelp(str) {
 		   items: "#" + id
 		   //items:"not(.info li)"
 	       });
+	       $('#' + id + ".info").sortable({ disabled: true });
 	       $('#' + id).children('info').hide();
 	       $('#' + id).click(function(event) {
 		   if (this == event.target) $(this).children('ul').toggle();
