@@ -6,7 +6,12 @@
 <?php
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
-  include("header.php");
+  include_once("header.php");
+  include_once("newuser.php");
+  include_once("newpoll.php");
+  $userinfo = getUserInfo($userkey);
+  $pollinfo = getPollInfo($userinfo['pollid']);
+  $location = $pollinfo['location'];
 ?>
 </head>
 <?php
@@ -84,13 +89,17 @@
     <img src="./images/add.png" />Add To List</div></a>
     </div>
 </div>
- <ul id="yelpdata">
+<div id="yelpdata">
+<img src="./images/add.png" id="add" />
+<img src="./images/x.png" id="x" />
+ <ul>
     <li class="yelpname"></li>
     <li class="yelprating"></li>
     <li class="yelpsnippet"></li>
     <li class="yelpcat"></li>
     <li class="readmore"></li>
     </ul>
+</div>
 <?php
   } else { echo '</div>'; }
 ?>
@@ -144,5 +153,5 @@ function saveList() {
 //-->
 </script>
 <?php
-  include("footer.php");
+  include_once("footer.php");
 ?>

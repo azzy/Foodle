@@ -26,8 +26,9 @@ function getYelp(str) {
     $.post("../php/searchRest.php", //ajax file
            { sendValue: str },
            function(data) {
-               dataStuff = data;
-               $("#yelpdata li.yelpname").html(data.returnValueName + " " + data.returnValueId);
+               //dataStuff = data;
+	       $("#yelpdata ul").id = data.returnValueId;
+               $("#yelpdata li.yelpname").html(data.returnValueName);
 	       $("#yelpdata li.yelprating").html('<img src="' + data.returnValueRatingImg + '" />');
 	       $("#yelpdata li.yelpsnippet").html(data.returnValueSnippet);
 	       $("#yelpdata li.yelpcat").html(data.returnValueCategory);
@@ -43,18 +44,26 @@ function listYelp(str) {
            function(data) {
                //var li = $("<li>").addClass("restaurant");            
                //add author name and comment to container
-               $("<li>").addClass("restaurant").text(data.returnValueName + " " + data.returnValueId).appendTo("#restlist");
+	       $("sortable1").append(
+		   '<li class="draggable heading" id="' 
+		       + data.returnValueId + '">'
+		       + data.returnValueName 
+		       + '<ul class="info"><li class="yelprating"><img src="' 
+		       + data.returnValueRatingImg + '" /></li><li class="yelpsnippet">'
+		       + data.returnValueSnippet + '</li><li class="yelpcat">'
+		       + data.returnValueCategory + '</li><li class="readmore">'
+		       + data.returnValueURL + '</li></ul></li>');
+              // $("<li>").addClass("restaurant").text(data.returnValueName + " " + data.returnValueId).appendTo("#sortable1");
                //empty inputs
                $("#searchstuff").find("input").val("");
-               $('#yelpdata').html("");
+               $('#yelpdata li').html("");
            },
            "json"
           );            
 }
 
-$('#back').click(function () {
-    $('.sec').toggle();
-    $('#search').toggle();
-    $("#searchstuff").find("textarea").val("");
+$('#x').click(function () {
+    $('#yelpdata').hide();
+    $("#searchstuff").find("input").val("");
     $('#yelpdata').html("");
 });
