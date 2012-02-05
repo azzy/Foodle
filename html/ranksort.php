@@ -141,8 +141,8 @@ function saveList() {
     data: jsonList,
     url: '/ajax/saveList.php',
     success: function(data) {
-	window.location = "<?php if ($nominate == true) echo './email.php?type='.$type.'&userkey='.$userkey.'&nominate='.$nominate;
-	else echo './thankyou.php?type='.$type.'&userkey='.$userkey; ?>";
+	window.location = "<?php if ($nominate) echo './email.php?type='.$type.'&userkey='.$userkey.'&nominate='.$nominate;
+        else echo './thankyou.php?type='.$type.'&userkey='.$userkey; ?>";
     },
     error: function(error) {
       console.log("Error on posting data; try again?");

@@ -59,4 +59,6 @@
         
     }    
 
+<?php print_r($arrOfIds);?>
+
 ?>
