@@ -9,7 +9,6 @@ $userinfo = getUserInfo($userkey);
 $pollinfo = getPollInfo($userinfo['pollid']);
 //$location = $pollinfo['location'];
 $location = "08544";
-$_POST = array("sendValue" => "panera");
 
 if (empty($_POST['sendValue'])) {
     echo json_encode(array("returnValueName"=>"This is name from PHP : ", "returnValueId"=>"This is id from PHP : "));
