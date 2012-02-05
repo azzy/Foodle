@@ -6,7 +6,7 @@
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
   echo '</head><body class="initiate '.$type.'">';
-  if($_POST['formSubmit'] == "Submit") 
+  if($_POST['email']!= "") 
     {
   $errorMessage = "";
 
