@@ -19,8 +19,8 @@
   }
   else {
     $rankedResults = genResults($pollid, 3);
-    for ($i = 0; $i < count($rankedResults); $i) {
-    
+    for ($i = 0; $i < 2; $i) {
+        $response = getData($rankedResults[$i], 2, getPollInfo($pollid)['location']);
     }
     // TODO: get restaurants for these cuisines
     
