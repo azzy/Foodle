@@ -8,7 +8,7 @@ include_once('newpoll.php');
 $userinfo = getUserInfo($userkey);
 $pollinfo = getPollInfo($userinfo['pollid']);
 //$location = $pollinfo['location'];
-$location = "08544";
+$location = 08544;
 
 if (empty($_POST['sendValue'])) {
     echo json_encode(array("returnValueName"=>"This is name from PHP : ", "returnValueId"=>"This is id from PHP : "));
