@@ -51,13 +51,13 @@ $arrOfIds = getPollChoices($pollid);
     //-->
     </script>';
     }
-    else {
+    else { ?>
       <li><?php var_dump($arrOfIds); ?></li>
       <li><?php $pollinfo = getPollInfo($userinfo['pollid']);
       echo "My location is ".$pollinfo['location'].", you have ".$pollinfo['numchoices']." choices";?></li>
-      include("functions/initiateRestVote.php");?>
+      <?php include("functions/initiateRestVote.php");
 
-      <?php addItems($arrOfIds);
+      addItems($arrOfIds);
     }
   }
   else if ($type == "cuisine") {
