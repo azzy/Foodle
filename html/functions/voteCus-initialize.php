@@ -10,7 +10,7 @@
     $pollid = $userinfo['pollid'];
     
     $arrOfIds = getPollChoices($pollid);
-    /*
+    
     function addItems($arrOfIds, $idToCuis) {
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
@@ -19,9 +19,9 @@
         }
     }
     
-    <?php addItems($arrOfIds, $idToCuis);?>
+    //
     
-    */
+    
 
     //echo("<br/><br/>");
 ?>
@@ -36,7 +36,7 @@
     <p><?php print_r($arrOfIds);?></p>
     <p><?php echo("here");?></p>
     <ul id="cuslist">
-        
+        <?php addItems($arrOfIds, $idToCuis);?>
     </ul>
 </body>
 </html>
