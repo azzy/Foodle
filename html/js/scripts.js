@@ -44,7 +44,7 @@ function listYelp(str) {
            function(data) {
                //var li = $("<li>").addClass("restaurant");            
                //add author name and comment to container
-	       $("sortable1").append(
+	       $("#sortable1").append(
 		   '<li class="draggable heading" id="' 
 		       + data.returnValueId + '">'
 		       + data.returnValueName 
@@ -54,6 +54,7 @@ function listYelp(str) {
 		       + data.returnValueCategory + '</li><li class="readmore">'
 		       + data.returnValueURL + '</li></ul></li>');
               // $("<li>").addClass("restaurant").text(data.returnValueName + " " + data.returnValueId).appendTo("#sortable1");
+	       $("#sortable2").append("<li>TEST</li>");
                //empty inputs
                $("#searchstuff").find("input").val("");
                $('#yelpdata li').html("");
