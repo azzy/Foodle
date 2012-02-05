@@ -50,12 +50,9 @@ if (array_key_exists('location', $pollinfo)) {
     //-->
     </script>';
     }
-    else { ?>
-      <li><?php $pollinfo = getPollInfo($userinfo['pollid']);
-      echo "My location is ".$pollinfo['location'].", you have ".$pollinfo['numchoices']." choices";?></li>
-      <li><?php $arrOfIds = getPollChoices($userinfo['pollid']); var_dump($arrOfIds); ?></li>
-      <?php include("functions/initiateRestVote.php");
-
+    else { 
+      $arrOfIds = getPollChoices($userinfo['pollid']);
+      include("functions/initiateRestVote.php");
       addItems($arrOfIds);
     }
   }
