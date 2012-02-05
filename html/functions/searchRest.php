@@ -15,7 +15,7 @@ if (empty($_POST['sendValue'])) {
 }
 else {
     $name = str_replace(" ", "+", $_POST['sendValue']);
-    $unsigned_url = "http://api.yelp.com/v2/search?term=".$name."&location=".$location."&limit=2&category_filter=food,restaurants";
+    $unsigned_url = "http://api.yelp.com/v2/search?term=".$name."&location=08544&limit=2&category_filter=food,restaurants";
     $data = access($unsigned_url);
     $response = json_decode($data);
     echo json_encode(array("returnValueName"=>name($response, 0), 
