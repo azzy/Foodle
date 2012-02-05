@@ -5,7 +5,7 @@
     include_once("foodledbinfo.php");
     include_once("newpoll.php");
     include_once("newuser.php");
-    $arrOfIds = array("the-bent-spoon-princeton", "witherspoon-grill-princeton", "nassau-sushi-princeton");
+    
     function addItems($arrOfIds) {
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
@@ -60,17 +60,3 @@
     }    
 
 ?>
-<html>
-    <head>
-        <title>Test</title>
-    </head>
-
-<body>
-    lalalala
-    <p><?php echo("userkey ".$userkey." pollid ".$pollid."<br/><br/>");?></p>
-    <p><?php print_r($arrOfIds);?></p>
-    <ul id='restlist'>
-        <?php addItems($arrOfIds); ?>
-    </ul>
-</body>
-</html>
