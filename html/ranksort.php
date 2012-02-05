@@ -77,9 +77,8 @@ else {
     }
     else { 
       $arrOfIds = getPollChoices($pollid);
-      var_dump($arrOfIds);
       include("functions/initiateCuisVote.php");
-      addItems($arrOfIds,$idToCuis);
+      populateCuisines($arrOfIds,$idToCuis);
     }
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
