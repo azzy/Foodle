@@ -14,7 +14,7 @@
     $response = json_decode($data);
     
     print_r($response);
-    
+    /*
     $name = $response=>name;
     $rating = $response=>rating;
     $ratingimg = $response=>rating_img_url;
@@ -27,12 +27,12 @@
     }
     
     "categories"=>$category,
-    */
+    /
     
     $arr = array("name"=>$name, "rating"=>$rating, "ratingimg"=>$ratingimg, "location"=>$location, "url"=>$url);
     
     echo json_encode($arr);
-    
+    */
     //name, rating, rating_img_url, url, categories, location=>city, location=>state_code
     
     //http://www.yelp.com/biz/the-bent-spoon-princeton
