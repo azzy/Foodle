@@ -1,12 +1,3 @@
-// function to initialize headings to toggle.
-function initExpandCollapse () {
-    $('li.heading').each( function() {
-	$(this).click(function(event) {
-	    if (this == event.target) $(this).children('ul').toggle();
-	});
-    });
-}
-
 // function to retrieve yelp info
 function search () {
   // toggle on secondary buttons, toggle off main search button
@@ -68,10 +59,10 @@ function listYelp(str) {
            },
            "json"
           );
+    //initialzie the new items to expand/collapse and be sortable
     $("#sortable1").sortable({items:".added-sortable"});
     $('li.added-sortable').children('.info').hide();
-    initExpandCollapse();
-}
+    $('li.added-sortable').click($(this).children('ul').toggle());
 
 function close () {
     $('#addnew').hide();

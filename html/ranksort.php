@@ -111,7 +111,11 @@ $( function() {
 
   // initialize expand/collapse list
   $('li.heading').children('.info').hide();
-  initExpandCollapse();
+  $('li.heading').each( function() {
+      $(this).click(function(event) {
+	  if (this == event.target) $(this).children('ul').toggle();
+	});
+    });
   });
 
 //function to save the newly sorted list
