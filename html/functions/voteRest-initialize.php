@@ -1,9 +1,10 @@
 <html>
-    <head></head>
+    <head><title>Test</title></head>
 
 <body>
 
 <?php
+    /*
     require_once ('lib/OAuth.php');
     include("access.php");
     include("parse.php");
@@ -11,7 +12,7 @@
     include("foodledbinfo.php");
     include("newpoll.php");
     include("newuser.php");
-    
+    */
     //$userkey = $_GET['userkey'];
     $userkey = "B3EF2465-24E8-AC67-5076-0D3C22571FD0";
     /*
@@ -36,8 +37,9 @@
     echo("</ul>");
     */
     echo("here");
+    /*
     function getData($business) {
-        /*
+        
         // create URL and get Yelp response
         $unsigned_url = "http://api.yelp.com/v2/business/".$business;
         $data = access($unsigned_url);
@@ -57,8 +59,9 @@
         //name, rating, rating_img_url, url, categories, city, state
         $arr = array("name"=>$name, "rating"=>$rating, "ratingimg"=>$ratingimg, "location"=>$location, "categories"=>$category, "url"=>$url);
         return ($arr);
-        */
+        
     }
+    */
 ?>
 </body>
 </html>
