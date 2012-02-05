@@ -80,8 +80,8 @@ label,a
 			    echo("<p>There was an error with your form:</p>\n");
 			    echo("<ul>" . $errorMessage . "</ul>\n");
             }
-            $userkey = $_GET['userkey'];
-            echo("<p>".html($userkey).appendTo('#testing'));
+            //$userkey = $_GET['userkey'];
+            //echo("<p>".html($userkey).appendTo('#testing'));
         ?>
 
 		<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
