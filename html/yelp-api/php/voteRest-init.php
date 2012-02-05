@@ -19,15 +19,15 @@
     $rating = $response->rating;
     $ratingimg = $response->rating_img_url;
     $url = $response->url;
-    $location = $response->location->city . "," . $response->location->state_code;
+    $location = ($response->location->city) . "," . ($response->location->state_code);
     $category = "";
     
-    
+    /*
     for ($i = 0; $i < count($response->categories); $i++) {
         $category = $category.$response->categories[$i];
     }
     
-    
+    */
     
     
     $arr = array("name"=>$name, "rating"=>$rating, "ratingimg"=>$ratingimg, "location"=>$location, "categories"=>$category, "url"=>$url);
