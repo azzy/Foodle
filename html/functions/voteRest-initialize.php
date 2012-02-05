@@ -12,7 +12,8 @@
     $userinfo = getUserInfo($userkey);
     $pollid = $userinfo['pollid'];
     
-    
+    $arrOfIds = getPollChoices($pollid);
+    $num = count($arrOfIds);
     //echo("<br/><br/>");
 ?>
 <html>
@@ -23,6 +24,7 @@
 <body>
     lalalala
     <p><?php echo("userkey ".$userkey." pollid ".$pollid."<br/><br/>");?></p>
+    <p><?php print_r($arrOfIds);?></p>
 </body>
 </html>
 
