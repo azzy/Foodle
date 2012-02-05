@@ -57,8 +57,9 @@ function listYelp(str) {
                $('#yelpdata li').html("");
 	       //initialize the new items to expand/collapse and be sortable
 	       $("#sortable1").sortable({
-		   items: "#" + id,
-		   items:"not(.info li)"});
+		   items: "#" + id
+		   //items:"not(.info li)"
+	       });
 	       $('#' + id).children('info').hide();
 	       $('#' + id).click(function(event) {
 		   if (this == event.target) $(this).children('ul').toggle();
