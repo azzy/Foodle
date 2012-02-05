@@ -35,7 +35,7 @@ function mname($name) {
 
 echo "Test Results <br/>";
 
-if(mlocation("Princeton, NJ")) {
+if(mlocation("Princeton, NJ")&& (memail("kanika1091@gmail.com"))) {
   echo "all good";
 }
 else {
