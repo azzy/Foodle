@@ -1,7 +1,12 @@
 <?php
   include("header.php");
-  $type = $_GET['type'];
-  $userkey = $_GET['userkey'];
+  if (array_key_exists('userkey', $_GET)) {
+    $type = $_GET['type'];
+    $userkey = $_GET['userkey'];
+  } else {
+    $type = $_POST['type'];
+    $userkey = $_POST['userkey'];
+  }
   include_once("functions/newuser.php");
   include_once("functions/newpoll.php");
   $userinfo = getUserInfo($userkey);
@@ -12,10 +17,14 @@
 if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
     // TODO: some validation
     $userkeys = array();
-    foreach ($_POST as $useremail) {
-      $userkeys[] = newUser($pollid, 'v', $useremail);
+    
+    foreach ($_POST as $field => $useremail) {
+      if ($field !== 'submit' and $field !== 'userkey' and $field !== 'type') {
+        $userkeys[] = newUser($pollid, 'v', $useremail);
+      }
     }
-    header("Location: ./thankyou.php?type={$type}&userkey={$userkey}");
+    echo var_dump($_POST);
+    //header("Location: ./thankyou.php?type={$type}&userkey={$userkey}");
     exit();
   }
 ?>
