@@ -14,7 +14,7 @@ public class Choosine {
         ResultSet rs = null;
 
 	if (args.length < 1) {
-	    System.err.println("Usage: Choosine pollid");
+	    System.err.println("ERROR: Usage: Choosine pollid");
 	    return;
 	}
 
@@ -22,7 +22,7 @@ public class Choosine {
 	try {
 	    pollid = Integer.parseInt(args[0]);
 	} catch (Exception e) {
-	    System.err.println("pollid must be an integer!");
+	    System.err.println("ERROR: pollid must be an integer!");
 	    return;
 	}
 
@@ -180,15 +180,12 @@ public class Choosine {
 	    update number */
 	    int tableindex;
 
-	    System.out.println("Old tablename: ");
-	    System.out.println(oldtablename);
-
 	    if (oldtablename == null) {
 		tableindex = 0;
 	    } else {
 		try {
 		    String stringnum = oldtablename.substring(oldtablename.indexOf("_") + 1);
-		    System.out.println("Number from old table: " + stringnum);
+		    //System.out.println("Number from old table: " + stringnum);
 		    tableindex = Integer.parseInt(stringnum);
 		} catch (Exception e) {
 		    System.err.println("ERROR! Bad table name (bad int parsing): " + oldtablename);
@@ -220,9 +217,6 @@ public class Choosine {
 	    pst = con.prepareStatement("CREATE TABLE " + tablename + "(choiceid INT PRIMARY KEY, rank INT)");
 	    pst.executeUpdate();
 	    pst.close();
-
-	    System.out.println("Arriving here with tablename:");
-	    System.out.println(tablename);
 
 	    // construct the table
 	    int[] ordering = new int[size];
