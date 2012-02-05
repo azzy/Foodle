@@ -42,28 +42,39 @@ if (array_key_exists('location', $pollinfo)) {
     <div id="list-1">
       <ul id="sortable1" class="connectedSortable">
 <?php
-  if ($type == "restaurants") { 
-    echo '<script type="text/javascript">
+  if ($type == "restaurants") {
+    if ($nominate == true) {
+      echo '<script type="text/javascript">
     <!--
 	initiateRestNom("'.$location.'");
     //-->
     </script>';
+    }
+    else {
+      include("functions/initiateRestVote.php");
+      addItems($arrOfIds);
+    }
   }
   else if ($type == "cuisine") {
-    $cuisines = array('American','Desserts & Ice Cream','Breakfast & Brunch',
-		      'Burgers','Cafes','Chinese','Delis & Sandwiches','Diners',
-		      'French','Greek','Indian & Pakistani','Italian','Japanese',
-		      'Latin American','Mexican','Middle Eastern','Pizza','Seafood',
-		      'Southern & Soul Food','South-East Asian','Vegan & Vegetarian');
-    $ids = array('tradamerican,newamerican','bakeries,desserts,icecream',
-		 'breakfast_brunch','burgers','cafes,coffee,tea','chinese,dimsum',
-		 'delis,sandwiches','diners','french','greek','indpak,pakistan',
-		 'italian','japanese,sushi','latin,peruvian','mexican','mideastern',
-		 'pizza','seafood','soulfood,southern',
-		 'thai,malaysian,singaporean,vietnamese,indonesian','vegan,vegetarian');
-    $length = count($cuisines);
-    for ($i = 1; $i <= $length; $i++) {
-      echo '<li class="draggable heading" id="'.$ids[$i].'">'.$cuisines[$i].'</li>';
+    if ($nominate == true) {
+      $cuisines = array('American','Desserts & Ice Cream','Breakfast & Brunch',
+			'Burgers','Cafes','Chinese','Delis & Sandwiches','Diners',
+			'French','Greek','Indian & Pakistani','Italian','Japanese',
+			'Latin American','Mexican','Middle Eastern','Pizza','Seafood',
+			'Southern & Soul Food','South-East Asian','Vegan & Vegetarian');
+      $ids = array('tradamerican,newamerican','bakeries,desserts,icecream',
+		   'breakfast_brunch','burgers','cafes,coffee,tea','chinese,dimsum',
+		   'delis,sandwiches','diners','french','greek','indpak,pakistan',
+		   'italian','japanese,sushi','latin,peruvian','mexican','mideastern',
+		   'pizza','seafood','soulfood,southern',
+		   'thai,malaysian,singaporean,vietnamese,indonesian','vegan,vegetarian');
+      $length = count($cuisines);
+      for ($i = 1; $i <= $length; $i++) {
+	echo '<li class="draggable heading" id="'.$ids[$i].'">'.$cuisines[$i].'</li>';
+      }
+    }
+    else {
+      
     }
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
