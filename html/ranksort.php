@@ -52,8 +52,9 @@ $arrOfIds = getPollChoices($pollid);
     </script>';
     }
     else {
-      include("functions/initiateRestVote.php");
-      addItems($arrOfIds);
+      include("functions/initiateRestVote.php");?>
+      <li><?php print_r($arrOfIds);?></li>
+      <?php addItems($arrOfIds);
     }
   }
   else if ($type == "cuisine") {
