@@ -35,6 +35,9 @@ function categories($response, $ind){
   }
   return($return);
 }
+function url($response, $ind) {
+  return "" . $response->businesses[$ind]->url;
+}
 
 
 ?>
