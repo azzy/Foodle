@@ -71,16 +71,16 @@ label,a
       <table>
   <tr>
     <td><label for="dinner">Dinner Name:</label></td>
-    <td><input type="text" id="dinner" name="dinner" value="<?=$dinner;?>"/></td>
+    <td><input type="text" id="dinner" name="dinner"/></td>
   </tr><tr>
     <td><label for="name">Your Name:</label></td>
-    <td><input type="text" id="name" name="name" value="<?=$name;?>"/></td>
+    <td><input type="text" id="name" name="name" /></td>
   </tr><tr>
     <td><label for="email">Your Email:</label></td>
-    <td><input type="text" id="email" name="email" placeholder="" value="<?=$email;?>" /></td>
+    <td><input type="text" id="email" name="email" placeholder=""  /></td>
   </tr><tr>
     <td><label for="location">Your Location:</label></td>
-    <td><input type="text" id="location" name="location" placeholder="City, State or ZIP" value="<?=$location;?>" / ></td>
+    <td><input type="text" id="location" name="location" placeholder="City, State or ZIP"  / ></td>
   </tr>
       </table>
       </form>
