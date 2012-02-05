@@ -37,6 +37,7 @@
     */
     echo("here");
     function getData($business) {
+        /*
         // create URL and get Yelp response
         $unsigned_url = "http://api.yelp.com/v2/business/".$business;
         $data = access($unsigned_url);
@@ -56,6 +57,7 @@
         //name, rating, rating_img_url, url, categories, city, state
         $arr = array("name"=>$name, "rating"=>$rating, "ratingimg"=>$ratingimg, "location"=>$location, "categories"=>$category, "url"=>$url);
         return ($arr);
+        */
     }
 ?>
 </body>
