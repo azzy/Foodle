@@ -4,18 +4,20 @@
   //-----------------------------------------------------------------------
 ?>
 <?php
-  $type = $_GET['type'];
-  $userkey = $_GET['userkey'];
-  $nominate = FALSE;
-  if (array_key_exists('nominate', $_GET)) {
-    $nominate = $_GET['nominate']; // generally, it will be true or non-existent
-  }
-  include_once("header.php");
-  include_once("functions/newuser.php");
-  include_once("functions/newpoll.php");
-  $userinfo = getUserInfo($userkey);
-  $pollinfo = getPollInfo($userinfo['pollid']);
+$type = $_GET['type'];
+$userkey = $_GET['userkey'];
+$nominate = FALSE;
+if (array_key_exists('nominate', $_GET)) {
+  $nominate = $_GET['nominate']; // generally, it will be true or non-existent
+}
+include_once("header.php");
+include_once("functions/newuser.php");
+include_once("functions/newpoll.php");
+$userinfo = getUserInfo($userkey);
+$pollinfo = getPollInfo($userinfo['pollid']);
+if (array_key_exists('location', $pollinfo)) {
   $location = $pollinfo['location'];
+} else { $location = "08544"; }
 ?>
 </head>
 <?php
@@ -39,12 +41,12 @@
     <div id="list-1">
       <ul id="sortable1" class="connectedSortable">
 <?php
-  if ($type == "restaurants") {
-    for ($i = 1; $i <= 10; $i++) {
-      echo '<li class="draggable heading" id="switch-to-uniqueid'.$i.'">';
-      echo 'Restaurant Name retrieved from YELP';
-      echo '<ul class="info"><li>Information retrieved from YELP</li></ul></li>';
-    }
+  if ($type == "restaurants") { 
+    echo '<script type="text/javascript">
+    <!--
+	initiateRestNom('.$location.');
+    //-->
+    </script>';
   }
   else if ($type == "cuisine") {
     $cuisines = array('American','Desserts & Ice Cream','Breakfast & Brunch',
@@ -79,7 +81,7 @@
     <div id="searchstuff">
       <div class="searchtext"><label>Search:</label>
       <input id="searchtxt" />
-    <a href="javascript: search()"><img id="search" src="./images/search.png" /></a>
+    <a href="javascript: search(<?php echo $location; ?>)"><img id="search" src="./images/search.png" /></a>
     </div>
       <a href="javascript: addYelpInfo()"><div id="addnew">
     <!--<img src="./images/add.png" />Add To List</div></a>-->
