@@ -11,9 +11,11 @@
         //$unsigned_url = "http://api.yelp.com/v2/business/".$business;
         $data = access($unsigned_url);
         $response = json_decode($data);
-        echo("here-2");
+        echo($unsigned_url);
+        
+        print_r($response);
+        
         /*
-        //print_r($response);
         $num = count($response->businesses);
         $arrFinal = array("num" : $num);
         echo("here-3 ".$num);
