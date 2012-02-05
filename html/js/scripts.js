@@ -55,13 +55,13 @@ function listYelp(str) {
                //empty inputs
                $("#searchstuff").find("input").val("");
                $('#yelpdata li').html("");
+	       //initialize the new items to expand/collapse and be sortable
+	       // $("#sortable1").sortable({items:".added-sortable"});
+	       $('#' + id).children('ul').hide();
+	       $('#' + id).click($(this).children('ul').toggle());
            },
            "json"
           );
-    //initialzie the new items to expand/collapse and be sortable
-   // $("#sortable1").sortable({items:".added-sortable"});
-    $('#' + id).children('.info').hide();
-    $('#' + id).click($(this).children('ul').toggle());
 }
 
 function close () {
