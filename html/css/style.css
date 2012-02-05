@@ -365,12 +365,17 @@ ul#sortable2 li.bin {
 //.bin-hover { background: url('../images/bin_hover.png') no-repeat; }
 /* Integrating Search in Rank Page Styles --------------------*/
 .rank a:link,
-.rank a:visited {
+.rank a:visited,
+.review a:link,
+.review a:visited {
     color: #ffff00;
 }
 .rank a:hover,
 .rank a:focus,
-.rank a:active {
+.rank a:active,
+.review a:hover,
+.review a:focus,
+.review a:active {
     color: #FCEE21;
     border-bottom: 1px dotted #FCEE21;
 }
@@ -451,3 +456,6 @@ body.results #content-area { overflow: hidden; }
     float: right;
 }
 /* End Results Styles ----------------------------------------*/
+/* Thank You Page Styles -------------------------------------*/
+.review .text { line-height: 1.6em; }
+/* End Thank You Page Styles ---------------------------------*/
