@@ -6,7 +6,7 @@
 <?php
 $type = $_GET['type'];
 $userkey = $_GET['userkey'];
-//$nominate = FALSE;
+$nominate = FALSE;
 if (array_key_exists('nominate', $_GET)) {
   $nominate = $_GET['nominate']; // generally, it will be true or non-existent
 }
@@ -76,10 +76,10 @@ else {
       }
     }
     else { 
-      $arrOfIds = getPollChoices($pollid);
+      /*$arrOfIds = getPollChoices($pollid);
       var_dump($arrOfIds);
       include("functions/initiateCuisVote.php");
-      addItems($arrOfIds,$idToCuis);
+      addItems($arrOfIds,$idToCuis);*/
     }
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
@@ -118,6 +118,7 @@ else {
 						      <?php
   } else { echo '</div><!-- end of content -->'; }?>
 <?php	  	
+$nominate = true;
 if ($nominate===true) {
   echo "<a href='./initiate.php?type=".$type."&userkey=".$userkey."'><img src='./images/left.png' id='nav-left' /></a>";
 }
@@ -146,7 +147,7 @@ function saveList() {
 	data: jsonList,
 	url: '/ajax/saveList.php',
 	success: function(data) {
-	window.location = "<?php if ($nominate) echo './email.php?type='.$type.'&userkey='.$userkey.'&nominate='.$nominate;
+	window.location = "<?php if ($nominate==true) echo './email.php?type='.$type.'&userkey='.$userkey.'&nominate='.$nominate;
         else echo './thankyou.php?type='.$type.'&userkey='.$userkey; ?>";
       },
 	error: function(error) {
