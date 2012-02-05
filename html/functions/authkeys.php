@@ -14,7 +14,7 @@ $token_secret = "GZV-bIEVQKt0NkueKnh4tieKlY8";*/
 $consumer_key = "o1Ubc61o8INTxQ_5c7mEBQ";
 $consumer_secret = "t53l2RblIYt6Ub603hJB7Xd4lpk";
 $token = "eymlcQgvAQiKexs9ErOzSBeLUURNvROy";
-$token_secret = "GZV-_Mt8raHuU6aL6lmsqFD6E_wb4QY";
+$token_secret = "_Mt8raHuU6aL6lmsqFD6E_wb4QY";
 
 
 ?>
