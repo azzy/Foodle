@@ -112,8 +112,8 @@ $('#formtosubmit').submit();
                 echo("</li>");
             }
         }
-        $j = 3;
-        $response = getData($rankedResults[3], 1, $location);
+        $j = 2;
+        $response = getData($rankedResults[2], 1, $location);
         echo("<li class='heading'>".$response[$j]['name']);
         echo("<ul class='info'>");
         echo("<li> Rating: ".$response[$j]['rating']."</li>");
