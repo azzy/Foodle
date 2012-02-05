@@ -28,7 +28,7 @@
     */
     echo($pollinfo['location']."<br>");
     echo($rankedResults[0]."<br>");
-    //print_r(getData($rankedResults[0], 2, $pollinfo['location']));
+    print_r(getData($rankedResults[0], 2, $pollinfo['location']));
     // TODO: get restaurants for these cuisines
     
     
