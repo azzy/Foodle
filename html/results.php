@@ -26,6 +26,7 @@
   }
   else {
     $rankedResults = genResults($pollid, 3);
+    print_r($rankedResults);
     //$rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
   }
 ?>
