@@ -81,7 +81,7 @@ if (array_key_exists('location', $pollinfo)) {
     <div id="searchstuff">
       <div class="searchtext"><label>Search:</label>
       <input id="searchtxt" />
-      <?php echo '<a href="javascript: search("'.$location'")"><img id="search" src="./images/search.png" /></a>'; ?>
+      <?php echo '<a href="javascript: search("'.$location.'")"><img id="search" src="./images/search.png" /></a>'; ?>
     </div>
       <a href="javascript: addYelpInfo()"><div id="addnew">
     <!--<img src="./images/add.png" />Add To List</div></a>-->
