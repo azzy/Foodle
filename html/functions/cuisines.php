@@ -1,22 +1,15 @@
 <?php
 
-$cuisToId = array("American"=>"tradamerican,newamerican", "Desserts & Ice Cream"=>"bakeries,desserts,icecream", "Breakfast & Brunch"=>"breakfast_brunch", "Burgers"=>,"burgers", "Cafes"=>"cafes,coffee,tea", "Pizza"=>"pizza", "Seafood"=>"seafood");
-
-/* "Southern & Soul Food"=>, "South-East Asian"=>"thai,malaysian,singaporean,vietnamese,indonesian", "Vegan & Vegetarian"=>"vegan,vegetarian");
+$cuisToId = array("American"=>"tradamerican,newamerican", "Desserts & Ice Cream"=>"bakeries,desserts,icecream", 
+"Breakfast & Brunch"=>"breakfast_brunch", "Burgers"=>"burgers", "Cafes"=>"cafes,coffee,tea", "Chinese"=>"chinese,dimsum",
+"Delis & Sandwiches"=>"delis,sandwiches", "Diners"=>"diners", "French"=>"french", "Greek"=>"greek", "Indian & Pakistani"=>"indpak,pakistan", 
+"Italian"=>"italian", "Japanese"=>"japanese,sushi", "Latin American"=>"latin,peruvian", "Mexican"=>"mexican", "Middle Eastern"=>"mideastern", 
+"Pizza"=>"pizza", "Seafood"=>"seafood"); "Southern & Soul Food"=>"soulfood,southern", "South-East Asian"=>"thai,malaysian,singaporean,vietnamese,indonesian", 
+"Vegan & Vegetarian"=>"vegan,vegetarian");
 
     
-        "Chinese"=>"chinese,dimsum",
-    "Delis & Sandwiches"=>"delis,sandwiches",
-    "Diners"=>"diners",
-    "French"=>"french",
-    "Greek"=>"greek",
-    "Indian & Pakistani"=>"indpak,pakistan",
-    "Italian"=>"italian",
-    "Japanese"=>"japanese,sushi",
-    "Latin American"=>"latin,peruvian",
-    "Mexican"=>"mexican",
-    "Middle Eastern"=>"mideastern",
-    */
+        
+  
     
     $idToCuis = array("tradamerican,newamerican"=>"American", 
     "bakeries,desserts,icecream"=>"Desserts & Ice Cream",
