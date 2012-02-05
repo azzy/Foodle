@@ -35,7 +35,7 @@ if($_POST['email']!= "")
 
     if(empty($errorMessage)) 
       {
-	header("Location: ranksort.php?type=".$type."&userkey=".$userkey."nominate=true");
+	header("Location: ranksort.php?type=".$type."&userkey=".$userkey."&nominate=true");
       }
     else {
       echo("<p>There was an error with your form:</p>\n");
