@@ -83,6 +83,7 @@ label,a
     <td><input type="text" id="location" name="location" placeholder="City, State or ZIP"  / ></td>
   </tr>
       </table>
+<input type="hidden" name="type" value="<?php echo $type;?>">6
       </form>
     </div>
     </div><!-- end content-area -->

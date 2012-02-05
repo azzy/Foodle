@@ -11,21 +11,24 @@
         //$unsigned_url = "http://api.yelp.com/v2/business/".$business;
         $data = access($unsigned_url);
         $response = json_decode($data);
-        echo("here-2");
-        /*
+        echo($unsigned_url);
+        
         //print_r($response);
+        
+        
         $num = count($response->businesses);
-        $arrFinal = array("num" : $num);
+        $arrFinal = array("num"=>$num);
         echo("here-3 ".$num);
+        
         for ($j = 0; $j < $num; $j++) {
             $name = name($response, $j);
             $rating = rating($response, $j);
             $ratingimg = ratingimg($response, $j);
-            //$url = $response->url;
-            //$location = ($response->location->city) . "," . ($response->location->state_code);
+            $url = $response->businesses[$j]->url;
+            $location = ($response->businesses[$j]->location->city) . "," . ($response->businesses[$j]->location->state_code);
             $category = "";  
-            for ($i = 0; $i < count($response->categories); $i++) {
-                $category = $category.$response->categories[$i];
+            for ($i = 0; $i < count($response->businesses[$j]->categories); $i++) {
+                $category = $category.$response->businesses[$j]->categories[$i];
             }    
             //name, rating, rating_img_url, url, categories, city, state
             $arr = array("name"=>$name, "rating"=>$rating, "ratingimg"=>$ratingimg, "location"=>$location, "categories"=>$category, "url"=>$url);
@@ -34,8 +37,8 @@
         }
         
         return ($arrFinal);
-        */
-        return (array("name"=>"testname"));
+        
+        //return (array("name"=>"testname"));
        
         
     }
