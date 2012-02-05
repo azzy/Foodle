@@ -116,44 +116,7 @@ $('#formtosubmit').submit();
       
       
       ?>
-      <li class="heading">
-	Witherspoon Grill 
-	  <ul class="info">
-	    <li>Information about Witherspoon Grill</li>
-	    <li>More information</li>
-	    <li>address and stuff</li>
-	    <li>Phone number? Rating</li>
-	    <li>read more on Yelp.com</li>
-	  </ul>
-	</li>
-      <li class="heading">
-	Panera
-	<ul class="info">
-	  <li>Information about Panera</li>
-	  <li>More information</li>
-	  <li>address and stuff</li>
-	  <li>Phone number? Rating</li>
-	  <li>read more on Yelp.com</li>
-	  </ul>
-	</li>
-	<li class="heading">Teresa's Caffe
-	<ul class="info">
-	  <li>Information about Teresa's Caffe</li>
-	  <li>address stuff blah blha </li>
-	  <li>Lorem ipsum qua kuja</li>
-	</ul>
-        </li>
-	<li class="heading">La Mezzaluna
-	<ul class="info">
-	  <li>Information about La Mezzaluna includes stuff like how
-	  incredibly expensive it is</li>
-	</ul>
-      </li>
-      <li class="heading">Mehek
-      <ul class="info">
-	<li>So yeah, people need to make this shit dynamic and stuff.</li>
-      </ul>
-    </li>
+     
     </div>
     </div>
     <div class="floatright">
