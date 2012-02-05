@@ -1,5 +1,6 @@
 <?php
 
+include("validateRun.php");
 require_once("functions/newuser.php");
 require_once("functions/newpoll.php");
 
@@ -10,9 +11,8 @@ require_once("functions/newpoll.php");
 //$_POST['location'] = "someplace";
 //echo 'DINNER';
 
-// TODO: Do something more to validate form contents here, and return the same page 
-// (initialize) with a notice if validation fails
-$isValid = $_POST['dinner'] || $_POST['email'] || $_POST['location'] || $_POST['name'];
+
+$isValid = isValid($_POST['email'], $_POST['location']);
 
 // BIGGER TODO: Cache all of this "new poll" and "new user" data, but 
 // don't write it to the real database until the user selects CREATE POLL!
