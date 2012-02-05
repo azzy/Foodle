@@ -1,8 +1,5 @@
 <?php
-    require_once ('lib/OAuth.php');
-    include("access.php");
-    include("parse.php");
-    include("formmatch.php");
+    include("cuisines.php");
     include("foodledbinfo.php");
     include("newpoll.php");
     include("newuser.php");
@@ -13,14 +10,15 @@
     $pollid = $userinfo['pollid'];
     
     $arrOfIds = getPollChoices($pollid);
-    
-    function addItems($arrOfIds) {
+    /*
+    function addItems($arrOfIds, $idToCuis) {
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
-            $name = $arrOfIds[$i];
+            $name = $idToCuis[$arrOfIds[$i]];
             echo("<li class='restaurant'>".$name."</li>");
         }
     }
+    */
 
     //echo("<br/><br/>");
 ?>
@@ -33,8 +31,9 @@
     lalalala
     <p><?php echo("userkey ".$userkey." pollid ".$pollid."<br/><br/>");?></p>
     <p><?php print_r($arrOfIds);?></p>
+    <p><?php print_r($idToCuis);?></p>
     <ul id="cuslist">
-        <?php addItems($arrOfIds);?>
+        
     </ul>
 </body>
 </html>
