@@ -6,24 +6,16 @@
 <?php
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
-  include("header.php");
+  include_once("header.php");
+  include_once("functions/newuser.php");
+  include_once("functions/newpoll.php");
+  $userinfo = getUserInfo($userkey);
+  $pollinfo = getPollInfo($userinfo['pollid']);
+  $location = $pollinfo['location'];
 ?>
 </head>
 <?php
    echo '<body class="rank '.$type.'">';
-  if ($_POST != null) {
-    include("initiate_validate.php");
-    if ($isValid) {
-      echo "validated the form! Good to go. user is ".$userkey;
-    }
-    else {
-      echo "Invalid form. :( We should reject it, and don't return any more html!";
-      // TODO exit here somehow? return previous page (form) or do that in the initiate_validate file?
-    }
-  }
-  else {
-    echo " Didn't get to this page from the form. TODO: populate fields from database if possible, otherwise display an error";
-  }
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
@@ -84,13 +76,17 @@
     <img src="./images/add.png" />Add To List</div></a>
     </div>
 </div>
- <ul id="yelpdata">
+<div id="yelpdata">
+<img src="./images/add.png" id="add" />
+<img src="./images/x.png" id="x" />
+ <ul>
     <li class="yelpname"></li>
     <li class="yelprating"></li>
     <li class="yelpsnippet"></li>
     <li class="yelpcat"></li>
     <li class="readmore"></li>
     </ul>
+</div>
 <?php
   } else { echo '</div>'; }
 ?>
@@ -144,5 +140,5 @@ function saveList() {
 //-->
 </script>
 <?php
-  include("footer.php");
+  include_once("footer.php");
 ?>
