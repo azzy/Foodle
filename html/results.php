@@ -139,17 +139,16 @@ $('#formtosubmit').submit();
         for ($i = 0; $i < 5; $i++) {        
             $res = $response[$i];
             //print_r($response);
-            for ($j = 0; $j < 2; $j++) {
-                echo("<li class='heading'>".$res[$j]['name']);
-                echo("<ul class='info'>");
-                echo("<li> Rating: ".$res[$j]['rating']."</li>");
-                echo("<li> Categories: ".$res[$j]['categories']."</li>");
-                echo("<li> Loc: ".$res[$j]['location']."</li>");
-                echo("<li> Tel: ".$res[$j]['phone']."</li>");
-                echo("<li><a href='".$res[$j]['url']."'>Yelp Profile</a></li>");
-                echo("</ul>");
-                echo("</li>");
-            }
+            echo("<li class='heading'>".$res['name']);
+            echo("<ul class='info'>");
+            echo("<li> Rating: ".$res['rating']."</li>");
+            echo("<li> Categories: ".$res['categories']."</li>");
+            echo("<li> Loc: ".$res['location']."</li>");
+            echo("<li> Tel: ".$res['phone']."</li>");
+            echo("<li><a href='".$res['url']."'>Yelp Profile</a></li>");
+            echo("</ul>");
+            echo("</li>");
+            
         }
         
         
