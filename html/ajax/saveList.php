@@ -65,6 +65,12 @@ if ($nominate) {
       $choiceid += 1;
     }
   }
+
+  $query = "UPDATE polls SET numchoices = {$choiceid} WHERE pollid = {$pollid}";
+  echo $query;
+  $stmt = $db->prepare($query);
+  $stmt->execute();
+  
 } else {
   /* Save the user's votes! Yay! */
 
