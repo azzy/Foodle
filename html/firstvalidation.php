@@ -3,7 +3,7 @@
   include("validateRun.php");
   require_once("functions/newuser.php");
   require_once("functions/newpoll.php");
-  $type = $_GET['type'];
+  $type = $_POST['type'];
   $userkey = $_GET['userkey'];
   echo '</head><body class="initiate '.$type.'">';
   if($_POST['email']!= "") 
@@ -21,9 +21,9 @@
       }
 
 if ($isValid) {
-  echo "true";
+//  echo "true";
 } else {
-  echo "false";
+ // echo "false";
   $errorMessage .= "invalid";
 }
     
@@ -67,7 +67,7 @@ label,a
   <div id="container">
    <div id="content-area">
     <div class="form">
-      <form name="input" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>">
+      <form name="input" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF'])."?type=".$type;?>">
       <table>
   <tr>
     <td><label for="dinner">Dinner Name:</label></td>

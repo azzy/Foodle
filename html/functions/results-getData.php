@@ -1,18 +1,18 @@
 <?php
     include("parse.php");
-    include_once("functions/newuser.php");
-  include_once("functions/newpoll.php");
-  include_once("functions/numVoted.php");
-  include_once("functions/genResults.php");
-  include_once("functions/results-getData.php");
+    include("authkeys.php");
+    include("access.php");
+    include("./lib/OAuth.php");
     function getData($cuisine, $limit, $loc) {
         echo("here-1");
+        
         $unsigned_url = "http://api.yelp.com/v2/search?location=".$loc."&limit=".$limit."&category_filter=".$cuisine;
         // create URL and get Yelp response
         //$unsigned_url = "http://api.yelp.com/v2/business/".$business;
         $data = access($unsigned_url);
         $response = json_decode($data);
         echo("here-2");
+        /*
         //print_r($response);
         $num = count($response->businesses);
         $arrFinal = array("num" : $num);
@@ -30,11 +30,17 @@
             //name, rating, rating_img_url, url, categories, city, state
             $arr = array("name"=>$name, "rating"=>$rating, "ratingimg"=>$ratingimg, "location"=>$location, "categories"=>$category, "url"=>$url);
             $arrFinal[$j] = $arr;
+            
         }
+        
         return ($arrFinal);
+        */
+        return (array("name"=>"testname"));
+       
         
     }
     
     $arrTest = getData("sandwiches", 2, "08544");
     print_r($arrTest);
+    
 ?>
