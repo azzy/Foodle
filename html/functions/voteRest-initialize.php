@@ -1,3 +1,8 @@
+<html>
+    <head></head>
+
+<body>
+
 <?php
     require_once ('lib/OAuth.php');
     include("access.php");
@@ -24,7 +29,7 @@
     echo("<ul>");
     for ($i = 0 ; $i < $num; $i++) {
         $response=getData($arrOfIds[$i]);
-        $name = $response[name];
+        $name = $response['name'];
         echo("<li class='restaurant'>".$name."<li>");
     }
     echo("</ul>");
@@ -51,3 +56,5 @@
         return ($arr);
     }
 ?>
+</body>
+</html>
