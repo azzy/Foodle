@@ -41,7 +41,7 @@
                         'thai,malaysian,singaporean,vietnamese,indonesian'=>'South-East Asian',
                         'vegan,vegetarian'=>'Vegan & Vegetarian');
 */
-    $idToCuis = array('tardamerican'=>'American');
+    $idToCuis = array("tardamerican"=>"American");
                         
     print_r($idToCuis);
 ?>
