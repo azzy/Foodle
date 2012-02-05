@@ -8,6 +8,7 @@
   include("header.php");
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
+  echo '<style> .text a { color: #000;}</style>';
   echo '</head><body class="review '.$type.'">';
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
