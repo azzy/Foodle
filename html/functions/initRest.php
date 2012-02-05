@@ -4,11 +4,12 @@ require_once ('lib/OAuth.php');
 include("access.php");
 include("parse.php");
 
+//$_POST = array("location"=>"08544");
 $loc = $_POST['location'];
 $num = 10; // max number of restaurants to return
 
 // create URL and get Yelp response
-$unsigned_url = "http://api.yelp.com/v2/search?&location=".$loc."&limit=".$num."&category_filter=food,restaurants";
+$unsigned_url = "http://api.yelp.com/v2/search?&location=".$loc."&limit=".$num."&category_filter=restaurants";
 $data = access($unsigned_url);
 $response = json_decode($data);
 //print_r($response);

@@ -67,33 +67,32 @@ label,a
   <div id="container">
    <div id="content-area">
     <div class="form">
-      <form name="input" method="post" action='<?php echo "./initiate_validate.php?type=$type&userkey=$userkey"; ?>'>
+      <form name="input" method="post" action="?php echo htmlentities($SERVER_['PHP_SELF']);?>">
       <table>
-	<tr>
-	  <td><label for="dinner">Dinner Name:</label></td>
-	  <td><input id="dinner" name="dinner" /></td>
-	</tr><tr>
-	  <td><label for="name">Your Name:</label></td>
-	  <td><input id="name" name="name" /></td>
-	</tr><tr>
-	  <td><label for="email">Your Email:</label></td>
-	  <td><input id="email" name="email" placeholder="" /></td>
-	</tr><tr>
-	  <td><label for="location">Your Location:</label></td>
-	  <td><input id="location" name="location" placeholder="City, State or ZIP"/></td>
-	</tr>
+  <tr>
+    <td><label for="dinner">Dinner Name:</label></td>
+    <td><input type="text" id="dinner" name="dinner" value="<?=$dinner;?>"/></td>
+  </tr><tr>
+    <td><label for="name">Your Name:</label></td>
+    <td><input type="text" id="name" name="name" value="<?=$name;?>"/></td>
+  </tr><tr>
+    <td><label for="email">Your Email:</label></td>
+    <td><input type="text" id="email" name="email" placeholder="" value="<?=$email;?>" /></td>
+  </tr><tr>
+    <td><label for="location">Your Location:</label></td>
+    <td><input type="text" id="location" name="location" placeholder="City, State or ZIP" value="<?=$location;?>" / ></td>
+  </tr>
       </table>
       </form>
     </div>
     </div><!-- end content-area -->
     <a href='./index.php'><img src="./images/left.png" id="nav-left" /></a>
     <script type="text/javascript">
-    function submitform() {
-       document.input.submit();
-    }
+   function submitform() {
+    document.input.submit();
+   }
     </script>
     <a href='javascript: submitform()'><img src="./images/right.png" id="nav-right" /></a>
 <?php
     require_once "footer.php";
 ?>
-
