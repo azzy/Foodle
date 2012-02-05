@@ -13,7 +13,7 @@
             $id = $response["id"];
 	    $name = $response["name"];
             echo '<li class="draggable heading" id="'.$id.'">'.$name;
-	    echo '<ul class="info ui-state-disabled">
+	    /*echo '<ul class="info ui-state-disabled">
 <li class="yelprating ui-state-disabled"><img src="'.$response['ratingimg'];
 	    echo '" /></li>
 <li class="yelpsnippet ui-state-disabled">Review: '.$response['snippet'];
@@ -30,7 +30,7 @@
                            }
                        );});
                    //-->
-                  </script>';
+                  </script>';*/
         }
     }
     

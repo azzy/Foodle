@@ -141,7 +141,7 @@ function saveList() {
     data: jsonList,
     url: '/ajax/saveList.php',
     success: function(data) {
-	window.location = "<?php if ($nominate) echo './email.php?type='.$type.'&userkey='.$userkey.'&nominate='.$nominate;
+	window.location = "<?php if ($nominate == true) echo './email.php?type='.$type.'&userkey='.$userkey.'&nominate='.$nominate;
 	else echo './thankyou.php?type='.$type.'&userkey='.$userkey; ?>";
     },
     error: function(error) {
