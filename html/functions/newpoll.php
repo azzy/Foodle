@@ -59,4 +59,28 @@ function newPoll($dinner, $location) {
   return $pollid;
 }
 
+/* Gets the poll info; returns the data in an associative array. */
+function getPollInfo($pollid) {
+
+  include("foodledbinfo.php");
+
+  try {
+    $db = new PDO('mysql:host=localhost;dbname='.$database, $username, $password);
+
+    $userid = -1;
+    if ($stmt = $db->prepare("SELECT * FROM polls WHERE pollid = ?")) {
+      $stmt->bindParam(1, $pollid);
+      $stmt->execute();
+      $row = $stmt->fetch();
+      if ($row) {
+	return $row;
+      }
+    }
+    return NULL;
+  } catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    return NULL; //die();;
+  }
+}
+
 ?>

@@ -63,7 +63,8 @@ function getUserInfo($urlkey) {
     $db = new PDO('mysql:host=localhost;dbname='.$database, $username, $password);
 
     $userid = -1;
-    if ($stmt = $db->prepare("SELECT * FROM users WHERE urlkey = ".$urlkey)) {
+    if ($stmt = $db->prepare("SELECT * FROM users WHERE urlkey = ?")) {
+      $stmt->bindParam(1, $urlkey);
       $stmt->execute();
       $row = $stmt->fetch();
       if ($row) {
@@ -73,7 +74,7 @@ function getUserInfo($urlkey) {
     return NULL;
   } catch (PDOException $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
-    return; //die();;
+    return NULL; //die();;
   }
 }
 
