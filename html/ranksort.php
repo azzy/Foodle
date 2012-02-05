@@ -11,19 +11,6 @@
 </head>
 <?php
    echo '<body class="rank '.$type.'">';
-  if ($_POST != null) {
-    include("initiate_validate.php");
-    if ($isValid) {
-      echo "validated the form! Good to go. user is ".$userkey;
-    }
-    else {
-      echo "Invalid form. :( We should reject it, and don't return any more html!";
-      // TODO exit here somehow? return previous page (form) or do that in the initiate_validate file?
-    }
-  }
-  else {
-    echo " Didn't get to this page from the form. TODO: populate fields from database if possible, otherwise display an error";
-  }
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
