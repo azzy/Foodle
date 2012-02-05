@@ -22,7 +22,7 @@
     $rankedResults = genResults($pollid, 3);
     print_r($rankedResults);
     
-    for ($i = 0; $i < 2; $i) {        
+    for ($i = 0; $i < 2; $i++) {        
         $response = getData($rankedResults[$i], 2, $pollinfo['location']);
     }
     
