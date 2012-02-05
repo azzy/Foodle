@@ -1,10 +1,8 @@
 <?php
     include("parse.php");
-    include_once("functions/newuser.php");
-  include_once("functions/newpoll.php");
-  include_once("functions/numVoted.php");
-  include_once("functions/genResults.php");
-  include_once("functions/results-getData.php");
+    include("authkeys.php");
+    include("access.php");
+    include("./lib/OAuth.php");
     function getData($cuisine, $limit, $loc) {
         echo("here-1");
         $unsigned_url = "http://api.yelp.com/v2/search?location=".$loc."&limit=".$limit."&category_filter=".$cuisine;
