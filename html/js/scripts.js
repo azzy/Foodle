@@ -23,7 +23,7 @@ function initiateExpandCollapse () {
 
 function initiateRestNom (loc) {
     $.post("../functions/initRest.php",
-	   { location: loc },
+	   { location: "08544" },
 	   function(data) {
 	       for (var i=0; i < data.num; i++) {
 		   $("#sortable1").append(
