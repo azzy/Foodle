@@ -73,6 +73,20 @@ public class Choosine {
                 id[counter] = rs.getInt(3);
                 choices[counter]=rs.getInt(4);
                 rank[counter] = rs.getDouble(5);
+
+		// Check for errors in database data
+		if (choices[counter] >= size || choices[counter] < 0) {
+		    System.err.println("ERROR: some vote has choiceid >= numchoices or < 0");
+		    // This is the only "fatal" error if we let it run
+		    return;
+		} else if (id[counter] > experts || id[counter] <= 0) {
+		    System.err.println("ERROR: some vote has voterid > numvoters or <= 0");
+		    //return;
+		} else if (rank[counter] > size || rank[counter] <= 0) {
+		    System.err.println("ERROR: some vote has voterid > numvoters or <= 0");
+		    //return;
+		}
+
 		counter++;
             }
 
@@ -241,7 +255,7 @@ public class Choosine {
 	    pst.close();
 
 	    // drop the old table
-	    if (!oldtablename.equals(tablename)) {
+	    if (oldtablename != null && !oldtablename.equals(tablename)) {
 		pst = con.prepareStatement("DROP TABLE "+oldtablename);
 		pst.executeUpdate();
 		pst.close();
