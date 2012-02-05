@@ -53,7 +53,7 @@ $arrOfIds = getPollChoices($pollid);
     }
     else {
       include("functions/initiateRestVote.php");?>
-      <li><?php var_dump($arrOfIds);?></li>
+      <li><?php print_r(json_decode(json_encode($arrOfIds));?></li>
       <li><?php $pollinfo = getPollInfo($userinfo['pollid']);
       echo "My location is ".$pollinfo['location'].", you have ".$pollinfo['numchoices']." choices";?></li>
       <?php addItems($arrOfIds);
