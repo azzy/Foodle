@@ -61,8 +61,8 @@ function listYelp(str) {
 	       });
 	       $(".info").sortable({disabled: true});
 	      // $('#' + id + ".info").sortable({ disabled: true });
-	       $(this).children('.info').hide();
-	       $(this).click(function(event) {
+	       $('#' + id).children('.info').hide();
+	       $('#' + id).click(function(event) {
 		   if (this == event.target) $(this).children('ul').toggle();
 	       });
            },
