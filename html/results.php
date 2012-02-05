@@ -16,6 +16,7 @@
   */
   $pollid = 1;
   $type = 'cuisine';
+  $location = "08544";
   if (!$pollid) {
     // TODO: return some logical error page instead
   }
@@ -25,14 +26,10 @@
   else {
     //$rankedResults = genResults($pollid, 3);
     $rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
-    $location = "08544";
-    
+
     print_r($rankedResults);
     
-    for ($i = 0; $i < 2; $i++) {        
-        $response = getData($rankedResults[$i], 2, $location);
-        print_r($response);
-    }
+    
     
     echo($location."<br>");
     //echo($rankedResults[0]."<br>");
@@ -99,8 +96,21 @@ $('#formtosubmit').submit();
 	</div>
 	<div id="list-1">
       <ul id="results">
+      <?php 
+        
+        for ($i = 0; $i < 2; $i++) {        
+            $response = getData($rankedResults[$i], 2, $location);
+            //print_r($response);
+            for ($j = 0; $j < 2; $j++) {
+                echo("<li class='heading'>".$response[0]['name']."</li>");
+            }
+        }
+      
+      
+      
+      ?>
       <li class="heading">
-	Witherspoon Grill
+	Witherspoon Grill 
 	  <ul class="info">
 	    <li>Information about Witherspoon Grill</li>
 	    <li>More information</li>
