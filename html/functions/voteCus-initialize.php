@@ -15,7 +15,7 @@
     $arrOfIds = getPollChoices($pollid);
     $num = count($arrOfIds);
     function addItems() {
-        echo("here"); 
+        echo($num); 
         for ($i = 0 ; $i < $num; $i++) {
             echo("here2"); 
             $response=getData($arrOfIds[$i]);
