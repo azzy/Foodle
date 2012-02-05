@@ -15,7 +15,7 @@
 ?>
 </head>
 <?php
-   echo '<body class="rank '.$type.'">';
+   echo '<body class="rank '.$type.'">';/*
   if ($_POST != null) {
     include("initiate_validate.php");
     if ($isValid) {
@@ -28,7 +28,7 @@
   }
   else {
     echo " Didn't get to this page from the form. TODO: populate fields from database if possible, otherwise display an error";
-  }
+    }*/
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
