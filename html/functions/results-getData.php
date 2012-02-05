@@ -29,7 +29,7 @@
 
     }
     
-    //$arrTest = getData("sandwiches", 2, "08544");
-    //print_r($arrTest);
+    $arrTest = getData(breakfast_brunch, 2, "08544");
+    print_r($arrTest);
     
 ?>
