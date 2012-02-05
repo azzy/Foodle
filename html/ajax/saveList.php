@@ -10,6 +10,7 @@ $db = new PDO("mysql:host=localhost;dbname={$database}", $username, $password);
 //ob_start();
 
 // testing stuff only
+/*
 $_POST = array();
 $_POST['userkey'] = 'B3EF2465-24E8-AC67-5076-0D3C22571FD0';
 $_POST['nominate'] = 'true';
@@ -17,6 +18,7 @@ $_POST['0'] = '';
 $_POST['1'] = 'toast';
 $_POST['2'] = 'eggs';
 $_POST['3'] = 'bagel';
+*/
 //*/
 
 $userkey = $_POST['userkey'];
