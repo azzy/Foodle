@@ -30,7 +30,9 @@
             $catsize = count($response->businesses[$j]->categories);
             echo("<br>".$catsize."<br>");
             for ($i = 0; $i < $catsize; $i++) {
-                $category .= $response->businesses[$j]->categories[$i]." ";
+                $tag = $response->buseiness[j]->categories[$i];
+                echo($tag);
+                $category .= $tag." ";
             }
             echo($category);
             //name, rating, rating_img_url, url, categories, city, state
