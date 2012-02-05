@@ -5,6 +5,7 @@
 ?>
 <?php
 $type = $_GET['type'];
+//$type = "cuisine";
 $userkey = $_GET['userkey'];
 $nominate = FALSE;
 if (array_key_exists('nominate', $_GET)) {
@@ -76,10 +77,10 @@ else {
       }
     }
     else { 
-      $arrOfIds = getPollChoices($pollid);
-      var_dump($arrOfIds);
+      $arr2OfIds = getPollChoices($pollid);
+      include_once("functions/cuisines.php");
       include("functions/initiateCuisVote.php");
-      addItems($arrOfIds,$idToCuis);
+      populateCuisines($arr2OfIds,$idToCuis);
     }
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
