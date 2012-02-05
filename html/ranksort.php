@@ -74,8 +74,10 @@ else {
 	echo '<li class="draggable heading" id="'.$ids[$i].'">'.$cuisines[$i].'</li>';
       }
     }
-    else {
-      
+   else { 
+      $arrOfIds = getPollChoices($userinfo['pollid']);
+      include("functions/initiateCuisVote.php");
+      addItems($arrOfIds);
     }
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
@@ -90,7 +92,7 @@ else {
     </div>
     
 <?php
-  if ($type == "restaurants") {?>
+  if (($type == "restaurants")&&($nominate == true)) {?>
     <div id="searchstuff">
       <div class="searchtext"><label>Search:</label>
       <input id="searchtxt" />
