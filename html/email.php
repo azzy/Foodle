@@ -1,15 +1,30 @@
 <?php
-   include("header.php");
+  include("header.php");
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
+  include_once("functions/newuser.php");
+  include_once("functions/newpoll.php");
+  $userinfo = getUserInfo($userkey);
+  $pollid = $userinfo['pollid'];
   echo '</head><body class="emails '.$type.'">';
+?>
+<?php
+if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
+    // TODO: some validation
+    $userkeys = array();
+    foreach ($_POST as $useremail) {
+      $userkeys[] = newUser($pollid, 'v', $useremail);
+    }
+    header("Location: ./thankyou.php?type={$type}&userkey={$userkey}");
+    exit();
+  }
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
   <div id="container">
     <div id="content-area">
     <div class="text">Your Guests&apos; Emails:</div>
-    <form name="input" method="post">
+    <form name="input" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
     <div class="form" id="emails-form">
       <input />
       <input />
@@ -17,7 +32,7 @@
     </div>
     <a href="javascript:add_field()"><div id="addnew">
       <img src="./images/add.png" />Add another person</div></a>
-      <a href='<?php echo "thankyou.php?type=$type&userkey=$userkey"; ?>'><input type="submit" value="create poll" name="submit" class="submit" /></a>
+      <!-- <a href='<?php ?>'> --><input type="submit" value="create poll" name="submit" class="submit" /> <!--</a>-->
 	</form>
 	
 	<div id="template" style="display:none">
