@@ -1,5 +1,26 @@
 /* Functions Used for Initial Population of Lists --------------------------- */
 // function to load initial list for restaurant nomination page
+function initiateSortable () {
+  //initialize sortables
+  $('#sortable1, #sortable2').sortable( {
+    items: ":not(.ui-state-disabled)",
+    cursor: 'move',
+    connectWith: ".connectedSortable",
+    dropOnEmpty: true
+  });
+  $("#sortable1, #sortable2").disableSelection();
+}
+
+function initiateExpandCollapse () {
+  // initialize expand/collapse list
+  $('li.heading').children('.info').hide();
+  $('li.heading').each( function() {
+      $(this).click(function(event) {
+	  if (this == event.target) $(this).children('ul').toggle();
+	});
+    });
+}
+
 function initiateRestNom (loc) {
     $.post("../functions/initRest.php",
 	   { location: loc },
