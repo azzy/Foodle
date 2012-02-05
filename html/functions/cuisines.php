@@ -1,8 +1,6 @@
 <?php
-    $cuisToId = array('American'=>'tradamerican,newamerican',
-                        'Desserts & Ice Cream'=>'bakeries,desserts,icecream',
-                        'Breakfast & Brunch'=>'breakfast_brunch',
-                        'Burgers'=>,'burgers'
+    $cuisToId = array('American'=>'tradamerican,newamerican', 'Desserts & Ice Cream'=>'bakeries,desserts,icecream', 'Breakfast & Brunch'=>'breakfast_brunch',
+                        'Burgers'=>,'burgers',
                         'Cafes'=>'cafes,coffee,tea',
                         'Chinese'=>'chinese,dimsum',
                         'Delis & Sandwiches'=>'delis,sandwiches',
