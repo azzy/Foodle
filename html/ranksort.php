@@ -5,7 +5,6 @@
 ?>
 <?php
 $type = $_GET['type'];
-$type = "restaurants";
 $userkey = $_GET['userkey'];
 $nominate = FALSE;
 if (array_key_exists('nominate', $_GET)) {
