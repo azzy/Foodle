@@ -78,8 +78,8 @@ else {
       }
     }
     else { 
-      $arr2OfIds = getPollChoices($pollid);
-      populateCuisines($arr2OfIds,$idToCuis);
+      $choicearray = getPollChoices($pollid);
+      populateCuisines($choicearray,$idToCuis);
     }
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
