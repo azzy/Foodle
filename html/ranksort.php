@@ -6,7 +6,6 @@
 <?php
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
-  
   $nominate = FALSE;
   if (array_key_exists('nominate', $_GET)) {
     $nominate = $_GET['nominate']; // generally, it will be true or non-existent
@@ -27,9 +26,14 @@
   <div id="container">
     <div id="content-area">
       <div class="text">
-	Rank the cuisines in the green box in order of preference by
-      dragging into the blue box. Select as many as you care about,
-      and put your very favorite ones on top!
+    <?php   
+    if ($type == "cuisine") $print_type = "cuisines";
+    else if ($type == "restaurants") $print_type = $type;
+    if ($nominate == true) 
+      { echo "To initiate your poll, drag ".$print_type." from the green list to the blue one for voters to choose from." }
+    else { echo "To vote, rank the ".$print_type." by dragging from the green list to the blue one with your favorite ".$print_type." closer to the top." }
+    }
+?>
 	</div>
 
     <div id="list-1">

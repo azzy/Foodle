@@ -419,7 +419,7 @@ img#add { margin: -15px -3px 0 0; }
 #yelpdata ul { clear: both; }
 #yelpdata .yelpname { font-size: 18pt; text-align: center; }
 /*#yelpdata .yelprating { float: right; clear: both; }*/
-#yelpdata .yelprating,
+#yelpdata .yelpname,
 #yelpdata .yelpsnippet,
 #yelpdata .yelpcat,
 #yelpdata .readmore { margin-top: 10px; }
