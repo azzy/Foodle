@@ -100,8 +100,10 @@ $('#formtosubmit').submit();
         
         for ($i = 0; $i < 2; $i++) {        
             $response = getData($rankedResults[$i], 2, $location);
+            echo("yes");
             //print_r($response);
             for ($j = 0; $j < 2; $j++) {
+                echo("no");
                 echo("<li class='heading'>".$response[$j]['name']);
                 echo("<ul class='info'>");
                 echo("<li>".$response[$j]['rating']."</li>");
