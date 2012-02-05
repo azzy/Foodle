@@ -17,7 +17,7 @@ $arrOfIds = array("the-bent-spoon-princeton", "witherspoon-grill-princeton", "na
     
     echo "<li>here!</li>";
     function addItems($arrOfIds) {
-      echo "<li>called addItems</li>;
+      echo "<li>called addItems</li>";
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
             $response=getData($arrOfIds[$i]);
