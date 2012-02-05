@@ -19,8 +19,8 @@
                         "Southern & Soul Food"=>,
                         "South-East Asian"=>"thai,malaysian,singaporean,vietnamese,indonesian",
                         "Vegan & Vegetarian"=>"vegan,vegetarian");
-    $idToCuis = array("tradamerican,newamerican"=>"American",
-                        "bakeries,desserts,icecream"=>"Desserts & Ice Cream",
+    $idToCuis = array("tradamerican,newamerican"=>"American", 
+    "bakeries,desserts,icecream"=>"Desserts & Ice Cream",
                         "breakfast_brunch"=>"Breakfast & Brunch",
                         "burgers"=>"Burgers",
                         "cafes,coffee,tea"=>"Cafes",
@@ -42,7 +42,7 @@
                         "vegan,vegetarian"=>"Vegan & Vegetarian");
                         
 */
-    $idToCuis = array("tradamerican,newamerican"=>"American");
+    $idToCuis = array("tradamerican,newamerican"=>"American", "bakeries,desserts,icecream"=>"Desserts & Ice Cream");
      print_r($idToCuis);
 
 ?>
