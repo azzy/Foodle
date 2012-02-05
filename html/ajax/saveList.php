@@ -8,6 +8,7 @@ $db = new PDO("mysql:host=localhost;dbname={$database}", $username, $password);
 
 ob_start();
 
+try {
 // testing stuff only
 $_POST = array();
 $_POST['userkey'] = 'B15F4E6F-29AF-F20C-D2A8-454D941C7230';
@@ -65,8 +66,12 @@ foreach ($_POST as $index => $yelpid) {
   }
 }
 
-$string = ob_get_clean();
-$file = fopen('siterecords', 'a') or die("can't open file");
+}
+catch ($exception) {
+  var_dump($exception);
+}
+$string = ob_get_flush();
+$file = fopen('output', 'w') or die("can't open file");
 fwrite($file, $string);
 fclose($file);
 

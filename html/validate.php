@@ -32,7 +32,7 @@ function mname($name) {
 }
 
 //Testing:
-/*
+
 echo "Test Results <br/>";
 
 if(mlocation("Princeton, NJ")) {
@@ -41,6 +41,6 @@ if(mlocation("Princeton, NJ")) {
 else {
   echo "Noppeee fix it";
 }
-*/
+
 
 ?>
