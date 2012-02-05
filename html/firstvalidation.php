@@ -67,7 +67,7 @@ label,a
   <div id="container">
    <div id="content-area">
     <div class="form">
-      <form name="input" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>">
+      <form name="input" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF'])."?type=".$type;?>">
       <table>
   <tr>
     <td><label for="dinner">Dinner Name:</label></td>
