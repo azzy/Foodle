@@ -14,8 +14,6 @@ if (array_key_exists('nominate', $_GET)) {
 include_once("header.php");
 include_once("functions/newuser.php");
 include_once("functions/newpoll.php");
-include("functions/initiateRestVote.php");
-include("functions/initiateCuisVote.php");
 $userinfo = getUserInfo($userkey);
 $pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($userinfo['pollid']);
@@ -56,6 +54,7 @@ else {
     else { 
       $arrOfIds = getPollChoices($userinfo['pollid']);
       //var_dump($arrOfIds); echo $pollid;
+      include("functions/initiateRestVote.php");
       addItems($arrOfIds);
     }
   }
@@ -79,7 +78,8 @@ else {
     }
     else { 
       $choicearray = getPollChoices($pollid);
-      populateCuisines($choicearray,$idToCuis);
+      include("functions/initializeCuisines.php");
+      addItems($choicearray,$idToCuis);
     }
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
