@@ -22,8 +22,8 @@
 	    echo '">Read more on Yelp.com</a></li></ul></li>';
 	    echo '<script type="text/javascript">
                   <!--
-                  $("#" + '.$id.').children(".info").hide();
-		   $("#" + '.$id.').each( function() {
+                  $("#" + "'.$id.'").children(".info").hide();
+		   $("#" + "'.$id.'").each( function() {
 		       $(this).click(function(event) {
 			   if (this == event.target) $(this).children("ul").toggle();
                    //-->
