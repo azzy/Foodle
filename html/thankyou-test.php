@@ -1,9 +1,3 @@
-<style>
-    .text a {
-        color: #000;
-    }
-</style>
-
 <?php
   include("header.php");
   $type = $_GET['type'];

@@ -69,7 +69,7 @@
   if ($type == "restaurants") {?>
     <div id="searchstuff">
       <div class="searchtext"><label>Search:</label>
-      <input id="searchtxt" cols="20" rows="1" />
+      <input id="searchtxt" />
     <a href="javascript: search()"><img id="search" src="./images/search.png" /></a>
     </div>
       <a href="javascript: addYelpInfo()"><div id="addnew">
@@ -77,8 +77,8 @@
     </div>
 </div>
 <div id="yelpdata">
-<img src="./images/add.png" id="add" />
-<img src="./images/x.png" id="x" />
+<a href="javascript: close()"><img src="./images/x.png" id="x" /></a>
+<a href="javascript: addYelpInfo()"><img src="./images/add.png" id="add" /></a>
  <ul>
     <li class="yelpname"></li>
     <li class="yelprating"></li>
@@ -121,22 +121,22 @@ $( function() {
 //function to save the newly sorted list
 function saveList() {
 
-      var jsonList = $("#sortable2").sortable("toArray");
-      jsonList.userkey = '<?php echo $userkey ?>';
-      console.log(jsonList);
-      $.ajax({
-	type: 'POST',
-	traditional: true,
-	data: jsonList,
-	url: '/ajax/saveList.php',
-	success: function(data) {
-	  alert('YAY! Post success: ' + data);
-	},
-	error: function(error) {
-	  alert('Error on post: ' + error);
-	}
-      });
+  var jsonList = $.extend({} ,$("#sortable2").sortable("toArray"));
+  jsonList.userkey = '<?php echo $userkey ?>';
+  console.log(jsonList);
+  $.ajax({
+    type: 'POST',
+    traditional: true,
+    data: jsonList,
+    url: '/ajax/saveList.php',
+    success: function(data) {
+      alert('YAY! Post success: ' + data);
+    },
+    error: function(error) {
+      alert('Error on post: ' + error);
     }
+  });
+}
 //-->
 </script>
 <?php
