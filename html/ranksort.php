@@ -6,24 +6,21 @@
 <?php
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
-  include("header.php");
+  
+  $nominate = FALSE;
+  if (array_key_exists('nominate', $_GET)) {
+    $nominate = $_GET['nominate']; // generally, it will be true or non-existent
+  }
+  include_once("header.php");
+  include_once("functions/newuser.php");
+  include_once("functions/newpoll.php");
+  $userinfo = getUserInfo($userkey);
+  $pollinfo = getPollInfo($userinfo['pollid']);
+  $location = $pollinfo['location'];
 ?>
 </head>
 <?php
    echo '<body class="rank '.$type.'">';
-  if ($_POST != null) {
-    include("initiate_validate.php");
-    if ($isValid) {
-      echo "validated the form! Good to go. user is ".$userkey;
-    }
-    else {
-      echo "Invalid form. :( We should reject it, and don't return any more html!";
-      // TODO exit here somehow? return previous page (form) or do that in the initiate_validate file?
-    }
-  }
-  else {
-    echo " Didn't get to this page from the form. TODO: populate fields from database if possible, otherwise display an error";
-  }
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
@@ -69,7 +66,7 @@
     </div>
     <div id="list-2">
       <ul id="sortable2" class="connectedSortable">
-	<li class="bin">Drop selections here</li>
+	<li class="bin ui-state-disabled">Drop selections here</li>
    </ul>
     </div>
     
@@ -77,34 +74,41 @@
   if ($type == "restaurants") {?>
     <div id="searchstuff">
       <div class="searchtext"><label>Search:</label>
-      <input id="searchtxt" cols="20" rows="1" />
+      <input id="searchtxt" />
     <a href="javascript: search()"><img id="search" src="./images/search.png" /></a>
     </div>
       <a href="javascript: addYelpInfo()"><div id="addnew">
-    <img src="./images/add.png" />Add To List</div></a>
+    <!--<img src="./images/add.png" />Add To List</div></a>-->
     </div>
 </div>
- <ul id="yelpdata">
+<div id="yelpdata">
+<a href="javascript: close()"><img src="./images/x.png" id="x" /></a>
+<a href="javascript: addYelpInfo()"><img src="./images/add.png" id="add" /></a>
+ <ul>
     <li class="yelpname"></li>
     <li class="yelprating"></li>
     <li class="yelpsnippet"></li>
     <li class="yelpcat"></li>
     <li class="readmore"></li>
     </ul>
+</div>
+
+</div><!-- end of content -->
 <?php
-  } else { echo '</div>'; }
+  } else { echo '</div><!-- end of content -->'; }
 ?>
 
     <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
-    <a href='<?php echo "./email.php?type=$type&userkey=$userkey"; ?>'><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
+    <a href='javascript: saveList()'><img src="./images/right.png" id="nav-right" /></a> <!-- '<?php echo "./email.php?type=$type&userkey=$userkey"; ?>' and onClick="saveList();"-->
 <script type="text/javascript">
 <!--
 $( function() {
   //initialize sortables
   $('#sortable1, #sortable2').sortable( {
-  cursor: 'move',
-  connectWith: ".connectedSortable",
-  dropOnEmpty: true
+    items: ":not(.ui-state-disabled)",
+    cursor: 'move',
+    connectWith: ".connectedSortable",
+    dropOnEmpty: true
   });
   $("#sortable1, #sortable2").disableSelection();
 
@@ -114,35 +118,35 @@ $( function() {
 
   // initialize expand/collapse list
   $('li.heading').children('.info').hide();
-  $('li.heading').each(
-  function(column) {
-  $(this).click(function(event) {
-  if (this == event.target) $(this).children('ul').toggle();
+  $('li.heading').each( function() {
+      $(this).click(function(event) {
+	  if (this == event.target) $(this).children('ul').toggle();
+	});
+    });
   });
-  });
-});
 
 //function to save the newly sorted list
 function saveList() {
 
-      var jsonList = $("#sortable2").sortable("toArray");
-      jsonList.userkey = '<?php echo $userkey ?>';
-      console.log(jsonList);
-      $.ajax({
-	type: 'POST',
-	traditional: true,
-	data: jsonList,
-	url: '/ajax/saveList.php',
-	success: function(data) {
-	  alert('YAY! Post success: ' + data);
-	},
-	error: function(error) {
-	  alert('Error on post: ' + error);
-	}
-      });
+  var jsonList = $.extend({} ,$("#sortable2").sortable("toArray"));
+  jsonList.userkey = '<?php echo $userkey ?>';
+  jsonList.nominate = '<?php echo $nominate ?>'
+  console.log(jsonList); // TODO: remove
+  $.ajax({
+    type: 'POST',
+    traditional: true,
+    data: jsonList,
+    url: '/ajax/saveList.php',
+    success: function(data) {
+      window.location = '<?php echo "./email.php?type={$type}&userkey={$userkey}"; ?>';
+    },
+    error: function(error) {
+      console.log("Error on posting data; try again?");
     }
+  });
+}
 //-->
 </script>
 <?php
-  include("footer.php");
+  include_once("footer.php");
 ?>

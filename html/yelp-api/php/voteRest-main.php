@@ -9,13 +9,21 @@
         <script type="text/javascript">
         function codeAddress() {
             //alert("here");
-             //$("<li>").addClass("restaurant").html("laaa").appendTo("#restlist");
+             $("<li>").addClass("restaurant").html("laaa").appendTo("#restlist");
+             
+             
+             /************************************************
+             **  Need to retrieve userid from URL
+             ** make call to grabnumchoices
+             ** 
+             ************************************************/
+             
             initiateList('the-bent-spoon-princeton');
         }
         function initiateList(str) {
-            //alert(str);
+            alert(str);
             
-            $.post("initRest.php", //ajax file
+            $.post("voteRest-init.php", //ajax file
                 { sendValue: str },
                 function(data) {
                         $("<li>").addClass("restaurant").html(data.name).appendTo("#restlist");

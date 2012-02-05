@@ -6,11 +6,16 @@
 <?php
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
-  include("header.php");
+  include_once("header.php");
+  include_once("newuser.php");
+  include_once("newpoll.php");
+  $userinfo = getUserInfo($userkey);
+  $pollinfo = getPollInfo($userinfo['pollid']);
+  $location = $pollinfo['location'];
 ?>
 </head>
 <?php
-   echo '<body class="rank '.$type.'">';
+   echo '<body class="rank '.$type.'">';/*
   if ($_POST != null) {
     include("initiate_validate.php");
     if ($isValid) {
@@ -23,7 +28,7 @@
   }
   else {
     echo " Didn't get to this page from the form. TODO: populate fields from database if possible, otherwise display an error";
-  }
+    }*/
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
@@ -73,6 +78,8 @@
    </ul>
     </div>
     
+<?php
+  if ($type == "restaurants") {?>
     <div id="searchstuff">
       <div class="searchtext"><label>Search:</label>
       <input id="searchtxt" cols="20" rows="1" />
@@ -80,16 +87,23 @@
     </div>
       <a href="javascript: addYelpInfo()"><div id="addnew">
     <img src="./images/add.png" />Add To List</div></a>
-
     </div>
 </div>
- <ul id="yelpdata">
+<div id="yelpdata">
+<img src="./images/add.png" id="add" />
+<img src="./images/x.png" id="x" />
+ <ul>
     <li class="yelpname"></li>
     <li class="yelprating"></li>
     <li class="yelpsnippet"></li>
     <li class="yelpcat"></li>
     <li class="readmore"></li>
     </ul>
+</div>
+<?php
+  } else { echo '</div>'; }
+?>
+
     <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
     <a href='<?php echo "./email.php?type=$type&userkey=$userkey"; ?>'><img src="./images/right.png" id="nav-right" onClick="saveList();"/></a>
 <script type="text/javascript">
@@ -120,9 +134,9 @@ $( function() {
 //function to save the newly sorted list
 function saveList() {
 
-      alert($("#sortable2").sortable("toArray"));
       var jsonList = $("#sortable2").sortable("toArray");
       jsonList.userkey = '<?php echo $userkey ?>';
+      console.log(jsonList);
       $.ajax({
 	type: 'POST',
 	traditional: true,
@@ -139,5 +153,5 @@ function saveList() {
 //-->
 </script>
 <?php
-  include("footer.php");
+  include_once("footer.php");
 ?>

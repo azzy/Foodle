@@ -4,7 +4,7 @@ function search () {
   $('#addnew').show();
   $('#yelpdata').show();
   // retrieve the search text
-  var searchTxt =  $("#searchstuff").find("input").val();
+  var searchTxt =  $("input#searchtxt").val();
   // get yelp data on the search text
   getYelp(searchTxt);
 }
@@ -23,11 +23,12 @@ function addYelpInfo () {
 
 // get yelp data for display
 function getYelp(str) {
-    $.post("../php/searchRest.php", //ajax file
+    $.post("../functions/searchRest.php", //ajax file
            { sendValue: str },
            function(data) {
-               dataStuff = data;
-               $("#yelpdata li.yelpname").html(data.returnValueName + " " + data.returnValueId);
+               //dataStuff = data;
+	       $("#yelpdata ul").attr('id', data.returnValueId);
+               $("#yelpdata li.yelpname").html(data.returnValueName);
 	       $("#yelpdata li.yelprating").html('<img src="' + data.returnValueRatingImg + '" />');
 	       $("#yelpdata li.yelpsnippet").html(data.returnValueSnippet);
 	       $("#yelpdata li.yelpcat").html(data.returnValueCategory);
@@ -38,23 +39,40 @@ function getYelp(str) {
 }
 // add yelp data to list
 function listYelp(str) {
-    $.post("searchRest.php", 
+    $.post("../functions/searchRest.php", 
            { sendValue : str },
            function(data) {
-               //var li = $("<li>").addClass("restaurant");            
+	       var id = data.returnValueId;
                //add author name and comment to container
-               $("<li>").addClass("restaurant").text(data.returnValueName + " " + data.returnValueId).appendTo("#restlist");
+	       $("#sortable1").append(
+		   '<li class="draggable heading added-sortable" id="' + id + '">'
+		       + data.returnValueName 
+		       + '<ul class="info ui-state-disabled"><li class="yelprating ui-state-disabled"><img src="' 
+		       + data.returnValueRatingImg + '" /></li><li class="yelpsnippet ui-state-disabled">'
+		       + data.returnValueSnippet + '</li><li class="yelpcat ui-state-disabled">'
+		       + data.returnValueCategory + '</li><li class="readmore ui-state-disabled">'
+		       + data.returnValueURL + '</li></ul></li>');
                //empty inputs
                $("#searchstuff").find("input").val("");
-               $('#yelpdata').html("");
+               $('#yelpdata li').html("");
+	       //initialize the new items to expand/collapse and be sortable
+	       $("#sortable1").sortable({
+		   items: ":not('.ui-state-disabled')"
+	       });
+	       $(".info").sortable({disabled: true});
+	      // $('#' + id + ".info").sortable({ disabled: true });
+	       $('#' + id).children('.info').hide();
+	       $('#' + id).click(function(event) {
+		   if (this == event.target) $(this).children('ul').toggle();
+	       });
            },
            "json"
-          );            
+          );
 }
 
-$('#back').click(function () {
-    $('.sec').toggle();
-    $('#search').toggle();
-    $("#searchstuff").find("textarea").val("");
-    $('#yelpdata').html("");
-});
+function close () {
+    $('#addnew').hide();
+    $('#yelpdata').hide();
+    $("#searchstuff").find("input").val("");
+    $('#yelpdata li').html("");
+}
