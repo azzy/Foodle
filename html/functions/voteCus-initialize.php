@@ -13,10 +13,9 @@
     $pollid = $userinfo['pollid'];
     
     $arrOfIds = getPollChoices($pollid);
-    $num = count($arrOfIds);
-    echo($num);
-    function addItems() {
-        echo($num); 
+    
+    function addItems($arrOfIds) {
+        $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
             echo("here2"); 
             $response=getData($arrOfIds[$i]);
@@ -57,7 +56,7 @@
     <p><?php echo("userkey ".$userkey." pollid ".$pollid."<br/><br/>");?></p>
     <p><?php print_r($arrOfIds);?></p>
     <ul id="cuslist">
-        <?php addItems();?>
+        <?php addItems($arrOfIds);?>
     </ul>
 </body>
 </html>
