@@ -6,7 +6,7 @@
 <?php
 $type = $_GET['type'];
 $userkey = $_GET['userkey'];
-$nominate = FALSE;
+//$nominate = FALSE;
 if (array_key_exists('nominate', $_GET)) {
   $nominate = $_GET['nominate']; // generally, it will be true or non-existent
 }
