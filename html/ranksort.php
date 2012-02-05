@@ -51,7 +51,7 @@ else {
     </script>';
     }
     else { 
-      $arrOfIds = getPollChoices($pollid);
+      $arrOfIds = getPollChoices($userinfo['pollid']);
       var_dump($arrOfIds); echo $pollid;
       include("functions/initiateRestVote.php");
       addItems($arrOfIds);
