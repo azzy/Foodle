@@ -83,4 +83,31 @@ function getPollInfo($pollid) {
   }
 }
 
+/* Gets the poll choices; returns the data in an array (indexes are choiceids, values are yelpids) */
+function getPollChoices($pollid) {
+
+  include("foodledbinfo.php");
+
+  try {
+    $db = new PDO('mysql:host=localhost;dbname='.$database, $username, $password);
+
+    $tablename = "choices{$pollid}";
+
+    $choices = array();
+    if ($stmt = $db->prepare("SELECT * FROM {$tablename}")) {
+      $stmt->execute();
+      $row = $stmt->fetch();
+      while ($row) {
+	$choices[$row['choiceid']] = $row['yelpid'];
+	$row = $stmt->fetch();	
+      }
+      return $choices;
+    }
+    return NULL;
+  } catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    return NULL; //die();;
+  }
+}
+
 ?>
