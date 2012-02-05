@@ -27,7 +27,7 @@
 		       $(this).click(function(event) {
 			   if (this == event.target) $(this).children("ul").toggle();
                            }
-                       );}
+                       );});
                    //-->
                   </script>';
         }
