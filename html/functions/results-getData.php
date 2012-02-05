@@ -13,13 +13,13 @@
         $response = json_decode($data);
         echo($unsigned_url);
         
-        print_r($response);
+        //print_r($response);
         
         
         $num = count($response->businesses);
         $arrFinal = array("num"=>$num);
         echo("here-3 ".$num);
-        /*
+        
         for ($j = 0; $j < $num; $j++) {
             $name = name($response, $j);
             $rating = rating($response, $j);
@@ -37,8 +37,8 @@
         }
         
         return ($arrFinal);
-        */
-        return (array("name"=>"testname"));
+        
+        //return (array("name"=>"testname"));
        
         
     }
