@@ -52,6 +52,7 @@ else {
     }
     else { 
       $arrOfIds = getPollChoices($pollid);
+      var_dump($arrOfIds); echo $pollid;
       include("functions/initiateRestVote.php");
       addItems($arrOfIds);
     }
