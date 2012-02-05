@@ -1,5 +1,5 @@
 <?php
-
+/*
     $cuisToId = array("American"=>"tradamerican,newamerican", 
     "Desserts & Ice Cream"=>"bakeries,desserts,icecream", 
     "Breakfast & Brunch"=>"breakfast_brunch",
@@ -21,6 +21,8 @@
     "Southern & Soul Food"=>,
     "South-East Asian"=>"thai,malaysian,singaporean,vietnamese,indonesian",
     "Vegan & Vegetarian"=>"vegan,vegetarian");
+    */
+    
     $idToCuis = array("tradamerican,newamerican"=>"American", 
     "bakeries,desserts,icecream"=>"Desserts & Ice Cream",
     "breakfast_brunch"=>"Breakfast & Brunch",
