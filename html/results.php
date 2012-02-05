@@ -87,10 +87,13 @@ $('#formtosubmit').submit();
       <ul id="results">
       <?php 
         $response = array("num"=>5);
+        echo("here");
         if ($type == 'cuisine') {
+            echo("here2");
             $res = getData($rankedResults[0], 2, $location);          
             $response[0] = $res[0];
             $response[1] = $res[1];
+            echo("here3");
             $res = getData($rankedResults[1], 2, $location);          
             $response[2] = $res[0];
             $response[3] = $res[1];
