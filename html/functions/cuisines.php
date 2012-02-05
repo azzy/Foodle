@@ -1,10 +1,9 @@
 <?php
-/*
+
     $cuisToId = array("American"=>"tradamerican,newamerican", 
     "Desserts & Ice Cream"=>"bakeries,desserts,icecream", 
     "Breakfast & Brunch"=>"breakfast_brunch",
-    "Burgers"=>,"burgers",
-    "Cafes"=>"cafes,coffee,tea",
+    "Burgers"=>,"burgers", "Cafes"=>"cafes,coffee,tea",
     "Chinese"=>"chinese,dimsum",
     "Delis & Sandwiches"=>"delis,sandwiches",
     "Diners"=>"diners",
@@ -21,7 +20,7 @@
     "Southern & Soul Food"=>,
     "South-East Asian"=>"thai,malaysian,singaporean,vietnamese,indonesian",
     "Vegan & Vegetarian"=>"vegan,vegetarian");
-    */
+    
     
     $idToCuis = array("tradamerican,newamerican"=>"American", 
     "bakeries,desserts,icecream"=>"Desserts & Ice Cream",
