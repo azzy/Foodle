@@ -90,8 +90,8 @@ $('#formtosubmit').submit();
       <?php 
         $response = array("num"=>5);
         if ($type == 'cuisine') {
-            echo("here");
-            $res = getData($rankedResults[0], 2, $location);          
+            $res = getData($rankedResults[0], 2, $location);
+            print_r($res);            
             $response[0] = $res[0];
             $response[1] = $res[1];
             $res = getData($rankedResults[1], 2, $location);          
