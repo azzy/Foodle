@@ -1,7 +1,7 @@
 <?php
-  //-----------------------------------------------------------------------
-  // Author: Choosine
-  //-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+// Author: Choosine
+//-----------------------------------------------------------------------
 ?>
 <?php
 $type = $_GET['type'];
@@ -14,21 +14,22 @@ include_once("header.php");
 include_once("functions/newuser.php");
 include_once("functions/newpoll.php");
 $userinfo = getUserInfo($userkey);
+$pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($userinfo['pollid']);
 if (array_key_exists('location', $pollinfo)) {
   $location = $pollinfo['location'];
-  } else { $location = "08544"; }
+} else { $location = "08544"; }
 ?>
 </head>
 <?php
-   echo '<body class="rank '.$type.'">';
+echo '<body class="rank '.$type.'">';
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
-<div id="wrapper">
+  <div id="wrapper">
   <div id="container">
-    <div id="content-area">
-      <div class="text">
-    <?php   
+  <div id="content-area">
+  <div class="text">
+  <?php   
   if ($type == "cuisine") {$print_type = "cuisines";}
   else if ($type == "restaurants") { $print_type = $type; }
 if ($nominate == true) {
@@ -36,11 +37,11 @@ if ($nominate == true) {
 else {
   echo "To vote, rank the ".$print_type." by dragging from the green list to the blue one with your favorite ".$print_type." closer to the top.";}
 ?>
-	</div>
+</div>
 
-    <div id="list-1">
-      <ul id="sortable1" class="connectedSortable">
-<?php
+<div id="list-1">
+  <ul id="sortable1" class="connectedSortable">
+  <?php
   if ($type == "restaurants") {
     if ($nominate == true) {
       echo '<script type="text/javascript">
@@ -50,7 +51,7 @@ else {
     </script>';
     }
     else { 
-      $arrOfIds = getPollChoices($userinfo['pollid']);
+      $arrOfIds = getPollChoices($pollid);
       include("functions/initiateRestVote.php");
       addItems($arrOfIds);
     }
@@ -73,8 +74,8 @@ else {
 	echo '<li class="draggable heading" id="'.$ids[$i].'">'.$cuisines[$i].'</li>';
       }
     }
-   else { 
-      $arrOfIds = getPollChoices($userinfo['pollid']);
+    else { 
+      $arrOfIds = getPollChoices($pollid]);
       include("functions/initiateCuisVote.php");
       addItems($arrOfIds,$idToCuis);
     }
@@ -82,51 +83,51 @@ else {
   else echo  " Didn't get to this page properly. TODO: display error page";
 
 ?>
-    </ul>
-    </div>
-    <div id="list-2">
-      <ul id="sortable2" class="connectedSortable">
-	<li class="bin ui-state-disabled">Drop selections here</li>
-   </ul>
-    </div>
+</ul>
+</div>
+<div id="list-2">
+  <ul id="sortable2" class="connectedSortable">
+  <li class="bin ui-state-disabled">Drop selections here</li>
+  </ul>
+  </div>
     
-<?php
+  <?php
   if (($type == "restaurants")&&($nominate == true)) {?>
-    <div id="searchstuff">
-      <div class="searchtext"><label>Search:</label>
-      <input id="searchtxt" />
-      <?php echo "<a href=\"javascript: search('$location')\"><img id=\"search\" src=\"./images/search.png\" /></a>"; ?>
-    </div>
-</div>
-<div id="yelpdata">
-<a href="javascript: close()"><img src="./images/x.png" id="x" /></a>
-<?php echo "<a href=\"javascript: addYelpInfo('$location')\">"; ?>
-<img src="./images/add.png" id="add" /></a>
- <ul>
-    <li class="yelpname"></li>
-    <li class="yelprating"></li>
-    <li class="yelpsnippet"></li>
-    <li class="yelpcat"></li>
-    <li class="readmore"></li>
-    </ul>
-</div>
+						      <div id="searchstuff">
+						      <div class="searchtext"><label>Search:</label>
+						      <input id="searchtxt" />
+						      <?php echo "<a href=\"javascript: search('$location')\"><img id=\"search\" src=\"./images/search.png\" /></a>"; ?>
+						      </div>
+						      </div>
+						      <div id="yelpdata">
+						      <a href="javascript: close()"><img src="./images/x.png" id="x" /></a>
+						      <?php echo "<a href=\"javascript: addYelpInfo('$location')\">"; ?>
+						      <img src="./images/add.png" id="add" /></a>
+						      <ul>
+						      <li class="yelpname"></li>
+						      <li class="yelprating"></li>
+						      <li class="yelpsnippet"></li>
+						      <li class="yelpcat"></li>
+						      <li class="readmore"></li>
+						      </ul>
+						      </div>
 
-</div><!-- end of content -->
-<?php
+						      </div><!-- end of content -->
+						      <?php
   } else { echo '</div><!-- end of content -->'; }
 if ($nominate == true) {
   echo "<a href='./initiate.php?type=".$type."&userkey=".$userkey."'><img src='./images/left.png' id='nav-left' /></a>";
 } ?>
-    <a href='javascript: saveList()'><img src="./images/right.png" id="nav-right" /></a>
-<script type="text/javascript">
-<!--
-$( function() {
-  // initialize search text
-  $('#addnew').hide();
-  $('#yelpdata').hide();
-  initiateSortable();
-  //initiateExpandCollapse();
-  });
+<a href='javascript: saveList()'><img src="./images/right.png" id="nav-right" /></a>
+  <script type="text/javascript">
+  <!--
+  $( function() {
+      // initialize search text
+      $('#addnew').hide();
+      $('#yelpdata').hide();
+      initiateSortable();
+      //initiateExpandCollapse();
+    });
 
 //function to save the newly sorted list
 function saveList() {
@@ -134,23 +135,23 @@ function saveList() {
   var jsonList = $.extend({} ,$("#sortable2").sortable("toArray"));
   jsonList.userkey = '<?php echo $userkey ?>';
   jsonList.nominate = '<?php echo $nominate ?>'
-  console.log(jsonList); // TODO: remove
+    console.log(jsonList); // TODO: remove
   $.ajax({
     type: 'POST',
-    traditional: true,
-    data: jsonList,
-    url: '/ajax/saveList.php',
-    success: function(data) {
+	traditional: true,
+	data: jsonList,
+	url: '/ajax/saveList.php',
+	success: function(data) {
 	window.location = "<?php if ($nominate) echo './email.php?type='.$type.'&userkey='.$userkey.'&nominate='.$nominate;
         else echo './thankyou.php?type='.$type.'&userkey='.$userkey; ?>";
-    },
-    error: function(error) {
-      console.log("Error on posting data; try again?");
-    }
-  });
+      },
+	error: function(error) {
+	console.log("Error on posting data; try again?");
+      }
+    });
 }
 //-->
 </script>
 <?php
-  include_once("footer.php");
+include_once("footer.php");
 ?>
