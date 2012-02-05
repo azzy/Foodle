@@ -18,7 +18,7 @@
             $.post("initRest.php", //ajax file
                 { sendValue: str },
                 function(data) {
-                        alert("successful ajax");
+                        alert("successful ajax" + data.name);
                         $("<li>").addClass("restaurant").html(data.name).appendTo("#restlist");
                 },
                 "json"
