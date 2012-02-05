@@ -12,7 +12,7 @@
 	following URL to view your results.</div>
 	<div class="text">
         <a href=<?php echo "./ranksort.php?type=$type&userkey=$userkey";?>>Vote for your poll!</a> <br/>
-        <a href=<?php echo "./results.php?type=$type&userkey=$userkey"?>>Administer your poll!</a>
+        <a href=<?php echo "./results.php?type=$type&userkey=$userkey"?>>Check your poll results!</a>
     </div>
     </div>
     
