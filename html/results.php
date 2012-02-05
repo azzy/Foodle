@@ -13,6 +13,7 @@
   $userinfo = getUserInfo($userkey);
   $pollid = $userinfo['pollid'];
   $pollinfo = getPollInfo($pollid);
+  $location = $pollinfo['location'];
   
   //$pollid = 1;
   //$type = 'restaurants';
