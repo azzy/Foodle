@@ -63,7 +63,8 @@ function listYelp(str) {
 }
 
 function close () {
+    $('#addnew').hide();
     $('#yelpdata').hide();
     $("#searchstuff").find("input").val("");
-    $('#yelpdata').html("");
+    $('#yelpdata li').html("");
 }
