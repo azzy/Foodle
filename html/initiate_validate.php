@@ -11,7 +11,6 @@ require_once("functions/newpoll.php");
 //$_POST['location'] = "someplace";
 //echo 'DINNER';
 
-
 $isValid = isValid($_POST['email'], $_POST['location']);
 
 // BIGGER TODO: Cache all of this "new poll" and "new user" data, but 
@@ -26,6 +25,12 @@ if ($isValid) {
   $pollid = newPoll($_POST['dinner'], $_POST['location']);
   // create an admin user for the poll
   $userkey = newUser($pollid, 'a', $_POST['email'], $_POST['name']);
+}
+
+if ($isValid) {
+  echo "true";
+} else {
+  echo "false";
 }
 
 ?>
