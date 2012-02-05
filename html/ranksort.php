@@ -77,6 +77,7 @@ else {
     }
     else { 
       $arrOfIds = getPollChoices($pollid);
+      include_once("cuisines.php");
       include("functions/initiateCuisVote.php");
       populateCuisines($arrOfIds,$idToCuis);
     }
