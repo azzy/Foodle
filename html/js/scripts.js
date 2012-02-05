@@ -47,7 +47,7 @@ function listYelp(str) {
 	       $("#sortable1").append(
 		   '<li class="draggable heading added-sortable" id="' + id + '">'
 		       + data.returnValueName 
-		       + '<ul class="info"><li class="yelprating ui-state-disabled"><img src="' 
+		       + '<ul class="info ui-state-disabled"><li class="yelprating ui-state-disabled"><img src="' 
 		       + data.returnValueRatingImg + '" /></li><li class="yelpsnippet ui-state-disabled">'
 		       + data.returnValueSnippet + '</li><li class="yelpcat ui-state-disabled">'
 		       + data.returnValueCategory + '</li><li class="readmore ui-state-disabled">'
@@ -56,9 +56,9 @@ function listYelp(str) {
                $("#searchstuff").find("input").val("");
                $('#yelpdata li').html("");
 	       //initialize the new items to expand/collapse and be sortable
-	      /* $("#sortable1").sortable({
-		   items: ":not('.info li')"
-	       });*/
+	      $("#sortable1").sortable({
+		   items: ":not('.ui-state-disabled')"
+	       });
 	      // $('#' + id + ".info").sortable({ disabled: true });
 	       $('#' + id).children('.info').hide();
 	       $('#' + id).click(function(event) {
