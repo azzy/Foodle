@@ -19,7 +19,7 @@
         function initiateList(str) {
             alert(str);
             
-            $.post("initRest.php", //ajax file
+            $.post("voteRest-init.php", //ajax file
                 { sendValue: str },
                 function(data) {
                         var str2 = JSON.stringify(data);
