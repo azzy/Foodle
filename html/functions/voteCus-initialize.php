@@ -17,33 +17,11 @@
     function addItems($arrOfIds) {
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
-            //echo("here2"); 
-            $response=getData($arrOfIds[$i]);
-            $name = $response[name];
+            $name = $arrOfIds[$i];
             echo("<li class='restaurant'>".$name."</li>");
         }
     }
-    
-    function getData($business) {
-        $unsigned_url = "http://api.yelp.com/v2/business/".$business;
-        $data = access($unsigned_url);
-        $response = json_decode($data);
-        
-        //print_r($response);
-        
-        $name = $response->name;
-        $rating = $response->rating;
-        $ratingimg = $response->rating_img_url;
-        $url = $response->url;
-        $location = ($response->location->city) . "," . ($response->location->state_code);
-        $category = "";  
-        for ($i = 0; $i < count($response->categories); $i++) {
-            $category = $category.$response->categories[$i];
-        }    
-        //name, rating, rating_img_url, url, categories, city, state
-        $arr = array("name"=>$name, "rating"=>$rating, "ratingimg"=>$ratingimg, "location"=>$location, "categories"=>$category, "url"=>$url);
-        return ($arr);
-    }
+
     //echo("<br/><br/>");
 ?>
 <html>
