@@ -374,8 +374,9 @@ ul#sortable2 li.bin {
 img#x, img#add {
     float: right;
     width: 30px;
+    margin: -15px -15px 0 0;
 }
-img#x {  margin: -10px -10px 0 5px; clear: left; }
+//img#x {  margin: -10px -10px 0 5px; }
 #yelpdata {
     z-index: 300;
     position: fixed;
@@ -395,6 +396,7 @@ img#x {  margin: -10px -10px 0 5px; clear: left; }
     -moz-box-shadow: 0px 4px 8px 0 #211F07;
     -webkit-box-shadow: 0px 4px 8px 0 #211F07;
 }
+#yelpdata ul { clear: both; }
 .yelprating img {
 }
 /* End Rank Styles -------------------------------------------*/

@@ -6,9 +6,9 @@ include_once("foodledbinfo.php");
 
 $db = new PDO("mysql:host=localhost;dbname={$database}", $username, $password);
 
+/*
 ob_start();
 
-try {
 // testing stuff only
 $_POST = array();
 $_POST['userkey'] = 'B15F4E6F-29AF-F20C-D2A8-454D941C7230';
@@ -16,7 +16,7 @@ $_POST['0'] = '';
 $_POST['1'] = 'bread';
 $_POST['2'] = 'cheese';
 $_POST['3'] = 'apple';
-
+*/
 
 $userkey = $_POST['userkey'];
 
@@ -66,13 +66,10 @@ foreach ($_POST as $index => $yelpid) {
   }
 }
 
-}
-catch ($exception) {
-  var_dump($exception);
-}
-$string = ob_get_flush();
-$file = fopen('output', 'w') or die("can't open file");
+/*
+$string = ob_get_clean();
+$file = fopen('siterecords', 'a') or die("can't open file");
 fwrite($file, $string);
 fclose($file);
-
+*/
 ?>
