@@ -35,7 +35,7 @@ if ($isValid) {
 
     if(empty($errorMessage)) 
         {
-          header("Location: ranksort.php?type=".$type."&userkey=".$userkey);
+          header("Location: ranksort.php?type=".$type."&userkey=".$userkey."nominate=true");
     }
 }
             
