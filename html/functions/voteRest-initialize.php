@@ -14,6 +14,7 @@
     
     //$userkey = $_GET['userkey'];
     $userkey = "B3EF2465-24E8-AC67-5076-0D3C22571FD0";
+    /*
     $userinfo = getUserInfo($userkey);
     $pollid = $userinfo['pollid'];
     
@@ -33,7 +34,8 @@
         echo("<li class='restaurant'>".$name."<li>");
     }
     echo("</ul>");
-        
+    */
+    echo("here");
     function getData($business) {
         // create URL and get Yelp response
         $unsigned_url = "http://api.yelp.com/v2/business/".$business;
