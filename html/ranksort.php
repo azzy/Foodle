@@ -42,11 +42,12 @@ if (array_key_exists('location', $pollinfo)) {
       <ul id="sortable1" class="connectedSortable">
 <?php
   if ($type == "restaurants") { 
-    echo '<script type="text/javascript">
+    echo $location;
+    /*echo '<script type="text/javascript">
     <!--
 	initiateRestNom("08544");
     //-->
-    </script>';
+    </script>';*/
   }
   else if ($type == "cuisine") {
     $cuisines = array('American','Desserts & Ice Cream','Breakfast & Brunch',
