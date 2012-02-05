@@ -93,7 +93,7 @@ $('#formtosubmit').submit();
             $res = getData($rankedResults[0], 2, $location);          
             $response[0] = $res[0];
             $response[1] = $res[1];
-            echo("here3");
+            print_r($res);
             $res = getData($rankedResults[1], 2, $location);          
             $response[2] = $res[0];
             $response[3] = $res[1];
