@@ -1,12 +1,33 @@
+/* Functions Used for Initial Population of Lists --------------------------- */
+// function to load initial list for restaurant nomination page
+function initiateRestNom (loc) {
+    $.post("../functions/initRest.php",
+	   { location: loc },
+	   function(data) {
+	       for (var i=0; i < data.num; i++) {
+		   $("#sortable1").append(
+		   '<li class="draggable heading" id="' + data[i].id + '">'
+		       + data[i].name 
+		       + '<ul class="info ui-state-disabled"><li class="yelprating ui-state-disabled"><img src="' 
+		       + data[i].ratingimg + '" /></li><li class="yelpsnippet ui-state-disabled">'
+		       + data[i].snippet + '</li><li class="yelpcat ui-state-disabled">'
+		       + data[i].categories + '</li><li class="readmore ui-state-disabled">'
+		       + data[i].url + '</li></ul></li>');
+	       }
+	   }, "json"
+	  );
+}
+
+/* Functions Used for Search ------------------------------------------------ */
 // function to retrieve yelp info
-function search () {
+function search (loc) {
   // toggle on secondary buttons, toggle off main search button
   $('#addnew').show();
   $('#yelpdata').show();
   // retrieve the search text
   var searchTxt =  $("input#searchtxt").val();
   // get yelp data on the search text
-  getYelp(searchTxt);
+    getYelp(searchTxt, loc);
 }
 
 // click on the add button to add yelp info to the html list    
@@ -22,9 +43,11 @@ function addYelpInfo () {
 }
 
 // get yelp data for display
-function getYelp(str) {
+function getYelp(str, loc) {
     $.post("../functions/searchRest.php", //ajax file
-           { sendValue: str },
+           { sendValue: str,
+	     location: loc 
+	   },
            function(data) {
                //dataStuff = data;
 	       $("#yelpdata ul").attr('id', data.returnValueId);
