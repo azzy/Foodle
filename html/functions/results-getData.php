@@ -15,11 +15,11 @@
         
         print_r($response);
         
-        /*
-        $num = count($response->businesses);
-        $arrFinal = array("num" : $num);
-        echo("here-3 ".$num);
         
+        $num = count($response->businesses);
+        $arrFinal = array("num"=>$num);
+        echo("here-3 ".$num);
+        /*
         for ($j = 0; $j < $num; $j++) {
             $name = name($response, $j);
             $rating = rating($response, $j);
