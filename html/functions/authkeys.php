@@ -18,10 +18,17 @@ $token = "eymlcQgvAQiKexs9ErOzSBeLUURNvROy";
 $token_secret = "_Mt8raHuU6aL6lmsqFD6E_wb4QY";
 */
 //Choosinethefourth:
+/*
 $consumer_key = "dwbKLE-1IXoVEqRe0r_3sQ";
 $consumer_secret = "1ETl0byli_dydvTX80A5xXNxTAA";
 $token = "BzjZeNGjzsxX1RBOg4XG5mjEDmkyJ5wt";
 $token_secret = "nBIn6F4HyiK2t8p1eTU92Hgkse0";
+*/
+//Choosinethefifth:
+$consumer_key = "OJgzCOfOEN63HvDZYf9x1w";
+$consumer_secret = "gvaipXFqFOSUCsr91WUTOmyQdqQ";
+$token = "l90uXMRebqDqeQmfOKeoXNnPSTSewF79";
+$token_secret = "QrptsZoWmPeqTzTuKfwdi0N8-hI";
 
 
 ?>
