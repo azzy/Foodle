@@ -24,8 +24,8 @@
   }
   else {
     //$rankedResults = genResults($pollid, 3);
-    $rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
-    $location = "08544";
+    //$rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
+    //$location = "08544";
     /*
     print_r($rankedResults);
     
