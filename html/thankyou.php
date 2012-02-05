@@ -16,6 +16,6 @@
     </div>
     </div>
     
-    <a href='<?php echo "./emails.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
+    <a href='<?php echo "./email.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
 
     <?php include("footer.php"); ?>
