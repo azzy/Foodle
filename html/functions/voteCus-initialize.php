@@ -14,6 +14,7 @@
     
     $arrOfIds = getPollChoices($pollid);
     $num = count($arrOfIds);
+    echo($num);
     function addItems() {
         echo($num); 
         for ($i = 0 ; $i < $num; $i++) {
