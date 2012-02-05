@@ -329,12 +329,20 @@ ul#sortable2 li.heading {
     margin: 7px 0 -5px -16px;
     padding: 8px 14px;
     font-size: 12pt;
-    line-height: 1.3em;
+    line-height: 1.2em;
     box-shadow: 0 -1px 1px 0 #211F07;
     -moz-box-shadow: 0px -1px 1px 0 #211F07;
     -webkit-box-shadow: 0px -1px 1px 0 #211F07;
     text-shadow: none;
     list-style-type: none;
+}
+.info .yelprating {
+    float: right;
+    clear: both;
+}
+.info .yelpsnippet,
+.info .yelpcat {
+    margin-top: 10px;
 }
 span.names {
     position: relative; top: 10px; left: 33px;
@@ -356,12 +364,13 @@ ul#sortable2 li.bin {
 /* Integrating Search in Rank Page Styles --------------------*/
 .rank a:link,
 .rank a:visited {
-    color: #ff000;
+    color: #29ABE2;
 }
 .rank a:hover,
 .rank a:focus,
 .rank a:active {
-    text-decoration: border-bottom: 1px dotted #ff000;
+    color: #ff0000;
+    text-decoration: border-bottom: 1px dotted #ff0000;
 }
 #searchstuff{
     //border: 1px solid #000;
@@ -406,8 +415,10 @@ img#add { margin: -15px -3px 0 0; }
     -webkit-box-shadow: 0px 4px 8px 0 #211F07;
 }
 #yelpdata ul { clear: both; }
-.yelprating img {
-}
+#yelpdata .yelpname { font-size: 16pt; text-align: center; }
+#yelpdata .yelprating { float: right; clear: both; }
+#yelpdata .yelpsnippet,
+#yelpdata .yelpcat { margin-top: 10px; }
 /* End Rank Styles -------------------------------------------*/
 /* Begin Results Styles --------------------------------------*/
 body.results div.floatleft,
