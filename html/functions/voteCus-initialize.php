@@ -28,6 +28,7 @@
 	    echo '">Read more on Yelp.com</a></li></ul></li>';
         }
     }
+
 /*
 <html>
     <head>
