@@ -329,19 +329,21 @@ ul#sortable2 li.heading {
     margin: 7px 0 -5px -16px;
     padding: 8px 14px;
     font-size: 12pt;
-    line-height: 1.2em;
+    //line-height: 1.1em;
     box-shadow: 0 -1px 1px 0 #211F07;
     -moz-box-shadow: 0px -1px 1px 0 #211F07;
     -webkit-box-shadow: 0px -1px 1px 0 #211F07;
     text-shadow: none;
     list-style-type: none;
 }
-.info .yelprating {
+/*.info .yelprating {
     float: right;
     clear: both;
-}
+}*/
+.info .yelprating,
 .info .yelpsnippet,
-.info .yelpcat {
+.info .yelpcat,
+.info .readmore {
     margin-top: 10px;
 }
 span.names {
@@ -364,13 +366,13 @@ ul#sortable2 li.bin {
 /* Integrating Search in Rank Page Styles --------------------*/
 .rank a:link,
 .rank a:visited {
-    color: #29ABE2;
+    color: #ffff00;
 }
 .rank a:hover,
 .rank a:focus,
 .rank a:active {
-    color: #ff0000;
-    text-decoration: border-bottom: 1px dotted #ff0000;
+    color: #FCEE21;
+    border-bottom: 1px dotted #FCEE21;
 }
 #searchstuff{
     //border: 1px solid #000;
@@ -415,10 +417,12 @@ img#add { margin: -15px -3px 0 0; }
     -webkit-box-shadow: 0px 4px 8px 0 #211F07;
 }
 #yelpdata ul { clear: both; }
-#yelpdata .yelpname { font-size: 16pt; text-align: center; }
-#yelpdata .yelprating { float: right; clear: both; }
+#yelpdata .yelpname { font-size: 18pt; text-align: center; }
+/*#yelpdata .yelprating { float: right; clear: both; }*/
+#yelpdata .yelprating,
 #yelpdata .yelpsnippet,
-#yelpdata .yelpcat { margin-top: 10px; }
+#yelpdata .yelpcat,
+#yelpdata .readmore { margin-top: 10px; }
 /* End Rank Styles -------------------------------------------*/
 /* Begin Results Styles --------------------------------------*/
 body.results div.floatleft,
