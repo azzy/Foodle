@@ -15,9 +15,10 @@ include_once("functions/newuser.php");
 include_once("functions/newpoll.php");
 $userinfo = getUserInfo($userkey);
 $pollinfo = getPollInfo($userinfo['pollid']);
-if (array_key_exists('location', $pollinfo)) {
+/*if (array_key_exists('location', $pollinfo)) {
   $location = $pollinfo['location'];
-} else { $location = "08544"; }
+  } else { $location = "08544"; }*/
+$location = "08544";
 ?>
 </head>
 <?php
@@ -45,7 +46,6 @@ if (array_key_exists('location', $pollinfo)) {
     echo '<script type="text/javascript">
     <!--
 	initiateRestNom('.$location.');
-        initiateSortable();
         initiateExpandCollapse();
     //-->
     </script>';
@@ -66,11 +66,6 @@ if (array_key_exists('location', $pollinfo)) {
     for ($i = 1; $i <= $length; $i++) {
       echo '<li class="draggable heading" id="'.$ids[$i].'">'.$cuisines[$i].'</li>';
     }
-    echo '<script type="text/javascript">
-          <!--
-               initiateSortable();
-          //-->
-          </script>';
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
 
@@ -119,6 +114,7 @@ $( function() {
   // initialize search text
   $('#addnew').hide();
   $('#yelpdata').hide();
+  initiateSortable();
   });
 
 //function to save the newly sorted list
