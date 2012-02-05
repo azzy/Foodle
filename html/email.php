@@ -1,5 +1,6 @@
 <?php
-  include("header.php");
+
+/*
   if (array_key_exists('userkey', $_GET)) {
     $type = $_GET['type'];
     $userkey = $_GET['userkey'];
@@ -7,13 +8,20 @@
     $type = $_POST['type'];
     $userkey = $_POST['userkey'];
   }
+*/
+
+// debug
+ $_POST = array();
+ $_POST['submit'] = 'create poll';
+ $type = $_POST['type'] = 'restaurants';
+ $userkey = $_POST['userkey'] = '9F3EE83E-1011-193F-0902-A9FD2FC8C0FB';
+ $_POST['email1'] = 'kanika1091@gmail.com';
+
   include_once("functions/newuser.php");
   include_once("functions/newpoll.php");
   $userinfo = getUserInfo($userkey);
   $pollid = $userinfo['pollid'];
-  echo '</head><body class="emails '.$type.'">';
-?>
-<?php
+
 if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
     // TODO: some validation
     $userkeys = array();
@@ -28,6 +36,9 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
     header("Location: ./thankyou.php?type={$type}&userkey={$userkey}");
     exit();
   }
+include("header.php");
+echo '</head><body class="emails '.$type.'">';
+
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
