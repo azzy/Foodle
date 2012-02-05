@@ -118,6 +118,7 @@ else {
 						      <?php
   } else { echo '</div><!-- end of content -->'; }?>
 <?php	  	
+$nominate = true;
 if ($nominate===true) {
   echo "<a href='./initiate.php?type=".$type."&userkey=".$userkey."'><img src='./images/left.png' id='nav-left' /></a>";
 }
