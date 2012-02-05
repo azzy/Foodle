@@ -375,7 +375,7 @@ img#x, img#add {
     float: right;
     width: 30px;
 }
-img#x {  margin: -10px -10px 0 5px;  }
+//img#x {  margin: -10px -10px 0 5px; }
 #yelpdata {
     z-index: 300;
     position: fixed;
@@ -395,6 +395,7 @@ img#x {  margin: -10px -10px 0 5px;  }
     -moz-box-shadow: 0px 4px 8px 0 #211F07;
     -webkit-box-shadow: 0px 4px 8px 0 #211F07;
 }
+#yelpdata ul { clear: both; }
 .yelprating img {
 }
 /* End Rank Styles -------------------------------------------*/

@@ -12,6 +12,12 @@
              $("<li>").addClass("restaurant").html("laaa").appendTo("#restlist");
              
              
+             /************************************************
+             **  Need to retrieve userid from URL
+             ** make call to grabnumchoices
+             ** 
+             ************************************************/
+             
             initiateList('the-bent-spoon-princeton');
         }
         function initiateList(str) {

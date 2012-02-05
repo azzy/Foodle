@@ -4,7 +4,7 @@ function search () {
   $('#addnew').show();
   $('#yelpdata').show();
   // retrieve the search text
-  var searchTxt =  $("#searchstuff").find("input").val();
+  var searchTxt =  $("input#searchtxt").val();
   // get yelp data on the search text
   getYelp(searchTxt);
 }
@@ -27,7 +27,7 @@ function getYelp(str) {
            { sendValue: str },
            function(data) {
                //dataStuff = data;
-	       $("#yelpdata ul").id = data.returnValueId;
+	     //  $("#yelpdata ul").attr('id', data.returnValueId);
                $("#yelpdata li.yelpname").html(data.returnValueName);
 	       $("#yelpdata li.yelprating").html('<img src="' + data.returnValueRatingImg + '" />');
 	       $("#yelpdata li.yelpsnippet").html(data.returnValueSnippet);
@@ -62,8 +62,8 @@ function listYelp(str) {
           );            
 }
 
-$('#x').click(function () {
+function close () {
     $('#yelpdata').hide();
     $("#searchstuff").find("input").val("");
     $('#yelpdata').html("");
-});
+}
