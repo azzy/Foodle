@@ -21,16 +21,16 @@
                         "Vegan & Vegetarian"=>"vegan,vegetarian");
     $idToCuis = array("tradamerican,newamerican"=>"American", 
     "bakeries,desserts,icecream"=>"Desserts & Ice Cream",
-                        "breakfast_brunch"=>"Breakfast & Brunch",
-                        "burgers"=>"Burgers",
-                        "cafes,coffee,tea"=>"Cafes",
-                        "chinese,dimsum"=>"Chinese",
-                        "delis,sandwiches"=>"Delis & Sandwiches",
-                        "diners"=>"Diners",
-                        "french"=>"French",
-                        "greek"=>"Greek",
-                        "indpak,pakistan"=>"Indian & Pakistani",
-                        "italian"=>"Italian",
+    "breakfast_brunch"=>"Breakfast & Brunch",
+    "burgers"=>"Burgers",
+    "cafes,coffee,tea"=>"Cafes",
+    "chinese,dimsum"=>"Chinese",
+    "delis,sandwiches"=>"Delis & Sandwiches",
+    "diners"=>"Diners",
+    "french"=>"French",
+    "greek"=>"Greek",
+    "indpak,pakistan"=>"Indian & Pakistani",
+    "italian"=>"Italian",
                         "japanese,sushi"=>"Japanese",
                         "latin,peruvian"=>"Latin American",
                         "mexican"=>"Mexican",
@@ -42,7 +42,18 @@
                         "vegan,vegetarian"=>"Vegan & Vegetarian");
                         
 */
-    $idToCuis = array("tradamerican,newamerican"=>"American", "bakeries,desserts,icecream"=>"Desserts & Ice Cream");
+    $idToCuis = array("tradamerican,newamerican"=>"American", 
+    "bakeries,desserts,icecream"=>"Desserts & Ice Cream",
+    "breakfast_brunch"=>"Breakfast & Brunch",
+    "burgers"=>"Burgers",
+    "cafes,coffee,tea"=>"Cafes",
+    "chinese,dimsum"=>"Chinese",
+    "delis,sandwiches"=>"Delis & Sandwiches",
+    "diners"=>"Diners",
+    "french"=>"French",
+    "greek"=>"Greek",
+    "indpak,pakistan"=>"Indian & Pakistani",
+    "italian"=>"Italian");
      print_r($idToCuis);
 
 ?>
