@@ -72,7 +72,7 @@ $('#formtosubmit').submit();
 <link rel="stylesheet" href="./css/style.css" type="text/css" />
 </head>
 <body class="results cuisine">
-<div id="banner"><a href="./index.html"><img src="./images/choosine.png"/></a></div>
+<div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
   <div id="container">
     <div id="content-area">
