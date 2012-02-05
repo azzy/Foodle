@@ -52,10 +52,11 @@ $arrOfIds = getPollChoices($pollid);
     </script>';
     }
     else {
-      include("functions/initiateRestVote.php");?>
-      <li><?php echo var_dump($arrOfIds); ?></li>
+      <li><?php var_dump($arrOfIds); ?></li>
       <li><?php $pollinfo = getPollInfo($userinfo['pollid']);
       echo "My location is ".$pollinfo['location'].", you have ".$pollinfo['numchoices']." choices";?></li>
+      include("functions/initiateRestVote.php");?>
+
       <?php addItems($arrOfIds);
     }
   }
