@@ -97,7 +97,7 @@ $('#formtosubmit').submit();
 	<div id="list-1">
       <ul id="results">
       <?php 
-        
+        echo("yes-aaa");
         for ($i = 0; $i < 2; $i++) {        
             $response = getData($rankedResults[$i], 2, $location);
             echo("yes");
