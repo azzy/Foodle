@@ -42,7 +42,7 @@ if ($isValid) {
 
 		if(empty($errorMessage)) 
         {
-      		header("Location: thankyou.html");
+      		header("Location:results.html");
 			exit();
 		}
 }
