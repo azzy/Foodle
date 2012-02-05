@@ -14,6 +14,8 @@ if (array_key_exists('nominate', $_GET)) {
 include_once("header.php");
 include_once("functions/newuser.php");
 include_once("functions/newpoll.php");
+include("functions/initiateRestVote.php");
+include("functions/initiateCuisVote.php");
 $userinfo = getUserInfo($userkey);
 $pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($userinfo['pollid']);
@@ -54,7 +56,6 @@ else {
     else { 
       $arrOfIds = getPollChoices($userinfo['pollid']);
       //var_dump($arrOfIds); echo $pollid;
-      include("functions/initiateRestVote.php");
       addItems($arrOfIds);
     }
   }
@@ -78,7 +79,6 @@ else {
     }
     else { 
       $arr2OfIds = getPollChoices($pollid);
-      include("functions/initiateCuisVote.php");
       populateCuisines($arr2OfIds,$idToCuis);
     }
   }
