@@ -26,7 +26,7 @@
   }
   else {
     $rankedResults = genResults($pollid, 3);
-    print_r($rankedResults);
+    //print_r($rankedResults);
     //$rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
   }
 ?>
@@ -90,6 +90,7 @@ $('#formtosubmit').submit();
       <?php 
         $response = array("num"=>5);
         if ($type == 'cuisine') {
+            echo("here");
             $res = getData($rankedResults[0], 2, $location);          
             $response[0] = $res[0];
             $response[1] = $res[1];
