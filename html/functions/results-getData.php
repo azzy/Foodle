@@ -2,7 +2,7 @@
     include("parse.php");
     include("authkeys.php");
     include("access.php");
-    
+    include("lib/OAuth.php");
     function getData($cuisine, $limit, $loc) {
         // create URL and get Yelp response
         $unsigned_url = "http://api.yelp.com/v2/search?location=".$loc."&limit=".$limit."&category_filter=".$cuisine;
