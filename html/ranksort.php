@@ -76,10 +76,10 @@ else {
       }
     }
     else { 
-      $arrOfIds = getPollChoices($pollid);
-      include_once("cuisines.php");
+      $arr2OfIds = getPollChoices($pollid);
+      /include_once("functions/cuisines.php");
       include("functions/initiateCuisVote.php");
-      populateCuisines($arrOfIds,$idToCuis);
+      populateCuisines($arr2OfIds,$idToCuis);
     }
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
