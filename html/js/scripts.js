@@ -45,7 +45,7 @@ function listYelp(str) {
                //var li = $("<li>").addClass("restaurant");            
                //add author name and comment to container
 	       $("#sortable1").append(
-		   '<li class="draggable heading" id="' 
+		   '<li class="draggable heading added-sortable" id="' 
 		       + data.returnValueId + '">'
 		       + data.returnValueName 
 		       + '<ul class="info"><li class="yelprating"><img src="' 
@@ -60,7 +60,8 @@ function listYelp(str) {
                $('#yelpdata li').html("");
            },
            "json"
-          );            
+          );
+    $("#sortable1").sortable({items:".added-sortable"});
 }
 
 function close () {

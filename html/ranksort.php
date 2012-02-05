@@ -61,7 +61,7 @@
     </div>
     <div id="list-2">
       <ul id="sortable2" class="connectedSortable">
-	<li class="bin">Drop selections here</li>
+	<li class="bin ui-state-disabled">Drop selections here</li>
    </ul>
     </div>
     
@@ -98,9 +98,10 @@
 $( function() {
   //initialize sortables
   $('#sortable1, #sortable2').sortable( {
-  cursor: 'move',
-  connectWith: ".connectedSortable",
-  dropOnEmpty: true
+    items: ":not(.ui-state-disabled)",
+    cursor: 'move',
+    connectWith: ".connectedSortable",
+    dropOnEmpty: true
   });
   $("#sortable1, #sortable2").disableSelection();
 
