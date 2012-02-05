@@ -2,16 +2,20 @@
   //-----------------------------------------------------------------------
   // Author: Choosine
   //-----------------------------------------------------------------------
-  $type = $_GET['type'];
-  $userkey = $_GET['userkey'];
+  //$type = $_GET['type'];
+  //$userkey = $_GET['userkey'];
   include_once("functions/newuser.php");
   include_once("functions/newpoll.php");
   include_once("functions/numVoted.php");
   include_once("functions/genResults.php");
   include("functions/results-getData.php");
+  /*
   $userinfo = getUserInfo($userkey);
   $pollid = $userinfo['pollid'];
   $pollinfo = getPollInfo($pollid);
+  */
+  $pollid = 1;
+  $type = 'cuisine';
   if (!$pollid) {
     // TODO: return some logical error page instead
   }
@@ -19,16 +23,19 @@
     $rankedResults = genResults($pollid, 5);
   }
   else {
-    $rankedResults = genResults($pollid, 3);
+    //$rankedResults = genResults($pollid, 3);
+    $rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
+    $location = "08544";
     print_r($rankedResults);
-    /*
+    
     for ($i = 0; $i < 2; $i++) {        
-        $response = getData($rankedResults[$i], 2, $pollinfo['location']);
+        $response = getData($rankedResults[$i], 2, $location);
+        echo($response[name]);
     }
-    */
-    echo($pollinfo['location']."<br>");
-    echo($rankedResults[0]."<br>");
-    print_r(getData($rankedResults[0], 2, $pollinfo['location']));
+    
+    //echo($pollinfo['location']."<br>");
+    //echo($rankedResults[0]."<br>");
+    //print_r(getData($rankedResults[0], 2, $pollinfo['location']));
     // TODO: get restaurants for these cuisines
     
     
