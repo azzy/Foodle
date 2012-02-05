@@ -6,6 +6,11 @@
 <?php
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
+  
+  $nominate = FALSE;
+  if (array_key_exists('nominate', $_GET)) {
+    $nominate = $_GET['nominate']; // generally, it will be true or non-existent
+  }
   include_once("header.php");
   include_once("functions/newuser.php");
   include_once("functions/newpoll.php");
@@ -125,17 +130,18 @@ function saveList() {
 
   var jsonList = $.extend({} ,$("#sortable2").sortable("toArray"));
   jsonList.userkey = '<?php echo $userkey ?>';
-  console.log(jsonList);
+  jsonList.nominate = '<?php echo $nominate ?>'
+  console.log(jsonList); // TODO: remove
   $.ajax({
     type: 'POST',
     traditional: true,
     data: jsonList,
     url: '/ajax/saveList.php',
     success: function(data) {
-      alert('YAY! Post success: ' + data);
+      window.location = '<?php echo "./email.php?type={$type}&userkey={$userkey}"; ?>';
     },
     error: function(error) {
-      alert('Error on post: ' + error);
+      console.log("Error on posting data; try again?");
     }
   });
 }
