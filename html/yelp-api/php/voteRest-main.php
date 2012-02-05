@@ -11,19 +11,15 @@
             //alert("here");
              $("<li>").addClass("restaurant").html("laaa").appendTo("#restlist");
              
-             var myJSON = {"name" : "John", "age" : 23};
-             alert(myJSON.name);
              
             initiateList('the-bent-spoon-princeton');
         }
         function initiateList(str) {
             alert(str);
             
-            $.post("initRest.php", //ajax file
+            $.post("voteRest-init.php", //ajax file
                 { sendValue: str },
                 function(data) {
-                        var str2 = JSON.stringify(data);
-                        alert("successful ajax" + str2);
                         $("<li>").addClass("restaurant").html(data.name).appendTo("#restlist");
                 },
                 "json"
