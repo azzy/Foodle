@@ -138,10 +138,10 @@ function saveList() {
     data: jsonList,
     url: '/ajax/saveList.php',
     success: function(data) {
-      alert('YAY! Post success: ' + data);
+      window.location = '<?php echo "./email.php?type={$type}&userkey={$userkey}"; ?>';
     },
     error: function(error) {
-      alert('Error on post: ' + error);
+      console.log("Error on posting data; try again?");
     }
   });
 }
