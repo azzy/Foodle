@@ -19,8 +19,8 @@ function addItems($arrOfIds) {
 <li class="yelprating ui-state-disabled"><img src="'.$response['ratingimg'];
     echo '" /></li>
 <li class="yelpsnippet ui-state-disabled">Review: '.$response['snippet'];
-    // figure out categories later. for now let's just pretend they're not here.
-    // echo '</li><li class="yelpcat ui-state-disabled">'.$response['categories'];
+    //figure out categories later. for now let's just pretend they're not here.
+    echo '</li><li class="yelpcat ui-state-disabled">'.$response['categories'];
     echo '</li><li class="readmore ui-state-disabled"><a href="'.$response['url'];
     echo '">Read more on Yelp.com</a></li></ul></li>';
     echo '<script type="text/javascript">
