@@ -38,6 +38,10 @@ function categories($response, $ind){
 function url($response, $ind) {
   return "" . $response->businesses[$ind]->url;
 }
+function phone($response, $ind) {
+    $return = $response->businesses[$ind]->phone;
+    return($return);
+}
 
 
 ?>
