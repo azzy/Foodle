@@ -51,6 +51,7 @@ if (array_key_exists('location', $pollinfo)) {
     </script>';
     }
     else {
+      echo '<li>nominate == false</li>';
       include("functions/initiateRestVote.php");
       addItems($arrOfIds);
     }
