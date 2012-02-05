@@ -46,7 +46,6 @@
         }    
         //name, rating, rating_img_url, url, categories, city, state
         $arr = array("name"=>$name, "rating"=>$rating, "ratingimg"=>$ratingimg, "location"=>$location, "categories"=>$category, "url"=>$url);
-        print_r($response);
         return ($arr);
         
     }    
