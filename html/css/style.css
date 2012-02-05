@@ -374,6 +374,7 @@ ul#sortable2 li.bin {
 img#x, img#add {
     float: right;
     width: 30px;
+    margin: -15px -15px 0 0;
 }
 //img#x {  margin: -10px -10px 0 5px; }
 #yelpdata {
