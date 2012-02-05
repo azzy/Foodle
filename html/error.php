@@ -2,14 +2,14 @@
   include("header.php");
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
-  echo '<style> .404 { font-size : 100px}</style>';
-  echo '</head><body class="review '.$type.'">';
+  echo '<style> .404 #fourohfour{ font-size : 100px}</style>';
+  echo '</head><body class="review cuisine">';
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
   <div id="container">
     <div id="content-area">
-      <div class="404">404</div><br>
+      <div class="404" id="fourohfour">404</div><br>
       <div class="text">There seems to have been an error. We offer our deepest apologies, dear choosiners.</div>
 	<div class="text">
         <a href='choosine.com'>Choosine.com</a><br/><br/>
