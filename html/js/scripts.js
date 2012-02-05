@@ -63,6 +63,7 @@ function listYelp(str) {
     $("#sortable1").sortable({items:".added-sortable"});
     $('li.added-sortable').children('.info').hide();
     $('li.added-sortable').click($(this).children('ul').toggle());
+}
 
 function close () {
     $('#addnew').hide();
