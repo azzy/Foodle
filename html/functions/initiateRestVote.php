@@ -15,14 +15,12 @@
     
 $arrOfIds = array("the-bent-spoon-princeton", "witherspoon-grill-princeton", "nassau-sushi-princeton");
     
-    echo "<li>here!</li>";
     function addItems($arrOfIds) {
-      echo "<li>called addItems</li>";
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
             $response=getData($arrOfIds[$i]);
-            $id = $response[$id];
-	    $name = $response[$name];
+            $id = $response[id];
+	    $name = $response["name"];
             echo '<li class="draggable heading" id="'.$id.'">'.$name.'</li>';
         }
     }
