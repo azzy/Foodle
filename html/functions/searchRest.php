@@ -5,8 +5,8 @@ include("parse.php");
 include_once('newuser.php');
 include_once('newpoll.php');
 
-$userinfo = getUserInfo($userkey);
-$pollinfo = getPollInfo($userinfo['pollid']);
+//$userinfo = getUserInfo($userkey);
+//$pollinfo = getPollInfo($userinfo['pollid']);
 //$location = $pollinfo['location'];
 $location = "08544";
 
