@@ -78,7 +78,6 @@ else {
     }
     else { 
       $arr2OfIds = getPollChoices($pollid);
-      include_once("functions/cuisines.php");
       include("functions/initiateCuisVote.php");
       populateCuisines($arr2OfIds,$idToCuis);
     }
