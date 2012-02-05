@@ -86,6 +86,24 @@ $('#formtosubmit').submit();
 	<div id="list-1">
       <ul id="results">
       <?php 
+        $response = array("num"=>5);
+        if ($type == 'cuisine') {
+            for ($i = 0; $i < 4; $i+=2) {
+                $response[$i] = getData($rankedResults[$i], 2, $location);          
+                $response[$i + 1] = $response[$i][$i+1];
+                $response[$i] = $response[$i][$i];
+            }
+            $arr = getData($rankedResults[2], 1, $location);
+            $response[4] = $arr[0];       
+        }
+        else{
+            for ($i = 0; $i < count($rankedResults); $i++) {
+                $response[$i] = getRestData($rankedResults[$i]);
+            }
+        
+        }
+        
+        /*
         for ($i = 0; $i < 2; $i++) {        
             $response = getData($rankedResults[$i], 2, $location);
             //print_r($response);
@@ -113,7 +131,25 @@ $('#formtosubmit').submit();
         echo("</ul>");
         echo("</li>");
       
-      
+        */
+        for ($i = 0; $i < 5; $i++) {        
+            $res = $response[$i];
+            //print_r($response);
+            for ($j = 0; $j < 2; $j++) {
+                echo("<li class='heading'>".$res[$j]['name']);
+                echo("<ul class='info'>");
+                echo("<li> Rating: ".$res[$j]['rating']."</li>");
+                echo("<li> Categories: ".$res[$j]['categories']."</li>");
+                echo("<li> Loc: ".$res[$j]['location']."</li>");
+                echo("<li> Tel: ".$res[$j]['phone']."</li>");
+                echo("<li><a href='".$res[$j]['url']."'>Yelp Profile</a></li>");
+                echo("</ul>");
+                echo("</li>");
+            }
+        }
+        
+        
+        
       
       ?>
      
