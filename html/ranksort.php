@@ -125,9 +125,9 @@ $( function() {
 //function to save the newly sorted list
 function saveList() {
 
-      alert($("#sortable2").sortable("toArray"));
       var jsonList = $("#sortable2").sortable("toArray");
       jsonList.userkey = '<?php echo $userkey ?>';
+      console.log(jsonList);
       $.ajax({
 	type: 'POST',
 	traditional: true,
