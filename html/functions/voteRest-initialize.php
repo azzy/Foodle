@@ -22,7 +22,7 @@
         for ($i = 0 ; $i < $num; $i++) {
             $response=getData($arrOfIds[$i]);
             $name = $response[name];
-            echo("<li class='restaurant'>".$name."<li>");
+            echo("<li class='restaurant'>".$name."</li>");
         }
     }
     

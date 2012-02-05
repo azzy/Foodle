@@ -8,6 +8,7 @@
   include_once("functions/newpoll.php");
   include_once("functions/numVoted.php");
   include_once("functions/genResults.php");
+  include_once("functions/results-getData.php");
   $userinfo = getUserInfo($userkey);
   $pollid = $userinfo['pollid'];
   if (!$pollid) {
@@ -18,7 +19,12 @@
   }
   else {
     $rankedResults = genResults($pollid, 3);
+    for ($i = 0; $i < count($rankedResults); $i) {
+    
+    }
     // TODO: get restaurants for these cuisines
+    
+    
   }
 ?>
 <!DOCTYLE html>
