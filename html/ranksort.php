@@ -19,7 +19,6 @@ $pollinfo = getPollInfo($userinfo['pollid']);
 if (array_key_exists('location', $pollinfo)) {
   $location = $pollinfo['location'];
   } else { $location = "08544"; }
-$arrOfIds = getPollChoices($pollid);
 ?>
 </head>
 <?php
@@ -51,12 +50,13 @@ $arrOfIds = getPollChoices($pollid);
     //-->
     </script>';
     }
-    else {
-      include("functions/initiateRestVote.php");?>
-      <li><?php print_r(json_decode(json_encode($arrOfIds));?></li>
+    else { ?>
+      <li><?php $arrOfIds = getPollChoices($pollid); var_dump($arrOfIds); ?></li>
       <li><?php $pollinfo = getPollInfo($userinfo['pollid']);
       echo "My location is ".$pollinfo['location'].", you have ".$pollinfo['numchoices']." choices";?></li>
-      <?php addItems($arrOfIds);
+      <?php include("functions/initiateRestVote.php");
+
+      addItems($arrOfIds);
     }
   }
   else if ($type == "cuisine") {
