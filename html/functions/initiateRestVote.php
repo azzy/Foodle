@@ -13,10 +13,11 @@
     
     $arrOfIds = getPollChoices($pollid);
     
-//$arrOfIds = array("the-bent-spoon-princeton", "witherspoon-grill-princeton", "nassau-sushi-princeton");
+$arrOfIds = array("the-bent-spoon-princeton", "witherspoon-grill-princeton", "nassau-sushi-princeton");
     
     echo "<li>here!</li>";
     function addItems($arrOfIds) {
+      echo "<li>called addItems</li>;
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
             $response=getData($arrOfIds[$i]);
