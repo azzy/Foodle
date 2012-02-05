@@ -24,19 +24,8 @@
     $rankedResults = genResults($pollid, 5);
   }
   else {
-    //$rankedResults = genResults($pollid, 3);
-    $rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
-
-    print_r($rankedResults);
-    
-    
-    
-    echo($location."<br>");
-    //echo($rankedResults[0]."<br>");
-    //print_r(getData($rankedResults[0], 2, $pollinfo['location']));
-    // TODO: get restaurants for these cuisines
-    
-    
+    $rankedResults = genResults($pollid, 3);
+    //$rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
   }
 ?>
 <!DOCTYLE html>
