@@ -1,7 +1,12 @@
 <?php
   include("header.php");
-  $type = $_GET['type'];
-  $userkey = $_GET['userkey'];
+  if (array_key_exists('userkey', $_GET)) {
+    $type = $_GET['type'];
+    $userkey = $_GET['userkey'];
+  } else {
+    $type = $_POST['type'];
+    $userkey = $_POST['userkey'];
+  }
   include_once("functions/newuser.php");
   include_once("functions/newpoll.php");
   $userinfo = getUserInfo($userkey);
@@ -12,9 +17,14 @@
 if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
     // TODO: some validation
     $userkeys = array();
-    foreach ($_POST as $useremail) {
-      $userkeys[] = newUser($pollid, 'v', $useremail);
+    
+    foreach ($_POST as $field => $useremail) {
+      if ($field !== 'submit' and $field !== 'userkey' and $field !== 'type' and $useremail) {
+        $userkeys[] = newUser($pollid, 'v', $useremail);
+      }
     }
+    include_once('PHPDatabaseStuff/sendUsersEmail.php');
+    sendPollEmail($pollid);
     header("Location: ./thankyou.php?type={$type}&userkey={$userkey}");
     exit();
   }
@@ -26,10 +36,12 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
     <div class="text">Your Guests&apos; Emails:</div>
     <form name="input" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
     <div class="form" id="emails-form">
-      <input />
-      <input />
-      <input />
+      <input name="email1"/>
+      <input name="email2"/>
+      <input name="email3"/>
     </div>
+    <input type="hidden" name="userkey" value="<?php echo $userkey; ?>" />
+    <input type="hidden" name="type" value="<?php echo $type; ?>" />
     <a href="javascript:add_field()"><div id="addnew">
       <img src="./images/add.png" />Add another person</div></a>
       <!-- <a href='<?php ?>'> --><input type="submit" value="create poll" name="submit" class="submit" /> <!--</a>-->

@@ -8,8 +8,10 @@
   include_once("functions/newpoll.php");
   include_once("functions/numVoted.php");
   include_once("functions/genResults.php");
+  include("functions/results-getData.php");
   $userinfo = getUserInfo($userkey);
   $pollid = $userinfo['pollid'];
+  $pollinfo = getPollInfo($pollid);
   if (!$pollid) {
     // TODO: return some logical error page instead
   }
@@ -18,7 +20,15 @@
   }
   else {
     $rankedResults = genResults($pollid, 3);
+    print_r($rankedResults);
+    
+    for ($i = 0; $i < 2; $i) {        
+        $response = getData($rankedResults[$i], 2, $pollinfo['location']);
+    }
+    
     // TODO: get restaurants for these cuisines
+    
+    
   }
 ?>
 <!DOCTYLE html>

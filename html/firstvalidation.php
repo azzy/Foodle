@@ -3,10 +3,14 @@
   include("validateRun.php");
   require_once("functions/newuser.php");
   require_once("functions/newpoll.php");
-  $type = $_GET['type'];
+  if(array_key_exists('type', $_GET)){
+    $type = $_GET['type'];
+  } else {
+    $type = $_POST['type'];
+  }
   $userkey = $_GET['userkey'];
   echo '</head><body class="initiate '.$type.'">';
-  if($_POST['formSubmit'] == "Submit") 
+  if($_POST['email']!= "") 
     {
   $errorMessage = "";
 
@@ -21,9 +25,9 @@
       }
 
 if ($isValid) {
-  echo "true";
+//  echo "true";
 } else {
-  echo "false";
+ // echo "false";
   $errorMessage .= "invalid";
 }
     
@@ -67,22 +71,23 @@ label,a
   <div id="container">
    <div id="content-area">
     <div class="form">
-      <form name="input" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>">
+      <form name="input" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF'])."?type=".$type;?>">
       <table>
   <tr>
     <td><label for="dinner">Dinner Name:</label></td>
-    <td><input type="text" id="dinner" name="dinner" value="<?=$dinner;?>"/></td>
+    <td><input type="text" id="dinner" name="dinner"/></td>
   </tr><tr>
     <td><label for="name">Your Name:</label></td>
-    <td><input type="text" id="name" name="name" value="<?=$name;?>"/></td>
+    <td><input type="text" id="name" name="name" /></td>
   </tr><tr>
     <td><label for="email">Your Email:</label></td>
-    <td><input type="text" id="email" name="email" placeholder="" value="<?=$email;?>" /></td>
+    <td><input type="text" id="email" name="email" placeholder=""  /></td>
   </tr><tr>
     <td><label for="location">Your Location:</label></td>
-    <td><input type="text" id="location" name="location" placeholder="City, State or ZIP" value="<?=$location;?>" / ></td>
+    <td><input type="text" id="location" name="location" placeholder="City, State or ZIP"  / ></td>
   </tr>
       </table>
+<input type="hidden" name="type" value="<?php echo $type;?>">6
       </form>
     </div>
     </div><!-- end content-area -->

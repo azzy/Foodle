@@ -20,9 +20,14 @@
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
             $response=getData($arrOfIds[$i]);
+<<<<<<< HEAD
             $id = $response[$id];
 	    $name = $response[$name];
             echo '<li class="draggable heading" id="'.$id.'">'.$name.'</li>';
+=======
+            $name = $response[name];
+            echo("<li class='restaurant'>".$name."</li>");
+>>>>>>> 43fb438d00566b3335639eed2ded931acbb96bb6
         }
     }
     
