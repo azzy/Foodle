@@ -97,18 +97,17 @@ $('#formtosubmit').submit();
 	<div id="list-1">
       <ul id="results">
       <?php 
-        
         for ($i = 0; $i < 2; $i++) {        
             $response = getData($rankedResults[$i], 2, $location);
             //print_r($response);
             for ($j = 0; $j < 2; $j++) {
                 echo("<li class='heading'>".$response[$j]['name']);
                 echo("<ul class='info'>");
-                echo("<li>".$response[$j]['rating']."</li>");
-                echo("<li>".$response[$j]['categories']."</li>");
-                echo("<li>".$response[$j]['location']."</li>");
-                echo("<li>".$response[$j]['phone']."</li>");
-                echo("<li>".$response[$j]['url']."</li>");
+                echo("<li> Rating: ".$response[$j]['rating']."</li>");
+                echo("<li> Categories: ".$response[$j]['categories']."</li>");
+                echo("<li> Loc: ".$response[$j]['location']."</li>");
+                echo("<li> Tel: ".$response[$j]['phone']."</li>");
+                echo("<li><a href='".$response[$j]['url']."'>Yelp Profile</a></li>");
                 echo("</ul>");
                 echo("</li>");
             }
@@ -117,44 +116,7 @@ $('#formtosubmit').submit();
       
       
       ?>
-      <li class="heading">
-	Witherspoon Grill 
-	  <ul class="info">
-	    <li>Information about Witherspoon Grill</li>
-	    <li>More information</li>
-	    <li>address and stuff</li>
-	    <li>Phone number? Rating</li>
-	    <li>read more on Yelp.com</li>
-	  </ul>
-	</li>
-      <li class="heading">
-	Panera
-	<ul class="info">
-	  <li>Information about Panera</li>
-	  <li>More information</li>
-	  <li>address and stuff</li>
-	  <li>Phone number? Rating</li>
-	  <li>read more on Yelp.com</li>
-	  </ul>
-	</li>
-	<li class="heading">Teresa's Caffe
-	<ul class="info">
-	  <li>Information about Teresa's Caffe</li>
-	  <li>address stuff blah blha </li>
-	  <li>Lorem ipsum qua kuja</li>
-	</ul>
-        </li>
-	<li class="heading">La Mezzaluna
-	<ul class="info">
-	  <li>Information about La Mezzaluna includes stuff like how
-	  incredibly expensive it is</li>
-	</ul>
-      </li>
-      <li class="heading">Mehek
-      <ul class="info">
-	<li>So yeah, people need to make this shit dynamic and stuff.</li>
-      </ul>
-    </li>
+     
     </div>
     </div>
     <div class="floatright">

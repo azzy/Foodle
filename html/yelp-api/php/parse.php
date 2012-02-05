@@ -39,6 +39,11 @@ function phone($response, $ind) {
     $return = $response->businesses[$ind]->phone;
     return($return);
 }
+/*****************************
+* Test code:
 
+
+
+********************/
 
 ?>
