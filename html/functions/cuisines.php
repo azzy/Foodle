@@ -41,4 +41,6 @@
                         'soulfood,southern'=>'Southern & Soul Food',
                         'thai,malaysian,singaporean,vietnamese,indonesian'=>'South-East Asian',
                         'vegan,vegetarian'=>'Vegan & Vegetarian');
+                        
+    print_r($idToCuis);
 ?>
