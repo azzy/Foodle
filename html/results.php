@@ -24,8 +24,8 @@
     $rankedResults = genResults($pollid, 5);
   }
   else {
-    $rankedResults = genResults($pollid, 3);
-    //$rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
+    //$rankedResults = genResults($pollid, 3);
+    $rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
   }
 ?>
 <!DOCTYLE html>
@@ -87,13 +87,13 @@ $('#formtosubmit').submit();
       <ul id="results">
       <?php 
         $response = array("num"=>5);
-        echo("here");
+        //echo("here");
         if ($type == 'cuisine') {
-            echo("here2");
+            //echo("here2");
             $res = getData($rankedResults[0], 2, $location);          
             $response[0] = $res[0];
             $response[1] = $res[1];
-            print_r($res);
+            //print_r($res);
             $res = getData($rankedResults[1], 2, $location);          
             $response[2] = $res[0];
             $response[3] = $res[1];
