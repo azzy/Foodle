@@ -88,11 +88,12 @@ $('#formtosubmit').submit();
       <?php 
         $response = array("num"=>5);
         if ($type == 'cuisine') {
-            for ($i = 0; $i < 4; $i+=2) {
-                $response[$i] = getData($rankedResults[$i], 2, $location);          
-                $response[$i + 1] = $response[$i][$i+1];
-                $response[$i] = $response[$i][$i];
-            }
+            $res = getData($rankedResults[0], 2, $location);          
+            $response[0] = $res[0];
+            $response[1] = $res[1];
+            $res = getData($rankedResults[1], 2, $location);          
+            $response[2] = $res[0];
+            $response[3] = $res[1];
             $arr = getData($rankedResults[2], 1, $location);
             $response[4] = $arr[0];       
         }
