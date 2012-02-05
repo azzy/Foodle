@@ -9,15 +9,16 @@
         <script type="text/javascript">
         function codeAddress() {
             //alert("here");
-             //$("<li>").addClass("restaurant").html("laaa").appendTo("#restlist");
+             $("<li>").addClass("restaurant").html("laaa").appendTo("#restlist");
             initiateList('the-bent-spoon-princeton');
         }
         function initiateList(str) {
-            //alert(str);
+            alert(str);
             
             $.post("initRest.php", //ajax file
                 { sendValue: str },
                 function(data) {
+                        alert("successful ajax");
                         $("<li>").addClass("restaurant").html(data.name).appendTo("#restlist");
                 },
                 "json"
