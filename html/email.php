@@ -35,12 +35,12 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
     <div class="text">Your Guests&apos; Emails:</div>
     <form name="input" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
     <div class="form" id="emails-form">
-      <input />
-      <input />
-      <input />
+      <input name="email1"/>
+      <input name="email2"/>
+      <input name="email3"/>
     </div>
-    <input type="hidden" name="userkey" value="$userkey" />
-    <input type="hidden" name="type" value="$type" />
+    <input type="hidden" name="userkey" value="<?php echo $userkey; ?>" />
+    <input type="hidden" name="type" value="<?php echo $type; ?>" />
     <a href="javascript:add_field()"><div id="addnew">
       <img src="./images/add.png" />Add another person</div></a>
       <!-- <a href='<?php ?>'> --><input type="submit" value="create poll" name="submit" class="submit" /> <!--</a>-->
