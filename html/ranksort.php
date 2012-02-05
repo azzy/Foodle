@@ -15,10 +15,9 @@ include_once("functions/newuser.php");
 include_once("functions/newpoll.php");
 $userinfo = getUserInfo($userkey);
 $pollinfo = getPollInfo($userinfo['pollid']);
-/*if (array_key_exists('location', $pollinfo)) {
+if (array_key_exists('location', $pollinfo)) {
   $location = $pollinfo['location'];
-  } else { $location = "08544"; }*/
-$location = "08544";
+  } else { $location = "08544"; }
 ?>
 </head>
 <?php
@@ -82,7 +81,7 @@ $location = "08544";
     <div id="searchstuff">
       <div class="searchtext"><label>Search:</label>
       <input id="searchtxt" />
-    <a href="javascript: search(<?php echo "".$location; ?>)"><img id="search" src="./images/search.png" /></a>
+    <?php echo'<a href="javascript: search('.$location.')"><img id="search" src="./images/search.png" /></a>' ?>
     </div>
       <a href="javascript: addYelpInfo()"><div id="addnew">
     <!--<img src="./images/add.png" />Add To List</div></a>-->
@@ -114,7 +113,7 @@ $( function() {
   $('#addnew').hide();
   $('#yelpdata').hide();
   initiateSortable();
-  initiateExpandCollapse();
+  //initiateExpandCollapse();
   });
 
 //function to save the newly sorted list

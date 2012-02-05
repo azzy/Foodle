@@ -34,6 +34,12 @@ function initiateRestNom (loc) {
 		       + data[i].snippet + '</li><li class="yelpcat ui-state-disabled">'
 		       + data[i].categories + '</li><li class="readmore ui-state-disabled">'
 		       + data[i].url + '</li></ul></li>');
+		   $('#' + data[i].id).children('.info').hide();
+		   $('#' + data[i].id).each( function() {
+		       $(this).click(function(event) {
+			   if (this == event.target) $(this).children('ul').toggle();
+		       });
+		   });
 	       }
 	   }, "json"
 	  );
