@@ -97,20 +97,17 @@ $('#formtosubmit').submit();
 	<div id="list-1">
       <ul id="results">
       <?php 
-        echo("yes-aaa");
         for ($i = 0; $i < 2; $i++) {        
             $response = getData($rankedResults[$i], 2, $location);
-            echo("yes");
             //print_r($response);
             for ($j = 0; $j < 2; $j++) {
-                echo("no");
                 echo("<li class='heading'>".$response[$j]['name']);
                 echo("<ul class='info'>");
-                echo("<li>".$response[$j]['rating']."</li>");
-                echo("<li>".$response[$j]['categories']."</li>");
-                echo("<li>".$response[$j]['location']."</li>");
-                echo("<li>".$response[$j]['phone']."</li>");
-                echo("<li>".$response[$j]['url']."</li>");
+                echo("<li> Rating: ".$response[$j]['rating']."</li>");
+                echo("<li> Categories: ".$response[$j]['categories']."</li>");
+                echo("<li> Loc: ".$response[$j]['location']."</li>");
+                echo("<li> Tel: ".$response[$j]['phone']."</li>");
+                echo("<li><a href='".$response[$j]['url']."'>Yelp Profile</a></li>");
                 echo("</ul>");
                 echo("</li>");
             }
