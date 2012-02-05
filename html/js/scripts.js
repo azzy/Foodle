@@ -45,7 +45,7 @@ function addYelpInfo () {
 // get yelp data for display
 function getYelp(str, loc) {
     $.post("../functions/searchRest.php", //ajax file
-           { sendValue: str.
+           { sendValue: str,
 	     location: loc 
 	   },
            function(data) {
