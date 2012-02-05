@@ -22,16 +22,23 @@
 
 		if(empty($errorMessage)) 
         {
-			$db = mysql_connect("servername","username","password");
-			if(!$db) die("Error connecting to MySQL database.");
-			mysql_select_db("databasename" ,$db);
+            /*** include foodledbinfo.php for servername/username stuff
+            */
+			//$db = mysql_connect("servername","username","password");
+			//if(!$db) die("Error connecting to MySQL database.");
+			//mysql_select_db("databasename" ,$db);
+            
+            include('newuser.php');
+            include('newpoll.php');
+            $userkey = $_GET['userkey'];
+            $userinfo = getUserInfo($userkey);
+            $pollinfo = getPollInfo($userinfo['pollid']);
+            $num = 0;
+            for ($i = 0; $i < $num; $i++) {
+                $email = $_POST['email'.$i];
+                newUser($pollinfo, 'v', $email);
+            }
 
-			$sql = "INSERT INTO movieformdata (moviename, yourname, Gender) VALUES (".
-							PrepSQL($varMovie) . ", " .
-							PrepSQL($varName) . ", " .
-							PrepSQL($varGender) . ")";
-			mysql_query($sql);
-			
 			header("Location: thankyou.html");
 			exit();
 		}
