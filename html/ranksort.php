@@ -145,7 +145,7 @@ function saveList() {
 	if ($nominate) {
           window.location = '<?php echo "./email.php?type={$type}&userkey={$userkey}&nominate={$nominate}"; ?>';
 	} else {
-	  window.location = '<?php echo "./results.php?type={$type}&userkey={$userkey}&nominate={$nominate}"; ?>';
+	  window.location = '<?php echo "./thankyou.php?type={$type}&userkey={$userkey}&nominate={$nominate}"; ?>';
 	}
     },
     error: function(error) {
