@@ -19,12 +19,12 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
     $userkeys = array();
     
     foreach ($_POST as $field => $useremail) {
-      if ($field !== 'submit' and $field !== 'userkey' and $field !== 'type') {
+      if ($field !== 'submit' and $field !== 'userkey' and $field !== 'type' and $useremail) {
         $userkeys[] = newUser($pollid, 'v', $useremail);
       }
     }
-    echo var_dump($_POST);
-    //header("Location: ./thankyou.php?type={$type}&userkey={$userkey}");
+    //echo var_dump($_POST);
+    header("Location: ./thankyou.php?type={$type}&userkey={$userkey}");
     exit();
   }
 ?>
