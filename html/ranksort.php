@@ -30,12 +30,12 @@ if (array_key_exists('location', $pollinfo)) {
     <div id="content-area">
       <div class="text">
     <?php   
-    if ($type == "cuisine") $print_type = "cuisines";
-    else if ($type == "restaurants") $print_type = $type;
-    if ($nominate == true) 
-      echo "To initiate your poll, drag ".$print_type." from the green list to the blue one for voters to choose from.";
-    else
-      echo "To vote, rank the ".$print_type." by dragging from the green list to the blue one with your favorite ".$print_type." closer to the top.";
+  if ($type == "cuisine") {$print_type = "cuisines";}
+  else if ($type == "restaurants") { $print_type = $type; }
+if ($nominate == true) {
+  echo "To initiate your poll, drag ".$print_type." from the green list to the blue one for voters to choose from.";}
+else {
+  echo "To vote, rank the ".$print_type." by dragging from the green list to the blue one with your favorite ".$print_type." closer to the top.";}
 ?>
 	</div>
 

@@ -12,8 +12,14 @@
             $response=getData($arrOfIds[$i]);
             $id = $response["id"];
 	    $name = $response["name"];
-            echo '<li class="draggable heading" id="'.$id.'">'.$name.'</li>';
-	    echo '<ul class="info ui-state-disabled"><li class="yelprating ui-state-disabled"><img src="'.$response['ratingimg'].'" /></li><li class="yelpsnippet ui-state-disabled">'.$response['snippet'].'</li><li class="yelpcat ui-state-disabled">'.$response['categories'].'</li><li class="readmore ui-state-disabled"><a href="'.$response['url'].'">Read more on Yelp.com</a></li></ul></li>';
+            echo '<li class="draggable heading" id="'.$id.'">'.$name;
+	    echo '<ul class="info ui-state-disabled">
+<li class="yelprating ui-state-disabled"><img src="'.$response['ratingimg'];
+	    echo '" /></li>
+<li class="yelpsnippet ui-state-disabled">'.$response['snippet'];
+	    echo '</li><li class="yelpcat ui-state-disabled">'.$response['categories'];
+	    echo '</li><li class="readmore ui-state-disabled"><a href="'.$response['url'];
+	    echo '">Read more on Yelp.com</a></li></ul></li>';
 	    echo '<script type="text/javascript">
                   <!--
                   $("#" + '.$id.').children(".info").hide();
@@ -42,7 +48,7 @@
         $snippet = $response->snippet_text;
         $category = "";  
         for ($i = 0; $i < count($response->categories); $i++) {
-            $category = $category.$response->categories[$i];
+            $category = $category." ".$response->categories[$i];
         }    
         //name, rating, rating_img_url, url, categories, city, state
         $arr = array("id"=>$id, "name"=>$name, "rating"=>$rating, "ratingimg"=>$ratingimg, "snippet"=>$snippet, "location"=>$location, "categories"=>$category, "url"=>$url);
