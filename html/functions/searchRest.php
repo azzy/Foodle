@@ -4,13 +4,11 @@ include("access.php");
 include("parse.php");
 include_once('newuser.php');
 include_once('newpoll.php');
-
-$_POST = array("sendValue"=>"ajihei");
-
-//$userinfo = getUserInfo($userkey);
-//$pollinfo = getPollInfo($userinfo['pollid']);
-//$location = $pollinfo['location'];
-$location = "08544";
+$userinfo = getUserInfo($userkey);
+$pollinfo = getPollInfo($userinfo['pollid']);
+if (array_key_exists('location', $pollinfo)) {
+  $location = $pollinfo['location'];
+} else { $location = "08544"; }
 
 if (empty($_POST['sendValue'])) {
     echo json_encode(array("returnValueName"=>"This is name from PHP : ", "returnValueId"=>"This is id from PHP : "));
@@ -20,7 +18,6 @@ else {
     $unsigned_url = "http://api.yelp.com/v2/search?term=".$name."&location=".$location."&limit=2&category_filter=food,restaurants";
     $data = access($unsigned_url);
     $response = json_decode($data);
-    print_r($response);
     echo json_encode(array("returnValueName"=>name($response, 0), 
 			   "returnValueId"=>id($response, 0), 
 			   "returnValueRating"=> "Rating: ".rating($response,0), 
