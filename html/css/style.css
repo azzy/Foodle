@@ -456,3 +456,6 @@ body.results #content-area { overflow: hidden; }
     float: right;
 }
 /* End Results Styles ----------------------------------------*/
+/* Thank You Page Styles -------------------------------------*/
+.review .text { line-height: 1.6em; }
+/* End Thank You Page Styles ---------------------------------*/
