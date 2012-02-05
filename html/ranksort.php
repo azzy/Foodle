@@ -76,7 +76,7 @@ else {
    else { 
       $arrOfIds = getPollChoices($userinfo['pollid']);
       include("functions/initiateCuisVote.php");
-      addItems($arrOfIds);
+      addItems($arrOfIds,$idToCuis);
     }
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
