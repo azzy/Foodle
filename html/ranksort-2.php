@@ -9,7 +9,7 @@ $userkey = $_GET['userkey'];
 $nominate = FALSE;
 if (array_key_exists('nominate', $_GET)) {
   $nominate = $_GET['nominate']; // generally, it will be true or non-existent
-  echo("test");
+  
 }
 include_once("header.php");
 include_once("functions/newuser.php");
@@ -144,8 +144,7 @@ function saveList() {
 	data: jsonList,
 	url: '/ajax/saveList.php',
 	success: function(data) {
-	window.location = "<?php if ($nominate) echo './email.php?type='.$type.'&userkey='.$userkey.'&nominate='.$nominate;
-        else echo './thankyou.php?type='.$type.'&userkey='.$userkey; ?>";
+	window.location = "<?php echo './email.php?type='.$type.'&userkey='.$userkey.'&nominate='.$nominate; ?>";
       },
 	error: function(error) {
 	console.log("Error on posting data; try again?");
