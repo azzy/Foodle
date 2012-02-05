@@ -102,7 +102,7 @@ $('#formtosubmit').submit();
             $response = getData($rankedResults[$i], 2, $location);
             //print_r($response);
             for ($j = 0; $j < 2; $j++) {
-                echo("<li class='heading'>".$response[0]['name']."</li>");
+                echo("<li class='heading'>".$response[$j]['name']."</li>");
             }
         }
       
