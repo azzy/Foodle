@@ -30,7 +30,7 @@
     
     for ($i = 0; $i < 2; $i++) {        
         $response = getData($rankedResults[$i], 2, $location);
-        echo($response[name]);
+        echo($response['name']);
     }
     
     //echo($pollinfo['location']."<br>");
