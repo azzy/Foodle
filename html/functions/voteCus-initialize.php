@@ -10,7 +10,7 @@
     $pollid = $userinfo['pollid'];
     
     $arrOfIds = getPollChoices($pollid);
-    /*
+    
     function addItems($arrOfIds, $idToCuis) {
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
@@ -21,7 +21,7 @@
     
     <?php addItems($arrOfIds, $idToCuis);?>
     
-    */
+    
 
     //echo("<br/><br/>");
 ?>
