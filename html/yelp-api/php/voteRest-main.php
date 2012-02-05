@@ -10,6 +10,10 @@
         function codeAddress() {
             //alert("here");
              $("<li>").addClass("restaurant").html("laaa").appendTo("#restlist");
+             
+             var myJSON = {"name" : "John", "age" : 23};
+             alert(myJson.name);
+             
             initiateList('the-bent-spoon-princeton');
         }
         function initiateList(str) {

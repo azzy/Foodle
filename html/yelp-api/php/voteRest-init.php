@@ -4,8 +4,8 @@
     include("parse.php");
     include("formmatch.php");
 
-    //$business = $_POST['sendValue'];
-    $business = 'the-bent-spoon-princeton';
+    $business = $_POST['sendValue'];
+    //$business = 'the-bent-spoon-princeton';
 
     // create URL and get Yelp response
     $unsigned_url = "http://api.yelp.com/v2/business/".$business;
