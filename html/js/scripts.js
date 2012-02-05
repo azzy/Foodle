@@ -60,9 +60,9 @@ function listYelp(str) {
            "json"
           );
     //initialzie the new items to expand/collapse and be sortable
-    $("#sortable1").sortable({items:".added-sortable"});
-    $('li.added-sortable').children('.info').hide();
-    $('li.added-sortable').click($(this).children('ul').toggle());
+   // $("#sortable1").sortable({items:".added-sortable"});
+    $('.added-sortable').children('.info').hide();
+    $('.added-sortable').click($(this).children('ul').toggle());
 }
 
 function close () {

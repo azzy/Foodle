@@ -87,8 +87,10 @@
     <li class="readmore"></li>
     </ul>
 </div>
+
+</div><!-- end of content -->
 <?php
-  } else { echo '</div>'; }
+  } else { echo '</div><!-- end of content -->'; }
 ?>
 
     <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
