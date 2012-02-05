@@ -54,7 +54,7 @@
     <p><?php echo("userkey ".$userkey." pollid ".$pollid."<br/><br/>");?></p>
     <p><?php print_r($arrOfIds);?></p>
     <ul id="cuslist">
-        <?php addItems()?>
+        <?php echo("here"); addItems();?>
     </ul>
 </body>
 </html>
