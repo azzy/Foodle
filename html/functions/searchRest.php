@@ -50,14 +50,19 @@ need to be able to add new item to the list
 require_once ('lib/OAuth.php');
 include("access.php");
 include("parse.php");
-//include("formmatch.php");
+include_once('newuser.php');
+include_once('newpoll.php');
+
+$userinfo = getUserInfo($userkey);
+$pollinfo = getPollInfo($userinfo['pollid']);
+$location = $pollinfo['location'];
 
 if (empty($_POST['sendValue'])) {
     echo json_encode(array("returnValueName"=>"This is name from PHP : ", "returnValueId"=>"This is id from PHP : "));
 }
 else {
     $name = str_replace(" ", "+", $_POST['sendValue']);
-    $unsigned_url = "http://api.yelp.com/v2/search?term=".$name."&location=08544&limit=2&category_filter=food,restaurants";
+    $unsigned_url = "http://api.yelp.com/v2/search?term=".$name."&location=".$location."&limit=2&category_filter=food,restaurants";
     $data = access($unsigned_url);
     $response = json_decode($data);
     echo json_encode(array("returnValueName"=>name($response, 0), 

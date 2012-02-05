@@ -23,7 +23,7 @@ function addYelpInfo () {
 
 // get yelp data for display
 function getYelp(str) {
-    $.post("../php/searchRest.php", //ajax file
+    $.post("../functions/searchRest.php", //ajax file
            { sendValue: str },
            function(data) {
                //dataStuff = data;
@@ -39,7 +39,7 @@ function getYelp(str) {
 }
 // add yelp data to list
 function listYelp(str) {
-    $.post("searchRest.php", 
+    $.post("../functions/searchRest.php", 
            { sendValue : str },
            function(data) {
                //var li = $("<li>").addClass("restaurant");            
