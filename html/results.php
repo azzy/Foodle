@@ -112,7 +112,7 @@ $('#formtosubmit').submit();
                 echo("</li>");
             }
         }
-        $j = 2;
+        $j = 0;
         $response = getData($rankedResults[2], 1, $location);
         echo("<li class='heading'>".$response[$j]['name']);
         echo("<ul class='info'>");
