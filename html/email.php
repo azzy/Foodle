@@ -23,7 +23,8 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
         $userkeys[] = newUser($pollid, 'v', $useremail);
       }
     }
-    //echo var_dump($_POST);
+    include_once('PHPDatabaseStuff/sendUsersEmail.php');
+    sendPollEmail($pollid);
     header("Location: ./thankyou.php?type={$type}&userkey={$userkey}");
     exit();
   }
