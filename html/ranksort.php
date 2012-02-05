@@ -66,7 +66,7 @@
     </div>
     <div id="list-2">
       <ul id="sortable2" class="connectedSortable">
-	<li class="bin">Drop selections here</li>
+	<li class="bin ui-state-disabled">Drop selections here</li>
    </ul>
     </div>
     
@@ -78,7 +78,7 @@
     <a href="javascript: search()"><img id="search" src="./images/search.png" /></a>
     </div>
       <a href="javascript: addYelpInfo()"><div id="addnew">
-    <img src="./images/add.png" />Add To List</div></a>
+    <!--<img src="./images/add.png" />Add To List</div></a>-->
     </div>
 </div>
 <div id="yelpdata">
@@ -92,8 +92,10 @@
     <li class="readmore"></li>
     </ul>
 </div>
+
+</div><!-- end of content -->
 <?php
-  } else { echo '</div>'; }
+  } else { echo '</div><!-- end of content -->'; }
 ?>
 
     <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
@@ -103,9 +105,10 @@
 $( function() {
   //initialize sortables
   $('#sortable1, #sortable2').sortable( {
-  cursor: 'move',
-  connectWith: ".connectedSortable",
-  dropOnEmpty: true
+    items: ":not(.ui-state-disabled)",
+    cursor: 'move',
+    connectWith: ".connectedSortable",
+    dropOnEmpty: true
   });
   $("#sortable1, #sortable2").disableSelection();
 
@@ -115,13 +118,12 @@ $( function() {
 
   // initialize expand/collapse list
   $('li.heading').children('.info').hide();
-  $('li.heading').each(
-  function(column) {
-  $(this).click(function(event) {
-  if (this == event.target) $(this).children('ul').toggle();
+  $('li.heading').each( function() {
+      $(this).click(function(event) {
+	  if (this == event.target) $(this).children('ul').toggle();
+	});
+    });
   });
-  });
-});
 
 //function to save the newly sorted list
 function saveList() {
