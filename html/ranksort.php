@@ -19,6 +19,7 @@ $pollinfo = getPollInfo($userinfo['pollid']);
 if (array_key_exists('location', $pollinfo)) {
   $location = $pollinfo['location'];
   } else { $location = "08544"; }
+$arrOfIds = getPollChoices($pollid);
 ?>
 </head>
 <?php
@@ -51,7 +52,6 @@ if (array_key_exists('location', $pollinfo)) {
     </script>';
     }
     else {
-      echo '<li>nominate == false</li>';
       include("functions/initiateRestVote.php");
       addItems($arrOfIds);
     }
@@ -114,12 +114,9 @@ if (array_key_exists('location', $pollinfo)) {
 <?php
   } else { echo '</div><!-- end of content -->'; }
 ?>
-<?php
-  if ($nominate===true) {
-    echo "<a href='./initiate.php?type=".$type."&userkey=".$userkey."'><img src='./images/left.png' id='nav-left' /></a>";
-  }
-?>
-<a href='javascript: saveList()'><img src="./images/right.png" id="nav-right" /></a>
+
+    <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
+    <a href='javascript: saveList()'><img src="./images/right.png" id="nav-right" /></a> <!-- '<?php echo "./email.php?type=$type&userkey=$userkey"; ?>' and onClick="saveList();"-->
 <script type="text/javascript">
 <!--
 $( function() {
@@ -143,11 +140,7 @@ function saveList() {
     data: jsonList,
     url: '/ajax/saveList.php',
     success: function(data) {
-	if ($nominate) {
-          window.location = '<?php echo "./email.php?type={$type}&userkey={$userkey}&nominate={$nominate}"; ?>';
-	} else {
-	  window.location = '<?php echo "./thankyou.php?type={$type}&userkey={$userkey}&nominate={$nominate}"; ?>';
-	}
+      window.location = '<?php echo "./email.php?type={$type}&userkey={$userkey}"; ?>';
     },
     error: function(error) {
       console.log("Error on posting data; try again?");
