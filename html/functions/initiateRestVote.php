@@ -12,8 +12,13 @@
             $response=getData($arrOfIds[$i]);
             $id = $response["id"];
 	    $name = $response["name"];
-            echo '<li class="draggable heading" id="'.$id.'">'.$name.'</li>';
-	    echo '<ul class="info ui-state-disabled"><li class="yelprating ui-state-disabled"><img src="'.$response['ratingimg'].'" /></li><li class="yelpsnippet ui-state-disabled">'.$response['snippet'].'</li><li class="yelpcat ui-state-disabled">'.$response['categories'].'</li><li class="readmore ui-state-disabled"><a href="'.$response['url'].'">Read more on Yelp.com</a></li></ul></li>';
+            echo '<li class="draggable heading" id="'.$id.'">'.$name;
+	    echo '<ul class="info ui-state-disabled">
+<li class="yelprating ui-state-disabled"><img src="'.$response['ratingimg'].'" /></li>
+<li class="yelpsnippet ui-state-disabled">'.$response['snippet'].'</li>
+<li class="yelpcat ui-state-disabled">'.$response['categories'].'</li>
+<li class="readmore ui-state-disabled"><a href="'.$response['url'].'">Read more on Yelp.com</a></li>
+</ul></li>';
 	    echo '<script type="text/javascript">
                   <!--
                   $("#" + '.$id.').children(".info").hide();
