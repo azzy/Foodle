@@ -1,10 +1,7 @@
-
-
 <?php
   include("header.php");
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
-  echo '<style> .text a { color: #000; text-align: center; font-size:22pt;}</style>';
   echo '</head><body class="review '.$type.'">';
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
@@ -14,8 +11,8 @@
       <div class="text">Thank you for using Choosine! Please use the
 	following URL to view your results.</div>
 	<div class="text">
-        <p><a href=<?php echo "./vote.php?type=$type&userkey=$userkey";?>>Vote for your poll!</a> <br/>
-        <a href=<?php echo "./results.php?type=$type&userkey=$userkey"?>>Administer your poll!</a></p>
+        <a href=<?php echo "./vote.php?type=$type&userkey=$userkey";?>>Vote for your poll!</a> <br/>
+        <a href=<?php echo "./results.php?type=$type&userkey=$userkey"?>>Administer your poll!</a>
     </div>
     </div>
     
