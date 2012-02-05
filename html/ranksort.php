@@ -7,8 +7,8 @@
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
   include_once("header.php");
-  include_once("newuser.php");
-  include_once("newpoll.php");
+  include_once("functions/newuser.php");
+  include_once("functions/newpoll.php");
   $userinfo = getUserInfo($userkey);
   $pollinfo = getPollInfo($userinfo['pollid']);
   $location = $pollinfo['location'];
