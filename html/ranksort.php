@@ -121,22 +121,22 @@ $( function() {
 //function to save the newly sorted list
 function saveList() {
 
-      var jsonList = $("#sortable2").sortable("toArray");
-      jsonList.userkey = '<?php echo $userkey ?>';
-      console.log(jsonList);
-      $.ajax({
-	type: 'POST',
-	traditional: true,
-	data: jsonList,
-	url: '/ajax/saveList.php',
-	success: function(data) {
-	  alert('YAY! Post success: ' + data);
-	},
-	error: function(error) {
-	  alert('Error on post: ' + error);
-	}
-      });
+  var jsonList = $.extend({} ,$("#sortable2").sortable("toArray"));
+  jsonList.userkey = '<?php echo $userkey ?>';
+  console.log(jsonList);
+  $.ajax({
+    type: 'POST',
+    traditional: true,
+    data: jsonList,
+    url: '/ajax/saveList.php',
+    success: function(data) {
+      alert('YAY! Post success: ' + data);
+    },
+    error: function(error) {
+      alert('Error on post: ' + error);
     }
+  });
+}
 //-->
 </script>
 <?php
