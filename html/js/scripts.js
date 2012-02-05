@@ -4,7 +4,7 @@ function search () {
   $('#addnew').show();
   $('#yelpdata').show();
   // retrieve the search text
-  var searchTxt =  $("#searchstuff").find("input").val();
+  var searchTxt =  $("input#searchtxt").val();
   // get yelp data on the search text
   getYelp(searchTxt);
 }
@@ -62,8 +62,8 @@ function listYelp(str) {
           );            
 }
 
-$('#x').click(function () {
+function close () {
     $('#yelpdata').hide();
     $("#searchstuff").find("input").val("");
     $('#yelpdata').html("");
-});
+}
