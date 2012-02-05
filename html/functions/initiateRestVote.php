@@ -15,7 +15,7 @@
     
 //$arrOfIds = array("the-bent-spoon-princeton", "witherspoon-grill-princeton", "nassau-sushi-princeton");
     
-    //echo("<br/><br/>");
+    echo "<li>here!</li>";
     function addItems($arrOfIds) {
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
