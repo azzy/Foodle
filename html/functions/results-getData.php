@@ -34,11 +34,12 @@
         
         return ($arrFinal);
         */
+        return (array("name"=>"testname"));
        
         
     }
-    /*
+    
     $arrTest = getData("sandwiches", 2, "08544");
     print_r($arrTest);
-    */
+    
 ?>
