@@ -76,6 +76,7 @@ else {
     }
     else { 
       $arrOfIds = getPollChoices($pollid);
+      var_dump($arrOfIds);
       include("functions/initiateCuisVote.php");
       addItems($arrOfIds,$idToCuis);
     }
