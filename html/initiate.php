@@ -14,7 +14,7 @@
   <div id="container">
    <div id="content-area">
     <div class="form">
-      <form name="input" method="post" action='<?php echo "./ranksort.php?type=$type&userkey=$userkey"; ?>'>
+      <form name="input" method="post" action='<?php echo "./initiate_validate.php?type=$type&userkey=$userkey"; ?>'>
       <table>
 	<tr>
 	  <td><label for="dinner">Dinner Name:</label></td>

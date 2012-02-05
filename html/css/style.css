@@ -376,7 +376,7 @@ img#x, img#add {
     width: 30px;
 }
 img#x {  margin: -15px -15px 0 0; }
-img#add { margin: -15px -5px 0 0; }
+img#add { margin: -15px -3px 0 0; }
 #yelpdata {
     z-index: 300;
     position: fixed;

@@ -42,24 +42,26 @@ function listYelp(str) {
     $.post("../functions/searchRest.php", 
            { sendValue : str },
            function(data) {
-               //var li = $("<li>").addClass("restaurant");            
+	       var id = data.returnValueId;
                //add author name and comment to container
-	       $("sortable1").append(
-		   '<li class="draggable heading" id="' 
-		       + data.returnValueId + '">'
+	       $("#sortable1").append(
+		   '<li class="draggable heading added-sortable" id="' + id + '">'
 		       + data.returnValueName 
 		       + '<ul class="info"><li class="yelprating"><img src="' 
 		       + data.returnValueRatingImg + '" /></li><li class="yelpsnippet">'
 		       + data.returnValueSnippet + '</li><li class="yelpcat">'
 		       + data.returnValueCategory + '</li><li class="readmore">'
 		       + data.returnValueURL + '</li></ul></li>');
-              // $("<li>").addClass("restaurant").text(data.returnValueName + " " + data.returnValueId).appendTo("#sortable1");
                //empty inputs
                $("#searchstuff").find("input").val("");
                $('#yelpdata li').html("");
            },
            "json"
-          );            
+          );
+    //initialzie the new items to expand/collapse and be sortable
+   // $("#sortable1").sortable({items:".added-sortable"});
+    $('#' + id).children('.info').hide();
+    $('#' + id).click($(this).children('ul').toggle());
 }
 
 function close () {
