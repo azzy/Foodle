@@ -27,7 +27,7 @@
             $url = $response->businesses[$j]->url;
             $location = ($response->businesses[$j]->location->city) . "," . ($response->businesses[$j]->location->state_code);
             $category = categories($response, $j);
-            
+            echo("<br>".$category."<br>");
             //name, rating, rating_img_url, url, categories, city, state
             $arr = array("name"=>$name, "rating"=>$rating, "ratingimg"=>$ratingimg, "location"=>$location, "categories"=>$category, "url"=>$url);
             $arrFinal[$j] = $arr;
