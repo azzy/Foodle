@@ -19,7 +19,7 @@
         }
     }
     
-    <?php addItems($arrOfIds, $idToCuis);?>
+    //
     
     
 
@@ -36,7 +36,7 @@
     <p><?php print_r($arrOfIds);?></p>
     <p><?php echo("here");?></p>
     <ul id="cuslist">
-        
+        <?php addItems($arrOfIds, $idToCuis);?>
     </ul>
 </body>
 </html>
