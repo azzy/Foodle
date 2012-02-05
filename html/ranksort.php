@@ -114,9 +114,12 @@ if (array_key_exists('location', $pollinfo)) {
 <?php
   } else { echo '</div><!-- end of content -->'; }
 ?>
-
-    <a href='<?php echo "./initiate.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
-    <a href='javascript: saveList()'><img src="./images/right.png" id="nav-right" /></a> <!-- '<?php echo "./email.php?type=$type&userkey=$userkey"; ?>' and onClick="saveList();"-->
+<?php
+  if ($nominate===true) {
+    echo "<a href='./initiate.php?type=".$type."&userkey=".$userkey."'><img src='./images/left.png' id='nav-left' /></a>";
+  }
+?>
+<a href='javascript: saveList()'><img src="./images/right.png" id="nav-right" /></a>
 <script type="text/javascript">
 <!--
 $( function() {
@@ -140,7 +143,11 @@ function saveList() {
     data: jsonList,
     url: '/ajax/saveList.php',
     success: function(data) {
-      window.location = '<?php echo "./email.php?type={$type}&userkey={$userkey}"; ?>';
+	if ($nominate) {
+          window.location = '<?php echo "./email.php?type={$type}&userkey={$userkey}&nominate={$nominate}"; ?>';
+	} else {
+	  window.location = '<?php echo "./thankyou.php?type={$type}&userkey={$userkey}&nominate={$nominate}"; ?>';
+	}
     },
     error: function(error) {
       console.log("Error on posting data; try again?");
