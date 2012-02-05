@@ -1,5 +1,5 @@
 // function to initialize headings to toggle.
-function initExandCollapse () {
+function initExpandCollapse () {
     $('li.heading').each( function() {
 	$(this).click(function(event) {
 	    if (this == event.target) $(this).children('ul').toggle();
