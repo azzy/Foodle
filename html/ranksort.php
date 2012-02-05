@@ -45,8 +45,7 @@ $location = "08544";
   if ($type == "restaurants") { 
     echo '<script type="text/javascript">
     <!--
-	initiateRestNom('.$location.');
-        initiateExpandCollapse();
+	initiateRestNom("08544");
     //-->
     </script>';
   }
@@ -83,7 +82,7 @@ $location = "08544";
     <div id="searchstuff">
       <div class="searchtext"><label>Search:</label>
       <input id="searchtxt" />
-    <a href="javascript: search(<?php echo $location; ?>)"><img id="search" src="./images/search.png" /></a>
+    <a href="javascript: search(<?php echo "".$location; ?>)"><img id="search" src="./images/search.png" /></a>
     </div>
       <a href="javascript: addYelpInfo()"><div id="addnew">
     <!--<img src="./images/add.png" />Add To List</div></a>-->
@@ -115,6 +114,7 @@ $( function() {
   $('#addnew').hide();
   $('#yelpdata').hide();
   initiateSortable();
+  initiateExpandCollapse();
   });
 
 //function to save the newly sorted list
