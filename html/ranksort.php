@@ -84,14 +84,11 @@ if (array_key_exists('location', $pollinfo)) {
       <input id="searchtxt" />
       <?php echo "<a href=\"javascript: search('$location')\"><img id=\"search\" src=\"./images/search.png\" /></a>"; ?>
     </div>
-<?php echo "<a href=\"javascript: addYelpInfo('$location')\">";?>
-<div id="addnew">
-    <!--<img src="./images/add.png" />Add To List</div></a>-->
-    </div>
 </div>
 <div id="yelpdata">
 <a href="javascript: close()"><img src="./images/x.png" id="x" /></a>
-<a href="javascript: addYelpInfo()"><img src="./images/add.png" id="add" /></a>
+<?php echo "<a href=\"javascript: addYelpInfo('$location')\">"; ?>
+<img src="./images/add.png" id="add" /></a>
  <ul>
     <li class="yelpname"></li>
     <li class="yelprating"></li>
