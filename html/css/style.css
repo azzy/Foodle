@@ -329,12 +329,22 @@ ul#sortable2 li.heading {
     margin: 7px 0 -5px -16px;
     padding: 8px 14px;
     font-size: 12pt;
-    line-height: 1.3em;
+    //line-height: 1.1em;
     box-shadow: 0 -1px 1px 0 #211F07;
     -moz-box-shadow: 0px -1px 1px 0 #211F07;
     -webkit-box-shadow: 0px -1px 1px 0 #211F07;
     text-shadow: none;
     list-style-type: none;
+}
+/*.info .yelprating {
+    float: right;
+    clear: both;
+}*/
+.info .yelprating,
+.info .yelpsnippet,
+.info .yelpcat,
+.info .readmore {
+    margin-top: 10px;
 }
 span.names {
     position: relative; top: 10px; left: 33px;
@@ -355,13 +365,19 @@ ul#sortable2 li.bin {
 //.bin-hover { background: url('../images/bin_hover.png') no-repeat; }
 /* Integrating Search in Rank Page Styles --------------------*/
 .rank a:link,
-.rank a:visited {
-    color: #ff000;
+.rank a:visited,
+.review a:link,
+.review a:visited {
+    color: #ffff00;
 }
 .rank a:hover,
 .rank a:focus,
-.rank a:active {
-    text-decoration: border-bottom: 1px dotted #ff000;
+.rank a:active,
+.review a:hover,
+.review a:focus,
+.review a:active {
+    color: #FCEE21;
+    border-bottom: 1px dotted #FCEE21;
 }
 #searchstuff{
     //border: 1px solid #000;
@@ -406,8 +422,12 @@ img#add { margin: -15px -3px 0 0; }
     -webkit-box-shadow: 0px 4px 8px 0 #211F07;
 }
 #yelpdata ul { clear: both; }
-.yelprating img {
-}
+#yelpdata .yelpname { font-size: 18pt; text-align: center; }
+/*#yelpdata .yelprating { float: right; clear: both; }*/
+#yelpdata .yelpname,
+#yelpdata .yelpsnippet,
+#yelpdata .yelpcat,
+#yelpdata .readmore { margin-top: 10px; }
 /* End Rank Styles -------------------------------------------*/
 /* Begin Results Styles --------------------------------------*/
 body.results div.floatleft,
@@ -436,3 +456,6 @@ body.results #content-area { overflow: hidden; }
     float: right;
 }
 /* End Results Styles ----------------------------------------*/
+/* Thank You Page Styles -------------------------------------*/
+.review .text { line-height: 1.6em; }
+/* End Thank You Page Styles ---------------------------------*/
