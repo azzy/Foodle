@@ -24,19 +24,8 @@
     $rankedResults = genResults($pollid, 5);
   }
   else {
-    //$rankedResults = genResults($pollid, 3);
-    $rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
-
-    print_r($rankedResults);
-    
-    
-    
-    echo($location."<br>");
-    //echo($rankedResults[0]."<br>");
-    //print_r(getData($rankedResults[0], 2, $pollinfo['location']));
-    // TODO: get restaurants for these cuisines
-    
-    
+    $rankedResults = genResults($pollid, 3);
+    //$rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
   }
 ?>
 <!DOCTYLE html>
@@ -97,66 +86,77 @@ $('#formtosubmit').submit();
 	<div id="list-1">
       <ul id="results">
       <?php 
-        echo("yes-aaa");
+        $response = array("num"=>5);
+        echo("here");
+        if ($type == 'cuisine') {
+            echo("here2");
+            $res = getData($rankedResults[0], 2, $location);          
+            $response[0] = $res[0];
+            $response[1] = $res[1];
+            print_r($res);
+            $res = getData($rankedResults[1], 2, $location);          
+            $response[2] = $res[0];
+            $response[3] = $res[1];
+            $arr = getData($rankedResults[2], 1, $location);
+            $response[4] = $arr[0];       
+        }
+        else{
+            for ($i = 0; $i < count($rankedResults); $i++) {
+                $response[$i] = getRestData($rankedResults[$i]);
+            }
+        
+        }
+        
+        /*
         for ($i = 0; $i < 2; $i++) {        
             $response = getData($rankedResults[$i], 2, $location);
-            echo("yes");
             //print_r($response);
             for ($j = 0; $j < 2; $j++) {
-                echo("no");
                 echo("<li class='heading'>".$response[$j]['name']);
                 echo("<ul class='info'>");
-                echo("<li>".$response[$j]['rating']."</li>");
-                echo("<li>".$response[$j]['categories']."</li>");
-                echo("<li>".$response[$j]['location']."</li>");
-                echo("<li>".$response[$j]['phone']."</li>");
-                echo("<li>".$response[$j]['url']."</li>");
+                echo("<li> Rating: ".$response[$j]['rating']."</li>");
+                echo("<li> Categories: ".$response[$j]['categories']."</li>");
+                echo("<li> Loc: ".$response[$j]['location']."</li>");
+                echo("<li> Tel: ".$response[$j]['phone']."</li>");
+                echo("<li><a href='".$response[$j]['url']."'>Yelp Profile</a></li>");
                 echo("</ul>");
                 echo("</li>");
             }
         }
+        $j = 0;
+        $response = getData($rankedResults[2], 1, $location);
+        echo("<li class='heading'>".$response[$j]['name']);
+        echo("<ul class='info'>");
+        echo("<li> Rating: ".$response[$j]['rating']."</li>");
+        echo("<li> Categories: ".$response[$j]['categories']."</li>");
+        echo("<li> Loc: ".$response[$j]['location']."</li>");
+        echo("<li> Tel: ".$response[$j]['phone']."</li>");
+        echo("<li><a href='".$response[$j]['url']."'>Yelp Profile</a></li>");
+        echo("</ul>");
+        echo("</li>");
       
-      
+        */
+        for ($i = 0; $i < 5; $i++) {        
+            $res = $response[$i];
+            //print_r($response);
+            for ($j = 0; $j < 2; $j++) {
+                echo("<li class='heading'>".$res[$j]['name']);
+                echo("<ul class='info'>");
+                echo("<li> Rating: ".$res[$j]['rating']."</li>");
+                echo("<li> Categories: ".$res[$j]['categories']."</li>");
+                echo("<li> Loc: ".$res[$j]['location']."</li>");
+                echo("<li> Tel: ".$res[$j]['phone']."</li>");
+                echo("<li><a href='".$res[$j]['url']."'>Yelp Profile</a></li>");
+                echo("</ul>");
+                echo("</li>");
+            }
+        }
+        
+        
+        
       
       ?>
-      <li class="heading">
-	Witherspoon Grill 
-	  <ul class="info">
-	    <li>Information about Witherspoon Grill</li>
-	    <li>More information</li>
-	    <li>address and stuff</li>
-	    <li>Phone number? Rating</li>
-	    <li>read more on Yelp.com</li>
-	  </ul>
-	</li>
-      <li class="heading">
-	Panera
-	<ul class="info">
-	  <li>Information about Panera</li>
-	  <li>More information</li>
-	  <li>address and stuff</li>
-	  <li>Phone number? Rating</li>
-	  <li>read more on Yelp.com</li>
-	  </ul>
-	</li>
-	<li class="heading">Teresa's Caffe
-	<ul class="info">
-	  <li>Information about Teresa's Caffe</li>
-	  <li>address stuff blah blha </li>
-	  <li>Lorem ipsum qua kuja</li>
-	</ul>
-        </li>
-	<li class="heading">La Mezzaluna
-	<ul class="info">
-	  <li>Information about La Mezzaluna includes stuff like how
-	  incredibly expensive it is</li>
-	</ul>
-      </li>
-      <li class="heading">Mehek
-      <ul class="info">
-	<li>So yeah, people need to make this shit dynamic and stuff.</li>
-      </ul>
-    </li>
+     
     </div>
     </div>
     <div class="floatright">
