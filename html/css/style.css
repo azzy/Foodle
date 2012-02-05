@@ -354,6 +354,15 @@ ul#sortable2 li.bin {
 }
 //.bin-hover { background: url('../images/bin_hover.png') no-repeat; }
 /* Integrating Search in Rank Page Styles --------------------*/
+.rank a:link,
+.rank a:visited {
+    color: #ff000;
+}
+.rank a:hover,
+.rank a:focus,
+.rank a:active {
+    text-decoration: border-bottom: 1px dotted #ff000;
+}
 #searchstuff{
     //border: 1px solid #000;
     clear: both;

@@ -56,9 +56,10 @@ function listYelp(str) {
                $("#searchstuff").find("input").val("");
                $('#yelpdata li').html("");
 	       //initialize the new items to expand/collapse and be sortable
-	      $("#sortable1").sortable({
+	       $("#sortable1").sortable({
 		   items: ":not('.ui-state-disabled')"
 	       });
+	       $(".info").sortable({disabled: true});
 	      // $('#' + id + ".info").sortable({ disabled: true });
 	       $('#' + id).children('.info').hide();
 	       $('#' + id).click(function(event) {
