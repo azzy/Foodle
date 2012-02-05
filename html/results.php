@@ -112,6 +112,17 @@ $('#formtosubmit').submit();
                 echo("</li>");
             }
         }
+        $j = 3;
+        $response = getData($rankedResults[3], 1, $location);
+        echo("<li class='heading'>".$response[$j]['name']);
+        echo("<ul class='info'>");
+        echo("<li> Rating: ".$response[$j]['rating']."</li>");
+        echo("<li> Categories: ".$response[$j]['categories']."</li>");
+        echo("<li> Loc: ".$response[$j]['location']."</li>");
+        echo("<li> Tel: ".$response[$j]['phone']."</li>");
+        echo("<li><a href='".$response[$j]['url']."'>Yelp Profile</a></li>");
+        echo("</ul>");
+        echo("</li>");
       
       
       
