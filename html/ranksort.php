@@ -73,7 +73,7 @@
     <a href="javascript: search()"><img id="search" src="./images/search.png" /></a>
     </div>
       <a href="javascript: addYelpInfo()"><div id="addnew">
-    <img src="./images/add.png" />Add To List</div></a>
+    <!--<img src="./images/add.png" />Add To List</div></a>-->
     </div>
 </div>
 <div id="yelpdata">
@@ -111,13 +111,8 @@ $( function() {
 
   // initialize expand/collapse list
   $('li.heading').children('.info').hide();
-  $('li.heading').each(
-  function(column) {
-  $(this).click(function(event) {
-  if (this == event.target) $(this).children('ul').toggle();
+  initExpandCollapse();
   });
-  });
-});
 
 //function to save the newly sorted list
 function saveList() {

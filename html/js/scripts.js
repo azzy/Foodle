@@ -1,3 +1,12 @@
+// function to initialize headings to toggle.
+function initExandCollapse () {
+    $('li.heading').each( function() {
+	$(this).click(function(event) {
+	    if (this == event.target) $(this).children('ul').toggle();
+	});
+    });
+}
+
 // function to retrieve yelp info
 function search () {
   // toggle on secondary buttons, toggle off main search button
@@ -53,8 +62,6 @@ function listYelp(str) {
 		       + data.returnValueSnippet + '</li><li class="yelpcat">'
 		       + data.returnValueCategory + '</li><li class="readmore">'
 		       + data.returnValueURL + '</li></ul></li>');
-              // $("<li>").addClass("restaurant").text(data.returnValueName + " " + data.returnValueId).appendTo("#sortable1");
-	       $("#sortable2").append("<li>TEST</li>");
                //empty inputs
                $("#searchstuff").find("input").val("");
                $('#yelpdata li').html("");
@@ -62,6 +69,8 @@ function listYelp(str) {
            "json"
           );
     $("#sortable1").sortable({items:".added-sortable"});
+    $('li.added-sortable').children('.info').hide();
+    initExandCollapse();
 }
 
 function close () {
