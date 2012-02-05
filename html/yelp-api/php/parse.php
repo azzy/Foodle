@@ -35,6 +35,10 @@ function categories($response, $ind){
   }
   return($return);
 }
+function phone($response, $ind) {
+    $return = $response->businesses[$ind]->phone;
+    return($return);
+}
 
 
 ?>

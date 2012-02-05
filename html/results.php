@@ -103,6 +103,13 @@ $('#formtosubmit').submit();
             //print_r($response);
             for ($j = 0; $j < 2; $j++) {
                 echo("<li class='heading'>".$response[$j]['name']."</li>");
+                echo("<ul class='info'>");
+                    echo("<li>".$response[$j]['rating']."</li>");
+                    echo("<li>".$response[$j]['categories']."</li>");
+                    echo("<li>".$response[$j]['location']."</li>");
+                    echo("<li>".$response[$j]['phone']."</li>");
+                    echo("<li>".$response[$j]['url']."</li>");
+                echo("</ul>");
             }
         }
       
