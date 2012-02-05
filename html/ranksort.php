@@ -6,7 +6,7 @@
 <?php
 $type = $_GET['type'];
 $userkey = $_GET['userkey'];
-$nominate = FALSE;
+//$nominate = FALSE;
 if (array_key_exists('nominate', $_GET)) {
   $nominate = $_GET['nominate']; // generally, it will be true or non-existent
 }
@@ -51,7 +51,8 @@ else {
     </script>';
     }
     else { 
-      $arrOfIds = getPollChoices($pollid);
+      $arrOfIds = getPollChoices($userinfo['pollid']);
+      var_dump($arrOfIds); echo $pollid;
       include("functions/initiateRestVote.php");
       addItems($arrOfIds);
     }
@@ -115,10 +116,12 @@ else {
 
 						      </div><!-- end of content -->
 						      <?php
-  } else { echo '</div><!-- end of content -->'; }
-if ($nominate == true) {
+  } else { echo '</div><!-- end of content -->'; }?>
+<?php	  	
+if ($nominate===true) {
   echo "<a href='./initiate.php?type=".$type."&userkey=".$userkey."'><img src='./images/left.png' id='nav-left' /></a>";
-} ?>
+}
+?>
 <a href='javascript: saveList()'><img src="./images/right.png" id="nav-right" /></a>
   <script type="text/javascript">
   <!--
