@@ -2,31 +2,31 @@
   //-----------------------------------------------------------------------
   // Author: Choosine
   //-----------------------------------------------------------------------
-  //$type = $_GET['type'];
-  //$userkey = $_GET['userkey'];
+  $type = $_GET['type'];
+  $userkey = $_GET['userkey'];
   include_once("functions/newuser.php");
   include_once("functions/newpoll.php");
   include_once("functions/numVoted.php");
   include_once("functions/genResults.php");
   include("functions/results-getData.php");
-  /*
+  
   $userinfo = getUserInfo($userkey);
   $pollid = $userinfo['pollid'];
   $pollinfo = getPollInfo($pollid);
-  */
-  $pollid = 1;
-  $type = 'restaurants';
-  $location = "08544";
+  
+  //$pollid = 1;
+  //$type = 'restaurants';
+  //$location = "08544";
   if (!$pollid) {
     // TODO: return some logical error page instead
   }
   if ($type == 'restaurants') {
     $rankedResults = genResults($pollid, 5);
-    $rankedResults = array("chucks-spring-street-cafe-princeton","tiger-noodles-princeton", "sakura-express-princeton", "hunan-chinese-restaurant-princeton", "ajihei-princeton");
+    //$rankedResults = array("chucks-spring-street-cafe-princeton","tiger-noodles-princeton", "sakura-express-princeton", "hunan-chinese-restaurant-princeton", "ajihei-princeton");
   }
   else {
-    //$rankedResults = genResults($pollid, 3);
-    $rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
+    $rankedResults = genResults($pollid, 3);
+    //$rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
   }
 ?>
 <!DOCTYLE html>
