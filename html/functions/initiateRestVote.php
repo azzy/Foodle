@@ -6,15 +6,6 @@
     include_once("newpoll.php");
     include_once("newuser.php");
     
-//$userkey = "B3EF2465-24E8-AC67-5076-0D3C22571FD0";
-/*$userkey = $_GET['userkey'];  
-    $userinfo = getUserInfo($userkey);
-    $pollid = $userinfo['pollid'];*/
-    
-//    $arrOfIds = getPollChoices($pollid);
-    
-//$arrOfIds = array("the-bent-spoon-princeton", "witherspoon-grill-princeton", "nassau-sushi-princeton");
-    
     function addItems($arrOfIds) {
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
@@ -22,7 +13,15 @@
             $id = $response["id"];
 	    $name = $response["name"];
             echo '<li class="draggable heading" id="'.$id.'">'.$name.'</li>';
-	    echo '<ul class="info ui-state-disabled"><li class="yelprating ui-state-disabled"><img src="'.$response['rating_img_url'].'" /></li><li class="yelpsnippet ui-state-disabled">'.$response['snippet'].'</li><li class="yelpcat ui-state-disabled"><a href="'.$response['url'].'">Read more on Yelp.com</a></li></ul></li>';
+	    echo '<ul class="info ui-state-disabled"><li class="yelprating ui-state-disabled"><img src="'.$response['ratingimg'].'" /></li><li class="yelpsnippet ui-state-disabled">'.$response['snippet'].'</li><li class="yelpcat ui-state-disabled">'.$response['categories'].'</li><li class="readmore ui-state-disabled"><a href="'.$response['url'].'">Read more on Yelp.com</a></li></ul></li>';
+	    echo '<script type="text/javascript">
+                  <!--
+                  $("#" + '.$id.').children(".info").hide();
+		   $("#" + '.$id.').each( function() {
+		       $(this).click(function(event) {
+			   if (this == event.target) $(this).children("ul").toggle();
+                   //-->
+                  </script>';
         }
     }
     
@@ -50,21 +49,5 @@
         return ($arr);
         
     }    
-    
-/*
-<html>
-    <head>
-        <title>Test</title>
-    </head>
 
-<body>
-    lalalala
-    <p><?php echo("userkey ".$userkey." pollid ".$pollid."<br/><br/>");?></p>
-    <p><?php print_r($arrOfIds);?></p>
-    <ul id='restlist'>
-        <?php addItems($arrOfIds); ?>
-    </ul>
-</body>
-</html>
-*/
 ?>
