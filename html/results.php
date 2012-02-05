@@ -6,8 +6,17 @@
   $userkey = $_GET['userkey'];
   include_once("functions/newuser.php");
   include_once("functions/newpoll.php");
+  include_once("functions/numVoted.php");
+  include_once("functions/genResults.php");
   $userinfo = getUserInfo($userkey);
   $pollid = $userinfo['pollid'];
+  if ($type == 'restaurants') {
+    $rankedResults = genResults($pollid, 5);
+  }
+  else {
+    $rankedResults = genResults($pollid, 3);
+    // TODO: get restaurants for these cuisines
+  }
 ?>
 <!DOCTYLE html>
 <html lang="en" xml:lang="en">

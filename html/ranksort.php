@@ -45,6 +45,8 @@ if (array_key_exists('location', $pollinfo)) {
     echo '<script type="text/javascript">
     <!--
 	initiateRestNom('.$location.');
+        initiateSortable();
+        initiateExpandCollapse();
     //-->
     </script>';
   }
@@ -64,6 +66,11 @@ if (array_key_exists('location', $pollinfo)) {
     for ($i = 1; $i <= $length; $i++) {
       echo '<li class="draggable heading" id="'.$ids[$i].'">'.$cuisines[$i].'</li>';
     }
+    echo '<script type="text/javascript">
+          <!--
+               initiateSortable();
+          //-->
+          </script>';
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
 
@@ -109,26 +116,9 @@ if (array_key_exists('location', $pollinfo)) {
 <script type="text/javascript">
 <!--
 $( function() {
-  //initialize sortables
-  $('#sortable1, #sortable2').sortable( {
-    items: ":not(.ui-state-disabled)",
-    cursor: 'move',
-    connectWith: ".connectedSortable",
-    dropOnEmpty: true
-  });
-  $("#sortable1, #sortable2").disableSelection();
-
   // initialize search text
   $('#addnew').hide();
   $('#yelpdata').hide();
-
-  // initialize expand/collapse list
-  $('li.heading').children('.info').hide();
-  $('li.heading').each( function() {
-      $(this).click(function(event) {
-	  if (this == event.target) $(this).children('ul').toggle();
-	});
-    });
   });
 
 //function to save the newly sorted list
