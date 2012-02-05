@@ -18,6 +18,9 @@
             echo("<li class='restaurant'>".$name."</li>");
         }
     }
+    
+    <?php addItems($arrOfIds, $idToCuis);?>
+    
     */
 
     //echo("<br/><br/>");
@@ -31,7 +34,7 @@
     lalalala
     <p><?php echo("userkey ".$userkey." pollid ".$pollid."<br/><br/>");?></p>
     <p><?php print_r($arrOfIds);?></p>
-    <p><?php print_r($idToCuis);?></p>
+    <p><?php echo("here");?></p>
     <ul id="cuslist">
         
     </ul>
