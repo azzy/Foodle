@@ -11,24 +11,23 @@
     
     $arrOfIds = getPollChoices($pollid);*/
     
-    function addItems($arrOfIds, $idToCuis) {
+    function populateCuisines($arrOfIds, $idToCuis) {
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
             $response=getData($arrOfIds[$i]);
             $id = $response["id"];
 	    $name = $response["name"];
-            echo '<li class="draggable heading" id="'.$id.'">'.$name;
+	    echo '<li class="draggable heading" id="'.$id.'">'.$name;
 	    echo '<ul class="info ui-state-disabled">
 <li class="yelprating ui-state-disabled"><img src="'.$response['ratingimg'];
 	    echo '" /></li>
 <li class="yelpsnippet ui-state-disabled">Review: '.$response['snippet'];
-	    // figure out categories later. for now let's just pretend they're not here.
-	    // echo '</li><li class="yelpcat ui-state-disabled">'.$response['categories'];
+	    //figure out categories later. for now let's just pretend they're not here.
+	    //echo '</li><li class="yelpcat ui-state-disabled">'.$response['categories'];
 	    echo '</li><li class="readmore ui-state-disabled"><a href="'.$response['url'];
 	    echo '">Read more on Yelp.com</a></li></ul></li>';
         }
     }
-
 /*
 <html>
     <head>

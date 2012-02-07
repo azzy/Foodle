@@ -5,11 +5,11 @@
 ?>
 <?php
 $type = $_GET['type'];
-//$type = "cuisine";
 $userkey = $_GET['userkey'];
 $nominate = FALSE;
 if (array_key_exists('nominate', $_GET)) {
   $nominate = $_GET['nominate']; // generally, it will be true or non-existent
+  
 }
 include_once("header.php");
 include_once("functions/newuser.php");
@@ -52,8 +52,7 @@ else {
     </script>';
     }
     else { 
-      $arrOfIds = getPollChoices($userinfo['pollid']);
-      //var_dump($arrOfIds); echo $pollid;
+      $arrOfIds = getPollChoices($pollid);
       include("functions/initiateRestVote.php");
       addItems($arrOfIds);
     }
@@ -77,9 +76,10 @@ else {
       }
     }
     else { 
-      $choicearray = getPollChoices($pollid);
-      include("functions/initializeCuisines.php");
-      addItems($choicearray,$idToCuis);
+      $arrOfIds = getPollChoices($pollid);
+      var_dump($arrOfIds);
+      include("functions/initiateCuisVote.php");
+      addItems($arrOfIds,$idToCuis);
     }
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
@@ -116,12 +116,10 @@ else {
 
 						      </div><!-- end of content -->
 						      <?php
-  } else { echo '</div><!-- end of content -->'; }?>
-<?php	  	
-if ($nominate===true) {
+  } else { echo '</div><!-- end of content -->'; }
+if ($nominate == true) {
   echo "<a href='./initiate.php?type=".$type."&userkey=".$userkey."'><img src='./images/left.png' id='nav-left' /></a>";
-}
-?>
+} ?>
 <a href='javascript: saveList()'><img src="./images/right.png" id="nav-right" /></a>
   <script type="text/javascript">
   <!--
@@ -138,7 +136,7 @@ function saveList() {
 
   var jsonList = $.extend({} ,$("#sortable2").sortable("toArray"));
   jsonList.userkey = '<?php echo $userkey ?>';
-  jsonList.nominate = '<?php echo $nominate ?>'
+  jsonList.nominate = true;
     console.log(jsonList); // TODO: remove
   $.ajax({
     type: 'POST',
@@ -146,8 +144,7 @@ function saveList() {
 	data: jsonList,
 	url: '/ajax/saveList.php',
 	success: function(data) {
-	window.location = "<?php if ($nominate==true) echo './email.php?type='.$type.'&userkey='.$userkey.'&nominate='.$nominate;
-        else echo './thankyou.php?type='.$type.'&userkey='.$userkey; ?>";
+	window.location = "<?php echo './email.php?type='.$type.'&userkey='.$userkey.'&nominate='.$nominate; ?>";
       },
 	error: function(error) {
 	console.log("Error on posting data; try again?");
