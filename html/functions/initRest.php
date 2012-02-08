@@ -21,6 +21,10 @@ for ($i = 0; $i < $num; $i++) {
     $index = $i;
     $arr[$index] = $arrRest;
 }
+
+if ($num < 1) {
+  $arrRest = array("name"=>"Restaurant Name", "id"=>"restaurant", "rating"=>"none", "ratingimg"=>"", "snippet"=>"Test snippet. Sorry but it looks like we're out of calls to the Yelp API for the day. Check back tomorrow!", "categories"=>"none", "url"=>"");
+}
 echo json_encode($arr);
 
 //print_r(json_decode(json_encode($arr)));
