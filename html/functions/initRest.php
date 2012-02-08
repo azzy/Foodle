@@ -23,7 +23,7 @@ for ($i = 0; $i < $num; $i++) {
 }
 
 if ($num < 1) {
-  $arrRest = array("name"=>"Restaurant Name", "id"=>"restaurant", "rating"=>"none", "ratingimg"=>"", "snippet"=>"Test snippet. Sorry but it looks like we're out of calls to the Yelp API for the day. Check back tomorrow!", "categories"=>"none", "url"=>"");
+  $arrRest = array("name"=>"Restaurant Name", "id"=>"restaurant", "rating"=>"none", "ratingimg"=>"#", "snippet"=>"Test snippet. Sorry but it looks like we're out of calls to the Yelp API for the day. Check back tomorrow!", "categories"=>"none", "url"=>"blah");
 }
 echo json_encode($arr);
 
