@@ -6,7 +6,6 @@ function initiateSortable () {
     items: ":not(.ui-state-disabled)",
     cursor: 'move',
     connectWith: ".connectedSortable",
-      handle: '.handle',
     dropOnEmpty: true
   });
   $("#sortable1, #sortable2").disableSelection();

@@ -179,7 +179,7 @@ div.emptybadge, div.badge {
     margin: auto;
     position: relative;
     top: 220px;
-    //padding-top: 90px;
+    padding-top: 90px;
     color: #39B54A;
     text-align: center;
     font: 20pt 'Coustard', 'Rokkitt', helvetica, arial, sans-serif;
