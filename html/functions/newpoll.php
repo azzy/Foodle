@@ -84,7 +84,7 @@ function getPollInfo($pollid) {
   }
 }
 
-function updateUser($pollid, $name, $location) {
+function updatePoll($pollid, $name, $location) {
 
   include("foodledbinfo.php");
 
