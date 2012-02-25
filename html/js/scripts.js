@@ -11,6 +11,8 @@ function initiatePortlets () {
     $( ".portlet-header" ).click(function() {
 	$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
     });
+
+    $( ".portlet-content" ).hide();
     
     $( ".column" ).disableSelection();
 }
