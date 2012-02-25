@@ -125,7 +125,7 @@ function listYelp(str, loc) {
 
 	       // initialize new items to toggle
 	       $( ".portlet-header" ).click(function() {
-		   $( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
+		   $( this ).parents( ".portlet" ).find( ".portlet-content" ).toggle();
 	       });
 	       // initialize the new items to expand/collapse and be sortable
 	       /*$("#sortable1").sortable({
