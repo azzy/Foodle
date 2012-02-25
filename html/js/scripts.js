@@ -19,7 +19,7 @@ function initiatePortlets () {
 
 function initiatePortletToggle() {
     // initialize expand/collapse
-    $( ".portlet-header" ).click(function() {
+    $( ".column .portlet-header" ).click(function() {
 	$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
     });
 
