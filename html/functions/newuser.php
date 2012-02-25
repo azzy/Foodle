@@ -78,7 +78,7 @@ function getUserInfo($urlkey) {
   }
 }
 
-function updateUserName($urlkey, $name) {
+function updateUser($urlkey, $name, $email) {
 
   include("foodledbinfo.php");
 
@@ -87,7 +87,14 @@ function updateUserName($urlkey, $name) {
 
     $query = "UPDATE users SET username = ? WHERE urlkey = ?";
     if ($stmt = $db->prepare($query)) {
-      $stmt->bindParam(1, $name); // since they're indexed from 1, the userid == the total
+      $stmt->bindParam(1, $name); 
+      $stmt->bindParam(2, $urlkey);
+      $stmt->execute();
+    }
+
+    $query = "UPDATE users SET email = ? WHERE urlkey = ?";
+    if ($stmt = $db->prepare($query)) {
+      $stmt->bindParam(1, $email); 
       $stmt->bindParam(2, $urlkey);
       $stmt->execute();
     }

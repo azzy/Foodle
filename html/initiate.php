@@ -1,4 +1,4 @@
-eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee ewee<?php
+<?php
 include("header.php");
 include("validateRun.php");
 require_once("functions/newuser.php");
@@ -6,7 +6,7 @@ require_once("functions/newpoll.php");
 echo '</head><body class="initiate '.$type.'">';
 
 // Placeholders, even if we have no actual info
-$userinfo = array('name'=>'name', 'email'=>'',);
+$userinfo = array('pollname'=>'', 'email'=>'',);
 $pollinfo = array('location'=>'', 'name'=>'',);
 // If we are supposed to validate the form data here, i.e. this is an attempted submission
 if($_POST)
@@ -23,9 +23,10 @@ if($_POST)
       //echo "AAAAAAAAAARRRRRGHHHHHH";
       // If the form data is valid, save it to the database.
       // Is this a new poll?
-      if ($pollid || $userkey) 
+      if ($pollid && $userkey) 
       {
-	// TODO: Update existing info instead of creating a new poll
+	updateUser($userkey, $_POST['name'], $_POST['email']);
+	updatePoll($pollid, $_POST['dinner'], $_POST['location']);
       }
       else{
 	$pollid = newPoll($_POST['dinner'], $_POST['location'], $type);
@@ -66,10 +67,10 @@ else if ($userkey) {
   <table>
   <tr>
   <td><label for="dinner">Dinner Name:</label></td>
-  <td><input type="text" id="dinner" name="dinner" placeholder="" value="<?php echo $pollinfo['name'];?>"/></td>
+  <td><input type="text" id="dinner" name="dinner" placeholder="" value="<?php echo $pollinfo['pollname'];?>"/></td>
   </tr><tr>
   <td><label for="name">Your Name:</label></td>
-  <td><input type="text" id="name" name="name" placeholder="" value="<?php echo $userinfo['name'];?>"/></td>
+  <td><input type="text" id="name" name="name" placeholder="" value="<?php echo $userinfo['username'];?>"/></td>
   </tr><tr>
   <td><label for="email">Your Email:</label></td>
   <td><input type="text" id="email" name="email" placeholder="" value="<?php echo $userinfo['email'];?>"/></td>

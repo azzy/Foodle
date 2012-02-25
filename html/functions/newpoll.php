@@ -84,6 +84,35 @@ function getPollInfo($pollid) {
   }
 }
 
+function updateUser($pollid, $name, $location) {
+
+  include("foodledbinfo.php");
+
+  try {
+    $db = new PDO('mysql:host=localhost;dbname='.$database, $username, $password);
+
+    $query = "UPDATE polls SET pollname = ? WHERE pollid = ?";
+    if ($stmt = $db->prepare($query)) {
+      $stmt->bindParam(1, $name); 
+      $stmt->bindParam(2, $pollid);
+      $stmt->execute();
+    }
+
+    $query = "UPDATE polls SET location = ? WHERE pollid = ?";
+    if ($stmt = $db->prepare($query)) {
+      $stmt->bindParam(1, $location); 
+      $stmt->bindParam(2, $pollid);
+      $stmt->execute();
+    }
+
+    $db = null;
+    
+  } catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    return; //die();;
+  }
+}
+
 /* Gets the poll choices; returns the data in an array (indexes are choiceids, values are yelpids) */
 function getPollChoices($pollid) {
 
