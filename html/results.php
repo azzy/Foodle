@@ -102,12 +102,11 @@ echo '<body class="results '.$type.'">';
             echo("<li> Tel: ".$res['phone']."</li>");
             echo("<li><a href='".$res['url']."'>Yelp Profile</a></li>");
             echo("</ul>");
-            echo("</div></div>");
-                    }
-      ?>
+            echo("</div></div>"); ?>
 <script type="text/javascript">
-	  <!-- $(initiatePortletToggle()); // -->
+   <!-- $('.portlet #{$i}').ready(initiatePortletToggle({$i})); // -->
 </script>
+    <?php           }?>
     </div><!-- end of .column -->
     </div>
     </div>

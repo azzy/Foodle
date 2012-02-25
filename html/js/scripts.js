@@ -17,9 +17,9 @@ function initiatePortlets () {
     $( ".column" ).disableSelection();
 }
 
-function initiatePortletToggle() {
+function initiatePortletToggle(i) {
     // initialize expand/collapse
-    $( ".column .portlet-header" ).click(function() {
+    $( ".portlet-header #" + i ).click(function() {
 	$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
     });
 
