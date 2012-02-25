@@ -1,15 +1,31 @@
 <?php
+// Process user key info in a get request to skip to the poll page
 if (array_key_exists('userkey', $_GET)) {
-  $headerstring = "Location: initiate.php?userkey=".$userkey."&nominate=true";
-  if (array_key_exists('type', $_GET)) {
-    $headerstring = $headerstring . "&type=" . $_GET['type'];
+
+  // Is this user an admin?
+  require_once("functions/newuser.php");
+  $userinfo = getUserInfo($userkey);
+  if ($userinfo['usertype'] == 'a') {
+    // Go to initiate.php!
+    $headerstring = "Location: initiate.php?userkey=".$userkey;
+    if (array_key_exists('type', $_GET)) {
+      $headerstring = $headerstring . "&type=" . $_GET['type'];
+    }
+    header($headerstring);
+
+  } else {
+    // Go to ranksort.php!
+    $headerstring = "Location: ranksort.php?userkey=".$userkey;
+    if (array_key_exists('type', $_GET)) {
+      $headerstring = $headerstring . "&type=" . $_GET['type'];
+    }
+    header($headerstring);    
   }
-  header($headerstring);
 }
 else {
   include("header.php");
 }
-// TODO: process user key info in a get request to skip to the poll page
+
 ?>
 </head><body id="home">
     <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
