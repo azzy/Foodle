@@ -47,7 +47,6 @@ field[i].checked = false; }
 checkflag = "false";
 return "Check all"; }
 }
-initiatePortletToggle();
 $('#formsubmit').click(function() {
 $('#formtosubmit').submit();
 });
@@ -106,6 +105,9 @@ echo '<body class="results '.$type.'">';
             echo("</div></div>");
                     }
       ?>
+<script type="text/javascript">
+	  <!-- initiatePortletToggle(); // -->
+</script>
     </div><!-- end of .column -->
     </div>
     </div>
