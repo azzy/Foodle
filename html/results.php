@@ -93,7 +93,7 @@ echo '<body class="results '.$type.'">';
 
         for ($i = 0; $i < 5; $i++) {        
             $res = $response[$i];
-	    echo '<div class="portlet">';
+	    echo '<div class="portlet" id="'.$i.'">';
             echo "<div class='portlet-header'>".$res['name'].'</div>';
             echo("<div class='portlet-content'><ul>");
             echo("<li> Rating: ".$res['rating']."</li>");
@@ -106,7 +106,7 @@ echo '<body class="results '.$type.'">';
                     }
       ?>
 <script type="text/javascript">
-	  <!-- initiatePortletToggle(); // -->
+	  <!-- $('.portlet').ready(initiatePortletToggle()); // -->
 </script>
     </div><!-- end of .column -->
     </div>
