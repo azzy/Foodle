@@ -71,7 +71,7 @@ echo '<body class="results '.$type.'">';
       ?>
 	</div>
 	<div id="list-1">
-      <div id="results">
+      <div class="column">
       <?php 
         $response = array("num"=>5);
         if ($type == 'cuisine') {
@@ -106,7 +106,7 @@ echo '<body class="results '.$type.'">';
             echo("</div></div>");
                     }
       ?>
-    </div><!-- end of #results -->
+    </div><!-- end of .column -->
     </div>
     </div>
     <div class="floatright">
