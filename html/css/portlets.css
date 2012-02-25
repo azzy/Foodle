@@ -58,7 +58,7 @@
     width: 230px;
     height: 29px;
     margin-bottom: 2px;
-    padding-top: 10px;
+    //padding-top: 10px;
     text-align: center;
     background: url('../images/bin_hover.png') top center no-repeat; 
 }
