@@ -109,7 +109,7 @@ function listYelp(str, loc) {
 	   },
            function(data) {
 	       var id = data.returnValueId;
-               //add author name and comment to container
+               // add author name and comment to container
 	       $("#sortable1").append(
 		   '<div class="portlet" id="' + id + '">' +
 		   '<div class="portlet-header">'
@@ -119,10 +119,15 @@ function listYelp(str, loc) {
 		       + data.returnValueSnippet + '</li><li class="yelpcat">'
 		       + data.returnValueCategory + '</li><li class="readmore">'
 		       + data.returnValueURL + '</li></ul></div></div>');
-               //empty inputs
+               // empty inputs
                $("#searchstuff").find("input").val("");
                $('#yelpdata li').html("");
-	       //initialize the new items to expand/collapse and be sortable
+
+	       // initialize new items to toggle
+	       $( ".portlet-header" ).click(function() {
+		   $( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
+	       });
+	       // initialize the new items to expand/collapse and be sortable
 	       /*$("#sortable1").sortable({
 		   items: ":not('.ui-state-disabled')"
 	       });
