@@ -55,7 +55,7 @@ $('#formtosubmit').submit();
 </script>
 </head>
 <?php
-echo '<body class="results '.$type'.">';
+echo '<body class="results '.$type.'">';
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
