@@ -4,18 +4,34 @@ include("validateRun.php");
 require_once("functions/newuser.php");
 require_once("functions/newpoll.php");
 echo '</head><body class="initiate '.$type.'">';
-if($_POST['email']!= "") 
+
+// Placeholders, even if we have no actual info
+$userinfo = array('name'=>'', 'email'=>'');
+$pollinfo = array('location'=>'', 'name'=>'');
+// If we are supposed to validate the form data here, i.e. this is an attempted submission
+if($_POST)
   {
     $errorMessage = "";
 
-    $isValid = isValid($_POST['email'], $_POST['location']);
+    if ($_POST['email']) {
+      $isValid = isValid($_POST['email'], $_POST['location']);
+    } else {
+      $isValid = FALSE;
+    }
 
     if($isValid) {
       //echo "AAAAAAAAAARRRRRGHHHHHH";
-      // TODO: if the form data is valid, save it to the database
-      $pollid = newPoll($_POST['dinner'], $_POST['location'], $type);
-      // create an admin user for the poll
-      $userkey = newUser($pollid, 'a', $_POST['email'], $_POST['name']);
+      // If the form data is valid, save it to the database.
+      // Is this a new poll?
+      if ($pollid || $userkey) 
+      {
+	// TODO: Update existing info instead of creating a new poll
+      }
+      else{
+	$pollid = newPoll($_POST['dinner'], $_POST['location'], $type);
+	// create an admin user for the poll
+	$userkey = newUser($pollid, 'a', $_POST['email'], $_POST['name']);
+      }
     }
 
     if ($isValid) {
@@ -25,8 +41,6 @@ if($_POST['email']!= "")
       $errorMessage .= "invalid";
     }
     
-    
-
     if(empty($errorMessage)) 
       {
 	header("Location: ranksort.php?type=".$type."&userkey=".$userkey."&nominate=true");
@@ -36,6 +50,11 @@ if($_POST['email']!= "")
       echo("<ul>" . $errorMessage . "</ul>\n");
     }
   }
+// If we are trying to load an existing user's info, i.e. to edit it
+else if ($userkey) {
+  $userinfo = getUserInfo($userkey);
+  $pollinfo = getPollInfo($userinfo['pollid']);
+}
 ?>
 
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
@@ -47,16 +66,16 @@ if($_POST['email']!= "")
   <table>
   <tr>
   <td><label for="dinner">Dinner Name:</label></td>
-  <td><input type="text" id="dinner" name="dinner"/></td>
+  <td><input type="text" id="dinner" name="dinner" value="<?php echo $pollinfo['name'];?>"/></td>
   </tr><tr>
   <td><label for="name">Your Name:</label></td>
-  <td><input type="text" id="name" name="name" /></td>
+  <td><input type="text" id="name" name="name" value="<?php echo $userinfo['name'];?>"/></td>
   </tr><tr>
   <td><label for="email">Your Email:</label></td>
-  <td><input type="text" id="email" name="email" placeholder=""  /></td>
+  <td><input type="text" id="email" name="email" placeholder="" value="<?php echo $userinfo['email'];?>"/></td>
   </tr><tr>
   <td><label for="location">Your Location:</label></td>
-  <td><input type="text" id="location" name="location" placeholder="City, State or ZIP"  / ></td>
+  <td><input type="text" id="location" name="location" placeholder="City, State or ZIP" value="<?php echo $pollinfo['location'];?>" / ></td>
   </tr>
   </table>
   <input type="hidden" name="type" value="<?php echo $type;?>">

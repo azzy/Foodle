@@ -33,14 +33,14 @@ function mname($name) {
 
 //Testing:
 
-echo "Test Results <br/>";
+//echo "Test Results <br/>";
 
-if(mlocation("Princeton, NJ")&& (memail("kanika1091@gmail.com"))) {
-  echo "all good";
-}
-else {
-  echo "Noppeee fix it";
-}
+//if(mlocation("Princeton, NJ")&& (memail("kanika1091@gmail.com"))) {
+//  echo "all good";
+//}
+//else {
+//  echo "Noppeee fix it";
+//}
 
 
 ?>
