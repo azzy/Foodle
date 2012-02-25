@@ -126,10 +126,10 @@ function listYelp(str, loc) {
                $('#yelpdata li').html("");
 
 	       // initialize new items to toggle
-	       $( ".column ");
+	       /*$( ".column ");
 	       $( ".portlet-header" ).click(function() {
 		   $( this ).parents( ".portlet" ).find( ".portlet-content" ).toggle();
-	       });
+	       });*/
 	       // initialize the new items to expand/collapse and be sortable
 	       /*$("#sortable1").sortable({
 		   items: ":not('.ui-state-disabled')"
