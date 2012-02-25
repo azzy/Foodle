@@ -66,10 +66,10 @@ else if ($userkey) {
   <table>
   <tr>
   <td><label for="dinner">Dinner Name:</label></td>
-  <td><input type="text" id="dinner" name="dinner" value="<?php echo $pollinfo['name'];?>"/></td>
+  <td><input type="text" id="dinner" name="dinner" placeholder="" value="<?php echo $pollinfo['name'];?>"/></td>
   </tr><tr>
   <td><label for="name">Your Name:</label></td>
-  <td><input type="text" id="name" name="name" value="<?php echo $userinfo['name'];?>"/></td>
+  <td><input type="text" id="name" name="name" placeholder="" value="<?php echo $userinfo['name'];?>"/></td>
   </tr><tr>
   <td><label for="email">Your Email:</label></td>
   <td><input type="text" id="email" name="email" placeholder="" value="<?php echo $userinfo['email'];?>"/></td>
