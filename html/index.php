@@ -1,6 +1,14 @@
 <?php
+if (array_key_exists('userkey', $_GET)) {
+  $headerstring = "Location: initiate.php?userkey=".$userkey."&nominate=true";
+  if (array_key_exists('type', $_GET)) {
+    $headerstring = $headerstring . "&type=" . $_GET['type'];
+  }
+  header($headerstring);
+}
+else {
   include("header.php");
-
+}
 // TODO: process user key info in a get request to skip to the poll page
 ?>
 </head><body id="home">
