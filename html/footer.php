@@ -4,8 +4,7 @@
   //-----------------------------------------------------------------------
 ?>
   <div class="clear"></div>
-  <div id="footer">We know you're really excited to use Choosine,
-  but it doesn't exist yet! Sorry :(</div>
+     <div id="footer">Please feel free to try Choosine out while we continue to iron out a few bugs!</div>
   <div class="clear"></div>
   </div>
   </div> <!-- end wrapper -->

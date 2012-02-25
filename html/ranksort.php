@@ -12,6 +12,8 @@ if (array_key_exists('nominate', $_GET)) {
   $nominate = $_GET['nominate']; // generally, it will be true or non-existent
 }
 include_once("header.php");
+include_once("functions/cuisines.php");
+include_once("functions/initVoteNom.php");
 include_once("functions/newuser.php");
 include_once("functions/newpoll.php");
 $userinfo = getUserInfo($userkey);
@@ -21,6 +23,7 @@ if (array_key_exists('location', $pollinfo)) {
   $location = $pollinfo['location'];
 } else { $location = "08544"; }
 ?>
+<link rel="stylesheet" href="./css/portlets.css" type="text/css" />
 </head>
 <?php
 echo '<body class="rank '.$type.'">';
@@ -41,82 +44,64 @@ else {
 </div>
 
 <div id="list-1">
-  <ul id="sortable1" class="connectedSortable">
+  <div id="sortable1" class="column">
   <?php
   if ($type == "restaurants") {
-    if ($nominate == true) {
-      echo '<script type="text/javascript">
-    <!--
-	initiateRestNom("'.$location.'");
-    //-->
-    </script>';
-    }
+    if ($nominate == true)
+      initRestNom($location);
     else { 
       $arrOfIds = getPollChoices($userinfo['pollid']);
       //var_dump($arrOfIds); echo $pollid;
-      include("functions/initiateRestVote.php");
-      addItems($arrOfIds);
+      initRestVote($arrOfIds);
     }
   }
   else if ($type == "cuisine") {
     if ($nominate == true) {
-      $cuisines = array('American','Desserts & Ice Cream','Breakfast & Brunch',
-			'Burgers','Cafes','Chinese','Delis & Sandwiches','Diners',
-			'French','Greek','Indian & Pakistani','Italian','Japanese',
-			'Latin American','Mexican','Middle Eastern','Pizza','Seafood',
-			'Southern & Soul Food','South-East Asian','Vegan & Vegetarian');
-      $ids = array('tradamerican,newamerican','bakeries,desserts,icecream',
-		   'breakfast_brunch','burgers','cafes,coffee,tea','chinese,dimsum',
-		   'delis,sandwiches','diners','french','greek','indpak,pakistan',
-		   'italian','japanese,sushi','latin,peruvian','mexican','mideastern',
-		   'pizza','seafood','soulfood,southern',
-		   'thai,malaysian,singaporean,vietnamese,indonesian','vegan,vegetarian');
-      $length = count($cuisines);
-      for ($i = 1; $i <= $length; $i++) {
-	echo '<li class="draggable heading" id="'.$ids[$i].'">'.$cuisines[$i].'</li>';
-      }
+      foreach($idToCuis as $id=>$cuis)
+	echo '<div class="portlet" id="'.$id.'">
+              <div class="portlet-header">'.$cuis.'</div></div>';
     }
     else { 
-      $choicearray = getPollChoices($pollid);
-      include("functions/initializeCuisines.php");
-      addItems($choicearray,$idToCuis);
+      $arrOfIds = getPollChoices($pollid);
+      addCuisines($arrOfIds);
     }
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
 
 ?>
-</ul>
+</div>
 </div>
 <div id="list-2">
-  <ul id="sortable2" class="connectedSortable">
-  <li class="bin ui-state-disabled">Drop selections here</li>
-  </ul>
+  <div id="sortable2" class="column">
+  <div class="bin">Drop selections here</div>
+  </div>
   </div>
     
   <?php
-  if (($type == "restaurants")&&($nominate == true)) {?>
-						      <div id="searchstuff">
-						      <div class="searchtext"><label>Search:</label>
-						      <input id="searchtxt" />
-						      <?php echo "<a href=\"javascript: search('$location')\"><img id=\"search\" src=\"./images/search.png\" /></a>"; ?>
-						      </div>
-						      </div>
-						      <div id="yelpdata">
-						      <a href="javascript: close()"><img src="./images/x.png" id="x" /></a>
-						      <?php echo "<a href=\"javascript: addYelpInfo('$location')\">"; ?>
-						      <img src="./images/add.png" id="add" /></a>
-						      <ul>
-						      <li class="yelpname"></li>
-						      <li class="yelprating"></li>
-						      <li class="yelpsnippet"></li>
-						      <li class="yelpcat"></li>
-						      <li class="readmore"></li>
-						      </ul>
-						      </div>
-
-						      </div><!-- end of content -->
-						      <?php
-  } else { echo '</div><!-- end of content -->'; }?>
+  if (($type == "restaurants")&&($nominate == true))
+    {?>
+     <div id="searchstuff">
+     <div class="searchtext"><label>Search:</label>
+     <input id="searchtxt" />
+     <?php echo "<a href=\"javascript: search('$location')\"><img id=\"search\" src=\"./images/search.png\" /></a>"; ?>
+     </div>
+     </div>
+     <div id="yelpdata">
+     <a href="javascript: close()"><img src="./images/x.png" id="x" /></a>
+     <?php echo "<a href=\"javascript: addYelpInfo('$location')\">"; ?>
+     <img src="./images/add.png" id="add" /></a>
+     <ul>
+     <li class="yelpname"></li>
+     <li class="yelprating"></li>
+     <li class="yelpsnippet"></li>
+     <li class="yelpcat"></li>
+     <li class="readmore"></li>
+     </ul>
+     </div>
+     
+     </div><!-- end of content -->
+     <?php
+    } else { echo '</div><!-- end of content -->'; }?>
 <?php	  	
 if ($nominate===true) {
   echo "<a href='./initiate.php?type=".$type."&userkey=".$userkey."'><img src='./images/left.png' id='nav-left' /></a>";
@@ -129,8 +114,7 @@ if ($nominate===true) {
       // initialize search text
       $('#addnew').hide();
       $('#yelpdata').hide();
-      initiateSortable();
-      //initiateExpandCollapse();
+      initiatePortlets();
     });
 
 //function to save the newly sorted list

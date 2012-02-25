@@ -1,48 +1,29 @@
 /* Functions Used for Initial Population of Lists --------------------------- */
 // function to load initial list for restaurant nomination page
-function initiateSortable () {
-  //initialize sortables
-  $('#sortable1, #sortable2').sortable( {
-    items: ":not(.ui-state-disabled)",
-    cursor: 'move',
-    connectWith: ".connectedSortable",
-    dropOnEmpty: true
-  });
-  $("#sortable1, #sortable2").disableSelection();
-}
-
-function initiateExpandCollapse () {
-  // initialize expand/collapse list
-  $('li.heading').children('.info').hide();
-  $('li.heading').each( function() {
-      $(this).click(function(event) {
-	  if (this == event.target) $(this).children('ul').toggle();
-	});
+function initiatePortlets () {
+    // initialize sortables
+    $( ".column" ).sortable({
+	connectWith: ".column",
+	items: ".portlet:not(.bin)"
     });
+    
+    // initialize expand/collapse
+    $( ".portlet-header" ).click(function() {
+	$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
+    });
+
+    $( ".portlet-content" ).hide();
+    
+    $( ".column" ).disableSelection();
 }
 
-function initiateRestNom (loc) {
-    $.post("../functions/initRest.php",
-	   { location: loc },
-	   function(data) {
-	       for (var i=0; i < data.num; i++) {
-		   $("#sortable1").append(
-		   '<li class="draggable heading" id="' + data[i].id + '">'
-		       + data[i].name 
-		       + '<ul class="info ui-state-disabled"><li class="yelprating ui-state-disabled"><img src="' 
-		       + data[i].ratingimg + '" /></li><li class="yelpsnippet ui-state-disabled">'
-		       + data[i].snippet + '</li><li class="yelpcat ui-state-disabled">'
-		       + data[i].categories + '</li><li class="readmore ui-state-disabled">'
-		       + data[i].url + '</li></ul></li>');
-		   $('#' + data[i].id).children('.info').hide();
-		   $('#' + data[i].id).each( function() {
-		       $(this).click(function(event) {
-			   if (this == event.target) $(this).children('ul').toggle();
-		       });
-		   });
-	       }
-	   }, "json"
-	  );
+function initiatePortletToggle(i) {
+    // initialize expand/collapse
+    $( ".portlet-header #" + i ).click(function() {
+	$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
+    });
+
+    $( ".portlet-content" ).hide();
 }
 
 /* Functions Used for Search ------------------------------------------------ */
@@ -95,27 +76,23 @@ function listYelp(str, loc) {
 	   },
            function(data) {
 	       var id = data.returnValueId;
-               //add author name and comment to container
+               // add author name and comment to container
 	       $("#sortable1").append(
-		   '<li class="draggable heading added-sortable" id="' + id + '">'
-		       + data.returnValueName 
-		       + '<ul class="info ui-state-disabled"><li class="yelprating ui-state-disabled"><img src="' 
-		       + data.returnValueRatingImg + '" /></li><li class="yelpsnippet ui-state-disabled">'
-		       + data.returnValueSnippet + '</li><li class="yelpcat ui-state-disabled">'
-		       + data.returnValueCategory + '</li><li class="readmore ui-state-disabled">'
-		       + data.returnValueURL + '</li></ul></li>');
-               //empty inputs
+		   '<div class="portlet" id="' + id + '">' +
+		   '<div class="portlet-header">'
+		       + data.returnValueName + '</div><div class="portlet-content">'
+		       + '<ul><li class="yelprating"><img src="' 
+		       + data.returnValueRatingImg + '" /></li><li class="yelpsnippet">'
+		       + data.returnValueSnippet + '</li><li class="yelpcat">'
+		       + data.returnValueCategory + '</li><li class="readmore">'
+		       + data.returnValueURL + '</li></ul></div></div>');
+               // empty inputs
                $("#searchstuff").find("input").val("");
                $('#yelpdata li').html("");
-	       //initialize the new items to expand/collapse and be sortable
-	       $("#sortable1").sortable({
-		   items: ":not('.ui-state-disabled')"
-	       });
-	       $(".info").sortable({disabled: true});
-	      // $('#' + id + ".info").sortable({ disabled: true });
-	       $('#' + id).children('.info').hide();
-	       $('#' + id).click(function(event) {
-		   if (this == event.target) $(this).children('ul').toggle();
+
+	       // initialize new items to toggle
+	       $( "#" + id + " .portlet-header" ).click(function() {
+		   $( this ).parents( "#" + id ).find( ".portlet-content" ).toggle();
 	       });
            },
            "json"

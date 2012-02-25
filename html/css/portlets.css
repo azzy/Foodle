@@ -1,0 +1,61 @@
+#list-1, #list-2 {
+    width: 250px;
+    height: 193px;
+    padding: 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-bottom: 1px solid #57B3E5;
+}
+#list-1 {
+    background: url('../images/forest.jpg') #6EAF22;
+    float: left;
+}
+#list-2 {
+    background: url('../images/azure.jpg') #0090E0;
+    float: right;
+}
+.column { display: block; min-height: 50px; }
+.ui-state-disabled {
+    height: 50px; !important;
+    background: #000;
+}
+.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; width: 238px; }
+.ui-sortable-placeholder * { visibility: hidden; }
+.portlet {
+    margin-bottom: 10px;
+}
+.portlet-header {
+    text-shadow: 0px -1px 0.5px #333;
+    border: none;
+    border-top: 1px solid #fff;
+    background-color: #8CC63F;
+    box-shadow: 0px 2px 4px 0 #211F07;
+    -moz-box-shadow: 0px 2px 4px 0 #211F07;
+    -webkit-box-shadow: 0px 2px 4px 0 #211F07;
+    cursor: pointer;
+    width: 207px;
+    padding: 8px 16px;
+    position: relative;
+    z-index: 2;
+}
+.portlet-content {
+    width: 209px;
+    height: auto;
+    padding: 12px 15px;
+    font-size: 12pt;
+    //line-height: 1.1em;
+    background-color: #6EAF22;
+    box-shadow: 0 -1px 1px 0 #211F07;
+    -moz-box-shadow: 0px -1px 1px 0 #211F07;
+    -webkit-box-shadow: 0px -1px 1px 0 #211F07;
+    text-shadow: none;
+    list-style-type: none;
+}
+.bin {
+    width: 230px;
+    height: 29px;
+    margin: -3px 0 5px 0;
+    padding-top: 10px;
+    text-align: center;
+    background: url('../images/bin_hover.png') top center no-repeat; 
+}

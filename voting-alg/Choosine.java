@@ -117,11 +117,11 @@ public class Choosine {
         for(int k=0;k<length;k++){
             for(int l=k;l<length;l++){
                 if((id[k] == id[l]) && (rank[k] < rank [l])){
-                    freq[choices[k]][choices[l]]++;
+                    freq[choices[k]][choices[l]]= freq[choices[k]][choices[l]] + rank[l]-rank[k];
                     
                 }
                    if((id[k] == id[l]) && (rank[l] < rank [k])){
-                    freq[choices[l]][choices[k]]++;
+                    freq[choices[l]][choices[k]] = freq[choices[l]][choices[k]] + rank[k] - rank[l];
                     
                 }
             }
