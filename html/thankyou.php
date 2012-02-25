@@ -1,7 +1,5 @@
 <?php
   include("header.php");
-  $type = $_GET['type'];
-  $userkey = $_GET['userkey'];
   echo '</head><body class="review cuisine">';
 ?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>

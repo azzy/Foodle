@@ -2,8 +2,6 @@
   //-----------------------------------------------------------------------
   // Author: Choosine
   //-----------------------------------------------------------------------
-  $type = $_GET['type'];
-  $userkey = $_GET['userkey'];
 include_once("header.php");
   include_once("functions/newuser.php");
   include_once("functions/newpoll.php");

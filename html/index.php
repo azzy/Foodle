@@ -2,8 +2,6 @@
   include("header.php");
 
 // TODO: process user key info in a get request to skip to the poll page
-  //$type = $_GET['type'];
-  //$userkey = $_GET['userkey'];
 ?>
 </head><body id="home">
     <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>

@@ -4,16 +4,14 @@
 //-----------------------------------------------------------------------
 ?>
 <?php
-$type = $_GET['type'];
-$userkey = $_GET['userkey'];
+include_once("header.php");
+include_once("functions/newuser.php");
+include_once("functions/newpoll.php");
 $nominate = FALSE;
 if (array_key_exists('nominate', $_GET)) {
   $nominate = $_GET['nominate']; // generally, it will be true or non-existent
   
 }
-include_once("header.php");
-include_once("functions/newuser.php");
-include_once("functions/newpoll.php");
 $userinfo = getUserInfo($userkey);
 $pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($userinfo['pollid']);

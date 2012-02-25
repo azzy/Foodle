@@ -28,8 +28,9 @@ if ( !array_key_exists('nominate', $_POST)) {
   die();
 }
 
-$stmt = $db->prepare("SELECT * FROM users WHERE urlkey = '$userkey'");
+$stmt = $db->prepare("SELECT * FROM users WHERE urlkey = ?");
 //echo "SELECT * FROM users WHERE urlkey = $userkey" . "\n";
+$stmt->bindParam(1, $userkey);
 $stmt->execute();
 $row = $stmt->fetch();
 

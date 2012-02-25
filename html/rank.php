@@ -4,8 +4,6 @@
   //-----------------------------------------------------------------------
 ?>
 <?php
-  $type = $_GET['type'];
-  $userkey = $_GET['userkey'];
   include_once("header.php");
   include_once("newuser.php");
   include_once("newpoll.php");

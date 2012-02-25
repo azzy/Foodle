@@ -1,7 +1,5 @@
 <?php
   include("header.php");
-  $type = $_GET['type'];
-  $userkey = $_GET['userkey'];
   echo '<style> .404 #fourohfour{ font-size : 100px}</style>';
   echo '</head><body class="review cuisine">';
 ?>

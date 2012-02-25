@@ -3,12 +3,6 @@ include("header.php");
 include("validateRun.php");
 require_once("functions/newuser.php");
 require_once("functions/newpoll.php");
-if(array_key_exists('type', $_GET)){
-  $type = $_GET['type'];
-} else {
-  $type = $_POST['type'];
-}
-$userkey = $_GET['userkey'];
 echo '</head><body class="initiate '.$type.'">';
 if($_POST['email']!= "") 
   {

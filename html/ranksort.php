@@ -4,12 +4,23 @@
 //-----------------------------------------------------------------------
 ?>
 <?php
-$type = $_GET['type'];
-//$type = "cuisine";
-$userkey = $_GET['userkey'];
+if(array_key_exists('type', $_GET)){
+  $type = $_GET['type'];
+} else {
+  $type = $_POST['type'];
+}
+if(array_key_exists('userkey', $_GET)){
+  $type = $_GET['userkey'];
+} else {
+  $type = $_POST['userkey'];
+}
 $nominate = FALSE;
+// TODO: Verify that this user is the actual poll admin before showing them the nomination page!
+// ( the parameter still helps if they ARE the admin
 if (array_key_exists('nominate', $_GET)) {
   $nominate = $_GET['nominate']; // generally, it will be true or non-existent
+} else if (array_key_exists('nominate', $_POST)) {
+  $nominate = $_POST['nominate'];
 }
 include_once("header.php");
 include_once("functions/cuisines.php");

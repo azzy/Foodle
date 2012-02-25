@@ -1,6 +1,5 @@
 <?php
-
-
+  // have to do this stuff before printing headers!!!
   if (array_key_exists('userkey', $_GET)) {
     $type = $_GET['type'];
     $userkey = $_GET['userkey'];

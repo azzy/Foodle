@@ -2,6 +2,17 @@
   //-----------------------------------------------------------------------
   // Author: Choosine
   //-----------------------------------------------------------------------
+if(array_key_exists('type', $_GET)){
+  $type = $_GET['type'];
+} else {
+  $type = $_POST['type'];
+}
+if(array_key_exists('userkey', $_GET)){
+  $userkey = $_GET['userkey'];
+} else {
+  $userkey = $_POST['userkey'];
+}
+
 ?>
 <!DOCTYLE html>
 <html lang="en" xml:lang="en">
