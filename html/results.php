@@ -53,6 +53,7 @@ $('#formtosubmit').submit();
 });
 // -->
 </script>
+<link rel="stylesheet" href="./css/portlets.css" type="text/css" />
 </head>
 <?php
 echo '<body class="results '.$type.'">';
