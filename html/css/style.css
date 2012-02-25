@@ -91,13 +91,14 @@ body.results #container {
     -moz-box-shadow: 0px 4px 8px 0 #211F07;
     -webkit-box-shadow: 0px 4px 8px 0 #211F07;
     text-align:left;
+    background: url('../images/bluer.jpg') #29ABE2;
 }
 body.cuisine #content-area {
     background: url('../images/bluec.jpg') #0071BC;
 }
-body.restaurants #content-area {
+/*body.restaurants #content-area {
     background: url('../images/bluer.jpg') #29ABE2;
-}
+}*/
 #banner {
     position: absolute;
     top: 10px;

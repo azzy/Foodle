@@ -23,6 +23,7 @@ if (array_key_exists('location', $pollinfo)) {
   $location = $pollinfo['location'];
 } else { $location = "08544"; }
 ?>
+<link rel="stylesheet" href="./css/portlets.css" type="text/css" />
 </head>
 <?php
 echo '<body class="rank '.$type.'">';
@@ -57,7 +58,8 @@ else {
   else if ($type == "cuisine") {
     if ($nominate == true) {
       foreach($idToCuis as $id=>$cuis)
-	echo '<div class="portlet-header" id="'.$id.'">'.$cuis.'</div>';
+	echo '<div class="portlet" id="'.$id.'">
+              <div class="portlet-header">'.$cuis.'</div></div>';
     }
     else { 
       $arrOfIds = getPollChoices($pollid);
@@ -113,7 +115,6 @@ if ($nominate===true) {
       $('#addnew').hide();
       $('#yelpdata').hide();
       initiatePortlets();
-      //initiateExpandCollapse();
     });
 
 //function to save the newly sorted list
