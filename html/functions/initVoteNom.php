@@ -76,8 +76,8 @@ function getRestInfo($response) {
   $location = ($response->location->city) . ", " . ($response->location->state_code);
   $snippet = $response->snippet_text;
   $category = "";  
-  for ($i = 0; $i < count($response->categories); $i++) {
-    $category = $category.", ".$response->categories[$i];
+  for ($i = 0; $i <= count($response->categories); $i++) {
+    $category = $category.", ".$response->categories[$i][0];
   }    
   //name, rating, rating_img_url, url, categories, city, state
   $arr = array("id"=>$id, "name"=>$name, "rating"=>$rating, "ratingimg"=>$ratingimg, "snippet"=>$snippet, "location"=>$location, "categories"=>$category, "url"=>$url);
