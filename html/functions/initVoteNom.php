@@ -52,7 +52,7 @@ function addItem($info) {
     echo '<div class="portlet-content"><ul>
 <li class="yelprating"><img src="'.$info['ratingimg'];
     echo '" /></li><li class="yelpsnippet">Review: '.$info['snippet'];
-    echo '</li><li class="yelpcat">'.$info['categories'];
+    echo '</li><li class="yelpcat">Categories: '.$info['categories'];
     echo '</li><li class="readmore"><a href="'.$info['url'];
     echo '">Read more on Yelp.com</a></li></ul></div></div>';
     /* echo '<script type="text/javascript">
