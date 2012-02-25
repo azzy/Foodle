@@ -308,25 +308,6 @@ body.emails input, body.emails textarea {
     background: url('../images/azure.jpg') #0090E0;
     float: right;
 }
-ul.sort {
-    list-style-image: none;
-}
-#sortable1, #sortable2 { list-style-type: none; }
-ul#results,
-ul#sortable1,
-ul#sortable2 {
-    list-style-type: circle;
-    list-style-position: inside;
-    margin-top: 5px;
-}
-ul#results li.heading,
-ul#sortable1 li.heading,
-ul#sortable2 li.heading {
-    width: 207px;
-    padding: 6px 0px 5px 16px;
-    margin-bottom: 8px;
-    margin-left: 4px;
-}
 .info {
     width: 195px;
     height: auto;
@@ -341,37 +322,12 @@ ul#sortable2 li.heading {
     text-shadow: none;
     list-style-type: none;
 }
-/*.info .yelprating {
-    float: right;
-    clear: both;
-}*/
 .info .yelprating,
 .info .yelpsnippet,
 .info .yelpcat,
 .info .readmore {
     margin-top: 10px;
 }
-span.names {
-    position: relative; top: 10px; left: 33px;
-    text-shadow: 0px -1px 0.5px #04680E;
-}
-.bin, .bin-hover {
-    width: 230px;
-    height: 29px;
-    margin-bottom: 2px;
-}
-ul#sortable1 li.bin,
-ul#sortable2 li.bin {     
-    padding-top: 10px;
-    text-align: center;
-    background: url('../images/bin_hover.png') top center no-repeat; 
-    list-style: none;
-}
-ul#sortable1 .handle,
-ul#sortable2 .handle {
-    float: left;
-}
-//.bin-hover { background: url('../images/bin_hover.png') no-repeat; }
 /* Integrating Search in Rank Page Styles --------------------*/
 .rank a:link,
 .rank a:visited,

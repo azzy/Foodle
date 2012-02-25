@@ -1,5 +1,19 @@
 /* Functions Used for Initial Population of Lists --------------------------- */
 // function to load initial list for restaurant nomination page
+function initiatePortlets () {
+    // initialize sortables
+    $( ".column" ).sortable({
+	connectWith: ".column",
+	items: ".portlet:not(.bin)"
+    });
+    
+    // initialize expand/collapse
+    $( ".portlet-header" ).click(function() {
+	$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
+    });
+    
+    $( ".column" ).disableSelection();
+}
 function initiateSortable () {
   //initialize sortables
   $('#sortable1, #sortable2').sortable( {
