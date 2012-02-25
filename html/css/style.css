@@ -421,7 +421,6 @@ body.results #content-area { overflow: hidden; }
     text-transform: uppercase;
     float: right;
 }
-body.results .portlet-header { min-height: 20px; }
 /* End Results Styles ----------------------------------------*/
 /* Thank You Page Styles -------------------------------------*/
 .review .text { line-height: 1.6em; }
