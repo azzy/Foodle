@@ -55,6 +55,7 @@ if($_POST)
 else if ($userkey) {
   $userinfo = getUserInfo($userkey);
   $pollinfo = getPollInfo($userinfo['pollid']);
+  $type = $pollinfo['type'];
 }
 ?>
 

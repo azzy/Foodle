@@ -1,7 +1,7 @@
 <?php
 // Process user key info in a get request to skip to the poll page
 if (array_key_exists('userkey', $_GET)) {
-
+  $userkey = $_GET['userkey'];
   // Is this user an admin?
   require_once("functions/newuser.php");
   $userinfo = getUserInfo($userkey);
