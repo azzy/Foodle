@@ -124,6 +124,7 @@ function listYelp(str, loc) {
                $('#yelpdata li').html("");
 
 	       // initialize new items to toggle
+	       $( ".column ");
 	       $( ".portlet-header" ).click(function() {
 		   $( this ).parents( ".portlet" ).find( ".portlet-content" ).toggle();
 	       });
