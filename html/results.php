@@ -71,7 +71,7 @@ echo '<body class="results '.$type.'">';
       ?>
 	</div>
 	<div id="list-1">
-      <ul id="results">
+      <div id="results">
       <?php 
         $response = array("num"=>5);
         if ($type == 'cuisine') {
