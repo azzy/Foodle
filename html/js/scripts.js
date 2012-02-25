@@ -16,49 +16,14 @@ function initiatePortlets () {
     
     $( ".column" ).disableSelection();
 }
-function initiateSortable () {
-  //initialize sortables
-  $('#sortable1, #sortable2').sortable( {
-    items: ":not(.ui-state-disabled)",
-    cursor: 'move',
-    connectWith: ".connectedSortable",
-    dropOnEmpty: true
-  });
-  $("#sortable1, #sortable2").disableSelection();
-}
 
-function initiateExpandCollapse () {
-  // initialize expand/collapse list
-  $('li.heading').children('.info').hide();
-  $('li.heading').each( function() {
-      $(this).click(function(event) {
-	  if (this == event.target) $(this).children('ul').toggle();
-	});
+function initiatePortletToggle() {
+    // initialize expand/collapse
+    $( ".portlet-header" ).click(function() {
+	$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
     });
-}
 
-function initiateRestNom (loc) {
-    $.post("../functions/initRest.php",
-	   { location: loc },
-	   function(data) {
-	       for (var i=0; i < data.num; i++) {
-		   $("#sortable1").append(
-		   '<li class="draggable heading" id="' + data[i].id + '">'
-		       + data[i].name 
-		       + '<ul class="info ui-state-disabled"><li class="yelprating ui-state-disabled"><img src="' 
-		       + data[i].ratingimg + '" /></li><li class="yelpsnippet ui-state-disabled">'
-		       + data[i].snippet + '</li><li class="yelpcat ui-state-disabled">'
-		       + data[i].categories + '</li><li class="readmore ui-state-disabled">'
-		       + data[i].url + '</li></ul></li>');
-		   $('#' + data[i].id).children('.info').hide();
-		   $('#' + data[i].id).each( function() {
-		       $(this).click(function(event) {
-			   if (this == event.target) $(this).children('ul').toggle();
-		       });
-		   });
-	       }
-	   }, "json"
-	  );
+    $( ".portlet-content" ).hide();
 }
 
 /* Functions Used for Search ------------------------------------------------ */
@@ -129,16 +94,6 @@ function listYelp(str, loc) {
 	       $( "#" + id + " .portlet-header" ).click(function() {
 		   $( this ).parents( "#" + id ).find( ".portlet-content" ).toggle();
 	       });
-	       // initialize the new items to expand/collapse and be sortable
-	       /*$("#sortable1").sortable({
-		   items: ":not('.ui-state-disabled')"
-	       });
-	       $(".info").sortable({disabled: true});*/
-	       // $('#' + id + ".info").sortable({ disabled: true });
-	       /*$('#' + id).children('.info').hide();
-	       $('#' + id).click(function(event) {
-		   if (this == event.target) $(this).children('ul').toggle();
-	       });*/
            },
            "json"
           );

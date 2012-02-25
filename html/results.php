@@ -4,6 +4,7 @@
   //-----------------------------------------------------------------------
   $type = $_GET['type'];
   $userkey = $_GET['userkey'];
+include_once("header.php");
   include_once("functions/newuser.php");
   include_once("functions/newpoll.php");
   include_once("functions/numVoted.php");
@@ -31,14 +32,6 @@
     //$rankedResults = array("japanese,sushi","chinese,dimsum","burgers");
   }
 ?>
-<!DOCTYLE html>
-<html lang="en" xml:lang="en">
-<head>
-<meta charset="utf-8">
-<title>Choosine</title>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>
 <script type="text/javascript">
 <!--
 var checkflag = "false";
@@ -54,26 +47,16 @@ field[i].checked = false; }
 checkflag = "false";
 return "Check all"; }
 }
-
-$(document).ready(function() {
-$('li.heading').children('ul').hide();
-$('li.heading').each(
-function(column) {
-$(this).click(function(event) {
-if (this == event.target) $(this).children('ul').toggle();
-});
-});
-});
+initiatePortletToggle();
 $('#formsubmit').click(function() {
 $('#formtosubmit').submit();
 });
 // -->
 </script>
-<link href="http://fonts.googleapis.com/css?family=Coustard:400|Rokkitt:400" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="./css/reset.css" type="text/css" />
-<link rel="stylesheet" href="./css/style.css" type="text/css" />
 </head>
-<body class="results cuisine">
+<?php
+echo '<body class="results '.$type'.">';
+?>
 <div id="banner"><a href="./index.php"><img src="./images/choosine.png"/></a></div>
 <div id="wrapper">
   <div id="container">
@@ -83,7 +66,7 @@ $('#formtosubmit').submit();
       <?php
         $voted = numVoted($pollid);
         $totalPeople = numVoters($pollid);
-	echo "{$voted}/{$totalPeople} People have voted. Results so far:"
+	echo "{$voted} People have voted. Results so far:"
       ?>
 	</div>
 	<div id="list-1">
@@ -110,15 +93,16 @@ $('#formtosubmit').submit();
 
         for ($i = 0; $i < 5; $i++) {        
             $res = $response[$i];
-            echo("<li class='heading'>".$res['name']);
-            echo("<ul class='info'>");
+	    echo '<div class="portlet">';
+            echo "<div class='portlet-header'>".$res['name'].'</div>';
+            echo("<div class='portlet-content'><ul>");
             echo("<li> Rating: ".$res['rating']."</li>");
             echo("<li> Categories: ".$res['categories']."</li>");
             echo("<li> Loc: ".$res['location']."</li>");
             echo("<li> Tel: ".$res['phone']."</li>");
             echo("<li><a href='".$res['url']."'>Yelp Profile</a></li>");
             echo("</ul>");
-            echo("</li>");
+            echo("</div></div>");
                     }
       ?>
      
