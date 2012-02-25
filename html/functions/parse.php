@@ -29,8 +29,11 @@ function id($response, $ind){
 }
 function categories($response, $ind){
   $length = count($response->businesses[$ind]->categories);
-  $return = "";
-  for ($i = 0; $i <= $length; $i++) {
+  if ($length > 0)
+    $return = $response->businesses[$ind]->categories[0][0];
+  else
+    $return = "";
+  for ($i = 1; $i < $length; $i++) {
     $return = $return .", ". $response->businesses[$ind]->categories[$i][0];
   }
   return($return);
