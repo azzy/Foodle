@@ -2,7 +2,7 @@
 
 include_once("functions/newuser.php");
 include_once("functions/newpoll.php");
-$pollid = 86; //newPoll("a SUPER fun event", "princeton university");
+$pollid = 86; //newPoll("a SUPER fun event", "princeton university", "restaurant");
 //echo $pollid;
 $key = newUser($pollid, 'a', "cbutton9@gmail.com", "Candy");
 $userinfo = getUserInfo($key);

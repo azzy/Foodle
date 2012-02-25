@@ -26,7 +26,7 @@ if($_POST['formSubmit'] == "Submit")
       if($isValid) {
       //echo "AAAAAAAAAARRRRRGHHHHHH";
       // TODO: if the form data is valid, save it to the database
-      $pollid = newPoll($_POST['dinner'], $_POST['location']);
+     $pollid = newPoll($_POST['dinner'], $_POST['location'], $_POST['type']);
      // create an admin user for the poll
      $userkey = newUser($pollid, 'a', $_POST['email'], $_POST['name']);
       }

@@ -1,7 +1,7 @@
 <?php
 
 /* Generates a poll, and returns the poll id. Does not create any users; this poll may not have an admin. */
-function newPoll($dinner, $location) {
+function newPoll($dinner, $location, $type) {
 
   include("foodledbinfo.php");
 
@@ -43,10 +43,11 @@ function newPoll($dinner, $location) {
       $row = $stmt->fetch();
     }
 
-    $stmt = $db->prepare("INSERT INTO polls VALUES (?, 0, 0, NULL, ?, ?)");
+    $stmt = $db->prepare("INSERT INTO polls VALUES (?, 0, 0, NULL, ?, ?, ?)");
     $stmt->bindParam(1, $pollid);
     $stmt->bindParam(2, $dinner);
     $stmt->bindParam(3, $location);
+    $stmt->bindParam(4, $type);
     $stmt->execute();
 
     $db = null;
