@@ -106,7 +106,7 @@ echo '<body class="results '.$type.'">';
             echo("</div></div>");
                     }
       ?>
-     
+    </div><!-- end of #results -->
     </div>
     </div>
     <div class="floatright">
