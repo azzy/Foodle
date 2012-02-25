@@ -106,7 +106,7 @@ echo '<body class="results '.$type.'">';
                     }
       ?>
 <script type="text/javascript">
-	  <!-- $('.portlet #4').ready(initiatePortletToggle()); // -->
+	  <!-- $(initiatePortletToggle()); // -->
 </script>
     </div><!-- end of .column -->
     </div>
