@@ -7,7 +7,7 @@ function sendEmail($to, $url, $from)
  $send = mail($to,$subject,$body,$headers);
  return $send;
 }
-function sendPollEmail($pollid)
+function sendPollEmail($pollid, $type)
 {
 include("dbinfo.inc.php");
 //echo "2";
@@ -21,18 +21,16 @@ $i=0;
 // default value
 $from="mailer@choosine.com";
 while ($i < $num) {
-if(mysql_result($result,$i,"usertype") == 'a') $from=mysql_result($result,$i,"email");
-++$i;
+  if(mysql_result($result,$i,"usertype") == 'a') $from=mysql_result($result,$i,"email");
+  ++$i;
 }
 $i=0;
 while ($i < $num) {
-$to =mysql_result($result,$i,"email");
-$userkey=mysql_result($result,$i,"urlkey");
-// TODO: add type into url
-sendEmail($to, "http://www.choosine.com/ranksort.php?type=restaurants&userkey={$userkey}", $from);
-++$i;
+  $to =mysql_result($result,$i,"email");
+  $userkey=mysql_result($result,$i,"urlkey");
+  // TODO: add type into url
+  sendEmail($to, "http://www.choosine.com/ranksort.php?type={$type}&userkey={$userkey}", $from);
+  ++$i;
 }
 }
-  //  sendPollEmail("0");
-  //echo "blah";
 ?>

@@ -32,7 +32,7 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
       }
     }
     include_once('PHPDatabaseStuff/sendUsersEmail.php');
-    sendPollEmail($pollid);
+    sendPollEmail($pollid, $type);
     header("Location: ./thankyou.php?type={$type}&userkey={$userkey}");
     exit();
   }
