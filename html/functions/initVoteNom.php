@@ -5,16 +5,15 @@ include_once("access.php");
 include_once("foodledbinfo.php");
 include_once("newpoll.php");
 include_once("newuser.php");
-//include_once("cuisines.php");
+include_once("cuisines.php");
 //$arrOfIds = array("the-bent-spoon-princeton", "witherspoon-grill-princeton", "nassau-sushi-princeton");
 
 function addCuisines($arrOfIds) {
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
-	  $id = $arrOfIds[$i];
-	  $name=$idToCuis[$id];
-	  echo '<div class="portlet" id="'.$id.'">
-                <div class="portlet-header" id="'.$id.'">'.$name.'</div></div>';
+	  $name=$idToCuis[$arrOfIds[$i]];
+	  echo '<div class="portlet" id="'.$i.'">
+                <div class="portlet-header" id="'.$i.'">'.$name.'</div></div>';
         }
     }
   

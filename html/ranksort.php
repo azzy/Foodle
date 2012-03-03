@@ -74,8 +74,12 @@ else {
     }
     else { 
       $arrOfIds = getPollChoices($pollid);
-      var_dump($arrOfIds);
-      addCuisines($arrOfIds);
+      $num = count($arrOfIds);
+        for ($i = 0 ; $i < $num; $i++) {
+	  $name=$idToCuis[$arrOfIds[$i]];
+	  echo '<div class="portlet" id="'.$i.'">
+                <div class="portlet-header" id="'.$i.'">'.$name.'</div></div>';
+        }
     }
   }
   else echo  " Didn't get to this page properly. TODO: display error page";
