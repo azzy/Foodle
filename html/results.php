@@ -46,6 +46,7 @@ return "Check all"; }
 $('#formsubmit').click(function() {
 $('#formtosubmit').submit();
 });
+
 // -->
 </script>
 <link rel="stylesheet" href="./css/portlets.css" type="text/css" />
@@ -103,6 +104,12 @@ echo '<body class="results '.$type.'">';
   but it doesn't exist yet! Sorry :(</div>
   </div>
   </div> <!-- end wrapper -->
-
 </body>
+<script type="text/javascript">
+$( ".portlet-header" ).click(function() {
+    $( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
+  });
+
+$(".portlet-content").hide();
+</script>
 </html>
