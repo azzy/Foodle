@@ -15,7 +15,6 @@ $userinfo = getUserInfo($userkey);
 $pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($pollid);
 $location = $pollinfo['location'];
-$type = 'cuisine';
 
 if (!$pollid) {
   // TODO: return some logical error page instead
@@ -68,7 +67,7 @@ echo '<body class="results '.$type.'">';
       <div class="column">
       <?php 
         if ($type == 'cuisine')
-	  cuis_initList($rankedResults);
+	  cuis_initList($rankedResults, $location);
 	else if ($type == 'restaurants')
 	  rest_initList($rankedResults);
 	else

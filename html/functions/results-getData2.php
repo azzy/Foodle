@@ -4,7 +4,7 @@ include_once("access.php");
 include_once("lib/OAuth.php");
 
 // calls cuis_initSome to print the appropriate number of restaurants of each cuisine to our list.
-function cuis_initList($rankedResults) {
+function cuis_initList($rankedResults, $location) {
   // print two restaurants in first category
   cuis_initSome($rankedResults[0], 2, $location);
   // print two restaurants in second category
