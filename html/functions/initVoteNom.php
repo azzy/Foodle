@@ -6,6 +6,17 @@ include_once("foodledbinfo.php");
 include_once("newpoll.php");
 include_once("newuser.php");
 include_once('cuisines.php');
+
+// for some reason this function doesn't work...
+function addCuisines($arrOfIds) {
+        $num = count($arrOfIds);
+        for ($i = 0 ; $i < $num; $i++) {
+	  $name=$idToCuis[$arrOfIds[$i]];
+	  var_dump($arrOfIds[$i]);
+	  echo '<div class="portlet" id="'.$i.'">
+                <div class="portlet-header" id="'.$i.'">'.$name.'</div></div>';
+        }
+    }
   
 function initRestVote($arrOfIds) {
   $num = count($arrOfIds);
