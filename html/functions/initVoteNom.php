@@ -11,7 +11,7 @@ include_once("newuser.php");
 function addCuisines($arrOfIds) {
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
-	  $id = $arrOfIds[$i]
+	  $id = $arrOfIds[$i];
 	  $name=$idToCuis[$id];
 	  echo '<div class="portlet" id="'.$id.'">
                 <div class="portlet-header" id="'.$id.'">'.$name.'</div></div>';
