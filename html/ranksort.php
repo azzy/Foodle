@@ -74,6 +74,7 @@ else {
     }
     else { 
       $arrOfIds = getPollChoices($pollid);
+      var_dump($arrOfIds);
       addCuisines($arrOfIds);
     }
   }
