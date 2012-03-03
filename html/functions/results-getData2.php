@@ -25,8 +25,8 @@ function cuis_initSome($cuisine, $limit, $loc) {
   $unsigned_url = "http://api.yelp.com/v2/search?location=".$loc."&limit=".$limit."&category_filter=".$cuisine;
   $data = access($unsigned_url);
   $response = json_decode($data);
-        
-  foreach ($response->businesses as $i=>$business) {
+
+  foreach ($response->business as $i=>$business) {
     var_dump($business);
     $info = getRestInfo($business);
     addItem($info);
