@@ -8,6 +8,8 @@
   $pollinfo = getPollInfo($userinfo['pollid']);
   $event_name = $pollinfo['pollname'];
   $event_id = $pollinfo['eventid'];
+  echo '</head>
+  <body class="events cuisine">';
 ?>
 
 <div id="fb-root"></div>
