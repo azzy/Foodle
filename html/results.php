@@ -13,6 +13,9 @@ include("functions/results-getData2.php");
 $userinfo = getUserInfo($userkey);
 $pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($pollid);
+if (array_key_exists('location', $pollinfo)) {
+  $location = $pollinfo['location'];
+} else { $location = "08544"; }
 
 $type = 'cuisine';
 if (!$pollid) {
