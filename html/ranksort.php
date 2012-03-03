@@ -61,8 +61,7 @@ else {
     if ($nominate == true)
       initRestNom($location);
     else { 
-      $arrOfIds = getPollChoices($userinfo['pollid']);
-      //var_dump($arrOfIds); echo $pollid;
+      $arrOfIds = getPollChoices($pollid);
       initRestVote($arrOfIds);
     }
   }
