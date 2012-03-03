@@ -97,13 +97,6 @@ echo '<body class="results '.$type.'">';
     <a href="success.html"><div id="formsubmit">Send</div></a>
     </div>
     </div>
-    
-  <div class="clear"></div>
-  <div id="footer">We know you're really excited to use Choosine,
-  but it doesn't exist yet! Sorry :(</div>
-  </div>
-  </div> <!-- end wrapper -->
-</body>
 <script type="text/javascript">
 $( ".portlet-header" ).click(function() {
     $( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
@@ -111,4 +104,6 @@ $( ".portlet-header" ).click(function() {
 
     $(".portlet-content").hide();
 </script>
-</html>
+<?php
+include_once("footer.php");
+?>
