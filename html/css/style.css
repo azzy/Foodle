@@ -330,18 +330,23 @@ body.emails input, body.emails textarea {
     margin-top: 10px;
 }
 /* Integrating Search in Rank Page Styles --------------------*/
-#list-1 a:link,
-#list-1 a:visited,
-#list-2 a:link,
-#list-2 a:visited {
+.rank a:link,
+.rank a:visited,
+.review a:link,
+.review a:visited,
+.results a:link,
+.results a:visited {
     color: #ffff00;
 }
-#list-1 a:hover,
-#list-1 a:focus,
-#list-1 a:active,
-#list-2 a:hover,
-#list-2 a:focus,
-#list-2 a:active {
+.rank a:hover,
+.rank a:focus,
+.rank a:active,
+.review a:hover,
+.review a:focus,
+.review a:active,
+.results a:hover,
+.results a:focus,
+.results a:active {
     color: #FCEE21;
     border-bottom: 1px dotted #FCEE21;
 }
