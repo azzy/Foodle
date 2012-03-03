@@ -26,7 +26,7 @@ function cuis_initSome($cuisine, $limit, $loc) {
   $data = access($unsigned_url);
   $response = json_decode($data);
 
-  foreach ($response->business as $i=>$business) {
+  foreach ($response->businesses as $i=>$business) {
     var_dump($business);
     $info = getRestInfo($business);
     addItem($info);
