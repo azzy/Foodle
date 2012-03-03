@@ -4,16 +4,6 @@
   //-----------------------------------------------------------------------
 ?>
 <?php
-if(array_key_exists('type', $_GET)){
-  $type = $_GET['type'];
-} else {
-  $type = $_POST['type'];
-}
-if(array_key_exists('userkey', $_GET)){
-  $type = $_GET['userkey'];
-} else {
-  $type = $_POST['userkey'];
-}
 include_once("header.php");
 include_once("functions/newuser.php");
 include_once("functions/newpoll.php");
@@ -23,10 +13,8 @@ include("functions/results-getData2.php");
 $userinfo = getUserInfo($userkey);
 $pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($pollid);
-if (array_key_exists('location', $pollinfo)) {
-  $location = $pollinfo['location'];
-} else { $location = "08544"; }
 
+$type = 'cuisine';
 if (!$pollid) {
   // TODO: return some logical error page instead
 }
