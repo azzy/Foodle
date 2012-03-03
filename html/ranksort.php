@@ -4,7 +4,6 @@
 //-----------------------------------------------------------------------
 ?>
 <?php
-include_once("header.php");
 include_once("functions/cuisines.php");
 include_once("functions/initVoteNom.php");
 include_once("functions/newuser.php");
@@ -38,6 +37,7 @@ if (array_key_exists('nominate', $_GET)) {
 } else if (array_key_exists('nominate', $_POST)) {
   $nominate = $_POST['nominate'];
 }
+include_once("header.php");
 $userinfo = getUserInfo($userkey);
 $pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($userinfo['pollid']);
