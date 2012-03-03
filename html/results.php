@@ -47,6 +47,7 @@ $('#formsubmit').click(function() {
 $('#formtosubmit').submit();
 });
 
+$(initiateToggle());
 // -->
 </script>
 <link rel="stylesheet" href="./css/portlets.css" type="text/css" />
@@ -105,11 +106,4 @@ echo '<body class="results '.$type.'">';
   </div>
   </div> <!-- end wrapper -->
 </body>
-<script type="text/javascript">
-$( ".portlet-header" ).click(function() {
-    $( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
-  });
-
-$(".portlet-content").hide();
-</script>
 </html>

@@ -72,15 +72,11 @@ function addItem($info) {
 <div class="portlet-header">'.$name.'</div>
 <div class="portlet-content"><ul>
 <li class="yelprating"><img src="'.$info['ratingimg'].'" /></li>
-<li class="yelpcat">Categories: '.$info['categories'].'"></li>
-<li class="yelploc">Location: '.$info['location'].'"></li>
-<li class="yelptel">Phone: '.$phone.'"></li>
+<li class="yelpcat">Categories: '.$info['categories'].'</li>
+<li class="yelploc">Location: '.$info['location'].'</li>
+<li class="yelptel">Phone: '.$phone.'</li>
 <li class="readmore"><a href="'.$info['url'].'">Read more on Yelp.com</a></li>
 </ul></div></div>';
-
-  echo '<script type="text/javascript">
-   <!-- $(".portlet #'.$phone.'").ready(initiatePortletToggle('.$phone.')); // -->
-   </script>';
 }
     
 ?>
