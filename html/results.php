@@ -15,6 +15,7 @@ $userinfo = getUserInfo($userkey);
 $pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($pollid);
 $location = $pollinfo['location'];
+$type = 'cuisine';
 
 if (!$pollid) {
   // TODO: return some logical error page instead
