@@ -4,6 +4,18 @@
 //-----------------------------------------------------------------------
 ?>
 <?php
+// for some reason this function wouldn't work inside initVoteNom.php...
+function addCuisines($arrOfIds) {
+        $num = count($arrOfIds);
+        for ($i = 0 ; $i < $num; $i++) {
+	  $name=$idToCuis[$arrOfIds[$i]];
+	  var_dump($arrOfIds[$i]);
+	  echo '<div class="portlet" id="'.$i.'">
+                <div class="portlet-header" id="'.$i.'">'.$name.'</div></div>';
+        }
+}
+?>
+<?php
 if(array_key_exists('type', $_GET)){
   $type = $_GET['type'];
 } else {
