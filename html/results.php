@@ -9,7 +9,7 @@ include_once("functions/newuser.php");
 include_once("functions/newpoll.php");
 include_once("functions/numVoted.php");
 include_once("functions/genResults.php");
-include("functions/results-getData2.php");
+include("functions/results-getData.php");
 $userinfo = getUserInfo($userkey);
 $pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($pollid);
@@ -17,7 +17,6 @@ if (array_key_exists('location', $pollinfo)) {
   $location = $pollinfo['location'];
 } else { $location = "08544"; }
 
-$type = 'cuisine';
 if (!$pollid) {
   // TODO: return some logical error page instead
 }
