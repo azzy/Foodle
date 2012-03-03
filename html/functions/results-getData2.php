@@ -79,7 +79,7 @@ function addItem($info) {
 </ul></div></div>';
 
   echo '<script type="text/javascript">
-   <!-- $(".portlet #'.$i.'").ready(initiatePortletToggle('.$i.')); // -->
+   <!-- $(".portlet #'.$name.'").ready(initiatePortletToggle('.$name.')); // -->
    </script>';
 }
     
