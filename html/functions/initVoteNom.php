@@ -19,10 +19,9 @@ function addCuisines($arrOfIds) {
 }
   
 function initRestVote($arrOfIds) {
-  $num = count($arrOfIds);
-  for ($i = 0; $i < $num; $i++) {
+  foreach ($arrOfIds as $i=>$id) {
     // create URL and get Yelp response
-    $unsigned_url = "http://api.yelp.com/v2/business/".$business;
+    $unsigned_url = "http://api.yelp.com/v2/business/".$id;
     $data = access($unsigned_url);
     $response = json_decode($data);
     var_dump($response);
