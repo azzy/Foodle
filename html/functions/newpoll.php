@@ -43,7 +43,7 @@ function newPoll($dinner, $location, $type) {
       $row = $stmt->fetch();
     }
 
-    $stmt = $db->prepare("INSERT INTO polls VALUES (?, 0, 0, NULL, ?, ?, ?)");
+    $stmt = $db->prepare("INSERT INTO polls VALUES (?, 0, 0, NULL, ?, ?, ?, NULL)");
     $stmt->bindParam(1, $pollid);
     $stmt->bindParam(2, $dinner);
     $stmt->bindParam(3, $location);
@@ -101,6 +101,29 @@ function updatePoll($pollid, $name, $location) {
     $query = "UPDATE polls SET location = ? WHERE pollid = ?";
     if ($stmt = $db->prepare($query)) {
       $stmt->bindParam(1, $location); 
+      $stmt->bindParam(2, $pollid);
+      $stmt->execute();
+    }
+
+    $db = null;
+    
+  } catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    return; //die();;
+  }
+}
+
+/* Update a poll by giving it a Facebook event id. */
+function setPollEventID($pollid, $eventid) {
+
+  include("foodledbinfo.php");
+
+  try {
+    $db = new PDO('mysql:host=localhost;dbname='.$database, $username, $password);
+
+    $query = "UPDATE polls SET eventid = ? WHERE pollid = ?";
+    if ($stmt = $db->prepare($query)) {
+      $stmt->bindParam(1, $eventid); 
       $stmt->bindParam(2, $pollid);
       $stmt->execute();
     }
