@@ -62,6 +62,7 @@ else {
       initRestNom($location);
     else { 
       $arrOfIds = getPollChoices($pollid);
+      var_dump($arrOfIds);
       initRestVote($arrOfIds);
     }
   }

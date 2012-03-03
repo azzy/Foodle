@@ -16,7 +16,7 @@ function addCuisines($arrOfIds) {
 	  echo '<div class="portlet" id="'.$i.'">
                 <div class="portlet-header" id="'.$i.'">'.$name.'</div></div>';
         }
-    }
+}
   
 function initRestVote($arrOfIds) {
   $num = count($arrOfIds);
@@ -25,6 +25,7 @@ function initRestVote($arrOfIds) {
     $unsigned_url = "http://api.yelp.com/v2/business/".$business;
     $data = access($unsigned_url);
     $response = json_decode($data);
+    var_dump($response);
     $info = getRestInfo($response);
     addItem($info);
   }
