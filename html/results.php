@@ -106,6 +106,10 @@ echo '<body class="results '.$type.'">';
   </div> <!-- end wrapper -->
 </body>
 <script type="text/javascript">
-$(initiateToggle());
+$( ".portlet-header" ).click(function() {
+    $( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
+  });
+
+    $(".portlet-content").hide();
 </script>
 </html>

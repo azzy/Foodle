@@ -26,6 +26,18 @@ function initiatePortletToggle(i) {
     $( ".portlet-content" ).hide();
 }
 
+function initiateToggle() {
+    // this is the real function to initialize expand/collapse.
+    // I just wasn't sure if I could delete the one above without breaking things
+    // and I kind of want to go to sleep :P also apparently it doesn't work when
+    // I try to call it from here.
+    $( ".portlet-header" ).click(function() {
+    $( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
+  });
+
+    $(".portlet-content").hide();
+}
+
 /* Functions Used for Search ------------------------------------------------ */
 // function to retrieve yelp info
 function search (loc) {
