@@ -10,6 +10,7 @@ include_once("cuisines.php");
 
 function addCuisines($arrOfIds) {
         $num = count($arrOfIds);
+	var_dump($idToCuis);
         for ($i = 0 ; $i < $num; $i++) {
 	  $name=$idToCuis[$arrOfIds[$i]];
 	  var_dump($arrOfIds[$i]);
