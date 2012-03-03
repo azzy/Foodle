@@ -24,7 +24,6 @@ function initRestVote($arrOfIds) {
     $unsigned_url = "http://api.yelp.com/v2/business/".$id;
     $data = access($unsigned_url);
     $response = json_decode($data);
-    var_dump($response);
     $info = getRestInfo($response);
     addItem($info);
   }
