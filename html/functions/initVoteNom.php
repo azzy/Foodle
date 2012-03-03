@@ -48,14 +48,14 @@ function initRestNom($loc) {
 function addItem($info) {
     $id = $info["id"];
     $name = $info["name"];
-    echo '<div class="portlet" id="'.$id.'">';
-    echo '<div class="portlet-header">'.$name.'</div>';
-    echo '<div class="portlet-content"><ul>
-<li class="yelprating"><img src="'.$info['ratingimg'];
-    echo '" /></li><li class="yelpsnippet">Review: '.$info['snippet'];
-    echo '</li><li class="yelpcat">Categories: '.$info['categories'];
-    echo '</li><li class="readmore"><a href="'.$info['url'];
-    echo '">Read more on Yelp.com</a></li></ul></div></div>';
+    echo '<div class="portlet" id="'.$id.'">
+<div class="portlet-header">'.$name.'</div>
+<div class="portlet-content"><ul>
+<li class="yelprating"><img src="'.$info['ratingimg'].'" /></li>
+<li class="yelpsnippet">Review: '.$info['snippet'].'</li>
+<li class="yelpcat">Categories: '.$info['categories'].'</li>
+<li class="readmore"><a href="'.$info['url'].'">Read more on Yelp.com</a></li>
+</ul></div></div>';
     /* echo '<script type="text/javascript">
                   <!--
                   $("#" + "'.$id.'").children(".info").hide();
@@ -82,7 +82,7 @@ function getRestInfo($response) {
     $category = $response->categories[0][0];
   else 
     $category = "";  
-  for ($i = 1; $i < count($response->categories); $i++) {
+  for ($i = 1; $i < $length; $i++) {
     $category = $category.", ".$response->categories[$i][0];
   }    
 
