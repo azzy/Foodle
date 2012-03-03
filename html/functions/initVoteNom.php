@@ -5,7 +5,7 @@ include_once("access.php");
 include_once("foodledbinfo.php");
 include_once("newpoll.php");
 include_once("newuser.php");
-include_once("cuisines.php");
+include("cuisines.php");
 //$arrOfIds = array("the-bent-spoon-princeton", "witherspoon-grill-princeton", "nassau-sushi-princeton");
 
 function addCuisines($arrOfIds) {
