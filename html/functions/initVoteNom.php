@@ -10,9 +10,12 @@ include_once("cuisines.php");
 
 function addCuisines($arrOfIds) {
         $num = count($arrOfIds);
+	var_dump($idToCuis);
         for ($i = 0 ; $i < $num; $i++) {
-            $name=$idToCuis[$arrOfIds[$i]];
-            echo '<div class="portlet-header" id="'.$i.'">'.$name.'</div>';
+	  $name=$idToCuis[$arrOfIds[$i]];
+	  var_dump($arrOfIds[$i]);
+	  echo '<div class="portlet" id="'.$i.'">
+                <div class="portlet-header" id="'.$i.'">'.$name.'</div></div>';
         }
     }
   
