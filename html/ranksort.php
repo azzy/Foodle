@@ -4,12 +4,16 @@
 //-----------------------------------------------------------------------
 ?>
 <?php
+include_once("header.php");
+include_once("functions/cuisines.php");
+include_once("functions/initVoteNom.php");
+include_once("functions/newuser.php");
+include_once("functions/newpoll.php");
 // for some reason this function wouldn't work inside initVoteNom.php...
 function addCuisines($arrOfIds) {
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
 	  $name=$idToCuis[$arrOfIds[$i]];
-	  var_dump($arrOfIds[$i]);
 	  echo '<div class="portlet" id="'.$i.'">
                 <div class="portlet-header" id="'.$i.'">'.$name.'</div></div>';
         }
@@ -34,11 +38,6 @@ if (array_key_exists('nominate', $_GET)) {
 } else if (array_key_exists('nominate', $_POST)) {
   $nominate = $_POST['nominate'];
 }
-include_once("header.php");
-include_once("functions/cuisines.php");
-include_once("functions/initVoteNom.php");
-include_once("functions/newuser.php");
-include_once("functions/newpoll.php");
 $userinfo = getUserInfo($userkey);
 $pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($userinfo['pollid']);
