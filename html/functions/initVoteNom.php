@@ -12,6 +12,7 @@ function addCuisines($arrOfIds) {
         $num = count($arrOfIds);
         for ($i = 0 ; $i < $num; $i++) {
 	  $name=$idToCuis[$arrOfIds[$i]];
+	  var_dump($name);
 	  echo '<div class="portlet" id="'.$i.'">
                 <div class="portlet-header" id="'.$i.'">'.$name.'</div></div>';
         }
