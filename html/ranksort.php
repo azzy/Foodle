@@ -2,37 +2,56 @@
 //-----------------------------------------------------------------------
 // Author: Choosine
 //-----------------------------------------------------------------------
+
 ?>
 <?php
-if(array_key_exists('type', $_GET)){
+// Get query string parameters; REQUIRE both 'type' and 'userkey'
+if(array_key_exists('type', $_GET)) {
   $type = $_GET['type'];
-} else {
+} else if (array_key_exists('type', $_POST)) {
   $type = $_POST['type'];
-}
-if(array_key_exists('userkey', $_GET)){
-  $type = $_GET['userkey'];
-} else {
-  $type = $_POST['userkey'];
-}
+} else { header("Location: error.php"); exit(); }
+
+if (array_key_exists('userkey', $_GET)) {
+  $userkey = $_GET['userkey'];
+} else if (array_key_exists('userkey', $_POST)) {
+  $userkey = $_POST['userkey'];
+} else { header("Location: error.php"); exit(); }
+
+// If this user is an admin, the parameter "nominate" determines whether to show
+// them the nomination or the voting page.
 $nominate = FALSE;
-// TODO: Verify that this user is the actual poll admin before showing them the nomination page!
-// ( the parameter still helps if they ARE the admin
 if (array_key_exists('nominate', $_GET)) {
   $nominate = $_GET['nominate']; // generally, it will be true or non-existent
 } else if (array_key_exists('nominate', $_POST)) {
   $nominate = $_POST['nominate'];
 }
-include_once("header.php");
 include_once("functions/cuisines.php");
 include_once("functions/initVoteNom.php");
 include_once("functions/newuser.php");
 include_once("functions/newpoll.php");
+// We need the user (and poll!) info; exit if bad userkey
 $userinfo = getUserInfo($userkey);
+if (!$userinfo) { header("Location: error.php"); exit(); }
+
 $pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($userinfo['pollid']);
 if (array_key_exists('location', $pollinfo)) {
   $location = $pollinfo['location'];
 } else { $location = "08544"; }
+
+// Require a poll type in the query string parameter.
+if ($type == "cuisine") {$print_type = "cuisines";}
+else if ($type == "restaurants") { $print_type = $type; }
+else { header("Location: error.php"); exit(); }
+
+// Require a user to be an admin to see the nomination page. Ignore extraneous/erroneous "nominate" query string params.
+if ($userinfo['usertype'] != 'a') {
+  $nominate = FALSE;
+}
+
+include_once("header.php");
+
 ?>
 <link rel="stylesheet" href="./css/portlets.css" type="text/css" />
 </head>
@@ -45,8 +64,6 @@ echo '<body class="rank '.$type.'">';
   <div id="content-area">
   <div class="text">
   <?php   
-  if ($type == "cuisine") {$print_type = "cuisines";}
-  else if ($type == "restaurants") { $print_type = $type; }
 if ($nominate == true) {
   echo "To initiate your poll, drag ".$print_type." from the green list to the blue one for voters to choose from.";}
 else {
@@ -79,7 +96,6 @@ else {
                 <div class="portlet-header">'.$name.'</div></div>';
         }    }
   }
-  else echo  " Didn't get to this page properly. TODO: display error page";
 
 ?>
 </div>
