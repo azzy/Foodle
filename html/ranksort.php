@@ -81,6 +81,7 @@ else {
   <div id="sortable1" class="column">
   <?php
   $arrOfIds = getPollChoices($pollid); // TODO: make sure this works when the poll is brand new. Form $choiceid => $yelpid
+echo "got poll choices";
   if ($type == "restaurants") {
     if ($nominate == true) {
       $arrOfInfo = initRestNom($location);
