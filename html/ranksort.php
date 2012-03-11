@@ -2,7 +2,10 @@
 //-----------------------------------------------------------------------
 // Author: Choosine
 //-----------------------------------------------------------------------
-
+  // TEST VALUES
+  //$_GET = array();
+  //$_GET['userkey'] = '1387ADEF-BE48-1171-935C-9CE37BBFEBC1';
+  //$_GET['type'] = 'cuisine';
 ?>
 <?php
 // Get query string parameters; REQUIRE both 'type' and 'userkey'
@@ -87,7 +90,7 @@ else {
     }
     else { 
       $arrOfInfo = initRestVote($arrOfIds);
-      $votes = getUserVotes($pollinfo['pollid'], $userinfo['voterid']); // returns an array in form $choiceid => $rank
+      $votes = getUserVotes($pollinfo['pollid'], $userinfo['userid']); // returns an array in form $choiceid => $rank
       asort($votes); // sort by rank
       // Remove from $arrOfInfo those choices that exist in $votes
       $arrRemaining = array_diff_key($arrOfInfo, $array_flip($array_intersect_key($arrOfIds, $votes)));
@@ -104,7 +107,7 @@ else {
               <div class="portlet-header">'.$cuis.'</div></div>';
     }
     else { 
-      $votes = getUserVotes($pollinfo['pollid'], $userinfo['voterid']); // returns an array in form $choiceid => $rank
+      $votes = getUserVotes($pollinfo['pollid'], $userinfo['userid']); // returns an array in form $choiceid => $rank
       asort($votes); // sort by rank
       $remainingIds = array_diff_key($arrOfIds, $votes);
       foreach($remainingIds as $choiceid=>$id) {
