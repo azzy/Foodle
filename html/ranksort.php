@@ -3,9 +3,11 @@
 // Author: Choosine
 //-----------------------------------------------------------------------
   // TEST VALUES
-  //$_GET = array();
-  //$_GET['userkey'] = '1387ADEF-BE48-1171-935C-9CE37BBFEBC1';
-  //$_GET['type'] = 'cuisine';
+
+  /*  $_GET = array();
+  $_GET['userkey'] = '1387ADEF-BE48-1171-935C-9CE37BBFEBC1';
+ $_GET['type'] = 'cuisine';
+  */
 ?>
 <?php
 // Get query string parameters; REQUIRE both 'type' and 'userkey'
@@ -103,8 +105,9 @@ else {
     if ($nominate == true) {
       $remainingIds = array_diff_key($idToCuis, array_flip($arrOfIds));
       foreach($remainingIds as $id=>$cuis)
-	echo '<div class="portlet" id="'.$id.'">
-              <div class="portlet-header">'.$cuis.'</div></div>';
+	echo '
+              <div class="portlet" id="'.$id.'">'.
+              '<div class="portlet-header">'.$cuis.'</div></div>';
     }
     else { 
       $votes = getUserVotes($pollinfo['pollid'], $userinfo['userid']); // returns an array in form $choiceid => $rank
@@ -112,8 +115,9 @@ else {
       $remainingIds = array_diff_key($arrOfIds, $votes);
       foreach($remainingIds as $choiceid=>$id) {
 	  $name=$idToCuis[$id];
-	  echo '<div class="portlet" id="'.$id.'">
-                <div class="portlet-header">'.$name.'</div></div>';
+	  echo '
+                <div class="portlet" id="'.$id.'">'.
+                '<div class="portlet-header">'.$name.'</div></div>';
       }    
     }
   }
@@ -142,16 +146,18 @@ else {
       foreach($arrOfIds as $i=>$id) {
 	// TODO: put these in the selected side
 	$name=$idToCuis[$id];
-	echo '<div class="portlet" id="'.$id.'">
-              <div class="portlet-header">'.$name.'</div></div>';
+	echo '
+              <div class="portlet" id="'.$id.'">'.
+              '<div class="portlet-header">'.$name.'</div></div>';
       }
     }
     else { 
       foreach($votes as $choiceid=>$rank) {
 	// TODO: put these in the selected side
 	  $name=$idToCuis[$arrOfIds[$choiceid]];
-	  echo '<div class="portlet" id="'.$arrOfIds[$choiceid].'">
-                <div class="portlet-header">'.$name.'</div></div>';
+	  echo '
+                <div class="portlet" id="'.$arrOfIds[$choiceid].'">'.
+                '<div class="portlet-header">'.$name.'</div></div>';
       }
     }
   }
