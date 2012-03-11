@@ -28,6 +28,7 @@ if (array_key_exists('nominate', $_GET)) {
 }
 include_once("functions/cuisines.php");
 include_once("functions/initVoteNom.php");
+include_once("functions/getUserVotes.php");
 include_once("functions/newuser.php");
 include_once("functions/newpoll.php");
 // We need the user (and poll!) info; exit if bad userkey
@@ -74,27 +75,44 @@ else {
 <div id="list-1">
   <div id="sortable1" class="column">
   <?php
+  $arrOfIds = getPollChoices($pollid); // TODO: make sure this works when the poll is brand new. Form $choiceid => $yelpid
   if ($type == "restaurants") {
-    if ($nominate == true)
-      initRestNom($location);
+    if ($nominate == true) {
+      $arrOfInfo = initRestNom($location);
+      $arrOfChoices = initRestVote($arrOfIds);
+      $arrRemaining = array_diff_key($arrOfInfo, $arrOfChoices);
+      foreach($arrOfRemaining as $id => $info) {
+	addItem($info);
+      }
+    }
     else { 
-      $arrOfIds = getPollChoices($pollid);
-      initRestVote($arrOfIds);
+      $arrOfInfo = initRestVote($arrOfIds);
+      $votes = getUserVotes($pollinfo['pollid'], $userinfo['voterid']); // returns an array in form $choiceid => $rank
+      asort($votes); // sort by rank
+      // Remove from $arrOfInfo those choices that exist in $votes
+      $arrRemaining = array_diff_key($arrOfInfo, $array_flip($array_intersect_key($arrOfIds, $votes)));
+      foreach($arrRemaining as $id => $info) {
+	addItem($info);
+      }
     }
   }
   else if ($type == "cuisine") {
     if ($nominate == true) {
-      foreach($idToCuis as $id=>$cuis)
+      $remainingIds = array_diff_key($idToCuis, array_flip($arrOfIds));
+      foreach($remainingIds as $id=>$cuis)
 	echo '<div class="portlet" id="'.$id.'">
               <div class="portlet-header">'.$cuis.'</div></div>';
     }
     else { 
-      $arrOfIds = getPollChoices($pollid);
-      foreach($arrOfIds as $i=>$id) {
+      $votes = getUserVotes($pollinfo['pollid'], $userinfo['voterid']); // returns an array in form $choiceid => $rank
+      asort($votes); // sort by rank
+      $remainingIds = array_diff_key($arrOfIds, $votes);
+      foreach($remainingIds as $choiceid=>$id) {
 	  $name=$idToCuis[$id];
 	  echo '<div class="portlet" id="'.$id.'">
                 <div class="portlet-header">'.$name.'</div></div>';
-        }    }
+      }    
+    }
   }
 
 ?>
@@ -103,6 +121,38 @@ else {
 <div id="list-2">
   <div id="sortable2" class="column">
   <div class="bin">Drop selections here</div>
+<?php
+  if ($type == "restaurants") {
+    if ($nominate == true) {
+      foreach($arrOfChoices as $id => $info) {
+	addItem($info);
+      }
+    }
+    else { 
+      foreach($votes as $choiceid => $rank) {
+	addItem($arrOfInfo[$arrOfIds[$choiceid]]);
+      }
+    }
+  }
+  else if ($type == "cuisine") {
+    if ($nominate == true) {
+      foreach($arrOfIds as $i=>$id) {
+	// TODO: put these in the selected side
+	$name=$idToCuis[$id];
+	echo '<div class="portlet" id="'.$id.'">
+              <div class="portlet-header">'.$name.'</div></div>';
+      }
+    }
+    else { 
+      foreach($votes as $choiceid=>$rank) {
+	// TODO: put these in the selected side
+	  $name=$idToCuis[$arrOfIds[$choiceid]];
+	  echo '<div class="portlet" id="'.$arrOfIds[$choiceid].'">
+                <div class="portlet-header">'.$name.'</div></div>';
+      }
+    }
+  }
+?>
   </div>
   </div>
     

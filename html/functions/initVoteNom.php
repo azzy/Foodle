@@ -19,14 +19,16 @@ function addCuisines($arrOfIds) {
 }
   
 function initRestVote($arrOfIds) {
+  $arrOfInfo = array();
   foreach ($arrOfIds as $i=>$id) {
     // create URL and get Yelp response
     $unsigned_url = "http://api.yelp.com/v2/business/".$id;
     $data = access($unsigned_url);
     $response = json_decode($data);
     $info = getRestInfo($response);
-    addItem($info);
+    $arrOfInfo[$id] = $info;
   }
+  return $arrOfInfo;
 }
 
 function initRestNom($loc) {
@@ -38,12 +40,14 @@ function initRestNom($loc) {
   $data = access($unsigned_url);
   $response = json_decode($data);
 
+  $arrOfInfo = array();
   // fetch information and add to page
   $num = count($response->businesses);
   for ($i = 0; $i < $num; $i++) {
     $info = getRestInfo($response->businesses[$i]);
-    addItem($info);
+    $arrOfInfo[$info['id']] = $info;
   }
+  return $arrOfInfo;
 }
 function addItem($info) {
     $id = $info["id"];
