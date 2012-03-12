@@ -114,6 +114,7 @@ if ($event_id != null) {
 ?>
     </div>
     </div>
-    <a href='<?php echo "./email.php?type=$type&userkey=$userkey"; ?>'><img src="./images/left.png" id="nav-left" /></a>
+    <a href='<?php if ($userinfo["type"]=="a") echo "./email.php?type=$type&userkey=$userkey"; else echo "./ranksort.php?type=$type&userkey=$userkey";?>'>
+    <img src="./images/left.png" id="nav-left" /></a>
 
   <?php include("footer.php"); ?>
