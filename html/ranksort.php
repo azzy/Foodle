@@ -81,22 +81,27 @@ else {
   <div id="sortable1" class="column">
   <?php
   $arrOfIds = getPollChoices($pollid); // TODO: make sure this works when the poll is brand new. Form $choiceid => $yelpid
-echo "got poll choices";
+
+if ($arrOfIds === NULL) {
+  echo "Database error.";
+  return;
+}
+
   if ($type == "restaurants") {
     if ($nominate == true) {
       $arrOfInfo = initRestNom($location);
       $arrOfChoices = initRestVote($arrOfIds);
       $arrRemaining = array_diff_key($arrOfInfo, $arrOfChoices);
-      foreach($arrOfRemaining as $id => $info) {
+      foreach($arrRemaining as $id => $info) {
 	addItem($info);
       }
     }
-    else { 
+    else {  // restaurants, nominate==false
       $arrOfInfo = initRestVote($arrOfIds);
       $votes = getUserVotes($pollinfo['pollid'], $userinfo['userid']); // returns an array in form $choiceid => $rank
       asort($votes); // sort by rank
       // Remove from $arrOfInfo those choices that exist in $votes
-      $arrRemaining = array_diff_key($arrOfInfo, $array_flip($array_intersect_key($arrOfIds, $votes)));
+      $arrRemaining = array_diff_key($arrOfInfo, array_flip(array_intersect_key($arrOfIds, $votes)));
       foreach($arrRemaining as $id => $info) {
 	addItem($info);
       }
@@ -110,7 +115,7 @@ echo "got poll choices";
               <div class="portlet" id="'.$id.'">'.
               '<div class="portlet-header">'.$cuis.'</div></div>';
     }
-    else { 
+    else { // cuisines, nominate==false
       $votes = getUserVotes($pollinfo['pollid'], $userinfo['userid']); // returns an array in form $choiceid => $rank
       asort($votes); // sort by rank
       $remainingIds = array_diff_key($arrOfIds, $votes);
