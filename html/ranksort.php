@@ -2,37 +2,62 @@
 //-----------------------------------------------------------------------
 // Author: Choosine
 //-----------------------------------------------------------------------
+  // TEST VALUES
+
+  /*  $_GET = array();
+  $_GET['userkey'] = '1387ADEF-BE48-1171-935C-9CE37BBFEBC1';
+ $_GET['type'] = 'cuisine';
+  */
 ?>
 <?php
-if(array_key_exists('type', $_GET)){
+// Get query string parameters; REQUIRE both 'type' and 'userkey'
+if(array_key_exists('type', $_GET)) {
   $type = $_GET['type'];
-} else {
+} else if (array_key_exists('type', $_POST)) {
   $type = $_POST['type'];
-}
-if(array_key_exists('userkey', $_GET)){
-  $type = $_GET['userkey'];
-} else {
-  $type = $_POST['userkey'];
-}
+} else { header("Location: error.php"); exit(); }
+
+if (array_key_exists('userkey', $_GET)) {
+  $userkey = $_GET['userkey'];
+} else if (array_key_exists('userkey', $_POST)) {
+  $userkey = $_POST['userkey'];
+} else { header("Location: error.php"); exit(); }
+
+// If this user is an admin, the parameter "nominate" determines whether to show
+// them the nomination or the voting page.
 $nominate = FALSE;
-// TODO: Verify that this user is the actual poll admin before showing them the nomination page!
-// ( the parameter still helps if they ARE the admin
 if (array_key_exists('nominate', $_GET)) {
   $nominate = $_GET['nominate']; // generally, it will be true or non-existent
 } else if (array_key_exists('nominate', $_POST)) {
   $nominate = $_POST['nominate'];
 }
-include_once("header.php");
 include_once("functions/cuisines.php");
 include_once("functions/initVoteNom.php");
+include_once("functions/getUserVotes.php");
 include_once("functions/newuser.php");
 include_once("functions/newpoll.php");
+// We need the user (and poll!) info; exit if bad userkey
 $userinfo = getUserInfo($userkey);
+if (!$userinfo) { header("Location: error.php"); exit(); }
+
 $pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($userinfo['pollid']);
 if (array_key_exists('location', $pollinfo)) {
   $location = $pollinfo['location'];
 } else { $location = "08544"; }
+
+// Require a poll type in the query string parameter.
+if ($type == "cuisine") {$print_type = "cuisines";}
+else if ($type == "restaurants") { $print_type = $type; }
+else { header("Location: error.php"); exit(); }
+
+// Require a user to be an admin to see the nomination page. Ignore extraneous/erroneous "nominate" query string params.
+if ($userinfo['usertype'] != 'a') {
+  $nominate = FALSE;
+}
+
+include_once("header.php");
+
 ?>
 <link rel="stylesheet" href="./css/portlets.css" type="text/css" />
 </head>
@@ -45,8 +70,6 @@ echo '<body class="rank '.$type.'">';
   <div id="content-area">
   <div class="text">
   <?php   
-  if ($type == "cuisine") {$print_type = "cuisines";}
-  else if ($type == "restaurants") { $print_type = $type; }
 if ($nominate == true) {
   echo "To initiate your poll, drag ".$print_type." from the green list to the blue one for voters to choose from.";}
 else {
@@ -57,29 +80,53 @@ else {
 <div id="list-1">
   <div id="sortable1" class="column">
   <?php
+  $arrOfIds = getPollChoices($pollid); // TODO: make sure this works when the poll is brand new. Form $choiceid => $yelpid
+
+if ($arrOfIds === NULL) {
+  echo "Database error.";
+  return;
+}
+
   if ($type == "restaurants") {
-    if ($nominate == true)
-      initRestNom($location);
-    else { 
-      $arrOfIds = getPollChoices($pollid);
-      initRestVote($arrOfIds);
+    if ($nominate == true) {
+      $arrOfInfo = initRestNom($location);
+      $arrOfChoices = initRestVote($arrOfIds);
+      $arrRemaining = array_diff_key($arrOfInfo, $arrOfChoices);
+      foreach($arrRemaining as $id => $info) {
+	addItem($info);
+      }
+    }
+    else {  // restaurants, nominate==false
+      $arrOfInfo = initRestVote($arrOfIds);
+      $votes = getUserVotes($pollinfo['pollid'], $userinfo['userid']); // returns an array in form $choiceid => $rank
+      asort($votes); // sort by rank
+      // Remove from $arrOfInfo those choices that exist in $votes
+      $arrRemaining = array_diff_key($arrOfInfo, array_flip(array_intersect_key($arrOfIds, $votes)));
+      foreach($arrRemaining as $id => $info) {
+	addItem($info);
+      }
     }
   }
   else if ($type == "cuisine") {
     if ($nominate == true) {
-      foreach($idToCuis as $id=>$cuis)
-	echo '<div class="portlet" id="'.$id.'">
-              <div class="portlet-header">'.$cuis.'</div></div>';
+      $remainingIds = array_diff_key($idToCuis, array_flip($arrOfIds));
+      foreach($remainingIds as $id=>$cuis)
+	echo '
+              <div class="portlet" id="'.$id.'">'.
+              '<div class="portlet-header">'.$cuis.'</div></div>';
     }
-    else { 
-      $arrOfIds = getPollChoices($pollid);
-      foreach($arrOfIds as $i=>$id) {
+    else { // cuisines, nominate==false
+      $votes = getUserVotes($pollinfo['pollid'], $userinfo['userid']); // returns an array in form $choiceid => $rank
+      asort($votes); // sort by rank
+      $remainingIds = array_diff_key($arrOfIds, $votes);
+      foreach($remainingIds as $choiceid=>$id) {
 	  $name=$idToCuis[$id];
-	  echo '<div class="portlet" id="'.$id.'">
-                <div class="portlet-header">'.$name.'</div></div>';
-        }    }
+	  echo '
+                <div class="portlet" id="'.$id.'">'.
+                '<div class="portlet-header">'.$name.'</div></div>';
+      }    
+    }
   }
-  else echo  " Didn't get to this page properly. TODO: display error page";
 
 ?>
 </div>
@@ -87,6 +134,40 @@ else {
 <div id="list-2">
   <div id="sortable2" class="column">
   <div class="bin">Drop selections here</div>
+<?php
+  if ($type == "restaurants") {
+    if ($nominate == true) {
+      foreach($arrOfChoices as $id => $info) {
+	addItem($info);
+      }
+    }
+    else { 
+      foreach($votes as $choiceid => $rank) {
+	addItem($arrOfInfo[$arrOfIds[$choiceid]]);
+      }
+    }
+  }
+  else if ($type == "cuisine") {
+    if ($nominate == true) {
+      foreach($arrOfIds as $i=>$id) {
+	// TODO: put these in the selected side
+	$name=$idToCuis[$id];
+	echo '
+              <div class="portlet" id="'.$id.'">'.
+              '<div class="portlet-header">'.$name.'</div></div>';
+      }
+    }
+    else { 
+      foreach($votes as $choiceid=>$rank) {
+	// TODO: put these in the selected side
+	  $name=$idToCuis[$arrOfIds[$choiceid]];
+	  echo '
+                <div class="portlet" id="'.$arrOfIds[$choiceid].'">'.
+                '<div class="portlet-header">'.$name.'</div></div>';
+      }
+    }
+  }
+?>
   </div>
   </div>
     
