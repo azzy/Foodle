@@ -31,7 +31,7 @@ while ($i < $num) {
   $to =mysql_result($result,$i,"email");
   $userkey=mysql_result($result,$i,"urlkey");
   // TODO: add type into url
-  sendEmail($to, "http://www.choosine.com/ranksort.php?type={$type}&userkey={$userkey}", $from, $userBody);
+  sendEmail($to, "http://www.choosine.com/ranksort.php?type={$type}&userkey={$userkey}", $from, $userSubj, $userBody);
   ++$i;
 }
 }
