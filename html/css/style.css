@@ -245,6 +245,9 @@ body.emails input, body.emails textarea {
 .emails td {
     vertical-align: middle;
 }
+.emails td {
+    width: 50px;
+}
 #addnew {
     margin-top: 10px;
     margin-left: 10px;
