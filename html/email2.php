@@ -56,11 +56,12 @@ echo '</head><body class="emails '.$type.'">';
     <input type="hidden" name="type" value="<?php echo $type; ?>" />
     <a href="javascript:add_field()"><div id="addnew">
       <img src="./images/add.png" />Add another person</div></a>
-      <!-- <a href='<?php ?>'> --><input type="submit" value="create poll" name="submit" class="submit" /> <!--</a>-->
-      <div class="text">Your Message Subject: </div>
+ <div class="text">Your Message Subject: </div>
       <input name="subject" />
       <div class="text">Your Message Body:</div>
       <textarea name="message" rows="3" cols="48">Write a message here to tell your guests to vote for the restaurant you&apos;ll go to for dinner.</textarea>
+      <!-- <a href='<?php ?>'> --><input type="submit" value="create poll" name="submit" class="submit" /> <!--</a>-->
+     
 	</form>
 	
 	<div id="template" style="display:none">
