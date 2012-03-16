@@ -51,7 +51,7 @@ echo '</head><body class="emails '.$type.'">';
       <input name="email1"/>
       <input name="email2"/>
       <input name="email3"/>
-      <textarea name="message"/> 
+      <textarea name="message">Write a message here to tell your guests to vote for the restaurant you'll go to for dinner.</textarea> 
     </div>
     <input type="hidden" name="userkey" value="<?php echo $userkey; ?>" />
     <input type="hidden" name="type" value="<?php echo $type; ?>" />
