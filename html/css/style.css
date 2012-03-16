@@ -207,7 +207,7 @@ a.badge {
     text-shadow: 0px -1px 0.5px #000;
 }
 #content-area .form {
-    margin: 0 20px 0 20px;
+    margin: 30px 20px 0 20px;
 }
 input,
 textarea {
@@ -237,6 +237,7 @@ textarea { max-width: 410px; }
     margin:20px 0 10px 20px;
     text-shadow: 0px -1px 0.5px #000;
 }
+.emails .form { margin-top: 0; }
 .emails #content-area { text-align: center; }
 body.emails input, body.emails textarea {
     font-size: 13pt;
