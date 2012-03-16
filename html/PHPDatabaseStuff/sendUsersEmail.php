@@ -1,13 +1,14 @@
 <?php
-function sendEmail($to, $url, $from)
+function sendEmail($to, $url, $from, $subject, $input)
 { 
- $subject = "via Choosine: Where should we go eat?";
- echo $body = "I've created a poll to pick a dinner location. Please visit $url to submit your preferences";
+  //$subject = "via Choosine: Where should we go eat?";
+ //echo $body = "I've created a poll to pick a dinner location. Please visit $url to submit your preferences" + $input;
+ $body = $input."\n\nPlease visit ".$url." to submit your preferences.";
  $headers = "From:".$from."\n";
  $send = mail($to,$subject,$body,$headers);
  return $send;
 }
-function sendPollEmail($pollid, $type)
+function sendPollEmail($pollid, $type, $userSubj, $userBody)
 {
 include("dbinfo.inc.php");
 //echo "2";
@@ -24,13 +25,8 @@ while ($i < $num) {
   if(mysql_result($result,$i,"usertype") == 'a') $from=mysql_result($result,$i,"email");
   ++$i;
 }
-$i=0;
-while ($i < $num) {
-  $to =mysql_result($result,$i,"email");
-  $userkey=mysql_result($result,$i,"urlkey");
-  // TODO: add type into url
-  sendEmail($to, "http://www.choosine.com/ranksort.php?type={$type}&userkey={$userkey}", $from);
-  ++$i;
-}
+$to =mysql_result($result,$i,"email");
+$userkey=mysql_result($result,$i,"urlkey");
+sendEmail($to, "http://www.choosine.com/ranksort.php?type={$type}&userkey={$userkey}", $from, $userSubj, $userBody);
 }
 ?>
