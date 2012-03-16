@@ -217,6 +217,7 @@ textarea {
     padding: 5px;
     margin-bottom: 20px;
 }
+textarea { clear: both; max-width: 410px; }
 .cuisine input, .cuisine textarea {
     background-color: #E2ECF7;
 }

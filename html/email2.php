@@ -58,7 +58,7 @@ echo '</head><body class="emails '.$type.'">';
       <img src="./images/add.png" />Add another person</div></a>
       <!-- <a href='<?php ?>'> --><input type="submit" value="create poll" name="submit" class="submit" /> <!--</a>-->
       <div class="text">Your Message Subject: </div>
-      <textarea name="subject" rows="1" cols="48"></textarea>
+      <input name="subject" />
       <div class="text">Your Message Body:</div>
       <textarea name="message" rows="3" cols="48">Write a message here to tell your guests to vote for the restaurant you&apos;ll go to for dinner.</textarea>
 	</form>
