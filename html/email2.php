@@ -12,7 +12,8 @@
     $type = $_GET['type'];
     $userkey = $_GET['userkey'];
     //$userBody = $_GET['message'];
-  } else {
+  }
+if (!empty($_POST)) {
     $type = $_POST['type'];
     $userkey = $_POST['userkey'];
     $userSubj = $_POST['subject'];

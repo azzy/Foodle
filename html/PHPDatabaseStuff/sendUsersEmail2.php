@@ -6,7 +6,6 @@ function sendEmail($to, $url, $from, $subject, $input)
  $body = $input."\nPlease visit ".$url." to submit your preferences.";
  $headers = "From:".$from."\n";
  $send = mail($to,$subject,$body,$headers);
- var_dump($send);
  return $send;
 }
 function sendPollEmail($pollid, $type, $userSubj, $userBody)
