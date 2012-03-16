@@ -3,13 +3,13 @@
   if (array_key_exists('userkey', $_GET)) {
     $type = $_GET['type'];
     $userkey = $_GET['userkey'];
-    $userBody = $_GET['message'];
+    //$userBody = $_GET['message'];
   } else {
     $type = $_POST['type'];
     $userkey = $_POST['userkey'];
-    $userBody = $_GET['message'];
   }
-
+$userSubj = $_GET['subject'];
+$userBody = $_GET['message'];
 /*
 // debug
  $_POST = array();
@@ -33,7 +33,7 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
       }
     }
     include_once('PHPDatabaseStuff/sendUsersEmail2.php');
-    sendPollEmail($pollid, $type, $userBody); //changed this, as well as added an input type textbox below - kanika
+    sendPollEmail($pollid, $type, $userSubj, $userBody);
     header("Location: ./thankyou.php?type={$type}&userkey={$userkey}");
     exit();
   }
@@ -51,13 +51,16 @@ echo '</head><body class="emails '.$type.'">';
       <input name="email1"/>
       <input name="email2"/>
       <input name="email3"/>
-      <textarea name="message">Write a message here to tell your guests to vote for the restaurant you'll go to for dinner.</textarea> 
     </div>
     <input type="hidden" name="userkey" value="<?php echo $userkey; ?>" />
     <input type="hidden" name="type" value="<?php echo $type; ?>" />
     <a href="javascript:add_field()"><div id="addnew">
       <img src="./images/add.png" />Add another person</div></a>
       <!-- <a href='<?php ?>'> --><input type="submit" value="create poll" name="submit" class="submit" /> <!--</a>-->
+      <div class="text">Your Message Subject: </div>
+      <textarea name="subject" rows="1" cols="48"></textarea>
+      <div class="text">Your Message Body:</div>
+      <textarea name="message" rows="3" cols="48">Write a message here to tell your guests to vote for the restaurant you&apos;ll go to for dinner.</textarea>
 	</form>
 	
 	<div id="template" style="display:none">
