@@ -1,4 +1,3 @@
-
 <?php
 
 // debug
@@ -16,9 +15,9 @@
   } else {
     $type = $_POST['type'];
     $userkey = $_POST['userkey'];
+    $userSubj = $_POST['subject'];
+    $userBody = $_POST['message'];
   }
-$userSubj = $_GET['subject'];
-$userBody = $_GET['message'];
 
   include_once("functions/newuser.php");
   include_once("functions/newpoll.php");
@@ -30,7 +29,8 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
     $userkeys = array();
     
     foreach ($_POST as $field => $useremail) {
-      if ($field !== 'submit' and $field !== 'userkey' and $field !== 'type' and $useremail) {
+      if ($field !== 'submit' and $field !== 'userkey' and 
+	  $field !== 'type' and $field !== 'message' and $field !== 'subject') {
         $userkeys[] = newUser($pollid, 'v', $useremail);
       }
     }
