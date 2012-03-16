@@ -242,8 +242,8 @@ body.emails input, body.emails textarea {
     font-size: 13pt;
     margin: 3px 0;
 }
-.emails label {
-    margin-top: -30px;
+.emails td {
+    vertical-align: middle;
 }
 #addnew {
     margin-top: 10px;
