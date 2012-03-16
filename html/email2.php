@@ -1,13 +1,14 @@
 <?php
+/*
 // debug
  $_POST = array();
  $_POST['submit'] = 'create poll';
  $type = $_POST['type'] = 'restaurants';
  $userkey = $_POST['userkey'] = '9F3EE83E-1011-193F-0902-A9FD2FC8C0FB';
  $_POST['email1'] = 'evolutia2001@gmail.com';
-$_POST['email2'] = 'evolutia2001@gmail.com';
 $_POST['subject'] = 'testing';
 $_POST['message'] = 'testing custom message';
+*/
 
   // have to do this stuff before printing headers!!!
   if (array_key_exists('userkey', $_GET)) {

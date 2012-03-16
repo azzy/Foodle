@@ -3,7 +3,7 @@ function sendEmail($to, $url, $from, $subject, $input)
 { 
   //$subject = "via Choosine: Where should we go eat?";
  //echo $body = "I've created a poll to pick a dinner location. Please visit $url to submit your preferences" + $input;
- $body = $input."\nPlease visit ".$url." to submit your preferences.";
+ $body = $input."\n\nPlease visit ".$url." to submit your preferences.";
  $headers = "From:".$from."\n";
  $send = mail($to,$subject,$body,$headers);
  var_dump($send);
@@ -18,6 +18,7 @@ mysql_connect('localhost',$username,$password);
 $query="SELECT * FROM users WHERE pollid={$pollid}";
 $result=mysql_query($query);
 $num=mysql_numrows($result); 
+var_dump($num);
 mysql_close();
 $i=0;
 // default value
