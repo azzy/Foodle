@@ -6,7 +6,7 @@ function sendEmail($to, $url, $from, $subject, $input)
  $body = $input."\n\nPlease visit ".$url." to submit your preferences.";
  $headers = "From:".$from."\n";
  $send = mail($to,$subject,$body,$headers);
- echo $to.'\n'.$subject.'\n'.$body.'\n'.$headers;
+ // echo $to.'\n'.$subject.'\n'.$body.'\n'.$headers;
  return $send;
 }
 function sendPollEmail($pollid, $type, $userSubj, $userBody)
@@ -27,12 +27,12 @@ while ($i < $num) {
   ++$i;
 }
 $i=0;
-while ($i < $num) {
+//while ($i < $num) {
   $to =mysql_result($result,$i,"email");
   $userkey=mysql_result($result,$i,"urlkey");
   // TODO: add type into url
   sendEmail($to, "http://www.choosine.com/ranksort.php?type={$type}&userkey={$userkey}", $from, $userSubj, $userBody);
-  ++$i;
-}
+  // ++$i;
+  //}
 }
 ?>
