@@ -243,6 +243,7 @@ body.emails input, body.emails textarea {
     font-size: 13pt;
     margin: 3px 0;
 }
+textarea { margin-top: 20px; }
 #addnew {
     margin-top: 10px;
     margin-left: 10px;
