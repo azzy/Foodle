@@ -58,7 +58,7 @@ echo '</head><body class="emails '.$type.'">';
       <img src="./images/add.png" />Add another person</div></a>
       <!-- <a href='<?php ?>'> --><input type="submit" value="create poll" name="submit" class="submit" /> <!--</a>-->
 	</form>
-					  <div class="text">You just finished nominating for your poll. We&apos;ll send an email to the guests above with a link to a page where they can vote on your poll. You may customize the email below:<div>
+					  <div class="text">You just finished nominating for your poll. We&apos;ll send an email to the guests above with a link to a page where they can vote on your poll. You may customize the email below:</div>
 	<div class="text">Your Message Subject: </div>
       <input name="subject" />
       <div class="text">Your Message Body:</div>
