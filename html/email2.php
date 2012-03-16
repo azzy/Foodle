@@ -56,14 +56,13 @@ echo '</head><body class="emails '.$type.'">';
     <input type="hidden" name="type" value="<?php echo $type; ?>" />
     <a href="javascript:add_field()"><div id="addnew">
       <img src="./images/add.png" />Add another person</div></a>
- <div class="text">Your Message Subject: </div><br/>
-      <input name="subject" />
-      <div class="text">Your Message Body:</div><br/>
-      <textarea name="message" rows="3" cols="48">Write a message here to tell your guests to vote for the restaurant you&apos;ll go to for dinner.</textarea>
       <!-- <a href='<?php ?>'> --><input type="submit" value="create poll" name="submit" class="submit" /> <!--</a>-->
-     
 	</form>
-	
+					  <div class="text">You just finished nominating for your poll. We&apos;ll send an email to the guests above with a link to a page where they can vote on your poll. You may customize the email below:<div>
+	<div class="text">Your Message Subject: </div>
+      <input name="subject" />
+      <div class="text">Your Message Body:</div>
+      <textarea name="message" rows="3" cols="48">Write a message here to tell your guests to vote for the restaurant you&apos;ll go to for dinner.</textarea>
 	<div id="template" style="display:none">
 	  <input />
 	</div>
