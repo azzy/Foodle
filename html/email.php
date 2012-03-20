@@ -1,5 +1,5 @@
 <?php
-/*
+  /*
 // debug
  $_POST = array();
  $_POST['submit'] = 'create poll';
@@ -8,7 +8,7 @@
  $_POST['email1'] = 'evolutia2001@gmail.com';
 $_POST['subject'] = 'testing again';
 $_POST['message'] = 'testing custom messages again';
-*/
+  */
 
   // have to do this stuff before printing headers!!!
   if (array_key_exists('userkey', $_GET)) {
