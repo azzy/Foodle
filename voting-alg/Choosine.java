@@ -16,6 +16,8 @@ public class Choosine {
 	if (args.length < 1) {
 	    System.err.println("ERROR: Usage: Choosine pollid");
 	    return;
+	    
+	    
 	}
 
 	int pollid;
