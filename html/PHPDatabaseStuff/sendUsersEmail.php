@@ -30,7 +30,7 @@ function sendPollEmail($pollid, $type, $userSubj, $userBody)
   }
   $i=0;
   while ($i < $num) {
-    if(mysql_results($result,$i,"usertype") == 'v') {
+    if(mysql_result($result,$i,"usertype") == 'v') {
       $to =mysql_result($result,$i,"email");
       $userkey=mysql_result($result,$i,"urlkey");
       sendEmail($to, "http://www.choosine.com/ranksort.php?type={$type}&userkey={$userkey}", $from, $userSubj, $userBody);

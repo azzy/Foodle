@@ -8,8 +8,8 @@
  $_POST['email1'] = 'evolutia2001@gmail.com';
 $_POST['subject'] = 'testing again';
 $_POST['message'] = 'testing custom messages again';
-
 */
+
   // have to do this stuff before printing headers!!!
   if (array_key_exists('userkey', $_GET)) {
     $type = $_GET['type'];
@@ -65,9 +65,9 @@ echo '</head><body class="emails '.$type.'">';
       <!-- <a href='<?php ?>'> --><input type="submit" value="create poll" name="submit" class="submit" /> <!--</a>-->
 <div class="text">You just finished nominating for your poll. We&apos;ll send an email to the guests above with a link to a page where they can vote on your poll. You may customize the email below:</div>
 	<table><tr><td><label for="subject">Your Message Subject: </label></td>
-      <td><input name="subject" value="via Choosine: Where should we go eat?" /></td></tr>
+      <td><input id="subject" name="subject" value="via Choosine: Where should we go eat?" /></td></tr>
       <tr><td><label for="message">Your Message Body:</label></td>
-      <td><textarea name="message" rows="3" cols="48">Write a message here to tell your guests to vote for the restaurant you&apos;ll go to for dinner.</textarea></td></tr></table>
+      <td><textarea id="message"name="message" rows="3" cols="48">Write a message here to tell your guests to vote for the restaurant you&apos;ll go to for dinner.</textarea></td></tr></table>
 	</form>
 					  
        <div id="template" style="display:none">

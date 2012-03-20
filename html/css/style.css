@@ -204,7 +204,7 @@ a.badge {
     margin: auto;
     color: #fff;
     font: 16pt 'Rokkitt', helvetica, arial, sans-serif;
-    text-shadow: 0px -1px 0.5px #000;
+    text-shadow: 0px -1px 1px #5CB52F;
 }
 #content-area .form {
     margin: 30px 20px 0 20px;
@@ -227,7 +227,7 @@ textarea { max-width: 410px; }
 #content-area label {
     color: #fff;
     font: 16pt 'Rokkitt', helvetica, arial, sans-serif;
-    text-shadow: 0px -1px 0.5px #000;
+    text-shadow: 0px -1px 1px #5CB52F;
     margin-right: 40px;
 }
 /* End Form Styles -------------------------------------------*/
