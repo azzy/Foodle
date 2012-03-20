@@ -36,6 +36,7 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
       if ($field !== 'submit' and $field !== 'userkey' and 
 	  $field !== 'type' and $field !== 'message' and $field !== 'subject') {
         $userkeys[] = newUser($pollid, 'v', $useremail);
+	//echo $pollid." v ".$useremail."\n";
       }
     }
     include_once('PHPDatabaseStuff/sendUsersEmail.php');

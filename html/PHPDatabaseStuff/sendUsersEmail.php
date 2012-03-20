@@ -5,9 +5,9 @@ function sendEmail($to, $url, $from, $subject, $input)
   //echo $body = "I've created a poll to pick a dinner location. Please visit $url to submit your preferences" + $input;
   $body = $input."\n\nPlease visit ".$url." to submit your preferences.";
   $headers = "From:".$from."\n";
-  echo 'from:'.$from.'\nto:'.$to.$subject.$body;
-  // $send = mail($to,$subject,$body,$headers);
-  $send = true;
+  // echo 'from:'.$from.'\nto:'.$to.$subject.$body;
+  $send = mail($to,$subject,$body,$headers);
+  //echo $send;
   return $send;
 }
 function sendPollEmail($pollid, $type, $userSubj, $userBody)
