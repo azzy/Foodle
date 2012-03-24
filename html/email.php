@@ -29,9 +29,9 @@ if (!empty($_POST)) {
 
 if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
     // TODO: some validation
-  include("dbinfo.inc.php");
+  include("PHPDatabaseStuff/dbinfo.inc.php");
     mysql_connect('localhost',$username,$password);
-    @mysql_select_db($database) or die( "Unable to select database");
+    @mysql_select_db($database) or die("Unable to select database");
     $query="SELECT * FROM users WHERE pollid={$pollid}";
     $result=mysql_query($query);
     $num=mysql_numrows($result);
