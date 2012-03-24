@@ -27,18 +27,17 @@ if (!empty($_POST)) {
   include_once("functions/newpoll.php");
   $userinfo = getUserInfo($userkey);
   $pollid = $userinfo['pollid'];
+include("dbinfo.inc.php");
+mysql_connect('localhost',$username,$password);
+@mysql_select_db($database) or die( "Unable to select database");
+$query="SELECT * FROM users WHERE pollid={$pollid}";
+$result=mysql_query($query);
+$num=mysql_numrows($result);
+mysql_close();
 
 if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
     // TODO: some validation
     $userkeys = array();
-    
-    include("dbinfo.inc.php");
-    mysql_connect('localhost',$username,$password);
-    @mysql_select_db($database) or die( "Unable to select database");
-    $query="SELECT * FROM users WHERE pollid={$pollid}";
-    $result=mysql_query($query);
-    $num=mysql_numrows($result);
-    mysql_close();
     foreach ($_POST as $field => $useremail) {
       if ($field !== 'submit' and $field !== 'userkey' and 
 	  $field !== 'type' and $field !== 'message' and $field !== 'subject') {
