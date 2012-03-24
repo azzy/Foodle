@@ -11,6 +11,11 @@ include_once("functions/numVoted.php");
 include_once("functions/genResults.php");
 include("functions/results-getData.php");
 include("PHPDatabaseStuff/sendResultsEmail.php");
+/*
+//debug
+$userkey = 'A5547214-9C6D-E4A3-AF73-90C71394A9E5';
+$type = 'cuisine';
+*/
 $userinfo = getUserInfo($userkey);
 $pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($pollid);
@@ -21,7 +26,7 @@ if (array_key_exists('location', $pollinfo)) {
 if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'Send') {
   $num = mysql_numrows($pollEmails);
   $subject = "Results for Your Poll on Choosine";
-  $body = "After looking at your preferences, we suggest that you go to one of these restaurants:\n"
+  $body = "After looking at your preferences, we suggest that you go to one of these restaurants:\n";
   $from = "mailer@choosine.com";
   /*$i = 0;
   while ($i < $num) {
@@ -31,10 +36,14 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'Send') {
     }
     ++$i;
     }*/
+  foreach ($_POST as $field => $value) {
+    if (preg_match("/result/", $field))
+      $body = $body.$value."\n";
+  }
   foreach ($_POST as $field => $useremail) {
-    if ($field !== 'submit' and $field !== 'all') {
+    if (preg_match("/email/", $field))
       $to = $useremail;
-    }
+    sendEmail($to, $from, $subject, $body);
   }
 }
 if (!$pollid) {
@@ -107,10 +116,10 @@ echo '<body class="results '.$type.'">';
 	    <?php initResultsEmail($pollEmails); ?>
     <?php
 	  foreach ($resultsNames as $i => $resultName)
-	    echo '<input type="hidden" name="result" value="'.$resultName.'" />';?>
+	    echo '<input type="hidden" name="result'.$i.'" value="'.$resultName.'" />';?>
     </form>
     </div>
-    <a href="success.html"><input type="submit" id="formsubmit" name="submit" value="Send">Send</div></a>
+    <a href="success.html"><input type="submit" id="formsubmit" name="submit" value="Send" /></a>
     </div>
     </div>
 <script type="text/javascript">

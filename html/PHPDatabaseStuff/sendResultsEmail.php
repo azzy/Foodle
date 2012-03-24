@@ -14,7 +14,7 @@ function initResultsEmail($pollEmails) {
   $num=mysql_numrows($pollEmails);
   $i = 0;
   while ($i < $num) {
-    echo '<input type="checkbox" name="list" value="'.$i'" />'.mysql_result($pollEmails,$i,"email").'<br />';
+    echo '<input type="checkbox" name="email'.$i.'" />'.mysql_result($pollEmails,$i,"email").'<br />';
     ++$i;
   }
 }
