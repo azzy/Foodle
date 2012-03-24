@@ -17,6 +17,7 @@ function cuis_initList($rankedResults, $location) {
   $return[2] = $names2[0];
   $return[3] = $names2[1];
   $return[4] = $names3[0];
+  //  var_dump($return);
   return $return;
 }
 

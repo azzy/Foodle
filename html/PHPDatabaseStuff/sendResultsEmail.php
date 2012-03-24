@@ -27,7 +27,7 @@ function sendEmail($to, $from, $subject, $body)
   //$body = $message."\n\nPlease visit ".$url." to submit your preferences.";
 
   $headers = "From:".$from."\n";
-  //  echo 'from:'.$from.'\nto:'.$to.$subject.$body;
+  //   echo 'from:'.$from.'\nto:'.$to.$subject.$body;
   $send = mail($to,$subject,$body,$headers);
   //echo $send."\n";
   return $send;

@@ -10,9 +10,11 @@ include_once("functions/numVoted.php");
 include_once("functions/genResults.php");
 include("functions/results-getData.php");
 include("PHPDatabaseStuff/sendResultsEmail.php");
-/*
+
+$userkey = $_GET['userkey'];
+$type = $_GET['cuisine'];
 //debug
-$userkey = 'A5547214-9C6D-E4A3-AF73-90C71394A9E5';
+/*$userkey = '4C29734E-9E19-7432-7AA2-93CC67384E53';
 $type = 'cuisine';
 $_POST = array();
 $_POST['submit'] = 'Send';
@@ -36,14 +38,6 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'Send') {
   $subject = "Results from Your Poll on Choosine";
   $body = "After looking at your preferences, we suggest that you go to one of these restaurants:\n";
   $from = "mailer@choosine.com";
-  /*$i = 0;
-  while ($i < $num) {
-    if (mysql_result($result, $i, "usertype") == 'a') {
-      $from = mysql_result($result, $i, "email");
-      break;
-    }
-    ++$i;
-    }*/
   foreach ($_POST as $field => $value) {
     if (preg_match("/result/", $field))
       $body = $body.$value."\n";
@@ -132,7 +126,7 @@ echo '<body class="results '.$type.'">';
 	    echo '<input type="hidden" name="result'.$i.'" value="'.$resultName.'" />';?>
     </form>
     </div>
-    <input type="submit" id="formsubmit" name="submit" value="Send" />
+    <input type="submit" id="formsubmit" name="submit" class="submit" value="Send" />
     </div>
     </div>
 <script type="text/javascript">
