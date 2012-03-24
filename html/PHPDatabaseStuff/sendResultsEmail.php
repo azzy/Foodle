@@ -14,7 +14,8 @@ function initResultsEmail($pollEmails) {
   $num=mysql_numrows($pollEmails);
   $i = 0;
   while ($i < $num) {
-    echo '<input type="checkbox" name="email'.$i.'" />'.mysql_result($pollEmails,$i,"email").'<br />';
+    $email = mysql_result($pollEmails, $i, "email");
+    echo '<input type="checkbox" name="email'.$i.'" value="'.$email.'"/>'.$email.'<br />';
     ++$i;
   }
 }
@@ -26,9 +27,9 @@ function sendEmail($to, $from, $subject, $body)
   //$body = $message."\n\nPlease visit ".$url." to submit your preferences.";
 
   $headers = "From:".$from."\n";
-  // echo 'from:'.$from.'\nto:'.$to.$subject.$body;
+  //  echo 'from:'.$from.'\nto:'.$to.$subject.$body;
   $send = mail($to,$subject,$body,$headers);
-  //echo $send;
+  //echo $send."\n";
   return $send;
 }
 ?>

@@ -4,7 +4,6 @@
   //-----------------------------------------------------------------------
 ?>
 <?php
-include_once("header.php");
 include_once("functions/newuser.php");
 include_once("functions/newpoll.php");
 include_once("functions/numVoted.php");
@@ -15,6 +14,15 @@ include("PHPDatabaseStuff/sendResultsEmail.php");
 //debug
 $userkey = 'A5547214-9C6D-E4A3-AF73-90C71394A9E5';
 $type = 'cuisine';
+$_POST = array();
+$_POST['submit'] = 'Send';
+$_POST['email1'] = 'evolutia2001@gmail.com';
+$_POST['email2'] = 'alice.a.zheng@gmail.com';
+$_POST['result0'] = 'Panera Bread';
+$_POST['result1'] = "Ferry House";
+$_POST['result2'] = "Chuck's Spring Street Cafe";
+$_POST['result3'] = "";
+$_POST['result4'] = "The Little Chef Pastry Shop";
 */
 $userinfo = getUserInfo($userkey);
 $pollid = $userinfo['pollid'];
@@ -25,7 +33,7 @@ if (array_key_exists('location', $pollinfo)) {
 } else { $location = "08544"; }
 if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'Send') {
   $num = mysql_numrows($pollEmails);
-  $subject = "Results for Your Poll on Choosine";
+  $subject = "Results from Your Poll on Choosine";
   $body = "After looking at your preferences, we suggest that you go to one of these restaurants:\n";
   $from = "mailer@choosine.com";
   /*$i = 0;
@@ -40,12 +48,17 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'Send') {
     if (preg_match("/result/", $field))
       $body = $body.$value."\n";
   }
+  $body = $body."\n";
   foreach ($_POST as $field => $useremail) {
-    if (preg_match("/email/", $field))
+    if (preg_match("/email/", $field)) {
       $to = $useremail;
-    sendEmail($to, $from, $subject, $body);
+      sendEmail($to, $from, $subject, $body);
+    }
   }
+  header("Location: ./success.php");
+  exit();
 }
+include_once("header.php");
 if (!$pollid) {
   // TODO: return some logical error page instead
 }
@@ -119,7 +132,7 @@ echo '<body class="results '.$type.'">';
 	    echo '<input type="hidden" name="result'.$i.'" value="'.$resultName.'" />';?>
     </form>
     </div>
-    <a href="success.html"><input type="submit" id="formsubmit" name="submit" value="Send" /></a>
+    <input type="submit" id="formsubmit" name="submit" value="Send" />
     </div>
     </div>
 <script type="text/javascript">
