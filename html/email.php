@@ -47,9 +47,10 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
 	  if(mysql_result($result,$i,"email") == $useremail)
 	    break;
 	  //echo $pollid." v ".$useremail."\n";
-      }
+	}
 	if ($i = $num-1)
 	  $userkeys[] = newUser($pollid, 'v', $useremail);
+      }
     }
     include_once('PHPDatabaseStuff/sendUsersEmail.php');
     sendPollEmail($pollid, $type, $userSubj, $userBody);
