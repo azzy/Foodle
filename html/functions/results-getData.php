@@ -5,19 +5,29 @@ include_once("lib/OAuth.php");
 
 // calls cuis_initSome to print the appropriate number of restaurants of each cuisine to our list.
 function cuis_initList($rankedResults, $location) {
+  $return = array();
   // print two restaurants in first category
-  cuis_initSome($rankedResults[0], 2, $location);
+  $names1 = cuis_initSome($rankedResults[0], 2, $location);
   // print two restaurants in second category
-  cuis_initSome($rankedResults[1], 2, $location);          
+  $names2 = cuis_initSome($rankedResults[1], 2, $location);          
   // print one restaurant in third category
-  cuis_initSome($rankedResults[2], 1, $location);
+  $names3 = cuis_initSome($rankedResults[2], 1, $location);
+  $return[0] = $names1[0];
+  $return[1] = $names1[1];
+  $return[2] = $names2[0];
+  $return[3] = $names2[1];
+  $return[4] = $names3[0];
+  return $return;
 }
 
 // calls rest_initOne to print the appropriate length list of ranked restaurants to our list.
 function rest_initList($rankedResults) {
   $num = count($rankedResults);
-  for ($i = 0; $i < $num; $i++)
-    rest_initOne($rankedResults[$i]);
+  $return = array();
+  for ($i = 0; $i < $num; $i++) {
+    $return[$i] = rest_initOne($rankedResults[$i]);
+  }
+  return $return;
 }
 
 // prints the formatted info of some restaurants depending on cuisine, limit and location parameters
@@ -25,11 +35,14 @@ function cuis_initSome($cuisine, $limit, $loc) {
   $unsigned_url = "http://api.yelp.com/v2/search?location=".$loc."&limit=".$limit."&category_filter=".$cuisine;
   $data = access($unsigned_url);
   $response = json_decode($data);
+  $return = array();
 
   foreach ($response->businesses as $i=>$business) {
     $info = getRestInfo($business);
     addItem($info);
+    $return[$i] = $info['name'];
   }
+  return $return;
 }
     
 // prints the formatted restaurant data given a yelp business id
@@ -40,6 +53,7 @@ function rest_initOne($business) {
         
   $info = getRestInfo($response);
   addItem($info);
+  return $info['name'];
 }
 
 // return array of restaurant data given a yelp business response

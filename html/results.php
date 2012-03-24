@@ -10,13 +10,33 @@ include_once("functions/newpoll.php");
 include_once("functions/numVoted.php");
 include_once("functions/genResults.php");
 include("functions/results-getData.php");
+include("PHPDatabaseStuff/sendResultsEmail.php");
 $userinfo = getUserInfo($userkey);
 $pollid = $userinfo['pollid'];
 $pollinfo = getPollInfo($pollid);
+$pollEmails = getPollEmails($pollid);
 if (array_key_exists('location', $pollinfo)) {
   $location = $pollinfo['location'];
 } else { $location = "08544"; }
-
+if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'Send') {
+  $num = mysql_numrows($pollEmails);
+  $subject = "Results for Your Poll on Choosine";
+  $body = "After looking at your preferences, we suggest that you go to one of these restaurants:\n"
+  $from = "mailer@choosine.com";
+  /*$i = 0;
+  while ($i < $num) {
+    if (mysql_result($result, $i, "usertype") == 'a') {
+      $from = mysql_result($result, $i, "email");
+      break;
+    }
+    ++$i;
+    }*/
+  foreach ($_POST as $field => $useremail) {
+    if ($field !== 'submit' and $field !== 'all') {
+      $to = $useremail;
+    }
+  }
+}
 if (!$pollid) {
   // TODO: return some logical error page instead
 }
@@ -69,9 +89,9 @@ echo '<body class="results '.$type.'">';
       <div class="column">
       <?php 
         if ($type == 'cuisine')
-	  cuis_initList($rankedResults, $location);
+	  $resultsNames = cuis_initList($rankedResults, $location);
 	else if ($type == 'restaurants')
-	  rest_initList($rankedResults);
+	  $resultsNames = rest_initList($rankedResults);
 	else
 	  echo "you have some sort of terrible error!!!!" // fix this
 	    ?>
@@ -83,18 +103,14 @@ echo '<body class="results '.$type.'">';
     <div id="list-2">
     <form name="emails" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post" id="formtosubmit">
     <input type="checkbox" name="all" value="all"
-    onClick="this.value=check(this.form.list)" />Everybody<br />
-    <input type="checkbox" name="list" value="1" />First friend's
-    e-mail<br />
-    <input type="checkbox" name="list" value="2" />Second friend's
-    e-mail<br />
-    <input type="checkbox" name="list" value="3" />Third friend's
-    e-mail<br />
-    <input type="checkbox" name="list" value="4" />Fourth friend's
-    e-mail<br />
+	    onClick="this.value=check(this.form.list)" />Everybody<br />
+	    <?php initResultsEmail($pollEmails); ?>
+    <?php
+	  foreach ($resultsNames as $i => $resultName)
+	    echo '<input type="hidden" name="result" value="'.$resultName.'" />';?>
     </form>
     </div>
-    <a href="success.html"><div id="formsubmit">Send</div></a>
+    <a href="success.html"><input type="submit" id="formsubmit" name="submit" value="Send">Send</div></a>
     </div>
     </div>
 <script type="text/javascript">

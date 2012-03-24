@@ -23,14 +23,14 @@ function sendPollEmail($pollid, $type, $userSubj, $userBody)
   $i=0;
   // default value
   $from="mailer@choosine.com";
-  while ($i < $num) {
+  /*while ($i < $num) {
     if(mysql_result($result,$i,"usertype") == 'a') {
       $from=mysql_result($result,$i,"email");
       break;
     }
     ++$i;
-  }
-  $i=0;
+    }
+    $i=0;*/
   while ($i < $num) {
     if(mysql_result($result,$i,"usertype") == 'v') {
       $to =mysql_result($result,$i,"email");
