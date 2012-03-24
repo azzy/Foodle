@@ -40,4 +40,35 @@ function sendPollEmail($pollid, $type, $userSubj, $userBody)
     ++$i;
   }
 }
+
+function sendInitiatorEmail($pollid, $type, $userSubj, $userBody)
+{
+  include("dbinfo.inc.php");
+  //echo "2";
+  mysql_connect('localhost',$username,$password);
+  @mysql_select_db($database) or die( "Unable to select database");
+  $query="SELECT * FROM users WHERE pollid={$pollid}";
+  $result=mysql_query($query);
+  $num=mysql_numrows($result); 
+  mysql_close();
+  $i=0;
+  // default value
+  $from1="mailer@choosine.com";
+  while ($i < $num) {
+    if(mysql_result($result,$i,"usertype") == 'a') {
+      $to1=mysql_result($result,$i,"email");
+      break;
+    }
+    ++$i;
+  }
+  $i=0;
+  while ($i < $num) {
+    if(mysql_result($result,$i,"usertype") == 'v') {
+     // $to =mysql_result($result,$i,"email");
+      $userkey=mysql_result($result,$i,"urlkey");
+      sendEmail($to1, "http://www.choosine.com/results.php?type={$type}&userkey={$userkey}", $from1, "Choosine Results URL", " ");
+    }
+    ++$i;
+  }
+}
 ?>
