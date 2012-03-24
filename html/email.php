@@ -3,13 +3,14 @@
 // debug
  $_POST = array();
  $_POST['submit'] = 'create poll';
- $type = $_POST['type'] = 'restaurants';
- $userkey = $_POST['userkey'] = '9F3EE83E-1011-193F-0902-A9FD2FC8C0FB';
- $_POST['email1'] = 'evolutia2001@gmail.com';
-$_POST['subject'] = 'testing again';
-$_POST['message'] = 'testing custom messages again';
+ $type = $_POST['type'] = 'cuisine';
+ $userkey = $_POST['userkey'] = 'A5547214-9C6D-E4A3-AF73-90C71394A9E5';
+$nominate = true;
+$_POST['email1'] = 'evolutia2001@gmail.com';
+$_POST['email2'] = 'alice.a.zheng@gmail.com';
+$_POST['subject'] = 'test subject line';
+$_POST['message'] = 'test message line';
   */
-
   // have to do this stuff before printing headers!!!
   if (array_key_exists('userkey', $_GET)) {
     $type = $_GET['type'];
@@ -37,6 +38,13 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
     $num=mysql_numrows($result);
     mysql_close();
     $userkeys = array();
+    /*
+    $i = 0;
+    while ($i < $num) {
+      echo mysql_result($result,$i,"email");
+      ++$i;
+    }
+    */
     foreach ($_POST as $field => $useremail) {
       if ($field !== 'submit' and $field !== 'userkey' and 
 	  $field !== 'type' and $field !== 'message' and $field !== 'subject') {
@@ -44,9 +52,9 @@ if (array_key_exists('submit', $_POST) and $_POST['submit'] == 'create poll') {
 	while ($i < $num) {
 	  if(mysql_result($result,$i,"email") == $useremail)
 	    break;
-	  //echo $pollid." v ".$useremail."\n";
+	  ++$i;
 	}
-	if ($i = $num-1)
+	if ($i == $num)
 	  $userkeys[] = newUser($pollid, 'v', $useremail);
       }
     }
