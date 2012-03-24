@@ -19,7 +19,7 @@ function initResultsEmail($pollEmails) {
   }
 }
 
-function sendEmail($to, $url, $from, $subject, $body)
+function sendEmail($to, $from, $subject, $body)
 { 
   //$subject = "via Choosine: Where should we go eat?";
   //echo $body = "I've created a poll to pick a dinner location. Please visit $url to submit your preferences" + $input;

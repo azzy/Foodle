@@ -428,7 +428,7 @@ body.results #content-area { overflow: hidden; }
 #formsubmit {
     clear: both;
     padding: 3px;
-    font-size: 13pt;
+    font: 13pt 'Rokkitt', helvetica, arial, sans-serif;
     width: 70px;
     text-align: center;
     color: #fff;
